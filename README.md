@@ -39,6 +39,9 @@ Editing features:
     - main: webcam preview, list of superposable images and capture button
     - side: thumbnails of previous pictures taken
 
+Layout:
+![Screenshot 2022-05-31 at 16 46 18](https://user-images.githubusercontent.com/86101754/171188870-69dcc1d1-5b4d-4dba-914e-a95035ddeeaa.png)
+
 Structure: 
 - reuse structure from rush
 
