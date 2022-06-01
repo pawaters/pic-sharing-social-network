@@ -64,18 +64,20 @@ Questions:
 - research bootstrap and other CSS frameworks
 
 References:
-- https://github.com/T7Q/Camagru
-- https://github.com/AnthonyLedru/camagru
+- Wireframe:
+    - https://github.com/T7Q/Camagru
+- Database structure:
+    - https://github.com/T7Q/Camagru
+ https://github.com/AnthonyLedru/camagru
 
-
-PREP: 
-- learn Javascript
+____________________________________________
 
 NEXT STEPS:
-
-0) wireframe (https://github.com/T7Q/Camagru)
-1) the html 
-- index.html
-2) 
+- finish overall plan with steps
+- learn JS
+- wireframe (https://github.com/T7Q/Camagru)
+- the html 
+    - index.html
+ 
 
 follow these steps: https://dev.to/kunaal438/how-to-make-an-e-commerce-website-with-html-css-and-js-3aon
