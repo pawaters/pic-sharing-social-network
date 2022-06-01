@@ -83,8 +83,12 @@ Info:
 
 NEXT STEPS:
 - finish overall plan with steps
-- learn JS
+- review JS, learn bootstrap
+- decide if I use mamp or docker
+- review MVC in specific temrs
 - wireframe (https://github.com/T7Q/Camagru)
+- divide into smaller steps
+- set up with my rush files
 - the html 
     - index.html
  
