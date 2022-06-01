@@ -29,22 +29,43 @@ Gallery features:
 (this last feature can be deactivated in preferences)
 - image list must be paginated, with at least 5 elements per page
 
-Questions:
-- what is PDO abstraction driver to communicate with DB?
-- how to apply MVC to project
-
 Editing features:
 - only accessible to signed up users.
 - 2 sections: 
     - main: webcam preview, list of superposable images and capture button
     - side: thumbnails of previous pictures taken
+- superposable images (stickers) are selectable
+- photo button is inactive until sticker is selected
+- creation of final image must be done on server side, in PHP
+- user must be able to upload an image.
 
 Layout:
 ![Screenshot 2022-05-31 at 16 46 18](https://user-images.githubusercontent.com/86101754/171188870-69dcc1d1-5b4d-4dba-914e-a95035ddeeaa.png)
 
+Languages:
+- server: PHP
+- client: HTML, CSS, JS
+
+Frameworks:
+- server: none
+- client: CSS Frameworks
+
 Structure: 
-- reuse structure from rush
+- reuse structure from rush: per file type: css, img, js, html
+- must contain: 
+    - index.php, --> entry point, located at root
+    - config/ 
+        setup.php --> to create DB
+        database.php --> info for DB creation
 
+Questions:
+- what is PDO abstraction driver to communicate with DB?
+- how to apply MVC to project
+- research bootstrap and other CSS frameworks
 
+NEXT STEPS:
 
+1) the html 
+- index.html
 
+follow these steps: https://dev.to/kunaal438/how-to-make-an-e-commerce-website-with-html-css-and-js-3aon
