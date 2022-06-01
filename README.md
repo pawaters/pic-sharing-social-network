@@ -63,9 +63,19 @@ Questions:
 - how to apply MVC to project
 - research bootstrap and other CSS frameworks
 
+References:
+- https://github.com/T7Q/Camagru
+- https://github.com/AnthonyLedru/camagru
+
+
+PREP: 
+- learn Javascript
+
 NEXT STEPS:
 
+0) wireframe (https://github.com/T7Q/Camagru)
 1) the html 
 - index.html
+2) 
 
 follow these steps: https://dev.to/kunaal438/how-to-make-an-e-commerce-website-with-html-css-and-js-3aon
