@@ -72,6 +72,15 @@ References:
 
 ____________________________________________
 
+Info:
+- email: PHP mail() function, https://docs.bitnami.com/installer/infrastructure/lamp/troubleshooting/send-mail/
+- server: bitnami mamp
+- img manip: gd
+- set up comments: https://youtu.be/1LmPeHX7RRo
+- icons:  https://fontawesome.com/ 
+- CSS framework: Bootstrap, without the JS
+
+
 NEXT STEPS:
 - finish overall plan with steps
 - learn JS
