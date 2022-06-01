@@ -82,7 +82,8 @@ Info:
 
 
 NEXT STEPS:
-- finish overall plan with steps
+- alias for easy git push
+- finish overall plan with steps, based on rush00 org: https://docs.google.com/document/d/1h6Uvu3F6b9QpVyzrn13RLS0aMUZ_l365PrAODQcRvYg/edit
 - review JS, learn bootstrap
 - decide if I use mamp or docker
 - review MVC in specific temrs
