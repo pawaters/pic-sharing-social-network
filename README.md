@@ -92,5 +92,23 @@ NEXT STEPS:
 - the html 
     - index.html
  
-
 follow these steps: https://dev.to/kunaal438/how-to-make-an-e-commerce-website-with-html-css-and-js-3aon
+
+
+1) Do plan based on my memories of last project
+2) research better options
+    https://www.udemy.com/course/create-instagram-clone-using-php/
+    https://github.com/nickgatzos/instagram-clone-php/blob/master/public/index.php
+3) take decision and go forward
+
+PROJECT PLAN (based on my memories):
+1) HTML
+    - have a clear layout, based on single page php and requirements
+    - write the Html v1
+2) CSS
+    - do one css for admin, one for home, one for login, one for navbar
+3) PHP
+    - index.php, to organise how data loads within the page
+    - install.php to set up db (config)
+4) DB
+    -set up basic db with some images
