@@ -7,7 +7,14 @@ Plan:
 
 (at the same time, I am taking exams.
 So far, 2 passed, 3 more to go. 
-focus on camagru. when tired, review over lvl4 that are not classic.
+focus on camagru. when tired, review over lvl4 that are not classic:
+1) floodfill
+2) brainfuck
+3) check mate?
+4) list remove if
+5) itoabase
+https://github.com/evandjohnston/ft_alone_in_the_dark/tree/master/Beginner_Exam/level_4
+
 
 Summary: 
 A web app allowing registered users to make basic video editing using their webcam and some predefined images. 
