@@ -1,10 +1,13 @@
 # camagru
-test change and push
 Plan:
 1) read and summarise instructions
 2) divide problem, research solutions, iterate
 3) review discord
 4) summarise, test and confirm I understand fully
+
+(at the same time, I am taking exams.
+So far, 2 passed, 3 more to go. 
+focus on camagru. when tired, review over lvl4 that are not classic.
 
 Summary: 
 A web app allowing registered users to make basic video editing using their webcam and some predefined images. 
@@ -48,7 +51,7 @@ Languages:
 
 Frameworks:
 - server: none
-- client: CSS Frameworks
+- client: CSS Framework Bootstrap (without anything else but the CSS)
 
 Structure: 
 - reuse structure from rush: per file type: css, img, js, html
