@@ -15,6 +15,7 @@ I got rostring
 4) list remove if
 5) itoabase
 https://github.com/evandjohnston/ft_alone_in_the_dark/tree/master/Beginner_Exam/level_4
+If have to do exam later, it is ok,I can forget about it.
 
 
 Summary: 
