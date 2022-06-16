@@ -6,8 +6,9 @@ Plan:
 4) summarise, test and confirm I understand fully
 
 (at the same time, I am taking exams.
-So far, 2 passed, 3 more to go. 
+So far, 3 passed, 2 more to go. 
 focus on camagru. when tired, review over lvl4 that are not classic:
+I got rostring
 1) floodfill
 2) brainfuck
 3) check mate?
