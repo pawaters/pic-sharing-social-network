@@ -1,4 +1,8 @@
 # camagru
+Easiest step forward:
+- watch video of udemy fo example project
+- follow the steps
+
 Plan:
 1) read and summarise instructions
 2) divide problem, research solutions, iterate
