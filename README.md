@@ -4,24 +4,14 @@
 Easiest step forward:
 - watch video of udemy fo example project
 - follow the steps
+- improve my plan as I go
+
 
 Plan:
 1) read and summarise instructions
 2) divide problem, research solutions, iterate
 3) review discord
 4) summarise, test and confirm I understand fully
-
-So far, 3 passed, 2 more to go. 
-focus on camagru. when tired, review over lvl4 that are not classic:
-I got rostring
-1) floodfill
-2) brainfuck
-3) check mate?
-4) list remove if
-5) itoabase
-https://github.com/evandjohnston/ft_alone_in_the_dark/tree/master/Beginner_Exam/level_4
-If have to do exam later, it is ok,I can forget about it.
-
 
 Summary: 
 A web app allowing registered users to make basic video editing using their webcam and some predefined images. 
@@ -129,3 +119,17 @@ PROJECT PLAN (based on my memories):
     - install.php to set up db (config)
 4) DB
     -set up basic db with some images
+
+
+
+EXAMS:
+So far, 3 passed, 2 more to go. 
+focus on camagru. when tired, review over lvl4 that are not classic:
+I got rostring
+1) floodfill
+2) brainfuck
+3) check mate?
+4) list remove if
+5) itoabase
+https://github.com/evandjohnston/ft_alone_in_the_dark/tree/master/Beginner_Exam/level_4
+If have to do exam later, it is ok,I can forget about it.
