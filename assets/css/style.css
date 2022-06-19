@@ -25,7 +25,7 @@ body{
     height: 50px;
     background-color: white;
     border-bottom: #dfdfdf;
-    display: flex; 
+    display: flex; /* child elements will go side by side */
     justify-content: center;
     padding: 5px 0;
     z-index:1;
@@ -47,6 +47,18 @@ body{
 
 .search-box{
     position: absolute;
+    /* now we are trying to y-center an absolute element*/
     left: 50%;
-    transform: 
+    /*translateX(-50%): move me leftwards by 50% of my width, along the x-axis,
+    translateY(-50%):move me upwards by 50% of my height, along the y-axis
+    reference: https://stackoverflow.com/questions/8508275/how-to-center-a-position-absolute-element*/
+    transform: translateX(-50%);
+    width: 200px;
+    height: 25px;
+    background: #fafafa;
+    border: 1px solid #dfdfdf;
+    border-radius: 2px;
+    color:rgba(0,0,0,0.5);
+    text-align: center;
+    text-transform: capitalize;
 }
