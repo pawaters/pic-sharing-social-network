@@ -2,7 +2,7 @@
 
 
 Easiest step forward:
-- watch video of udemy fo example project
+- watch video of udemy (daily) fo example project
 - follow the steps
 - improve my plan as I go
 
