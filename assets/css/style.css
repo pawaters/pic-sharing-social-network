@@ -25,17 +25,17 @@ body{
     height: 50px;
     background-color: white;
     border-bottom: #dfdfdf;
-    display: flex; /* child elements will go side by side */
+    display: flex; 
+    /* child elements will go side by side */
     justify-content: center;
     padding: 5px 0;
-    z-index:1;
 }
 
 .nav-wrapper{
     width: 70%;
     max-width: 1000px;
     height: 100%;
-    display:flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
