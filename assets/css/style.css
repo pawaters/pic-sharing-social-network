@@ -8,13 +8,16 @@
     font-size: 14px;
 }
 
+*:focus{
+    outline: none;
+}
+
 body{
     width: 100%;
     background: #fafafa;
     position: relative; /* my default */
     font-family: 'Roboto', sans-serif;
     padding-top: 40px;
-
 }
 
 .navbar{
