@@ -1,5 +1,14 @@
 # camagru - main focus
 
+FOCUS: FRONTEND
+
+- confirm wireframe
+- do index.html (main page with images)
+    containers based on example, understand logic
+- add style.css
+
+
+______
 
 Easiest step forward:
 - watch video of udemy (daily) fo example project
