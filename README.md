@@ -6,6 +6,7 @@ FOCUS: FRONTEND
 - do index.html (main page with images)
     containers based on example, understand logic
 - add style.css
+- go step by step
 
 
 ______
