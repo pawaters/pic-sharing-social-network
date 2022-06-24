@@ -8,6 +8,11 @@ FOCUS: FRONTEND
 - add style.css
 - go step by step
 
+Approach: 
+-define what I want to do
+- divide until small to be something understandable 
+- do it & Learn how to
+- summarize  the logic for next time 
 
 ______
 
