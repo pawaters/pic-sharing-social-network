@@ -2,11 +2,16 @@
 
 FOCUS: FRONTEND
 
-- confirm wireframe
+1) confirm wireframe
 - do index.html (main page with images)
     containers based on example, understand logic
+2) take one element, design index, then css
 - add style.css
+3) when all that done, add functionatilty
 
+Where to start:
+- navbar
+- 
 
 ______
 
