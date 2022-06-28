@@ -172,3 +172,52 @@ body{
     display: flex;
     flex-direction: column;
 }
+
+.post{
+    width: 100%;
+    height: 600px;
+    background: white;
+    border: 1px solid #dfdfdf;
+    margin-top: 10px;
+}
+
+.info{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.info .username{
+    width: auto; /* depends on wrapper and user*/
+    font-weight: bold;
+    font: 14px;
+    color: black;
+    margin-left: 10px;
+}
+
+.info .options{
+    height: 10px;
+    cursor: pointer;
+}
+
+.info .user{
+    display: flex; /* items go side by side */
+    align-items: center; 
+}
+
+/* put profile pic small for post area*/
+.info .profile-pic{
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    background: none;
+}
+
+.post-img{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
