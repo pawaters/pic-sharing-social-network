@@ -273,7 +273,7 @@ body{
     font-size: 14px;
 }
 
-.comment-btn{
+.comment-btn, .logout-btn{
     width: 70px;
     height: 100%;
     margin-right: 10px;
@@ -282,7 +282,7 @@ body{
     outline: none;
     text-transform: capitalize;
     font-size: 16px;
-    color: (0,162,255);
+    color: rgb(0,162,255);
     opacity: 50%;
 }
 
@@ -325,5 +325,46 @@ body{
 }
 
 .profile-card .profile-pic{
+    /* flex: flex-grow flex-shrink flex-basis 
+    flex-grow: how much it grows compared to other flex items
+    flex-shrink: how much it shrinks
+    flex-basis: dimension of items.
+    flex: 0 0 auto means then: no grow or shrink, size according to height/width
+    similiar to flex: initial, except no shrinking.
+    */
+    flex: 0 0 auto;
+    padding: 0;
+    background: none;
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
+}
 
+.profile-card .profile-pic img{
+    border: none;
+    width: 70px;
+    height: 70px;
+}
+
+.profile-card .username{
+    font-weight: 500px;
+    font-size: 14px;
+    color: black;
+    /* always edit design at the lowest level possible */
+    margin-bottom: 0;
+}
+
+.profile-card .sub-text{
+    color: lightgrey;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.logout-btn{
+    opacity: 1;
+    font-weight: 700;
+    font-size: 12px;
+     
 }
