@@ -273,7 +273,7 @@ body{
     font-size: 14px;
 }
 
-.comment-btn, .logout-btn{
+.comment-btn, .logout-btn, .follow-btn{
     width: 70px;
     height: 100%;
     margin-right: 10px;
@@ -316,7 +316,7 @@ body{
  - add wrapper if you need to leave some space always within container (width 70%...)
  */
 
-.profile-card{
+.profile-card, .suggestion-card{
     width: fit-content;
     display: flex;
     justify-content: center;
@@ -346,7 +346,7 @@ body{
     height: 70px;
 }
 
-.profile-card .username{
+.profile-card .username, .suggestion-card .username{
     font-weight: 500px;
     font-size: 14px;
     color: black;
@@ -354,7 +354,7 @@ body{
     margin-bottom: 0;
 }
 
-.profile-card .sub-text{
+.profile-card .sub-text, .suggestion-card .sub-text{
     color: lightgrey;
     font-size: 12px;
     font-weight: 500;
@@ -362,9 +362,32 @@ body{
     margin-bottom: 0;
 }
 
-.logout-btn{
+.logout-btn, .follow-btn{
     opacity: 1;
     font-weight: 700;
     font-size: 12px;
      
+}
+
+.suggestion-card .suggestion-pic{
+    flex: 0 0 auto;
+    padding: 0;
+    background: none;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.suggestion-card .suggestion-pic img{
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.suggestion-text {
+    font-size: 14px;
+    color: rgba(0,0,0,0.5);
+    font-weight: 700;
+    margin-top: 30px 0;
 }
