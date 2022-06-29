@@ -106,22 +106,19 @@ body{
     /* ensures left and right col are right size*/
     grid-template-columns: 60% 40%;
     gap: 30px;
-    border: none;
-    outline: none;
+    border: 2px;
 }
 
 .left-col{
     display: flex;
     flex-direction: column;
-    border: none;
-    outline: none;
 }
 
 .status-wrapper{
     width: 100%;
     height: 120px;
     background: white ;
-    border: none;
+    border: 1px solid lightgray;
     padding: 10px;
     padding-right: 0;
     border-radius: 2px;
@@ -145,6 +142,7 @@ body{
     flex-direction: column;
     align-items: center;
     margin-right: 15px;
+    border: 2px;
 }
 
 .profile-pic{
@@ -181,10 +179,10 @@ body{
 
 .post{
     width: 100%;
-    height: 600px;
+    height: fit-content;
     background: white;
-    border: none;
     margin-top: 10px;
+    border: 1px solid #dfdfdf;
 }
 
 .info{
@@ -256,7 +254,6 @@ body{
 .comment-wrapper{
     width: 100%;
     height: 50px;
-    border: 1px solid #dfdfdf;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -265,7 +262,7 @@ body{
 .comment-wrapper .icon{
     height: 30px;
     border-radius: 45%;
-    
+
 }
 
 .comment-box{
@@ -302,5 +299,31 @@ body{
     height: 25px;
     margin: 0;
     margin-right: 20px;
+}
+
+.right-col{
+    padding: 20px;
+
+}
+
+/* GENERAL RULE: when defining a new big container set:
+ - width (usually a %)/ height (usually px), 
+ - display (by default: flex), 
+ - justify-content (center or space between), 
+ - align-items (center)
+ - padding
+ - border
+ - add wrapper if you need to leave some space always within container (width 70%...)
+ */
+
+.profile-card{
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profile-card .profile-pic{
 
 }
