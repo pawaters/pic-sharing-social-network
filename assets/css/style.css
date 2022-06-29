@@ -391,3 +391,34 @@ body{
     font-weight: 700;
     margin-top: 30px 0;
 }
+
+/* --- RESPONSIVE ____ */
+
+/* FOR MEDIUM SCREENS < 1100px */
+
+/* to deal with responsive, hide right side when small */
+/* applies the following only if condition fulfilled */
+@media (max-width: 1100px){
+    .right-col, .search-box{
+        display: none;
+    }
+
+    .nav-wrapper, .wrapper{
+        width: 90%;
+        /* default was display grid, and no right col now!*/
+        display: block;
+    }
+}
+
+/* FOR SMALL SCREENS <500px 
+reduce icons margins, image
+*/
+@media (max-width: 500px){
+
+    .nav-items .icon{
+        margin: 0 5px;
+    }
+    .post-img{
+        height: 300px;
+    }
+}
