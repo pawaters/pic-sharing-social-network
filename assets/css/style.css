@@ -422,3 +422,49 @@ reduce icons margins, image
         height: 300px;
     }
 }
+
+/* --- LOGIN ____ */
+.container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* why use flex-grow vs relative sizing there? 
+   when I just want container child to grow within that 
+*/
+.main-container{
+    display: flex;
+    flex-grow: 1;
+}
+
+.main-content{
+    margin: 30px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px;
+    flex-grow: 1;
+}
+
+.slide-container{
+    height: 600px;
+    flex-basis: 450px;
+}
+
+.slide-content{
+    margin: 100px 0 0 150px;
+    position: relative;
+}
+
+.slide-container img{
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.slide-container img.active{
+    opacity: 1;
+    visibility: visible;
+}
