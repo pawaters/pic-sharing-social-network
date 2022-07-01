@@ -24,18 +24,34 @@
                         <img src="assets/img/screen4.jpeg" alt="screen4">
                     </div>
                 <div class="form-container">
-            </div>
+                    <div class="form-content box">
+                        <div class="logo">
+                            <img src="assets/img/logo.jpg" class="logo-img">
+                        </div>
+                        <form class="login-form" id="login-form">
+                            <div class="form-group">
+                                <div class="login-input">
+                                    <input type="text" name="email" placeholder="Type your email address...">
+                                    <input type="text">
+                                </div>
+                            </div>    
+                                
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <!--script to slide images -->
     <script> 
     
+    //REWRITE THIS WITH A SIMPLER LOOP
+
     // why we cant just call directly func but have to use arrow to then call 
     // the reason is that when in a callback, it stays within that specific context,
     // and changes the value in context of setInterval itself, not the value of the CSS out of it.
     // to solve this, we can use the arrow function expression.
-    setInterval(() => {changeImage();}, 3000);
+    setInterval(() => {changeImage();}, 1000);
     
     function changeImage(){
         // retrieve images into an array
@@ -50,10 +66,16 @@
            {
                image.classList.remove('active');
                
+                if(i == images.length - 1)
+                {
+                    var nextImage = images[0];
+                    nextImage.classList.add('active');
+                    break;
+                }
+
                 var nextImage = images[i + 1];
                nextImage.classList.add('active');
                break;
-
            }
        }
     };
