@@ -31,10 +31,12 @@
     <!--script to slide images -->
     <script> 
     
-    setInterval(()=>)
-
-    changeImage();
-
+    // why we cant just call directly func but have to use arrow to then call 
+    // the reason is that when in a callback, it stays within that specific context,
+    // and changes the value in context of setInterval itself, not the value of the CSS out of it.
+    // to solve this, we can use the arrow function expression.
+    setInterval(() => {changeImage();}, 3000);
+    
     function changeImage(){
         // retrieve images into an array
         var images = document.getElementById('slide-content').getElementsByTagName('img');
@@ -48,15 +50,13 @@
            {
                image.classList.remove('active');
                
-               var nextImage = images[i + 1];
+                var nextImage = images[i + 1];
                nextImage.classList.add('active');
                break;
 
            }
        }
     };
-       
-       
  
     </script>
 
