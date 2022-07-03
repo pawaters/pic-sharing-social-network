@@ -468,3 +468,31 @@ reduce icons margins, image
     opacity: 1;
     visibility: visible;
 }
+
+/* LOGIN FORM */
+
+.form-container{
+    /* TD: Why flex grow here?*/ 
+    flex-grow: 1;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.box{
+    border: 1px solid #dfdfdf;
+    background: white;
+    border-radius: 3px;
+}
+
+.form-content{
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.form-content .logo{
+    text-align: center;
+    height: 50px;
+    width: 175px;
+}
