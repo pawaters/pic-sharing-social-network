@@ -1,5 +1,7 @@
 # camagru - main focus
 
+Macro: follow example - learn best practice - apply to my case - UI first
+
 FOCUS: FRONTEND
 
 1) confirm wireframe
