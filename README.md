@@ -1,6 +1,7 @@
 # camagru - main focus
 
 Macro: follow example - learn best practice - apply to my case - UI first
+On days where always with baby, just watch videos and organise 
 
 FOCUS: FRONTEND
 
