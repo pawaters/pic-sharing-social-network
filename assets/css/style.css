@@ -6,8 +6,8 @@
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
-    outline: none;
-    border: solid black 1px;
+    outline:0;
+    border:0;
 }
 
 *:focus{
@@ -495,9 +495,51 @@ reduce icons margins, image
     text-align: center;
     height: 50px;
     width: 175px;
-    margin: 10px;
+    margin: 10px auto 20px auto;
 }
 
 .form-content .logo img{
     max-width: 100%;
+}
+
+.login-form {
+    padding-top: 25px;
+    margin-bottom: 10px;
+}
+
+.form-group{
+    margin: 0 40px 6px;
+}
+
+.login-input{
+    height: 35px;
+    border: 1px solid #dfdfdf;
+    border-radius: 3px;
+    position: relative;
+}
+
+.login-input input{
+    width: 100%;
+    height: 100%;
+    padding: 9px 8px 7px;
+    border: 0;
+    outline: 0;
+    background-color: #fafafa;
+    color: black;
+    font-size: 12px;
+}
+
+.login-input input::placeholder{
+    font-size: 12px;
+}
+
+.btn-group{
+    width: 100%;
+    padding: 8px 40x; 
+}
+
+.login-btn{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 3px;
 }
