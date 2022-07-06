@@ -674,3 +674,21 @@ reduce icons margins, image
     color: white !important;
 
 }
+
+/* _________________ PROFILE PAGE ___________________*/
+
+/* each div or element has a class, and you define its css in its order of appearance*/
+.profile-header{
+    margin-top: 30px;
+}
+
+.profile-container{
+    max-width: 95.5rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.profile-btn{
+    display: inline-block;
+    font: inherit;
+}
