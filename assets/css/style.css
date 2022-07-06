@@ -7,7 +7,7 @@
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     outline: none;
-    border: none;
+    border: solid black 1px;
 }
 
 *:focus{
@@ -495,4 +495,9 @@ reduce icons margins, image
     text-align: center;
     height: 50px;
     width: 175px;
+    margin: 10px;
+}
+
+.form-content .logo img{
+    max-width: 100%;
 }
