@@ -540,6 +540,26 @@ reduce icons margins, image
 
 .login-btn{
     width: 100%;
-    border: 1px solid black;
-    border-radius: 3px;
+    border: 1px solid transparent;
+    outline: 0;
+    background: rgb(0,162,255);
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
+
+.or{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.or hr{
+    width: 35%;
+    margin: 0 10px;
+}
+
