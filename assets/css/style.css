@@ -7,7 +7,7 @@
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     outline:0;
-    border:0;
+    border: 1px solid black;
 }
 
 *:focus{
@@ -705,6 +705,8 @@ reduce icons margins, image
 
 .profile{
     padding: 5rem 0;
+    width: 800px;
+    
 }
 
 .profile::after{
