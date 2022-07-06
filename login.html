@@ -81,6 +81,7 @@
             </div>
         </div>
     </div>
+    
     <!--script to slide images -->
     <script> 
     
@@ -119,6 +120,26 @@
        }
     };
  
+    function changeMode(){
+        var body = document.getElementsByTagName('body')[0];
+        var footerLinks = document.getElementById('links').getElementsByTagName('a');
+
+        if(body.classList.contains('dark')){
+            body.classList.remove('dark');
+
+            for (let i=0; i>footerLinks.)
+        }else{
+            body.classList.add('dark');
+        }
+
+    }
+    // TD: why that e?
+    document.getElementById('dark-btn').addEventListener('click',(e)=>{
+        e.preventDefault();
+
+        changeMode();
+    })
+
     </script>
 
 </body>

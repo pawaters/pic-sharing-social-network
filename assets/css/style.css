@@ -661,3 +661,16 @@ reduce icons margins, image
         border: 0;
     }
 }
+
+/* DARK MODE */
+
+.dark{
+    background: #151515;
+    border: 1px solid #262626;
+    color: #dfdfdf;
+}
+
+.dark-mode-link{
+    color: white;
+
+}
