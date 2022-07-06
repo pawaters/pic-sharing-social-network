@@ -74,7 +74,7 @@
                 <a href="#">My Github</a>
                 <a href="#">Contact me</a>
                 <a href="#">Terms</a>
-                <a href="#" id="dark-btn">Dark mode</a>
+                <a href="#" id="dark-btn">Dark/Light</a>
             </div>
             <div class="copyright">
                 @2022 Pierre-Alban Waters, HIVE Helsinki student
@@ -120,17 +120,29 @@
        }
     };
  
-    function changeMode(){
+    function changeMode()
+    {
         var body = document.getElementsByTagName('body')[0];
         var footerLinks = document.getElementById('links').getElementsByTagName('a');
 
-        if(body.classList.contains('dark')){
+        if(body.classList.contains('dark'))
+        {
             body.classList.remove('dark');
 
-            for (let i=0; i>footerLinks.)
-        }else{
-            body.classList.add('dark');
+            for (let i=0; i < footerLinks.length; i++)
+            {
+                footerLinks[i].classList.remove('dark-mode-link');
+            } 
         }
+        else 
+        {
+            body.classList.add('dark');
+
+            for (let i = 0; i < footerLinks.length; i++)
+            {
+                footerLinks[i].classList.add('dark-mode-link');   
+            }
+        };
 
     }
     // TD: why that e?

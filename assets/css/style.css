@@ -671,6 +671,6 @@ reduce icons margins, image
 }
 
 .dark-mode-link{
-    color: white;
+    color: white !important;
 
 }
