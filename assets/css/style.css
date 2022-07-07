@@ -705,8 +705,7 @@ reduce icons margins, image
 
 .profile{
     padding: 5rem 0;
-    width: 800px;
-    
+    display: block;
 }
 
 .profile::after{
@@ -717,7 +716,7 @@ reduce icons margins, image
 
 .profile-image{
     float: left;
-    width: calc(33% - rem);
+    width: calc(33.3% - 2rem);
     display: flex;
     justify-self: center;
     align-items: center;
@@ -732,7 +731,7 @@ reduce icons margins, image
 
 .profile-user-settings, .profile-stats, .profile-bio{
     float: left;
-    width: calc(66% - rem);
+    width: calc(66.6666% - 1.2rem);
 }
 
 .profile-user-settings{
@@ -830,4 +829,31 @@ reduce icons margins, image
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+@media screen and (max-width:800px){
+
+    .profile{
+        display: flex; 
+        flex-wrap: wrap;
+        padding: 4rem 0;
+    }
+    
+    .profile::after{
+        display:none;
+    }
+
+    .profile-image, .profile-user-settings, .profile-bio, .profile-stats{
+        float: none;
+        width: auto;
+        margin: 5px auto;
+    }
+
+    .profile-stats li{
+        display: block;
+    }
+
+    .profile-image{
+        margin: 0 auto;
+    }
 }
