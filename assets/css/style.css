@@ -971,3 +971,11 @@ reduce icons margins, image
     float: right;
 } 
 
+/* _________________ EDIT USER PROFILE PAGE ___________________*/
+
+.edit-profile-image{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    margin: 5px;
+}
