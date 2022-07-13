@@ -995,3 +995,9 @@ reduce icons margins, image
     outline: none;
     width: 100%;
 }
+
+.discover-container{
+    max-width: 95.5rem;
+    margin: 20px auto;
+    padding: 0 2rem;
+}
