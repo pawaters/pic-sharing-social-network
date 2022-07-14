@@ -35,6 +35,7 @@ body{
     /* child elements will go side by side */
     justify-content: center;
     padding: 5px 0;
+    z-index: 1;
 }
 
 /* We add a wrapper for the 70% width mainly*/
