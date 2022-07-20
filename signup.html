@@ -164,6 +164,12 @@
             var confirm_password = document.getElementById('confirm_password').value;
             var error_message = document.getElementById('error_message');
 
+            if(password.length < 6)
+            {
+                error_message.innerHTML = "Password is too short";
+                return false;
+            }
+
             if(password !== confirm_password)
             {
                 error_message.innerHTML = "Passwords do not match";
@@ -184,7 +190,7 @@
         {
             e.preventDefault();
 
-            verifyForm;
+            verifyForm();
         }
     )
 
