@@ -30,12 +30,12 @@
                             <img src="assets/img/logo.jpg" class="logo-img">
                         </div>
                         <form class="login-form" id="login-form">
+                        <p id="error_message" class="text-center alert-danger"></p>
                             <div class="form-group">
                                 <div class="login-input">
                                     <input type="text" name="email" placeholder="Type your email address...">
                                 </div>
                             </div>
-                            <p id="error_message" class="text-center alert-danger"></p>
                             <div class="form-group">
                                 <div class="login-input">
                                     <input type="password" name="password" id='password' placeholder="Type your password...">
@@ -150,7 +150,6 @@
     function verifyForm()
         {
             var password = document.getElementById('password').value;
-            var confirm_password = document.getElementById('confirm_password').value;
             var error_message = document.getElementById('error_message');
 
             if(password.length < 6)
