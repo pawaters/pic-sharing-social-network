@@ -29,7 +29,7 @@
                         <div class="logo">
                             <img src="assets/img/logo.jpg" class="logo-img">
                         </div>
-                        <form class="login-form" id="login-form">
+                        <form class="login-form" id="signup-form">
 
                             <p id="error_message" class="text-center alert-danger"></p>
                             <div class="form-group">
@@ -186,7 +186,7 @@
         changeMode();
     })  
 
-    document.getElementById('signup_btn').addEventListener('click', (e)=>
+    document.getElementById('signup_form').addEventListener('submit', (e)=>
         {
             e.preventDefault();
 
