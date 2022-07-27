@@ -11,7 +11,7 @@
 </head>
 <body>
     <!--2 main divs: navbar and main 
-    each main div includes a wrapper -->
+    each main div includes a wrapper CHANGE -->
     <nav class="navbar"> 
         <div class="nav-wrapper">
             <img src="assets/img/logo.jpg" class="brand-img"/>
