@@ -29,7 +29,7 @@
                         <div class="logo">
                             <img src="assets/img/logo.jpg" class="logo-img">
                         </div>
-                        <form class="login-form" id="signup-form">
+                        <form class="login-form" id="signup-form" action="process_signup.php" method="POST">
 
                             <p id="error_message" class="text-center alert-danger"></p>
                             <div class="form-group">
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                             <div class="btn-group">
-                                <button class="login-btn" id="signup_btn" type="submit">Sign Up</button>
+                                <button class="login-btn" name="signup_btn" id="signup_btn" type="submit">Sign Up</button>
                             </div>      
                         </form>
                         <div class="or">
