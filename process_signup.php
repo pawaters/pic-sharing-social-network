@@ -2,6 +2,6 @@
 
 include('connection.php');
 
-if(isset())
+if(isset($_POST['signup_btn']))
 
 ?>
