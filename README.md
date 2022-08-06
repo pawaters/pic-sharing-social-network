@@ -16,6 +16,10 @@ Where to start:
 - navbar
 - 
 
+STRUCTURE I WILL USE:
+
+![image](https://user-images.githubusercontent.com/86101754/183259344-98acdb67-c749-496f-8435-e350956e9c99.png)
+
 ______
 
 Easiest step forward:
