@@ -186,13 +186,15 @@
         changeMode();
     })  
 
-    document.getElementById('signup_form').addEventListener('submit', (e)=>
-        {
-            e.preventDefault();
+    //NO NEED TO CHECK WITH JS, WE DO WITH PHP IN SIGNUP_PROCESS
 
-            verifyForm();
-        }
-    )
+    // document.getElementById('signup_form').addEventListener('submit', (e)=>
+    //     {
+    //         e.preventDefault();
+
+    //         verifyForm();
+    //     }
+    // )
 
     </script>
 
