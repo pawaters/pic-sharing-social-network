@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include('connection.php');
 
 //check the user came here the right way, ie: clicked on login btn
