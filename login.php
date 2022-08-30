@@ -1,3 +1,16 @@
+<!-- To send a loggedin user to home directly -->
+<?php
+
+session_start();
+
+if(isset($_SESSION['id'])) {
+    header('location: index.php');
+    exit;
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +46,12 @@
                         // now, to feed into our back-end, we need to add a method "POST", and an action 
                         // the php for the action will define what to do with the form data -->
                         <form class="login-form" id="login-form" method="POST" action="process_login.php">
-                        <p id="error_message" class="text-center alert-danger"></p>
+
+                        <!-- //ERROR MESSAGE -->
+                        <?php  if(isset($_GET['error_message'])){  ?>
+                            <p id="error_message" class="text-center alert-danger"> <?php echo $_GET['error_message']; ?> </p>
+                        <?php    }?>
+                        
                             <div class="form-group">
                                 <div class="login-input">
                                     <input type="text" name="email" placeholder="Type your email address...">
