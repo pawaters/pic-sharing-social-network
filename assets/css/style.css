@@ -893,7 +893,7 @@ reduce icons margins, image
 .camera{
     display: flex;
     flex-wrap: wrap;
-    padding: 3rem;
+    padding: 1rem;
 }
 
 .camera-image{

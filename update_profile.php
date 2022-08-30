@@ -12,7 +12,7 @@ if (isset($_POST['update_profile_btn'])){
     $image = $_FILES['image']['tmp_name'];
     //check if image is empty
     if($image != ""){
-        $image_name = $username . ".jpeg";
+        $image_name = $username.".jpeg";
     } else {
         $image_name = $SESSION['image'];
     }
@@ -50,7 +50,7 @@ if (isset($_POST['update_profile_btn'])){
         if ($stmt->execute()){
 
             if ($image != ""){
-                move_uploaded_file($image, "assets/img/" . $image_name);
+                move_uploaded_file($image, "assets/img/".$image_name);
             }
             
             //update session
