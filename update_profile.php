@@ -68,7 +68,7 @@ if (isset($_POST['update_profile_btn'])){
         }
 
     } else {
-        header("location: index.html?error_message=error");
+        header("location: index.php?error_message=error");
         exit;
     }
 ?>

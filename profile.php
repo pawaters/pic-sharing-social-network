@@ -12,7 +12,7 @@
             <!--TIP: for every profile card, create 2 divs, and image -->
             <div class="profile">
                 <div class="profile-image">
-                    <img src="<?php echo "assets/img/" . $_SESSION['image'] ?>" alt="profile pic">
+                    <img src="<?php echo "assets/img/".$_SESSION['image']; ?>" alt="profile pic">
                 </div>
                 <div class="profile-user-settings">
                     <h1 class="profile-user-name">
