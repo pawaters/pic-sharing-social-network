@@ -48,7 +48,7 @@ if(!isset($_SESSION['id'])){
                     </ul>
                 </div>
                 <div class="profile-bio">
-                    <p> <span class="profile-real-name"><?php echo $_SESSION['username'] ?> </span> <?php echo $_SESSION['bio'] ?> </p>
+                    <p> <span class="profile-real-name"><?php echo $_SESSION['username'] . ", " ?> </span> <?php echo $_SESSION['bio'] ?> </p>
                 </div>
             </div>
 
