@@ -6,6 +6,9 @@
                 <?php if(isset($_GET['success_message'])) {?>
                     <p class="text-center alert-success"><?php echo $_GET['success_message']; ?></p>
                 <?php } ?>
+                <?php if(isset($_GET['error_message'])){ ?>
+                <p class="text-center alert-danger"><?php echo $_GET['error_message'];?></p>
+            <?php } ?>   
             <!--TIP: for every profile card, create 2 divs, and image -->
             <div class="profile">
                 <div class="profile-image">

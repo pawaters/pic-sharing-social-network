@@ -10,33 +10,36 @@ if (isset($_POST['update_profile_btn'])){
     $username = $_POST['username'];
     $bio = $_POST['bio'];
     $image = $_FILES['image']['tmp_name'];
-    //cgheck if image is empty
+    //check if image is empty
     if($image != ""){
         $image_name = $username . ".jpeg";
     } else {
         $image_name = $SESSION['image'];
     }
+}
     
 
 
     //ensure username is unique
-    $stmt = $conn->prepare("SELECT username
-                            FROM users
-                            WHERE username = ?");
-    //bind_param clarifies what to put for ?
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    // store result locally
-    $stmt->store_result();
+    if($username != $_SESSION['username'])
+    {
+        $stmt = $conn->prepare("SELECT username
+                                FROM users
+                                WHERE username = ?");
+        //bind_param clarifies what to put for ?
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        // store result locally
+        $stmt->store_result();
 
-    // with if num rows, check if there is an existing user
-    if($stmt->num_rows() > 0) 
-    {
-        header("location: edit_profile.php?error_message=username was already taken");
-        exit;
-    }
-    else
-    {
+        // with if num rows, check if there is an existing user
+        if($stmt->num_rows() > 0) 
+        {
+            header("location: edit_profile.php?error_message=username was already taken");
+            exit;
+        }
+        else
+        {
         // update info, not insert or select
         $stmt = $conn->prepare("UPDATE users 
                                 SET username = ?, bio = ?, image = ?
@@ -62,11 +65,10 @@ if (isset($_POST['update_profile_btn'])){
             exit;
         };
         
+        }
+
+    } else {
+        header("location: index.html?error_message=error");
+        exit;
     }
-
-} else {
-    header("location: index.html?error_message=error");
-    exit;
-}
-
 ?>
