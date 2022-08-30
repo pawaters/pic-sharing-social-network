@@ -46,8 +46,9 @@ if (isset($_POST['update_profile_btn'])){
         
         if ($stmt->execute()){
 
-            
-            move_uploaded_file($image, "assets/img/" . $image_name);
+            if ($image != ""){
+                move_uploaded_file($image, "assets/img/" . $image_name);
+            }
             
             //update session
             $_SESSION['username'] = $username;

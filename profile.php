@@ -15,7 +15,11 @@
                     <h1 class="profile-user-name">
                         <?php echo $_SESSION['username'] ?>
                     </h1>
-                    <button class="profile-btn profile-edit-btn">Edit Profile</button>
+
+                    <form action="edit_profile.php" method="GET" style="display:inline-block">
+                        <button class="profile-btn profile-edit-btn" type="submit" >Edit Profile</button>
+                    </form>
+                    
                     <button class="profile-btn profile-settings-btn" aria-label="profile settings">
                         <i class="fas fa-cog"></i>
                     </button>
