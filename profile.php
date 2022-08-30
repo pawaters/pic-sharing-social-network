@@ -1,3 +1,15 @@
+<?php
+
+session_start();
+
+// if not logged in, send to login page
+if(!isset($_SESSION['id'])){
+    header('location: login.php');
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,10 +29,12 @@
             <!--TIP: for every profile card, create 2 divs, and image -->
             <div class="profile">
                 <div class="profile-image">
-                    <img src="assets/img/profile.jpeg" alt="">
+                    <img src="<?php echo "assets/img/" . $_SESSION['image'] ?>" alt="profile pic">
                 </div>
                 <div class="profile-user-settings">
-                    <h1 class="profile-user-name">username</h1>
+                    <h1 class="profile-user-name">
+                        <?php echo $_SESSION['username'] ?>
+                    </h1>
                     <button class="profile-btn profile-edit-btn">Edit Profile</button>
                     <button class="profile-btn profile-settings-btn" aria-label="profile settings">
                         <i class="fas fa-cog"></i>
@@ -28,9 +42,9 @@
                 </div>
                 <div class="profile-stats">
                     <ul>
-                        <li><span class="profile-stat-count">25</span> posts</li>
-                        <li><span class="profile-stat-count">12</span> followers</li>
-                        <li><span class="profile-stat-count">9</span> following</li>
+                        <li><span class="profile-stat-count"><?php echo $_SESSION['posts'] ?></span> posts</li>
+                        <li><span class="profile-stat-count"><?php echo $_SESSION['followers'] ?></span> followers</li>
+                        <li><span class="profile-stat-count"><?php echo $_SESSION['following'] ?></span> following</li>
                     </ul>
                 </div>
                 <div class="profile-bio">

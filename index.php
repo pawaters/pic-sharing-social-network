@@ -157,7 +157,7 @@ if(!isset($_SESSION['id'])){
                         <p class="username">username</p>
                         <p class="sub-text">sub-text</p>
                     </div>
-                    <form method="GET" action="logout">
+                    <form method="GET" action="logout.php">
                         <button class="logout-btn">logout</button>
                     </form>
                     
