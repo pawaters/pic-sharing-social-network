@@ -14,7 +14,7 @@ if(isset($_POST['login_btn']))
     
     //now use SQL to get all data if login is successful
     //prepare the statement (prepared statements protect from injections)
-    $stmt = $conn->prepare("SELECT id, username, email, image, followers, following, posts
+    $stmt = $conn->prepare("SELECT id, username, email, image, followers, following, posts, bio
                             FROM users
                             WHERE email = ? AND password = ?");
     //bind_param clarifies what to put for ?
@@ -28,7 +28,7 @@ if(isset($_POST['login_btn']))
     {
         //bind_result is use to bind columns of a result to variables
         //after that, fetch is used to get the values without iteration
-        $stmt->bind_result($id, $username, $email, $image, $followers, $following, $post);
+        $stmt->bind_result($id, $username, $email, $image, $followers, $following, $post, $bio);
         $stmt->fetch();
         
         //now store values in SESSION
@@ -39,6 +39,7 @@ if(isset($_POST['login_btn']))
         $_SESSION['followers'] =  $followers;
         $_SESSION['following'] =  $following;
         $_SESSION['post'] =  $post;
+        $_SESSION['bio'] =  $bio;
 
         //take user to homepage
         header('location: index.php');

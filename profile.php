@@ -42,13 +42,13 @@ if(!isset($_SESSION['id'])){
                 </div>
                 <div class="profile-stats">
                     <ul>
-                        <li><span class="profile-stat-count"><?php echo $_SESSION['posts'] ?></span> posts</li>
+                        <li><span class="profile-stat-count"><?php echo $_SESSION['post'] ?></span> posts</li>
                         <li><span class="profile-stat-count"><?php echo $_SESSION['followers'] ?></span> followers</li>
                         <li><span class="profile-stat-count"><?php echo $_SESSION['following'] ?></span> following</li>
                     </ul>
                 </div>
                 <div class="profile-bio">
-                    <p> <span class="profile-real-name">Name </span>This is my bio area with my css. I added more text to see what happens with responsive.</p>
+                    <p> <span class="profile-real-name"><?php echo $_SESSION['username'] ?> </span> <?php echo $_SESSION['bio'] ?> </p>
                 </div>
             </div>
 

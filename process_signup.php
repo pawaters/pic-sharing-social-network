@@ -44,7 +44,7 @@ if(isset($_POST['signup_btn']))
         if ($stmt->execute())
         {
             //select from database the lines that match, the following info
-            $stmt = $conn->prepare("SELECT id, username, email, image, following, followers, posts
+            $stmt = $conn->prepare("SELECT id, username, email, image, following, followers, posts, bio
             FROM users 
             WHERE username = ?");
             //obligatory when using prepare, define var names for each var
@@ -52,7 +52,7 @@ if(isset($_POST['signup_btn']))
             //obligatory to run it
             $stmt->execute();
             //now we have the data as PHP array stored in my SQL, lets save each as a variable in PHP
-            $stmt->bind_result($id, $username, $email, $image, $following, $followers, $posts);
+            $stmt->bind_result($id, $username, $email, $image, $following, $followers, $posts, $bio);
             //fetch() stores the result (no need to iterate thanks to previous store_result)
             $stmt->fetch();
             
@@ -64,6 +64,8 @@ if(isset($_POST['signup_btn']))
             $_SESSION['following'] = $following;
             $_SESSION['followers'] = $followers;
             $_SESSION['posts'] = $posts;
+            $_SESSION['bio'] = $bio;
+
 
             //return to homepage
             header("location: index.php");
