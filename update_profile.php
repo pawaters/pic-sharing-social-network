@@ -10,7 +10,14 @@ if (isset($_POST['update_profile_btn'])){
     $username = $_POST['username'];
     $bio = $_POST['bio'];
     $image = $_FILES['image']['tmp_name'];
-    $image_name = $username . ".jpeg";
+    //cgheck if image is empty
+    if($image != ""){
+        $image_name = $username . ".jpeg";
+    } else {
+        $image_name = $SESSION['image'];
+    }
+    
+
 
     //ensure username is unique
     $stmt = $conn->prepare("SELECT username
@@ -38,6 +45,8 @@ if (isset($_POST['update_profile_btn'])){
         $stmt->bind_param("sssi", $username, $bio, $image_name, $id);
         
         if ($stmt->execute()){
+
+            
             move_uploaded_file($image, "assets/img/" . $image_name);
             
             //update session

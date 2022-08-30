@@ -5,7 +5,11 @@
         <div class="wrapper">
             <div class="left-col">
 
-            <h3>Update Profile</h3>
+            <h3 class="text-center">Update Profile</h3>
+
+                <?php if(isset($_GET['error_message'])) {?>
+                    <p class="text-center alert-danger"><?php echo $_GET['error_message']; ?></p>
+                <?php } ?>
     <!--bootstrap for forms: form-label, label, form-control -->
                 <form action="update_profile.php" method="POST">
                     <div class="mb-3">
@@ -26,7 +30,7 @@
                         <textarea class="form-control" name="bio" id="bio" placeholder="Bio" cols="30" rows="3"></textarea>
                     </div>
                     <div class="mb-3">
-                        <input name="update-profile-btn" id="update-profile-btn" class="update-profile-btn" value="Update">
+                        <input name="update-profile-btn" type= "submit" id="update-profile-btn" class="update-profile-btn" value="Update">
                     </div>
                 </form>
             </div>
