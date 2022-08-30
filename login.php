@@ -29,7 +29,10 @@
                         <div class="logo">
                             <img src="assets/img/logo.jpg" class="logo-img">
                         </div>
-                        <form class="login-form" id="login-form">
+                        <!-- in the front-end part, we have class id and some inputs
+                        // now, to feed into our back-end, we need to add a method "POST", and an action 
+                        // the php for the action will define what to do with the form data -->
+                        <form class="login-form" id="login-form" method="POST" action="process_login.php">
                         <p id="error_message" class="text-center alert-danger"></p>
                             <div class="form-group">
                                 <div class="login-input">
@@ -41,8 +44,9 @@
                                     <input type="password" name="password" id='password' placeholder="Type your password...">
                                 </div>
                             </div>
+
                             <div class="btn-group">
-                                <button class="login-btn" id="login_btn" type="submit">Log In</button>
+                                <button class="login-btn" id="login_btn" name="login_btn" type="submit">Log In</button>
                             </div>      
                         </form>
                         <div class="or">
@@ -167,11 +171,11 @@
         changeMode();
     })
 
-    document.getElementById('login_form').addEventListener('submit', (e)=>{
-        e.preventDefault();
+    // document.getElementById('login_form').addEventListener('submit', (e)=>{
+    //     e.preventDefault();
 
-        verifyForm();
-    })
+    //     verifyForm();
+    // })
 
     </script>
 
