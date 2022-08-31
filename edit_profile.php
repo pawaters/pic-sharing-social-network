@@ -20,7 +20,7 @@
 
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <p class="form-control">Email</p>
+                        <p class="form-control"><?php echo $_SESSION['email']; ?></p>
                     </div>
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>

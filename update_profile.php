@@ -14,7 +14,7 @@ if (isset($_POST['update_profile_btn'])){
     if($image != ""){
         $image_name = $username.".jpeg";
     } else {
-        $image_name = $SESSION['image'];
+        $image_name = $_SESSION['image'];
     }
 }
     
