@@ -138,7 +138,7 @@
                                 <img src="<?php echo "assets/img/".$suggestion['image'];?>" >
                             </div>
                             <div>
-                                <p class="username"><?php echo $suggestion['username'];?></p>
+                                <p class="username"><?php echo $suggestion[' username'];?></p>
                                 <p class="sub-text"><?php echo substr($suggestion['bio'], 0, 15);?></p>
                             </div>
                             <button class="follow-btn">follow</button>
