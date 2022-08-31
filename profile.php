@@ -55,21 +55,26 @@
     <main>
         <div class="profile-container">
             <div class="gallery">
+
+            <?php include("get_users_posts.php"); ?>
+
+            <?php foreach($posts as $post) { ?>          
                 <div class="gallery-item">
-                    <img src="assets/img/flower.jpeg" class="gallery-image">
-                    <div class="gallery-item-info">
-                        <ul>
-                            <li class="gallery-item-likes"><span class="hide-gallery-element">12</span>
-                                <i class="fas fa-heart"></i>
-                            </li>
-                            <li class="gallery-item-comments"><span class="hide-gallery-element">9</span>
-                                <i class="fas fa-comment"></i>
-                            </li>
-                        </ul>
+                        <img src="<?php echo "assets/img/".$post['image'];?>" class="gallery-image">
+                        <div class="gallery-item-info">
+                            <ul>
+                                <li class="gallery-item-likes"><span class="hide-gallery-element"><?php echo "assets/img/".$post['likes'];?></span>
+                                    <i class="fas fa-heart"></i>
+                                </li>
+                                <li class="gallery-item-comments"><span class="hide-gallery-element"></span>
+                                    <i class="fas fa-comment"></i>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
+                    
                 </div>
-                
-            </div>
+            <?php } ?>
         </div>
     </main>
     

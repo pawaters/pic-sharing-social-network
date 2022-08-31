@@ -1099,3 +1099,35 @@ body{
     padding: 5px;
 
 }
+
+
+
+
+.comment-element{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+.comment-element img{
+    height: 30px;
+    border-radius: 50%;
+}
+
+.comment-element p{
+    margin-top: 10px;
+    word-break: break-all;
+    padding: 10px;
+}
+
+.comment-element span{
+    font-size: 10px;
+    padding: 10px;
+}
+
+
+.heart{
+    background: none;
+    border: none;
+}
