@@ -88,7 +88,7 @@
                         <i class="fas fa-ellipsis-h options"></i>
                     </div>
                     <!-- POST CONTENT-->
-                    <img src="assets/img/rugby1.jpeg" class="post-img">
+                    <img src="assets/img/3.jpeg" class="post-img">
                     <div class="post-content">
                         <div class="reaction-wrapper">
                             <i class="icon fas fa-heart"></i>
