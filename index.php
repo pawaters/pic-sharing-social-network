@@ -136,26 +136,6 @@
                     </div>
                     <button class="follow-btn">follow</button>
                 </div>
-                <div class="suggestion-card">
-                    <div class="suggestion-pic">
-                        <img src="assets/img/profile.jpeg">
-                    </div>
-                    <div>
-                        <p class="username">username</p>
-                        <p class="sub-text">sub-text</p>
-                    </div>
-                    <button class="follow-btn">follow</button>
-                </div>
-                <div class="suggestion-card">
-                    <div class="suggestion-pic">
-                        <img src="assets/img/profile.jpeg">
-                    </div>
-                    <div>
-                        <p class="username">username</p>
-                        <p class="sub-text">sub-text</p>
-                    </div>
-                    <button class="follow-btn">follow</button>
-                </div>
 
             </div>
         </div>
