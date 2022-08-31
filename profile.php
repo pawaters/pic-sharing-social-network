@@ -56,7 +56,7 @@
         <div class="profile-container">
             <div class="gallery">
 
-            <?php include("get_users_posts.php"); ?>
+            <?php include("get_user_posts.php"); ?>
 
             <?php foreach($posts as $post) { ?>          
                 <div class="gallery-item">
