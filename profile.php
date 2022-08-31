@@ -56,10 +56,10 @@
         <div class="profile-container">
             <div class="gallery">
 
-            <?php include("get_user_posts.php"); ?>
+                <?php include("get_user_posts.php"); ?>
 
-            <?php foreach($posts as $post) { ?>          
-                <div class="gallery-item">
+                <?php foreach($posts as $post) { ?>          
+                    <div class="gallery-item">
                         <img src="<?php echo "assets/img/".$post['image'];?>" class="gallery-image">
                         <div class="gallery-item-info">
                             <ul>
@@ -72,9 +72,8 @@
                             </ul>
                         </div>
                     </div>
-                    
-                </div>
-            <?php } ?>
+                <?php } ?>
+            </div>
         </div>
     </main>
     
