@@ -30,9 +30,9 @@
                     <div class="popup" id="popup">
                         <div class="popup-window">
                                 <span class="close-popup" id="close-popup">&times;</span>
-                                <a href="">Edit profile</a>
-                                <a href="">Create post</a>
-                                <a href="">Logout</a>
+                                <a href="edit_profile.php">Edit profile</a>
+                                <a href="camera.php">Create post</a>
+                                <a href="logout.php">Logout</a>
                         </div>
                     </div>
 
@@ -119,6 +119,22 @@
         var closeWindow = document.getElementById('close-popup');
 
         // 2) add event Listener
+        optionsBtn.addEventListener("click",(e)=>{
+            e.preventDefault();
+            popupWindow.style.display = "block";
+        })
+
+        closeWindow.addEventListener("click",(e)=>{
+            e.preventDefault();
+            popupWindow.style.display = "none";
+        })
+
+        window.addEventListener("click",(e)=>{
+            if(e.target == popupWindow)
+            {
+                popupWindow.style.display = "none";
+            }
+        })
 
 
     </script>
