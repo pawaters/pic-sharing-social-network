@@ -23,13 +23,13 @@
                         <button class="profile-btn profile-edit-btn" type="submit" >Edit Profile</button>
                     </form>
                     
-                    <button class="profile-btn profile-settings-btn" aria-label="profile settings">
+                    <button class="profile-btn profile-settings-btn" id="options_btn" aria-label="profile settings">
                         <i class="fas fa-cog"></i>
                     </button>
 
                     <div class="popup" id="popup">
                         <div class="popup-window">
-                                <span class="close-popup">&times;</span>
+                                <span class="close-popup" id="close-popup">&times;</span>
                                 <a href="">Edit profile</a>
                                 <a href="">Create post</a>
                                 <a href="">Logout</a>
@@ -111,6 +111,17 @@
         </div>
     </main>
     
+    <script>
+        // STEPS WHEN ADDING JS FUNCTIONALITY TO FRONT
+        // 1) store in JS var each element I needed thanks "document.getElementById"
+        var popupWindow = document.getElementById('popup');
+        var optionsBtn = document.getElementById('options_btn');
+        var closeWindow = document.getElementById('close-popup');
+
+        // 2) add event Listener
+
+
+    </script>
 
     
 </body>
