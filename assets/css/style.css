@@ -1006,7 +1006,7 @@ reduce icons margins, image
 /* POP-UP WINDOW */
 
 .popup{
-    display:none;
+    display: none;
     position:fixed;
     z-index: 1;
     left: 0;
@@ -1015,7 +1015,6 @@ reduce icons margins, image
     height: 100%;
     overflow: auto;
     background-color: rgb(0,0,0);
-
 }
 
 .popup-window{
@@ -1031,4 +1030,17 @@ reduce icons margins, image
     float:right;
     font-size: 28px;
     font-weight: bold;
+}
+
+.close-popup:hover, .close-popup:focus{
+    color: black;
+    text-decoration: none;
+    cursor:pointer;
+}
+
+.popup-window a{
+    text-decoration: none;
+    color: rgb(0,162,255);
+    font-size: 16px;
+    background: none;
 }
