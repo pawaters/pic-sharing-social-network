@@ -26,6 +26,16 @@
                     <button class="profile-btn profile-settings-btn" aria-label="profile settings">
                         <i class="fas fa-cog"></i>
                     </button>
+
+                    <div class="popup" id="popup">
+                        <div class="popup-window">
+                                <span class="close-popup">&times;</span>
+                                <a href="">Edit profile</a>
+                                <a href="">Create post</a>
+                                <a href="">Logout</a>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="profile-stats">
                     <ul>
