@@ -20,7 +20,11 @@ while($row = $result->fetch_array(MYSQLI_NUM))
     }
 }
 
-$following_ids = join("','", $ids);
+if (empty($ids)){
+    $ids = [$user_id];
+}
+
+$following_ids = join(",", $ids);
 
 $stmt = $conn->prepare("SELECT * FROM users WHERE id not in ($following_ids) ORDER BY RAND() LIMIT 4");
 

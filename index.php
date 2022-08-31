@@ -126,17 +126,21 @@
                 <p class="suggestion-text">Suggestions for you</p>
                 
                 <!-- Suggestions-->
-                <div class="suggestion-card">
-                    <div class="suggestion-pic">
-                        <img src="assets/img/profile.jpeg">
-                    </div>
-                    <div>
-                        <p class="username">username</p>
-                        <p class="sub-text">sub-text</p>
-                    </div>
-                    <button class="follow-btn">follow</button>
-                </div>
 
+                <?php include("get_suggestions.php")?>
+
+                <?php foreach($suggestions as $suggestion){ ?>
+                    <div class="suggestion-card">
+                        <div class="suggestion-pic">
+                            <img src="<?php echo "assets/img/".$suggestion['image'];?>" >
+                        </div>
+                        <div>
+                            <p class="username"><?php echo $suggestion['username'];?></p>
+                            <p class="sub-text"><?php echo substr($suggestion['bio'], 0, 15);?></p>
+                        </div>
+                        <button class="follow-btn">follow</button>
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </section>
