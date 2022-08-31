@@ -68,45 +68,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="assets/img/1637340434.jpeg" class="gallery-image">
-                    <div class="gallery-item-info">
-                        <ul>
-                            <li class="gallery-item-likes"><span class="hide-gallery-element">Likes:</span>
-                                <i class="fas fa-heart"></i>
-                            </li>
-                            <li class="gallery-item-comments"><span class="hide-gallery-element">Comments:</span>
-                                <i class="fas fa-comment"></i>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/img/1637340466.jpeg" class="gallery-image">
-                    <div class="gallery-item-info">
-                        <ul>
-                            <li class="gallery-item-likes"><span class="hide-gallery-element">Likes:</span>
-                                <i class="fas fa-heart"></i>
-                            </li>
-                            <li class="gallery-item-comments"><span class="hide-gallery-element">Comments:</span>
-                                <i class="fas fa-comment"></i>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/img/1637340493.jpeg" class="gallery-image">
-                    <div class="gallery-item-info">
-                        <ul>
-                            <li class="gallery-item-likes"><span class="hide-gallery-element">Likes:</span>
-                                <i class="fas fa-heart"></i>
-                            </li>
-                            <li class="gallery-item-comments"><span class="hide-gallery-element">Comments:</span>
-                                <i class="fas fa-comment"></i>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </main>
