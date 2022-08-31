@@ -79,31 +79,38 @@
                     </div>
                 </div>
                
-                <div class="post">
-                    <div class="info">
-                        <div class="user">
-                            <div class="profile-pic"><img src="assets/img/profile.jpeg"></div>
-                            <p class="username">username</p>
+                <?php include('get_latest_posts.php'); ?>
+
+                <?php foreach($posts as $post) { ?>
+
+                    <div class="post">
+                        <div class="info">
+                            <div class="user">
+                                <div class="profile-pic"><img src="<?php echo "assets/img/" . $post['profile_image']; ?>"></div>
+                                <p class="username"><?php echo $post['username']; ?></p>
+                            </div>
+                            <i class="fas fa-ellipsis-h options"></i>
                         </div>
-                        <i class="fas fa-ellipsis-h options"></i>
-                    </div>
-                    <!-- POST CONTENT-->
-                    <img src="assets/img/3.jpeg" class="post-img">
-                    <div class="post-content">
-                        <div class="reaction-wrapper">
-                            <i class="icon fas fa-heart"></i>
-                            <i class="icon fas fa-comment"></i>
+                        <!-- POST CONTENT-->
+                        <img src="<?php echo "assets/img/" . $post['image']; ?>" class="post-img">
+                        <div class="post-content">
+                            <div class="reaction-wrapper">
+                                <i class="icon fas fa-heart"></i>
+                                <i class="icon fas fa-comment"></i>
+                            </div>
+                            <p class="likes"><?php echo $post['likes']." likes"; ?></p>
+                            <p class="description"><span><?php echo $post['username']; ?></span><?php echo $post['caption']; ?></p>
+                            <p class="post-time"><?php echo $post['date']; ?></p>
                         </div>
-                        <p class="likes">2000 likes</p>
-                        <p class="description"><span>username</span> this is a description</p>
-                        <p class="post-time">2028/89/88</p>
+                        <div class="comment-wrapper">
+                            <img class="icon" src="assets/img/profile.jpeg">
+                            <input type="text" class="comment-box" placeholder="Add a comment"/>
+                            <button class="comment-btn">comment</button>
+                        </div>
                     </div>
-                    <div class="comment-wrapper">
-                        <img class="icon" src="assets/img/profile.jpeg">
-                        <input type="text" class="comment-box" placeholder="Add a comment"/>
-                        <button class="comment-btn">comment</button>
-                    </div>
-                </div>
+                
+                <?php  }  ?>
+
             </div>
 
             <div class="right-col">
