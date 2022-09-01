@@ -11,6 +11,36 @@ if(isset($_GET['post_id']))
     $stmt->bind_param('i', $post_id); 
     $stmt->execute();
     $post_array = $stmt->get_result();
+
+    // GET & PAGINATE COMMENTS
+
+    if(isset($_GET['page_no']) && $_GET['page_no'] != "")
+    {
+        $page_no = $_GET['page_no'];
+    } 
+    else 
+    {
+        $page_no = 1;
+    }
+    
+    $stmt = $conn->prepare("SELECT COUNT(*) as total_comments 
+                            FROM comments
+                            WHERE post_id = ?");
+    $stmt->bind_param( "i", $post_id);
+    $stmt->execute();
+    $stmt->bind_result($total_comments);
+    $stmt->store_result();
+    $stmt->fetch();
+    
+    $total_comments_per_page = 2;
+    
+    $offset = ($page_no - 1) * $total_comments_per_page;
+    
+    $total_no_of_pages = ceil($total_comments / $total_comments_per_page);
+    
+    $stmt = $conn->prepare("SELECT * FROM comments WHERE post_id = $post_id LIMIT $offset, $total_comments_per_page"); 
+    $stmt->execute();
+    $comments = $stmt->get_result();
 }
 else
 {
@@ -54,21 +84,27 @@ else
 
                     </div>
 
-                    <div class="comment-element">
-                        <img src="assets/img/1.jpeg" class="icon">
-                        <p>this is a comment <span>datelooooool</span></p>
+                    <?php foreach($comments as $comment) { ?> 
+                        <div class="comment-element">
+                            <img src="<?php echo 'assets/img/'.$comment['profile_image'];?>" class="icon">
+                            <p><?php echo $comment['comment_text'];?><span><?php echo date("M,Y", strtotime($comment['date'])); ?></span></p>
+                        </div>
+                    <?php } ?> 
+                    
+                    <!-- PAGINATION -->
+                    <nav aria-label="Page navigation example" style="display: flex; justify-content: center;">
+                        <ul class="pagination">
+                        
+                            <li class="page-item <?php if($page_no<=1){echo 'disabled';}?>">
+                                <a class="page-link" href="<?php if($page_no<=1){echo '#';}else{echo 'single_post.php?post_id='.$post_id.'&page_no='.($page_no-1);}?>"><</a>
+                            </li>
+                            
+                            <li class="page-item <?php if($page_no>= $total_no_of_pages){echo 'disabled';}?>">
+                                <a class="page-link" href="<?php if($page_no>= $total_no_of_pages){echo '#';}else{echo 'single_post.php?post_id='.$post_id.'&page_no='.($page_no+1);}?>">></a>
+                            </li>
+                        </ul>
+                    </nav>
 
-                    </div>
-                    <div class="comment-element">
-                        <img src="assets/img/1.jpeg" class="icon">
-                        <p>this is a comment <span>datelooooool</span></p>
-
-                    </div>
-                    <div class="comment-element">
-                        <img src="assets/img/1.jpeg" class="icon">
-                        <p>this is a comment <span>datelooooool</span></p>
-
-                    </div>
 
 
                     <div class="comment-wrapper">
@@ -88,50 +124,10 @@ else
             <div class="right-col">
             
                 <!-- Profile card-->
-                <div class="profile-card">
-                    <div class="profile-pic">
-                        <img src="assets/img/profile.jpeg">
-                    </div>
-                    <div>
-                        <p class="username">username</p>
-                        <p class="sub-text">sub-text</p>
-                    </div>
-                    <button class="logout-btn">logout</button>
-                </div>
-
-                <p class="suggestion-text">Suggestions for you</p>
+                <?php include('profile_card.php'); ?>
                 
                 <!-- Suggestions-->
-                <div class="suggestion-card">
-                    <div class="suggestion-pic">
-                        <img src="assets/img/profile.jpeg">
-                    </div>
-                    <div>
-                        <p class="username">username</p>
-                        <p class="sub-text">sub-text</p>
-                    </div>
-                    <button class="follow-btn">follow</button>
-                </div>
-                <div class="suggestion-card">
-                    <div class="suggestion-pic">
-                        <img src="assets/img/profile.jpeg">
-                    </div>
-                    <div>
-                        <p class="username">username</p>
-                        <p class="sub-text">sub-text</p>
-                    </div>
-                    <button class="follow-btn">follow</button>
-                </div>
-                <div class="suggestion-card">
-                    <div class="suggestion-pic">
-                        <img src="assets/img/profile.jpeg">
-                    </div>
-                    <div>
-                        <p class="username">username</p>
-                        <p class="sub-text">sub-text</p>
-                    </div>
-                    <button class="follow-btn">follow</button>
-                </div>
+                <?php include('suggestion_sidearea.php'); ?>
 
             </div>
         </div>

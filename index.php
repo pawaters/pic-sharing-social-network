@@ -143,43 +143,12 @@
             <div class="right-col">
             
                 <!-- Profile card-->
-                <div class="profile-card">
-                    <div class="profile-pic">
-                        <img src="<?php echo 'assets/img/'.$_SESSION['image'];?>">
-                    </div>
-                    <div>
-                        <p class="username"><?php echo $_SESSION['username'];?></p>
-                        <p class="sub-text"><?php echo substr($_SESSION['bio'],0,15);?></p>
-                    </div>
-                    <form method="GET" action="logout.php">
-                        <button class="logout-btn">logout</button>
-                    </form>
-                    
-                </div>
-
-                <p class="suggestion-text">Suggestions for you</p>
+                <?php include('profile_card.php'); ?>
                 
                 <!-- Suggestions-->
+                <?php include('suggestion_sidearea.php'); ?>
 
-                <?php include("get_suggestions.php")?>
-
-                <?php foreach($suggestions as $suggestion){ ?>
-                    
-                    <?php if($suggestion['id'] != $_SESSION['id']) { ?>
-                    
-                        <div class="suggestion-card">
-                            <div class="suggestion-pic">
-                                <img src="<?php echo "assets/img/".$suggestion['image'];?>" >
-                            </div>
-                            <div>
-                                <p class="username"><?php echo $suggestion[' username'];?></p>
-                                <p class="sub-text"><?php echo substr($suggestion['bio'], 0, 15);?></p>
-                            </div>
-                            <button class="follow-btn">follow</button>
-                        </div>
-                    <?php } ?>
-
-                <?php } ?>
+                
             </div>
         </div>
     </section>
