@@ -31,11 +31,11 @@ if(!isset($_SESSION['id'])){
                 <input type="text" class="search-box" placeholder="Search"/>
             </form>
             <div class="nav-items">
-                <a href="index.php"><i class="icon fa-solid fa-house-user"></i></a>
+                <a href="index.php" style="color: #000;"><i class="icon fa-solid fa-house-user"></i></a>
                 <i class="icon fas fa-plus"></i>
                 <i class="icon fas fa-heart"></i>
                 <div class="icon user-profile">
-                    <a href="profile.php"><i class="fas fa-user"></i></a>
+                    <a href="profile.php" style="color: #000;"><i class="fas fa-user"></i></a>
                 </div>
             </div>
         </div>

@@ -24,7 +24,14 @@ else
     <section class = "main single-post-container">
         <div class="wrapper">
             <div class="left-col">
-               
+
+                <?php if(isset($_GET['success_message'])) {?>
+                    <p class="text-center alert-success"><?php echo $_GET['success_message']; ?></p>
+                <?php } ?>
+                <?php if(isset($_GET['error_message'])){ ?>
+                <p class="text-center alert-danger"><?php echo $_GET['error_message'];?></p>
+                <?php } ?>
+
                 <?php foreach($post_array as $post) { ?>
 
                 <div class="post">
@@ -46,10 +53,32 @@ else
                         <p class="post-time"><?php echo date("M,Y", strtotime($post['date'])); ?></p>
 
                     </div>
+
+                    <div class="comment-element">
+                        <img src="assets/img/1.jpeg" class="icon">
+                        <p>this is a comment <span>datelooooool</span></p>
+
+                    </div>
+                    <div class="comment-element">
+                        <img src="assets/img/1.jpeg" class="icon">
+                        <p>this is a comment <span>datelooooool</span></p>
+
+                    </div>
+                    <div class="comment-element">
+                        <img src="assets/img/1.jpeg" class="icon">
+                        <p>this is a comment <span>datelooooool</span></p>
+
+                    </div>
+
+
                     <div class="comment-wrapper">
                         <img class="icon" src="assets/img/profile.jpeg">
-                        <input type="text" class="comment-box" placeholder="Add a comment"/>
-                        <button class="comment-btn">comment</button>
+                        <form class="comment-wrapper" action="store_comment.php" method="POST">
+                            <input type="hidden" name="post_id" value="<?php echo $post['id'];?>">
+                            <input type="text" class="comment-box" name="comment_text" placeholder="Add a comment"/>
+                            <button class="comment-btn" name="comment_btn" type="submit">comment</button>
+                        </form>
+
                     </div>
                 </div>
 
