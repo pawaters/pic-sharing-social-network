@@ -101,12 +101,12 @@
                             <p class="likes"><?php echo $post['likes'];?> likes</p>
                             <p class="description"><span><?php echo $post['caption']; ?></span><span><?php echo $post['hashtags']; ?></p>
                             <p class="post-time"><?php echo date("M,Y", strtotime($post['date'])); ?></p>
+
+                            <div>
+                            <a class="comment-btn" href="single_post.php?post_id=<?php echo $post['id']; ?>">comments</a>
+                            </div>
                         </div>
-                        <div class="comment-wrapper">
-                            <img class="icon" src="assets/img/profile.jpeg">
-                            <input type="text" class="comment-box" placeholder="Add a comment"/>
-                            <button class="comment-btn">comment</button>
-                        </div>
+
                     </div>
                 
                 <?php  }  ?>
