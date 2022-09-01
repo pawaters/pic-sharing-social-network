@@ -100,7 +100,7 @@
                             </div>
                             <p class="likes"><?php echo $post['likes'];?> likes</p>
                             <p class="description"><span><?php echo $post['caption']; ?></span><span><?php echo $post['hashtags']; ?></p>
-                            <p class="post-time"><?php echo $post['date']; ?></p>
+                            <p class="post-time"><?php echo date("M,Y", strtotime($post['date'])); ?></p>
                         </div>
                         <div class="comment-wrapper">
                             <img class="icon" src="assets/img/profile.jpeg">
