@@ -32,7 +32,7 @@ if(!isset($_SESSION['id'])){
             </form>
             <div class="nav-items">
                 <a href="index.php" style="color: #000;"><i class="icon fa-solid fa-house-user"></i></a>
-                <i class="icon fas fa-plus"></i>
+                <a href="discover.php" style="color: #000;"><i class="icon fas fa-plus"></i></a>
                 <i class="icon fas fa-heart"></i>
                 <div class="icon user-profile">
                     <a href="profile.php" style="color: #000;"><i class="fas fa-user"></i></a>
