@@ -11,13 +11,13 @@ else
     $page_no = 1;
 }
 
-$stmt = $conn->prepare("SELECT COUNT(*) as total _posts FROM posts");
+$stmt = $conn->prepare("SELECT COUNT(*) as total_posts FROM posts");
 $stmt->execute();
 $stmt->bind_result($total_posts);
 $stmt->store_result();
 $stmt->fetch();
 
-$total_posts_per_page = 1;
+$total_posts_per_page = 3;
 
 $offset = ($page_no - 1) * $total_posts_per_page;
 

@@ -294,7 +294,6 @@ body{
     padding:5px;
     opacity: 1;
     font-size: 12px;
-
 }
 
 
@@ -413,7 +412,7 @@ body{
         margin: 0 5px;
     }
 
-    .post-image{
+    .post-img{
         height:300px
     }
     

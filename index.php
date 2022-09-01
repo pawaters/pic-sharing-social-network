@@ -98,8 +98,8 @@
                                 <i class="icon fas fa-heart"></i>
                                 <i class="icon fas fa-comment"></i>
                             </div>
-                            <p class="likes"><?php echo $post['likes']." likes"; ?></p>
-                            <p class="description"><span><?php echo $post['username']; ?></span><?php echo $post['caption']; ?></p>
+                            <p class="likes"><?php echo $post['likes'];?> likes</p>
+                            <p class="description"><span><?php echo $post['caption']; ?></span><span><?php echo $post['hashtags']; ?></p>
                             <p class="post-time"><?php echo $post['date']; ?></p>
                         </div>
                         <div class="comment-wrapper">
