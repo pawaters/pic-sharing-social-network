@@ -39,7 +39,7 @@
                 </div>
                 <div class="profile-stats">
                     <ul>
-                        <li><span class="profile-stat-count"><?php echo $_SESSION['post'] ?></span> posts</li>
+                        <li><span class="profile-stat-count"><?php echo $_SESSION['post'] ?></span> posts </li>
                         <li><span class="profile-stat-count"><?php echo $_SESSION['followers'] ?></span> followers</li>
                         <li><span class="profile-stat-count"><?php echo $_SESSION['following'] ?></span> following</li>
                     </ul>

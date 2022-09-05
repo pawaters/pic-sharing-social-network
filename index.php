@@ -4,81 +4,9 @@
     <section class = "main">
         <div class="wrapper">
             <div class="left-col">
-                <div class="status-wrapper">
-                    <div class="status-card">
-                        <div class="profile-pic">
-                            <img src="assets/img/profile.jpeg">
-                        </div>
-                        <div class="username">username</div>
-                    </div>
-                    <div class="status-card">
-                        <div class="profile-pic">
-                            <img src="assets/img/profile.jpeg">
-                        </div>
-                        <div class="username">username</div>
-                    </div>
-                    <div class="status-card">
-                        <div class="profile-pic">
-                            <img src="assets/img/profile.jpeg">
-                        </div>
-                        <div class="username">username</div>
-                    </div>
-                    <div class="status-card">
-                        <div class="profile-pic">
-                            <img src="assets/img/profile.jpeg">
-                        </div>
-                        <div class="username">username</div>
-                    </div>
-                    <div class="status-card">
-                        <div class="profile-pic">
-                            <img src="assets/img/profile.jpeg">
-                        </div>
-                        <div class="username">username</div>
-                    </div>
-                    <div class="status-card">
-                        <div class="profile-pic">
-                            <img src="assets/img/profile.jpeg">
-                        </div>
-                        <div class="username">username</div>
-                    </div>
-                    <div class="status-card">
-                        <div class="profile-pic">
-                            <img src="assets/img/profile.jpeg">
-                        </div>
-                        <div class="username">username</div>
-                    </div>
-                    <div class="status-card">
-                        <div class="profile-pic">
-                            <img src="assets/img/profile.jpeg">
-                        </div>
-                        <div class="username">username</div>
-                    </div>
-                    <div class="status-card">
-                        <div class="profile-pic">
-                            <img src="assets/img/profile.jpeg">
-                        </div>
-                        <div class="username">username</div>
-                    </div>
-                    <div class="status-card">
-                        <div class="profile-pic">
-                            <img src="assets/img/profile.jpeg">
-                        </div>
-                        <div class="username">username</div>
-                    </div>
-                    <div class="status-card">
-                        <div class="profile-pic">
-                            <img src="assets/img/profile.jpeg">
-                        </div>
-                        <div class="username">username</div>
-                    </div>
-                    <div class="status-card">
-                        <div class="profile-pic">
-                            <img src="assets/img/profile.jpeg">
-                        </div>
-                        <div class="username">username</div>
-                    </div>
-                </div>
-               
+
+                <?php include('other_people.php'); ?>
+
                 <?php include('get_latest_posts.php'); ?>
 
                 <?php foreach($posts as $post) { ?>
