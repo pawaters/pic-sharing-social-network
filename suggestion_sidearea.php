@@ -16,7 +16,11 @@
                 <p class="username"><?php echo $suggestion[' username'];?></p>
                 <p class="sub-text"><?php echo substr($suggestion['bio'], 0, 15);?></p>
             </div>
-            <button class="follow-btn">follow</button>
+            <form action="follow_this_person.php" method="POST>
+                <input type="text" name="other_user" value="<?php echo $suggestion['id'];?>" type="hidden">
+                <button class="follow-btn" name="follow_btn" type="submit">follow</button>
+            </form>
+            
         </div>
     <?php } ?>
 

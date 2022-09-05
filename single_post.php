@@ -108,7 +108,7 @@ else
 
 
                     <div class="comment-wrapper">
-                        <img class="icon" src="assets/img/profile.jpeg">
+                        <img class="icon" src="<?php echo 'assets/img/'.$_SESSION['image'];?>">
                         <form class="comment-wrapper" action="store_comment.php" method="POST">
                             <input type="hidden" name="post_id" value="<?php echo $post['id'];?>">
                             <input type="text" class="comment-box" name="comment_text" placeholder="Add a comment"/>
