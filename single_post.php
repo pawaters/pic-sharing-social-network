@@ -32,7 +32,7 @@ if(isset($_GET['post_id']))
     $stmt->store_result();
     $stmt->fetch();
     
-    $total_comments_per_page = 2;
+    $total_comments_per_page = 6;
     
     $offset = ($page_no - 1) * $total_comments_per_page;
     
