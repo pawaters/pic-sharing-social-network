@@ -10,7 +10,7 @@
     
         <div class="suggestion-card">
             <div class="suggestion-pic">
-                <form id='suggestion_form<?php echo $suggestion['id'];?>' method="POST" action="user_profile.php">
+                <form id='suggestion_form<?php echo $suggestion['id'];?>' method="POST" action="other_user_profile.php">
                     <input type="hidden" name="other_user_id" value="<?php echo $suggestion['id'] ?>">
                     <img onclick="document.getElementById('suggestion_form<?php echo $suggestion['id'];?>').submit();" src="<?php echo "assets/img/".$suggestion['image'];?>" >
                 </form>

@@ -1,9 +1,9 @@
-<?php include("get_following.php");?>
+<?php include("get_my_followings.php");?>
  
     <div class="status-wrapper">
 
         <?php foreach($other_people as $person){ ?>
-            <form id="other_user_form<?php echo $person['id'];?>" method="POST" action="user_profile.php">
+            <form id="other_user_form<?php echo $person['id'];?>" method="POST" action="other_user_profile.php">
                 <div class="status-card">
                     <input type="hidden" name="other_user_id" value="<?php echo $person['id'];?>">
                     <div class="profile-pic">

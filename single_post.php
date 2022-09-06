@@ -139,7 +139,7 @@ else
                 <?php include('profile_card.php'); ?>
                 
                 <!-- Suggestions-->
-                <?php include('suggestion_sidearea.php'); ?>
+                <?php include('suggestion_side_area.php'); ?>
 
             </div>
         </div>

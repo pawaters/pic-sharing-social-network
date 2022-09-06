@@ -37,7 +37,7 @@
                         <img src="<?php echo "assets/img/".$user['image']?>">
                     </div>
                     <div class="profile-user-settings">
-                        <h1 class="profile-user-name"><?php echo $user['username']?></h1>
+                        <h1 class="profile-user-name"><?php echo $user['username'];?></h1>
                     </div>
                     <div class="profile-stats">
                         <ul>
@@ -48,11 +48,12 @@
                         <!--TO DO: improve naming and separate CSS files -->
                         <?php include('check_following_status.php'); ?>
                         <?php if($following_status) { ?>
-                            <form action="">
+                            <form action="unfollow_this_person.php" method="POST" name="unfollow_btn">
+                                <input type="hidden" name="other_user_id" value="<?php echo $user['id'];?>">
                                 <button type="submit" class="follow-btn-user-profile">Unfollow</button>
                             </form>
                         <?php } else { ?>
-                            <form action="">
+                            <form action="follow_this_person.php" method="POST" name="follow_btn">
                                 <button type="submit" class="follow-btn-user-profile">Follow</button>
                             </form>
                         <?php } ?>

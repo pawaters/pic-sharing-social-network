@@ -5,7 +5,7 @@
         <div class="wrapper">
             <div class="left-col">
 
-                <?php include('other_people.php'); ?>
+                <?php include('get_status_wrapper.php'); ?>
 
                 <?php include('get_latest_posts.php'); ?>
 
@@ -70,7 +70,7 @@
                 <?php include('profile_card.php'); ?>
                 
                 <!-- Suggestions-->
-                <?php include('suggestion_sidearea.php'); ?>
+                <?php include('suggestion_side_area.php'); ?>
 
                 
             </div>
