@@ -17,7 +17,7 @@
                                 <div class="profile-pic"><img src="<?php echo "assets/img/" . $post['profile_image']; ?>"></div>
                                 <p class="username"><?php echo $post['username']; ?></p>
                             </div>
-                            <i class="fas fa-ellipsis-h options"></i>
+                            <a style="color: black" href="single_post.php?post_id=<?php echo $post['id']; ?>"><i class="fas fa-ellipsis-h options"></i></a>
                         </div>
                         <!-- POST CONTENT-->
                         <img src="<?php echo "assets/img/" . $post['image']; ?>" class="post-img">

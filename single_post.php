@@ -69,6 +69,18 @@ else
                         <div class="user">
                             <div class="profile-pic"><img src="<?php echo 'assets/img/'.$post['profile_image'];?>"/></div>
                             <p class="username"><?php echo $post['username'];?></p>
+                        </div>  
+                        <?php if($post['user_id'] == $_SESSION['id']) { ?>
+                            <button class="profile-btn profile-settings-btn" id="options_btn" aria-label="profile settings">
+                                <i class="fas fa-ellipsis-h options"></i>
+                            </button>  
+                        <?php } ?>
+                    </div>
+                    <div class="popup" id="popup">
+                        <div class="popup-window">
+                                <span class="close-popup" id="close-popup">&times;</span>
+                                <a href="#">Edit post</a>
+                                <a href="#">Delete post</a>
                         </div>
                     </div>
                     <!-- POST CONTENT--> 
@@ -133,7 +145,30 @@ else
         </div>
     </section>
 
+    <script>
+        var popupWindow = document.getElementById('popup');
+        var optionsBtn = document.getElementById('options_btn');
+        var closeWindow = document.getElementById('close-popup');
 
+        optionsBtn.addEventListener("click",(e)=>{
+            e.preventDefault();
+            popupWindow.style.display = "block";
+        })
+
+        closeWindow.addEventListener("click",(e)=>{
+            e.preventDefault();
+            popupWindow.style.display = "none";
+        })
+
+        window.addEventListener("click",(e)=>{
+            if(e.target == popupWindow)
+            {
+                popupWindow.style.display = "none";
+            }
+        })
+
+
+    </script>
 
 </body>
 </html>
