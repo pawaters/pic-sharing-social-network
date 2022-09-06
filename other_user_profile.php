@@ -48,13 +48,13 @@
                         <!--TO DO: improve naming and separate CSS files -->
                         <?php include('check_following_status.php'); ?>
                         <?php if($following_status) { ?>
-                            <form action="unfollow_this_person.php" method="POST" name="unfollow_btn">
+                            <form action="unfollow_this_person.php" method="POST">
                                 <input type="hidden" name="other_user_id" value="<?php echo $user['id'];?>">
-                                <button type="submit" class="follow-btn-user-profile">Unfollow</button>
+                                <button type="submit" class="follow-btn-user-profile" name="unfollow_btn">Unfollow</button>
                             </form>
                         <?php } else { ?>
-                            <form action="follow_this_person.php" method="POST" name="follow_btn">
-                                <button type="submit" class="follow-btn-user-profile">Follow</button>
+                            <form action="follow_this_person.php" method="POST">
+                                <button type="submit" class="follow-btn-user-profile" name="follow_btn">Follow</button>
                             </form>
                         <?php } ?>
                     </div>
