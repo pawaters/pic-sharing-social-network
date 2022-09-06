@@ -39,51 +39,10 @@
             <div class="right-col">
             
                 <!-- Profile card-->
-                <div class="profile-card">
-                    <div class="profile-pic">
-                        <img src="assets/img/profile.jpeg">
-                    </div>
-                    <div>
-                        <p class="username">username</p>
-                        <p class="sub-text">sub-text</p>
-                    </div>
-                    <button class="logout-btn">logout</button>
-                </div>
-
-                <p class="suggestion-text">Suggestions for you</p>
+                <?php include("profile_card.php"); ?>
                 
                 <!-- Suggestions-->
-                <div class="suggestion-card">
-                    <div class="suggestion-pic">
-                        <img src="assets/img/profile.jpeg">
-                    </div>
-                    <div>
-                        <p class="username">username</p>
-                        <p class="sub-text">sub-text</p>
-                    </div>
-                    <button class="follow-btn">follow</button>
-                </div>
-                <div class="suggestion-card">
-                    <div class="suggestion-pic">
-                        <img src="assets/img/profile.jpeg">
-                    </div>
-                    <div>
-                        <p class="username">username</p>
-                        <p class="sub-text">sub-text</p>
-                    </div>
-                    <button class="follow-btn">follow</button>
-                </div>
-                <div class="suggestion-card">
-                    <div class="suggestion-pic">
-                        <img src="assets/img/profile.jpeg">
-                    </div>
-                    <div>
-                        <p class="username">username</p>
-                        <p class="sub-text">sub-text</p>
-                    </div>
-                    <button class="follow-btn">follow</button>
-                </div>
-
+                <?php include("suggestion_side_area.php"); ?>
             </div>
         </div>
     </section>
