@@ -51,7 +51,7 @@
                         </form>
                     </div>
                     <div class="profile-bio">
-                        <p> <span class="profile-real-name">Name </span><?php echo substr($user['bio'],0,15)?></p>
+                        <p> <span class="profile-real-name"><?php echo $user['username']?> </span><?php echo substr($user['bio'],0,15)?></p>
                     </div>
                 </div>
             <?php } ?>
@@ -61,58 +61,24 @@
     <main>
         <div class="profile-container">
             <div class="gallery">
-                <div class="gallery-item">
-                    <img src="assets/img/flower.jpeg" class="gallery-image">
-                    <div class="gallery-item-info">
-                        <ul>
-                            <li class="gallery-item-likes"><span class="hide-gallery-element">12</span>
-                                <i class="fas fa-heart"></i>
-                            </li>
-                            <li class="gallery-item-comments"><span class="hide-gallery-element">9</span>
-                                <i class="fas fa-comment"></i>
-                            </li>
-                        </ul>
+
+            <?php include("get_other_user_posts.php"); ?>
+
+                <?php foreach($posts as $post) { ?>          
+                    <div class="gallery-item">
+                        <img src="<?php echo "assets/img/".$post['image'];?>" class="gallery-image">
+                        <div class="gallery-item-info">
+                            <ul>
+                                <li class="gallery-item-likes"><span class="hide-gallery-element"><?php echo "assets/img/".$post['likes'];?></span>
+                                    <i class="fas fa-heart"></i>
+                                </li>
+                                <li class="gallery-item-comments"><span class="hide-gallery-element"></span>
+                                    <i class="fas fa-comment"></i>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/img/flower.jpeg" class="gallery-image">
-                    <div class="gallery-item-info">
-                        <ul>
-                            <li class="gallery-item-likes"><span class="hide-gallery-element">Likes:</span>
-                                <i class="fas fa-heart"></i>
-                            </li>
-                            <li class="gallery-item-comments"><span class="hide-gallery-element">Comments:</span>
-                                <i class="fas fa-comment"></i>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/img/flower.jpeg" class="gallery-image">
-                    <div class="gallery-item-info">
-                        <ul>
-                            <li class="gallery-item-likes"><span class="hide-gallery-element">Likes:</span>
-                                <i class="fas fa-heart"></i>
-                            </li>
-                            <li class="gallery-item-comments"><span class="hide-gallery-element">Comments:</span>
-                                <i class="fas fa-comment"></i>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/img/flower.jpeg" class="gallery-image">
-                    <div class="gallery-item-info">
-                        <ul>
-                            <li class="gallery-item-likes"><span class="hide-gallery-element">Likes:</span>
-                                <i class="fas fa-heart"></i>
-                            </li>
-                            <li class="gallery-item-comments"><span class="hide-gallery-element">Comments:</span>
-                                <i class="fas fa-comment"></i>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <?php } ?>
             </div>
         </div>
     </main>
