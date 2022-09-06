@@ -30,20 +30,20 @@
 <!--TO DO: how to decide how many levels of containers to hav -->
     <header class="profile-header">
         <div class="profile-container">
-            <!--TIP: for every profile card, create 2 divs, and image -->
-            <?php ?>
+            
+            <?php foreach($user_array as $user) { ?>
                 <div class="profile">
                     <div class="profile-image">
-                        <img src="assets/img/profile.jpeg" alt="">
+                        <img src="<?php echo "assets/img/".$user['image']?>">
                     </div>
                     <div class="profile-user-settings">
-                        <h1 class="profile-user-name">username</h1>
+                        <h1 class="profile-user-name"><?php echo $user['username']?></h1>
                     </div>
                     <div class="profile-stats">
                         <ul>
-                            <li><span class="profile-stat-count">25</span> posts</li>
-                            <li><span class="profile-stat-count">12</span> followers</li>
-                            <li><span class="profile-stat-count">9</span> following</li>
+                            <li><span class="profile-stat-count"><?php echo $user['posts']?></span> posts</li>
+                            <li><span class="profile-stat-count"><?php echo $user['followers']?></span> followers</li>
+                            <li><span class="profile-stat-count"><?php echo $user['following']?></span> following</li>
                         </ul>
                         <!--TO DO: improve naming and separate CSS files -->
                         <form action="">
@@ -51,10 +51,10 @@
                         </form>
                     </div>
                     <div class="profile-bio">
-                        <p> <span class="profile-real-name">Name </span>This is my bio area with my css. I added more text to see what happens with responsive.</p>
+                        <p> <span class="profile-real-name">Name </span><?php echo substr($user['bio'],0,15)?></p>
                     </div>
                 </div>
-
+            <?php } ?>
         </div>
     </header>
 
