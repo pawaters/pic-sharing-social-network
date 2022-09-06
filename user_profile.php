@@ -46,9 +46,16 @@
                             <li><span class="profile-stat-count"><?php echo $user['following']?></span> following</li>
                         </ul>
                         <!--TO DO: improve naming and separate CSS files -->
-                        <form action="">
-                            <button type="submit" class="follow-btn-user-profile">Follow</button>
-                        </form>
+                        <?php include('check_following_status.php'); ?>
+                        <?php if($following_status) { ?>
+                            <form action="">
+                                <button type="submit" class="follow-btn-user-profile">Unfollow</button>
+                            </form>
+                        <?php } else { ?>
+                            <form action="">
+                                <button type="submit" class="follow-btn-user-profile">Follow</button>
+                            </form>
+                        <?php } ?>
                     </div>
                     <div class="profile-bio">
                         <p> <span class="profile-real-name"><?php echo $user['username']?> </span><?php echo substr($user['bio'],0,15)?></p>
