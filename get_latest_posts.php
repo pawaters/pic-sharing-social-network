@@ -17,13 +17,16 @@ $stmt->bind_result($total_posts);
 $stmt->store_result();
 $stmt->fetch();
 
-$total_posts_per_page = 1;
+$total_posts_per_page = 6;
 
 $offset = ($page_no - 1) * $total_posts_per_page;
 
 $total_no_of_pages = ceil($total_posts / $total_posts_per_page);
 
-$stmt = $conn->prepare("SELECT * FROM posts LIMIT $offset, $total_posts_per_page"); 
+$stmt = $conn->prepare("SELECT * 
+                        FROM posts 
+                        ORDER BY id DESC
+                        LIMIT $offset, $total_posts_per_page"); 
 $stmt->execute();
 $posts = $stmt->get_result();
 
