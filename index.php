@@ -5,6 +5,13 @@
         <div class="wrapper">
             <div class="left-col">
 
+                <?php if(isset($_GET['success_message'])) {?>
+                    <p class="text-center alert-success"><?php echo $_GET['success_message']; ?></p>
+                <?php } ?>
+                <?php if(isset($_GET['error_message'])){ ?>
+                    <p class="text-center alert-danger"><?php echo $_GET['error_message'];?></p>
+                <?php } ?>
+
                 <?php include('get_status_wrapper.php'); ?>
 
                 <?php include('get_latest_posts.php'); ?>
