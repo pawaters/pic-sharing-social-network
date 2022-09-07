@@ -92,7 +92,7 @@
                     <?php if($user['id'] != $_SESSION['id']){ ?>
 
                     <li class="list-group-item search-result-item">
-                        <img src="<?php echo "assets/imgs/".$user['image']; ?>" />
+                        <img src="<?php echo "assets/img/".$user['image']; ?>" />
                         <div style="width: 100%;">
                             <p><?php echo $user['username'];?></p>
                             <span><?php echo substr($user['bio'],0,20); ?></span>
