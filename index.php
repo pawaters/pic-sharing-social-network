@@ -23,7 +23,13 @@
                         <img src="<?php echo "assets/img/" . $post['image']; ?>" class="post-img">
                         <div class="post-content">
                             <div class="reaction-wrapper">
-                                <i class="icon fas fa-heart"></i>
+                                <form action="like_this_post.php" method="POST">
+                                    <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
+                                    <button class="heart" type="submit" name="heart_btn">
+                                        <i class="icon fas fa-heart"></i>
+                                    </button>
+                                </form>
+                                
                                 <i class="icon fas fa-comment"></i>
                             </div>
                             <p class="likes"><?php echo $post['likes'];?> likes</p>
