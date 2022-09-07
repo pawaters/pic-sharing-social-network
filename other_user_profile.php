@@ -81,7 +81,7 @@
                                     <i class="fas fa-heart"></i>
                                 </li>
                                 <li class="gallery-item-comments"><span class="hide-gallery-element"></span>
-                                    <i class="fas fa-comment"></i>
+                                    <a style="color: white" href="single_post.php?post_id=<?php echo $post['id'] ?>"><i class="fas fa-comment"></i></a>
                                 </li>
                             </ul>
                         </div>
