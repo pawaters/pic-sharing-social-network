@@ -35,7 +35,7 @@
                                 <?php if ($user_liked_this_post) { ?>
                                     <form action="unlike_this_post.php" method="POST">
                                         <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
-                                        <button class="heart" type="submit" name="heart_btn">
+                                        <button class="heart" style="color:red;" type="submit" name="heart_btn">
                                             <i class="icon fas fa-heart"></i>
                                         </button>
                                     </form>
