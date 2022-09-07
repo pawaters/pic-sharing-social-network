@@ -1,34 +1,39 @@
-<?php
+<?php 
 
 include('connection.php');
 
-$user_id = $_SESSION['id'];
 
-$stmt = $conn->prepare("SELECT other_user_id FROM followings WHERE user_id = ? ");
-$stmt->bind_param("i", $user_id); 
-$stmt->execute();
+    $user_id = $_SESSION['id'];
 
-$ids = array();
+    $stmt = $conn->prepare("SELECT other_user_id FROM followings WHERE user_id = ?");
+    $stmt->bind_param("i",$user_id);
+    $stmt->execute();
 
-$result = $stmt->get_result();
-while($row = $result->fetch_array(MYSQLI_NUM))
-{
-    foreach($row as $r)
-    {
-        $ids[] = $r; //review that in detail to really understand
-    }
-}
+    $ids = array();
 
-if (empty($ids)){
-    $ids = [1];
-}
+        $result = $stmt->get_result();
+        while($row = $result->fetch_array(MYSQLI_NUM)){
+                foreach($row as $r){
+                    $ids[] = $r;
+                }
+        }
 
-$following_ids = join(",", $ids);
+        
+        //I'm not following anyone
+       if(empty($ids)){
+               
+       }else{
 
-$stmt = $conn->prepare("SELECT * FROM users WHERE id in ($following_ids) ORDER BY RAND() LIMIT 20");
 
-$stmt->execute();
+                $following_ids = join(",",$ids);  //4,5,7
 
-$other_people = $stmt->get_result();
+                $stmt = $conn->prepare("SELECT * FROM users WHERE id in ($following_ids) ORDER BY RAND() LIMIT 20");
 
+                $stmt->execute();
+
+                $other_people = $stmt->get_result();
+
+
+       }
+    
 ?>
