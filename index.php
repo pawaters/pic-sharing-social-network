@@ -30,13 +30,23 @@
                         <img src="<?php echo "assets/img/" . $post['image']; ?>" class="post-img">
                         <div class="post-content">
                             <div class="reaction-wrapper">
-                                <form action="like_this_post.php" method="POST">
-                                    <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
-                                    <button class="heart" type="submit" name="heart_btn">
-                                        <i class="icon fas fa-heart"></i>
-                                    </button>
-                                </form>
-                                
+                                <?php include('check_if_user_liked_this_post.php')?>
+
+                                <?php if ($user_liked_this_post) { ?>
+                                    <form action="unlike_this_post.php" method="POST">
+                                        <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
+                                        <button class="heart" type="submit" name="heart_btn">
+                                            <i class="icon fas fa-heart"></i>
+                                        </button>
+                                    </form>
+                                <?php } else { ?>
+                                    <form action="like_this_post.php" method="POST">
+                                        <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
+                                        <button class="heart" type="submit" name="heart_btn">
+                                            <i class="icon fas fa-heart"></i>
+                                        </button>
+                                    </form>
+                                <?php } ?>
                                 <i class="icon fas fa-comment"></i>
                             </div>
                             <p class="likes"><?php echo $post['likes'];?> likes</p>
