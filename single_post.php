@@ -79,7 +79,7 @@ else
                     <div class="popup" id="popup">
                         <div class="popup-window">
                                 <span class="close-popup" id="close-popup">&times;</span>
-                                <a href="#">Edit post</a>
+                                <a href="edit_post.php">Edit post</a>
                                 <a href="#">Delete post</a>
                         </div>
                     </div>
