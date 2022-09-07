@@ -45,8 +45,6 @@
        <div class="camera">
            <div class="camera-image">
                
-         
-
                <form action="update_comment.php" method="POST" class="camera-form">
                   <div class="form-group">
                     
