@@ -27,8 +27,8 @@ if(!isset($_SESSION['id'])){
     <nav class="navbar"> 
         <div class="nav-wrapper">
             <img src="assets/img/logo.jpg" class="brand-img"/>
-            <form class="search-form">
-                <input type="text" class="search-box" placeholder="Search"/>
+            <form class="search-form" action="search_posts.php" method="POST">
+                <input type="text" class="search-box" placeholder="Search" name="search_input"/>
             </form>
             <div class="nav-items">
                 <a href="index.php" style="color: #000;"><i class="icon fa-solid fa-house-user"></i></a>
