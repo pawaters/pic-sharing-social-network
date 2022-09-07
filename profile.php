@@ -40,8 +40,12 @@
                 <div class="profile-stats">
                     <ul>
                         <li><span class="profile-stat-count"><?php echo $_SESSION['post'] ?></span> posts </li>
-                        <li><span class="profile-stat-count"><?php echo $_SESSION['followers'] ?></span> followers</li>
-                        <li><span class="profile-stat-count"><?php echo $_SESSION['following'] ?></span> following</li>
+                        <form action="" style="display: inline-block;">
+                            <li><span class="profile-stat-count"><?php echo $_SESSION['followers'] ?></span> <input value="followers" type="submit" style="background:none; border: none; "></li>
+                        </form>
+                        <form action="" style="display: inline-block;">
+                            <li><span class="profile-stat-count"><?php echo $_SESSION['following'] ?></span> <input value="following" type="submit" style="background:none; border: none; "></li>
+                        </form>
                     </ul>
                 </div>
                 <div class="profile-bio">
