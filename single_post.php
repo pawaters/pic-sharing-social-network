@@ -113,13 +113,13 @@ else
                             <?php if($comment['user_id'] == $_SESSION['id']) { ?>
                                 <button onclick="document.getElementById('popup_comment<?php echo $comment['id'];?>').style.display = 'block'" class="profile-btn profile-settings-btn" id="c_options_btn" aria-label="profile settings">
                                     <i class="fas fa-edit"></i>
-                                </button>  
+                                </button>   
                             <?php } ?>
 
                             <!-- Popup that appears when click on Options button-->
                             <div class="popup" id="popup_comment<?php echo $comment['id'];?>">
-                                <div class="popup_comment_window">
-                                        <span onclick="document.getElementById('popup_comment<?php echo $comment['id'];?>.style.display = 'none'')" class="close-popup" id="close-popup<?php echo $comment['id'];?>">&times;</span>
+                                <div class="popup-window">
+                                        <span onclick="document.getElementById('popup_comment<?php echo $comment['id'];?>.style.display = 'none'')" class="close-popup" id="close-popup<?php echo $comment['id'];?>" style="font-size= 30px;" >&times;</span>
                                         <a href="edit_comment.php?comment_id=<?php echo $comment['id'];?>">Edit comment</a>
                                         <form action="delete_comment.php" method="POST" >
                                             <input type="hidden" name="comment_id" value="<?php echo $comment['id']; ?>">
