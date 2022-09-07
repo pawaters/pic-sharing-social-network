@@ -80,12 +80,13 @@ else
                         <div class="popup-window">
                                 <span class="close-popup" id="close-popup">&times;</span>
                                 <a href="edit_post.php?post_id=<?php echo $post['id'];?>">Edit post</a>
-                                <form action="">
+                                <form action="delete_post.php" method="POST" >
                                     <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
-                                    <input type="submit" name="delete_post_btn" value="Delete post">
+                                    <input class="delete-post-btn" type="submit" name="delete_post_btn" value="Delete post">
                                 </form>
                         </div>
                     </div>
+                    
                     <!-- POST CONTENT--> 
                     <img src="<?php echo 'assets/img/'.$post['image'];?>" class="post-img">
                     <div class="post-content">
