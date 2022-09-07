@@ -95,8 +95,8 @@ else
                     <img src="<?php echo 'assets/img/'.$post['image'];?>" class="post-img">
                     <div class="post-content">
                         <div class="reaction-wrapper">
-                            <!-- <i class="icon fas fa-heart"></i>
-                            <i class="icon fas fa-comment"></i> -->
+                            <i class="icon fas fa-heart"></i>
+                            <i class="icon fas fa-comment"></i>
                         </div>
                         <p class="likes"><?php echo $post['likes'];?> likes</p>
                         <p class="description"><span><?php echo $post['caption'];?></span> <?php echo $post['hashtags'];?></p>

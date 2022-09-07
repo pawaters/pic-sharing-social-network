@@ -17,7 +17,7 @@ if(isset($_POST['upload_image_btn'])){
     $date = date("Y-m-d H:i:s");
 
     if(strlen($caption) > 200 || strlen($hashtags) > 200){
-        header("location: camera.php?error_message=caption/hashtags is too long");
+        header("location: camera.php?error_message=caption/text is too long");
         exit;
     }
 
