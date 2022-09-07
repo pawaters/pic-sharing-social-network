@@ -38,9 +38,9 @@
            <div class="camera-image">
                
              <?php if(isset($_GET['image_name'])){ ?>
-                <img style="width: 300px;" src="<?php echo "assets/imgs/".$_GET['image_name']; ?>" alt="">
+                <img style="width: 300px;" src="<?php echo "assets/img/".$_GET['image_name']; ?>" alt="">
              <?php }else { ?>   
-               <img style="width:400px; height:400px;" src="<?php echo "assets/imgs/". $post['image']; ?>" alt="">
+               <img style="width:400px; height:400px;" src="<?php echo "assets/img/". $post['image']; ?>" alt="">
             <?php } ?>
 
 
