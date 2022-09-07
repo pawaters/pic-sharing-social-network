@@ -70,12 +70,16 @@ else
                             <div class="profile-pic"><img src="<?php echo 'assets/img/'.$post['profile_image'];?>"/></div>
                             <p class="username"><?php echo $post['username'];?></p>
                         </div>  
+
+                    <!-- Options button only appears if user owns post -->
                         <?php if($post['user_id'] == $_SESSION['id']) { ?>
                             <button class="profile-btn profile-settings-btn" id="options_btn" aria-label="profile settings">
                                 <i class="fas fa-ellipsis-h options"></i>
                             </button>  
                         <?php } ?>
                     </div>
+
+                    <!-- Popup that appears when click on Options button-->
                     <div class="popup" id="popup">
                         <div class="popup-window">
                                 <span class="close-popup" id="close-popup">&times;</span>
@@ -86,7 +90,7 @@ else
                                 </form>
                         </div>
                     </div>
-                    
+
                     <!-- POST CONTENT--> 
                     <img src="<?php echo 'assets/img/'.$post['image'];?>" class="post-img">
                     <div class="post-content">
@@ -104,7 +108,29 @@ else
                         <div class="comment-element">
                             <img src="<?php echo 'assets/img/'.$comment['profile_image'];?>" class="icon">
                             <p><?php echo $comment['comment_text'];?><span><?php echo date("M,Y", strtotime($comment['date'])); ?></span></p>
+
+                            <!-- Comment options button only appears if user owns post -->
+                            <?php if($comment['user_id'] == $_SESSION['id']) { ?>
+                                <button onclick="document.getElementById('popup_comment<?php echo $comment['id'];?>').style.display = 'block'" class="profile-btn profile-settings-btn" id="c_options_btn" aria-label="profile settings">
+                                    <i class="fas fa-edit"></i>
+                                </button>  
+                            <?php } ?>
+
+                            <!-- Popup that appears when click on Options button-->
+                            <div class="popup" id="popup_comment<?php echo $comment['id'];?>">
+                                <div class="popup_comment_window">
+                                        <span onclick="document.getElementById('popup_comment<?php echo $comment['id'];?>.style.display = 'none'')" class="close-popup" id="close-popup<?php echo $comment['id'];?>">&times;</span>
+                                        <a href="edit_comment.php?comment_id=<?php echo $comment['id'];?>">Edit comment</a>
+                                        <form action="delete_comment.php" method="POST" >
+                                            <input type="hidden" name="comment_id" value="<?php echo $comment['id']; ?>">
+                                            <input class="delete-comment-btn" type="submit" name="delete_comment_btn" value="Delete comment">
+                                        </form>
+                                </div>
+                            </div>
+                    </div>
+                        
                         </div>
+                        
                     <?php } ?> 
                     
                     <!-- PAGINATION -->
