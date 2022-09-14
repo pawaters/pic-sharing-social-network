@@ -19,7 +19,17 @@
                     if(empty($selector) || empty($validator) ) {
                         header("Location: index.php?error_message=Could not find selector or validator.");
                     } else {
-                        
+                        if (ctype_xdigit($selector) !== false && ctype_xdigit($validator) !== false){   
+                            ?>
+
+                            <form action="reset_password.php" method="post">
+                                <input type="hidden" name="selector" value="<?php echo $selector ?>">
+                                <input type="hidden" name="validator" value="<?php echo $validator ?>">
+                                <input type="password" name=" " id="">
+                            </form>
+
+                            <?php
+                        }
                     }
                 ?>
 
