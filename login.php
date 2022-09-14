@@ -47,10 +47,15 @@ if(isset($_SESSION['id'])) {
                         // the php for the action will define what to do with the form data -->
                         <form class="login-form" id="login-form" method="POST" action="process_login.php">
 
+                        <?php if(isset($_GET['success_message'])) { ?>
+                            <p class="mt-4 text-center alert-success"><?php echo $_GET['success_message']; ?> </p>
+                        <?php } ?>
+
                         <!-- //ERROR MESSAGE -->
                         <?php  if(isset($_GET['error_message'])){  ?>
                             <p id="error_message" class="text-center alert-danger"> <?php echo $_GET['error_message']; ?> </p>
                         <?php    }?>
+                        
                         
                             <div class="form-group">
                                 <div class="login-input">
@@ -77,7 +82,7 @@ if(isset($_SESSION['id'])) {
                             <div>
                                 <p>Forgot your password ?<p>  
                                 <form action="reset_request.php" method="post">
-                                    <input type="text" name="email" placeholder="Enter your email">
+                                    <input type="text" name="reset_email" placeholder="Enter your email">
                                     <button type="submit" name="reset_request_submit">Reset</button>
                                 </form>
                             </div>
