@@ -1,6 +1,6 @@
 <?php 
 
-//connect to a submit button (PENDING)
+//connect to a submit button 
 if(isset($POST["reset-request-submit"])) {
 
     // 1 token for auth, 1 token to look in the db, to prevent timing attacks (RESEARCH)
@@ -8,7 +8,6 @@ if(isset($POST["reset-request-submit"])) {
     $token = random_bytes(32);
 
     $url = "create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
-    //TO DO : CREATE.
     $expires = date("U") + 1800;
 
     require 'connection.php';
@@ -18,7 +17,7 @@ if(isset($POST["reset-request-submit"])) {
     $sql = "DELETE FROM pwdReset WHERE pwdResetEmail = ?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        echo "There was an error";
+        header("Location: login.php?error_message=SQL error");
         exit();
     } else {
         mysqli_stmt_bind_param($stmt, "s", $userEmail);
@@ -28,7 +27,7 @@ if(isset($POST["reset-request-submit"])) {
     $sql = "INSERT INTO pwdReset (pwdResetEmail, pwdResetSelector, pwdResetToken, pwdResetExpires) VALUES (?,?,?,?);" ;
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        echo "There was an error";
+        header("Location: login.php?error_message=SQL error");
         exit();
     } else {
         $hashedToken = password_hash($token, PASSWORD_DEFAULT);

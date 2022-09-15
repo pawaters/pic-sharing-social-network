@@ -80,7 +80,7 @@ if(isset($_SESSION['id'])) {
                         <div class="goto">
                             <p>Don't have an account ? <a href="signup.php">Sign Up</a></p>
                             <div>
-                                <p>Forgot your password ? <a href="create-new-password.php">Reset your password</a><p>  
+                                <p>Forgot your password ? <a href="reset-password.php">Reset your password</a><p>  
                             </div>
                         </div>
                         <div class="app-download">

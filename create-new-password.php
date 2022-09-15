@@ -1,4 +1,4 @@
-<?php include("header.php"); ?>
+<?php include("header_no_login.php"); ?>
     
     <main>
         <div class="wrapper-main">
@@ -16,9 +16,10 @@
                     $selector = $_GET["selector"];
                     $validator = $_GET["validator"]; 
 
-                    // if(empty($selector) || empty($validator) ) {
-                    //     header("Location: index.php?error_message=Could not find selector or validator.");
-                    // } else {
+                    if(empty($selector) || empty($validator) ) {
+                        header("Location: login.php?error_message=Could not find selector or validator.");
+                        exit();
+                    } else {
                         if (ctype_xdigit($selector) !== false && ctype_xdigit($validator) !== false){   
                             ?>
 
@@ -32,7 +33,7 @@
 
                             <?php
                         }
-                    // }
+                    }
                 ?>
 
             </section>
