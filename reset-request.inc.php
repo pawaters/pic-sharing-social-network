@@ -49,7 +49,13 @@ if(isset($_POST["reset-request-submit"])) {
 
     mail($to, $subject, $message, $headers);
 
-    header("location: login.php?success_message=Password_was_reset");
+    $emailLog = "Email was sent.";
+    $emailLog .= "address:";
+    $emailLog .= $to;
+    $emailLog .= "Message:";
+    $emailLog .= $message;
+    
+    header("location: login.php?success_message=". $emailLog ."");
 
 } else {
     header("Location: index.php?error_message=Error ocurred");
