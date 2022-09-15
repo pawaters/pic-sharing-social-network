@@ -48,12 +48,12 @@ if(isset($_SESSION['id'])) {
                         <form class="login-form" id="login-form" method="POST" action="process_login.php">
 
                         <?php if(isset($_GET['success_message'])) { ?>
-                            <p class="mt-4 text-center alert-success"><?php echo $_GET['success_message']; ?> </p>
+                            <p id="success_message" class="text-center alert alert-success"><?php echo $_GET['success_message']; ?> </p>
                         <?php } ?>
 
                         <!-- //ERROR MESSAGE -->
                         <?php  if(isset($_GET['error_message'])){  ?>
-                            <p id="error_message" class="text-center alert-danger"> <?php echo $_GET['error_message']; ?> </p>
+                            <p id="error_message" class="text-center alert alert-danger"> <?php echo $_GET['error_message']; ?> </p>
                         <?php    }?>
                         
                         

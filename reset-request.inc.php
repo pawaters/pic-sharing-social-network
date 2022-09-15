@@ -1,7 +1,7 @@
 <?php 
 
 //connect to a submit button 
-if(isset($POST["reset-request-submit"])) {
+if(isset($_POST["reset-request-submit"])) {
 
     // 1 token for auth, 1 token to look in the db, to prevent timing attacks (RESEARCH)
     $selector = bin2hex(random_bytes(8));
@@ -12,7 +12,7 @@ if(isset($POST["reset-request-submit"])) {
 
     require 'connection.php';
 
-    $userEmail = $POST["reset_email"];
+    $userEmail = $_POST["email"];
 
     $sql = "DELETE FROM pwdReset WHERE pwdResetEmail = ?";
     $stmt = mysqli_stmt_init($conn);
@@ -49,7 +49,7 @@ if(isset($POST["reset-request-submit"])) {
 
     mail($to, $subject, $message, $headers);
 
-    header("location: login.php?sucess_message=Password was reset");
+    header("location: login.php?success_message=Password_was_reset");
 
 } else {
     header("Location: index.php?error_message=Error ocurred");
