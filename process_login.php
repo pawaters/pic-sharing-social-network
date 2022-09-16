@@ -12,16 +12,16 @@ if(isset($_POST['login_btn']))
     $email = $_POST['email'];
     $password = md5($_POST['password']); 
     
-    //now use SQL to get all data if login is successful
-    //prepare the statement (prepared statements protect from injections)
+    $conn = connect();
     $stmt = $conn->prepare("SELECT id, username, email, image, followers, following, posts, bio
                             FROM users
                             WHERE email = ? AND password = ?");
-    //bind_param clarifies what to put for ?
-    $stmt->bind_param("ss", $email, $password);
+
+    $stmt->bindParam(1, $email, PDO::PARAM_STR);
+    $stmt->bindParam(2, $password, PDO::PARAM_STR);
     $stmt->execute();
     // store result locally
-    $stmt->store_result();
+    //$stmt->store_result();
 
     // with if num rows, check if there is an existing user
     if($stmt->num_rows() > 0) 
