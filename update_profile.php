@@ -22,17 +22,18 @@ if(isset($_POST['update_profile_btn'])){
 
     if($username != $_SESSION['username']){
         //make sure that username is unique
-    
+        $conn = connect_PDO();
         $stmt = $conn->prepare("SELECT username FROM users WHERE username = ?");
 
-        $stmt->bind_param("s",$username);
-        
+        // $stmt->bind_param("s",$username);
+        $stmt->bindParam(1, $username, PDO::PARAM_STR);
         $stmt->execute();
 
-        $stmt->store_result();
+        // $stmt->store_result();
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
         //there is a user with this username
-        if($stmt->num_rows() > 0){
+        if($data){
             header("location: edit_profile.php?error_message=Username was already taken");
             exit;
 
@@ -77,8 +78,13 @@ if(isset($_POST['update_profile_btn'])){
 
 
 function updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image){
+    $conn = connect_PDO();
     $stmt = $conn->prepare("UPDATE users SET username = ?, bio = ? , image = ? WHERE id = ?");
-    $stmt->bind_param("sssi",$username,$bio,$image_name,$user_id);
+    // $stmt->bind_param("sssi",$username,$bio,$image_name,$user_id);
+    $stmt->bindParam(1, $username, PDO::PARAM_STR);
+    $stmt->bindParam(2, $bio, PDO::PARAM_STR);
+    $stmt->bindParam(3, $image_name, PDO::PARAM_STR);
+    $stmt->bindParam(4, $user_id, PDO::PARAM_INT);
 
     if($stmt->execute()){
 
@@ -110,8 +116,12 @@ function updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image){
 function updateProfileImageAndUsernameInCommentsTable($conn,$username,$image_name,$user_id){
 
 
+    $conn = connect_PDO();
     $stmt = $conn->prepare("UPDATE comments SET username = ?, profile_image = ?  WHERE user_id = ?");
-    $stmt->bind_param("ssi",$username,$image_name,$user_id);
+    // $stmt->bind_param("ssi",$username,$image_name,$user_id);
+    $stmt->bindParam(1, $username, PDO::PARAM_STR);
+    $stmt->bindParam(2, $image_name, PDO::PARAM_STR);
+    $stmt->bindParam(3, $user_id, PDO::PARAM_INT);
     $stmt->execute();
 
     
@@ -121,8 +131,12 @@ function updateProfileImageAndUsernameInCommentsTable($conn,$username,$image_nam
 
 function updateProfileImageAndUsernameInPostsTable($conn,$username,$image_name,$user_id){
 
+    $conn = connect_PDO();
     $stmt = $conn->prepare("UPDATE posts SET username = ?, profile_image = ?  WHERE user_id = ?");
-    $stmt->bind_param("ssi",$username,$image_name,$user_id);
+    // $stmt->bind_param("ssi",$username,$image_name,$user_id);
+    $stmt->bindParam(1, $username, PDO::PARAM_STR);
+    $stmt->bindParam(2, $image_name, PDO::PARAM_STR);
+    $stmt->bindParam(3, $user_id, PDO::PARAM_INT);
     $stmt->execute();
 
 
