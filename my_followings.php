@@ -12,20 +12,25 @@
 
     $user_id = $_SESSION['id'];
 
-
+    $conn = connect_PDO();
     $stmt = $conn->prepare("SELECT other_user_id FROM followings WHERE user_id = ?");
-    $stmt->bind_param("i",$user_id);
+    // $stmt->bind_param("i",$user_id);
+    $stmt->bindParam(1, $user_id, PDO::PARAM_INT);
     $stmt->execute();
 
-        $ids = array();
+        // $ids = array();
     
-            $result = $stmt->get_result();
-            while($row = $result->fetch_array(MYSQLI_NUM)){
-                    foreach($row as $r){
-                        $ids[] = $r;
-                    }
+        //     $result = $stmt->get_result();
+        //     while($row = $result->fetch_array(MYSQLI_NUM)){
+        //             foreach($row as $r){
+        //                 $ids[] = $r;
+        //             }
+        //     }
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            foreach($row as $r){
+                $ids[] = $r;
             }
-    
+        }
 
             if(empty($ids)){
                 $message = "You have not followed any one yet";
@@ -45,10 +50,10 @@
 
                                 $stmt = $conn->prepare("SELECT COUNT(*) as total_users FROM users WHERE id in ($following_ids)");
                                 $stmt->execute();
-                                $stmt->bind_result($total_users);
-                                $stmt->store_result();
-                                $stmt->fetch();
-
+                                // $stmt->bind_result($total_users);
+                                // $stmt->store_result();
+                                // $stmt->fetch();
+                                $total_users = $stmt->fetchColumn();
 
                                 $total_users_per_page = 6;
 
@@ -61,7 +66,8 @@
                             
                                 $stmt = $conn->prepare("SELECT * FROM users WHERE id in ($following_ids) LIMIT $offset,$total_users_per_page "); 
                                 $stmt->execute();
-                                $users = $stmt->get_result();
+                                // $users = $stmt->get_result();
+                                $users = $stmt->fetchAll();
 
                                 
                 }
