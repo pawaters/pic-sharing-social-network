@@ -3,13 +3,14 @@
 <?php include ("connection.php");
 
 		if(isset($_GET['post_id'])){
-
+            $conn = connect_PDO();
 		    $post_id = $_GET['post_id'];
 		    $stmt = $conn->prepare("SELECT * FROM posts WHERE id = ?");
-		    $stmt->bind_param('i',$post_id); 
+		    // $stmt->bind_param('i',$post_id); 
+            $stmt->bindParam(1, $post_id, PDO::PARAM_INT);
 		    $stmt->execute();
-		    $post_array = $stmt->get_result();
-
+		    // $post_array = $stmt->get_result();
+            $post_array = $stmt->fetchAll();
 
 		}else{
 		    header("location: index.php");
