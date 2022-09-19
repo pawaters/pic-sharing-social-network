@@ -20,17 +20,11 @@ if(isset($_POST['login_btn']))
     $stmt->bindParam(1, $email, PDO::PARAM_STR);
     $stmt->bindParam(2, $password, PDO::PARAM_STR);
     $stmt->execute();
-    // store result locally
-    //$stmt->store_result();
+
     $data = $stmt->fetch(PDO::FETCH_ASSOC);
-    // with if num rows, check if there is an existing user
+
     if($data) 
     {
-        //bind_result is use to bind columns of a result to variables
-        //after that, fetch is used to get the values without iteration
-        // $stmt->bind_result($id, $username, $email, $image, $followers, $following, $post, $bio);
-        // $stmt->fetch();
-        
         //now store values in SESSION
         $_SESSION['id'] =  $data['id'];
         $_SESSION['username'] =  $data['username'];
