@@ -33,9 +33,13 @@ if(isset($_POST['update_post_btn'])){
 
 
 
-
+        $conn = connect_PDO();
         $stmt = $conn->prepare("UPDATE posts SET image = ? , caption = ?, hashtags = ? WHERE id = ?");
-        $stmt->bind_param("sssi",$image_name,$caption,$hashtags,$post_id);
+        // $stmt->bind_param("sssi",$image_name,$caption,$hashtags,$post_id);
+        $stmt->bindParam(1, $image_name, PDO::PARAM_STR);
+        $stmt->bindParam(2, $caption, PDO::PARAM_STR);
+        $stmt->bindParam(3, $hashtags, PDO::PARAM_STR);
+        $stmt->bindParam(4, $post_id, PDO::PARAM_INT);
 
         if($stmt->execute()){
 
