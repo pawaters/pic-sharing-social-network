@@ -11,10 +11,7 @@ $stmt = $conn->prepare("SELECT other_user_id FROM followings
 $stmt->bindParam(1, $user_id, PDO::PARAM_INT);
 $stmt->execute();
 
-$ids = array();
-
 // $result = $stmt->get_result();
-$ids = $stmt->fetch();
 // while($row = $result->fetch_array(MYSQLI_NUM))
 // {
 //     foreach($row as $r)
@@ -22,6 +19,12 @@ $ids = $stmt->fetch();
 //         $ids[] = $r; //review that in detail to really understand
 //     }
 // }
+while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+    foreach($row as $r){
+        $ids[] = $r;
+    }
+}
+
 
 if (empty($ids)){
     $ids = [$user_id];
