@@ -12,12 +12,13 @@ else
 {
     $page_no = 1;
 }
-
-$stmt = $conn->prepare("SELECT COUNT(*) as total_posts FROM posts");
+$conn = connect_PDO();
+$stmt = $conn->prepare("SELECT COUNT(*) FROM posts");
 $stmt->execute();
-$stmt->bind_result($total_posts);
-$stmt->store_result();
-$stmt->fetch();
+// $stmt->bind_result($total_posts);
+// $stmt->store_result();
+// $stmt->fetch();
+$total_posts = $stmt->fetchColumn();
 
 $total_posts_per_page = 3;
 
@@ -27,7 +28,8 @@ $total_no_of_pages = ceil($total_posts / $total_posts_per_page);
 
 $stmt = $conn->prepare("SELECT * FROM posts LIMIT $offset, $total_posts_per_page"); 
 $stmt->execute();
-$posts = $stmt->get_result();
+// $posts = $stmt->get_result();
+$posts = $stmt->fetchAll();
 
 ?>
 
