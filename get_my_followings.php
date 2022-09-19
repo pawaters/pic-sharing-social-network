@@ -4,6 +4,7 @@ include('connection.php');
 
 
     $user_id = $_SESSION['id'];
+    
     $conn = connect_PDO();
     $stmt = $conn->prepare("SELECT other_user_id FROM followings WHERE user_id = ?");
     // $stmt->bind_param("i",$user_id);
@@ -18,10 +19,10 @@ include('connection.php');
         //             $ids[] = $r;
         //         }
         // }
-        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-            foreach($row as $r){
-                $ids[] = $r;
-            }
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+        foreach($row as $r){
+            $ids[] = $r;
+        }
     }
         
         //I'm not following anyone
