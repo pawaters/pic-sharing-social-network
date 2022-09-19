@@ -3,7 +3,7 @@
     $conn = mysqli_connect("localhost", "root", "rootroot", "php_project")
         or die("DB connection failed");
 
-    function connect()
+    function connect_PDO()
 	{
         $DB_DSN = 'mysql:host=localhost;dbname=php_project';
         $DB_USER = 'root';
