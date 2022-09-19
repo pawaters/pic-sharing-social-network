@@ -7,10 +7,13 @@ include('connection.php');
 if(isset($_GET['post_id']))
 {
     $post_id = $_GET['post_id'];
+    $conn = connect_PDO();
     $stmt = $conn->prepare("SELECT * FROM posts WHERE id = ?");
-    $stmt->bind_param('i', $post_id); 
+    // $stmt->bind_param('i', $post_id); 
+    $stmt->bindParam(1, $post_id, PDO::PARAM_INT);
     $stmt->execute();
-    $post_array = $stmt->get_result();
+    // $post_array = $stmt->get_result();
+    $post_array = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // GET & PAGINATE COMMENTS
 
@@ -26,11 +29,13 @@ if(isset($_GET['post_id']))
     $stmt = $conn->prepare("SELECT COUNT(*) as total_comments 
                             FROM comments
                             WHERE post_id = ?");
-    $stmt->bind_param( "i", $post_id);
+    // $stmt->bind_param( "i", $post_id);
+    $stmt->bindParam(1, $post_id, PDO::PARAM_INT);
     $stmt->execute();
-    $stmt->bind_result($total_comments);
-    $stmt->store_result();
-    $stmt->fetch();
+    // $stmt->bind_result($total_comments);
+    // $stmt->store_result();
+    // $stmt->fetch();
+    $total_comments = $stmt->fetchColumn();
     
     $total_comments_per_page = 6;
     
@@ -40,7 +45,8 @@ if(isset($_GET['post_id']))
     
     $stmt = $conn->prepare("SELECT * FROM comments WHERE post_id = $post_id LIMIT $offset, $total_comments_per_page"); 
     $stmt->execute();
-    $comments = $stmt->get_result();
+    // $comments = $stmt->get_result();
+    $comments = $stmt->fetchAll();
 }
 else
 {

@@ -14,10 +14,13 @@
 
             $search_input = $_POST['search_input'];
 
+            $conn = connect_PDO();
             $stmt = $conn->prepare("SELECT * FROM users WHERE username like ? LIMIT 20");
-            $stmt->bind_param("s",$search_input);
+            // $stmt->bind_param("s",$search_input);
+            $stmt->bindParam(1, $search_input, PDO::PARAM_STR);
             $stmt->execute();
-            $users = $stmt->get_result();
+            // $users = $stmt->get_result();
+            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
     }else{
@@ -25,10 +28,13 @@
             //default keyword
             $search_input = "kaisa";
 
+            $conn = connect_PDO();
             $stmt = $conn->prepare("SELECT * FROM users WHERE username like ? LIMIT 20");
-            $stmt->bind_param("s",$search_input);
+            // $stmt->bind_param("s",$search_input);
+            $stmt->bindParam(1, $search_input, PDO::PARAM_STR);
             $stmt->execute();
-            $users = $stmt->get_result();
+            // $users = $stmt->get_result();
+            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
     }
