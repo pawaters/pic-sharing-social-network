@@ -3,7 +3,7 @@
 
 <?php
 
-   include('connection.php');
+include('connection.php');
 
   if(isset($_POST['other_user_id']) || isset($_SESSION['other_user_id'])){
 
@@ -23,12 +23,13 @@
     //     $other_user_id = $_SESSION['other_user_id'];
     // }
 
-
+    $conn = connect_PDO();
      $stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
-     $stmt->bind_param("i",$other_user_id);
+    //  $stmt->bind_param("i",$other_user_id);
+    $stmt->bindParam(1, $other_user_id, PDO::PARAM_INT);
 
      if($stmt->execute()){
-        $user_array = $stmt->get_result();
+        $user_array = $stmt->fetchAll();
 
      }else{
          header("location: index.php");

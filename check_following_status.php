@@ -4,6 +4,7 @@
 
 $user_id = $_SESSION['id'];
 
+$conn = connect_PDO();
 $stmt = $conn->prepare("SELECT * FROM followings WHERE user_id = ? AND other_user_id = ?");
 // $stmt->bind_param("ii", $user_id, $other_user_id);
 $stmt->bindParam(1, $user_id, PDO::PARAM_INT);
