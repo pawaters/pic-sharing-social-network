@@ -1,32 +1,35 @@
-
-    
 <?php include('header.php'); ?>
 
 <?php
-
-
-            include('connection.php');
+        include('connection.php');
 
 
          if(isset($_POST['search_input'])){
 
             $search_input = $_POST['search_input'];
 
+            $conn = connect_PDO();
             $stmt = $conn->prepare("SELECT * FROM posts WHERE caption like ? OR hashtags like ?  limit 12");
-            $stmt->bind_param("ss",$search_input,$search_input);
+            // $stmt->bind_param("ss",$search_input,$search_input);
+            $stmt->bindParam(1, $search_input, PDO::PARAM_STR);
+            $stmt->bindParam(2, $search_input, PDO::PARAM_STR);
             $stmt->execute();
-            $posts = $stmt->get_result();
+            // $posts = $stmt->get_result();
+            $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
          }else{
 
             //default keyword
             $search_input = "car";
-
+            $conn = connect_PDO();
             $stmt = $conn->prepare("SELECT * FROM posts WHERE caption like ? OR hashtags like ? limit 12");
-            $stmt->bind_param("ss",$search_input,$search_input);
+            // $stmt->bind_param("ss",$search_input,$search_input);
+            $stmt->bindParam(1, $search_input, PDO::PARAM_STR);
+            $stmt->bindParam(2, $search_input, PDO::PARAM_STR);
             $stmt->execute();
-            $posts = $stmt->get_result();
+            // $posts = $stmt->get_result();
+            $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
          }
