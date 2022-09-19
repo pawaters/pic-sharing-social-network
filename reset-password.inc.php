@@ -11,7 +11,7 @@ if (isset($_POST["reset-password-submit"])) {
         header("Location: login.php?error_message=Password or password repeat fields empty. Start again.");
         exit();
     } else if ($password != $passwordRepeat) {
-        header("Location: login.php?error_message=Password and password repeat do not match. Start again.");
+        header("Location: login.php?error_message=Password and repeat do not match. Start again.");
         exit();
     }
 
@@ -21,13 +21,16 @@ if (isset($_POST["reset-password-submit"])) {
 
     $sql = "SELECT * FROM pwdReset WHERE pwdResetSelector = ? AND pwdResetExpires >= $currentDate";
 
-    $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
+    // $stmt = mysqli_stmt_init($conn);
+    $conn = connect_PDO();
+    if (!$stmt = $conn->prepare($sql)) {
         header("Location: login.php?error_message=SQL error 1");
         exit();
     } else {
-        mysqli_stmt_bind_param($stmt, "s", $selector);
-        mysqli_stmt_execute($stmt);
+        // mysqli_stmt_bind_param($stmt, "s", $selector);
+        // mysqli_stmt_execute($stmt);
+        $stmt->bindParam(1, $selector, PDO::PARAM_STR);
+        $stmt->execute();
 
         $result = mysqli_stmt_get_result($stmt);
         $dump = var_dump($result);
