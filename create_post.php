@@ -26,9 +26,18 @@ if(isset($_POST['upload_image_btn'])){
   
 
     //create the post
+    $conn = connect_PDO();
     $stmt = $conn->prepare("INSERT INTO posts (user_id,likes,image,caption,hashtags,date,username,profile_image)
                             VALUES (?,?,?,?,?,?,?,?)");
-    $stmt->bind_param("iissssss",$id,$likes,$image_name,$caption,$hashtags,$date,$username,$profile_image);
+    // $stmt->bind_param("iissssss",$id,$likes,$image_name,$caption,$hashtags,$date,$username,$profile_image);
+    $stmt->bindParam(1, $id, PDO::PARAM_INT);
+    $stmt->bindParam(2, $likes, PDO::PARAM_INT);
+    $stmt->bindParam(3, $image_name, PDO::PARAM_STR);
+    $stmt->bindParam(4, $caption, PDO::PARAM_STR);
+    $stmt->bindParam(5, $hashtags, PDO::PARAM_STR);
+    $stmt->bindParam(6, $date, PDO::PARAM_STR);
+    $stmt->bindParam(7, $username, PDO::PARAM_STR);
+    $stmt->bindParam(8, $profile_image, PDO::PARAM_STR);
 
     if($stmt->execute()){
 
@@ -38,7 +47,8 @@ if(isset($_POST['upload_image_btn'])){
        
         //increase number of posts
         $stmt= $conn->prepare("UPDATE users SET posts=posts+1 WHERE id = ?");
-        $stmt->bind_param("i",$id);
+        // $stmt->bind_param("i",$id);
+        $stmt->bindParam(1, $id, PDO::PARAM_INT);
         $stmt->execute();
 
         $_SESSION['posts'] = $_SESSION['posts'] + 1;
