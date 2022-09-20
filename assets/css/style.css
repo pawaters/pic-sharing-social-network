@@ -1126,25 +1126,25 @@ body{
 
 /* VIDEO */
 
-.layout {
+.layout-video {
     width: 1000px;
     margin: 100px auto;
     text-align: center;
   }
 
-.row {
+.row-video {
 width: 100;
 position: relative;
 clear: both;
 }
 
-.cell {
+.cell-video {
 float: right;
 display: block;
 width: 50%;
 }
 
-.center {
+.center-video {
 text-align: center;
 }
 
@@ -1191,7 +1191,7 @@ text-align: center;
 padding-top: 30px;
 }
 
-.btn.btn-primary {
+.video-btn.video-btn-primary {
     display: inline-block;
     padding: 6px 12px;
     margin-bottom: 0;
