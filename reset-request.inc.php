@@ -13,30 +13,28 @@ if(isset($_POST["reset-request-submit"])) {
     require 'connection.php';
 
     $userEmail = $_POST["email"];
-
+    $conn = connect_PDO();
     $sql = "DELETE FROM pwdReset WHERE pwdResetEmail = ?";
-    $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
+    if (!$stmt = $conn->prepare($sql)) {
         header("Location: login.php?error_message=SQL error");
         exit();
     } else {
-        mysqli_stmt_bind_param($stmt, "s", $userEmail);
-        mysqli_stmt_execute($stmt);
+        $stmt->bindParam(1, $userEmail, PDO::PARAM_STR);
+        $stmt->execute();
     }
     //WHEN INSERTING, ALWAYS THINK "Is there any sensitive data to hash"
     $sql = "INSERT INTO pwdReset (pwdResetEmail, pwdResetSelector, pwdResetToken, pwdResetExpires) VALUES (?,?,?,?);" ;
-    $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
+    if (!$stmt = $conn->prepare($sql)) {
         header("Location: login.php?error_message=SQL error");
         exit();
     } else {
         $hashedToken = password_hash($token, PASSWORD_DEFAULT);
-        mysqli_stmt_bind_param($stmt, "ssss", $userEmail, $selector, $hashedToken, $expires);
-        mysqli_stmt_execute($stmt);
+        $stmt->bindParam(1, $userEmail, PDO::PARAM_STR);
+        $stmt->bindParam(2, $selector, PDO::PARAM_STR);
+        $stmt->bindParam(3, $hashedToken, PDO::PARAM_STR);
+        $stmt->bindParam(4, $expires, PDO::PARAM_STR);
+        $stmt->execute();
     }
-
-    mysqli_stmt_close($stmt);
-    //mysqli_close($sql);
 
     $to = $userEmail;
     $subject = "Reset your Password";

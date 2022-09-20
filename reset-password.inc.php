@@ -21,20 +21,17 @@ if (isset($_POST["reset-password-submit"])) {
 
     $sql = "SELECT * FROM pwdReset WHERE pwdResetSelector = ? AND pwdResetExpires >= $currentDate";
 
-    // $stmt = mysqli_stmt_init($conn);
+
     $conn = connect_PDO();
     if (!$stmt = $conn->prepare($sql)) {
         header("Location: login.php?error_message=SQL error 1");
         exit();
     } else {
-        // mysqli_stmt_bind_param($stmt, "s", $selector);
-        // mysqli_stmt_execute($stmt);
+
         $stmt->bindParam(1, $selector, PDO::PARAM_STR);
         $stmt->execute();
 
-        $result = mysqli_stmt_get_result($stmt);
-        $dump = var_dump($result);
-        if (!$row = mysqli_fetch_assoc($result)) {
+        if (!$row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             header("Location: login.php?error_message=".$dump ."SQL error 2. Selector: ".$selector. ".\br Current datE:" . $currentDate);
             exit();
         }
@@ -50,38 +47,36 @@ if (isset($_POST["reset-password-submit"])) {
                 $tokenEmail = $row['pwdResetEmail'];
                 
                 $sql = "SELECT * FROM users WHERE email = ?";
-                $stmt = mysqli_stmt_init($conn);
-                if (!mysqli_stmt_prepare($stmt, $sql)) {
+                if (!$stmt = $conn->prepare($sql)) {
                     header("Location: login.php?error_message=SQL error");
                     exit();
                 } else {
-                    mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
-                    mysqli_stmt_execute($stmt);
-                    $result = mysqli_stmt_get_result($stmt);
-                    if (!$row = mysqli_fetch_assoc($result)) {
+                    $stmt->bindParam(1, $tokenEmail, PDO::PARAM_STR);
+                    $stmt->execute();
+                    if (!$row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         header("Location: login.php?error_message=SQL error");
                         exit();
                     }
                     else {
                         
                         $sql = "UPDATE users SET password=? WHERE email=?";
-                        $stmt = mysqli_stmt_init($conn);
-                        if (!mysqli_stmt_prepare($stmt, $sql)) {
+                        if (!$stmt = $conn->prepare($sql)) {
                             header("Location: login.php?error_message=SQL error");
                             exit();
                         } else {
                             $newPwdHash = md5($password); 
-                            mysqli_stmt_bind_param($stmt, "ss", $newPwdHash, $tokenEmail);
-                            mysqli_stmt_execute($stmt);
+                            $stmt->bindParam(1, $newPwdHash, PDO::PARAM_STR);
+                            $stmt->bindParam(2, $tokenEmail, PDO::PARAM_STR);
+                            $stmt->execute();
 
                             $sql = "DELETE FROM pwdReset WHERE pwdResetEmail = ?";
-                            $stmt =  mysqli_stmt_init($conn);
-                            if (!mysqli_stmt_prepare($stmt, $sql)) {
+
+                            if (!$stmt = $conn->prepare($sql)) {
                                 header("Location: login.php?error_message=SQL error");
                                 exit();
                             } else {
-                                mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
-                                mysqli_stmt_execute($stmt);
+                                $stmt->bindParam(1, $tokenEmail, PDO::PARAM_STR);
+                                $stmt->execute();
                                 header("Location: login.php?success_message=Password Updated Successfully");
                             }
 
