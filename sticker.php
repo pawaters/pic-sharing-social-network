@@ -26,8 +26,8 @@
 		imagedestroy($img);
     }
 
-	$img = imagecreatefrompng('assets/img/rugbykids.png');
-	$new_img = stamp_to_img($img);
+	/* $img = imagecreatefrompng('assets/img/rugbykids.png'); */
+	/* $new_img = stamp_to_img($img); */
 
 	// echo $new_img;
 ?>

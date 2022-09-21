@@ -1,40 +1,33 @@
 
-//selectors
 
 const videoPlayer = document.querySelector("#player");
 const canvasElement = document.querySelector("#canvas");
 const captureButton = document.querySelector("#capture-btn");
 
-//1) get the video stream
-
 const startMedia = () => {
-    if (!("mediaDevices" in navigator)) {
-      navigator.mediaDevices = {};
-    }
-
-    // constraint of getUserMedia - to define if audio and video tracks required
-    // common getUserMedia errors: user denied access, user plugs after, already used by another app
-    if (!("getUserMedia" in navigator.mediaDevices)) {
-        // If the browser does not support video capturing, we try to create the object 
-        // using the features webkitGetUserMedia or mozGetUserMedia
-        navigator.mediaDevices.getUserMedia = constraints => {
-          const getUserMedia =
-            navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-        
-          if (!getUserMedia) {
-            return Promise.reject(new Error("getUserMedia is not supported"));
-          } else {
-            return new Promise((resolve, reject) =>
-              getUserMedia.call(navigator, constraints, resolve, reject)
-            );
-          }
-        };
-      }
 
     navigator.mediaDevices
         .getUserMedia({ video: true })
         .then(stream => {
         videoPlayer.srcObject = stream;
+    });
+
+    captureButton.addEventListener("click", event => {
+        //creates the object needed
+        const context = canvasElement.getContext("2d");
+        // draws in canvas
+        context.drawImage(videoPlayer, 0, 0, canvas.width, canvas.height);
+
+        // Convert the imae to a data-URL so it can be sabed
+        let picture = canvasElement.toDataURL();
+
+          // Save the file by posting it to the server
+            fetch("./api/save_image.php", {
+                method: "post",
+                //converts JS (here data-URL) to JSON
+                body: JSON.stringify({ data: picture })
+            });
+
     });
 };
 
