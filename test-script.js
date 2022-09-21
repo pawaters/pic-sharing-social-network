@@ -5,7 +5,7 @@ const canvasElement = document.querySelector("#canvas");
 const captureButton = document.querySelector("#capture-btn");
 
 const startMedia = () => {
-
+ 
     navigator.mediaDevices
         .getUserMedia({ video: true })
         .then(stream => {
