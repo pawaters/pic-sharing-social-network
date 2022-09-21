@@ -1,15 +1,15 @@
 <?php
 $folder = "uploads/images/";
-$destinationFolder = "/Applications/mampstack-8.1.4-0/apache2/htdocs/camagru/" . $folder; // you may need to adjust to your server configuration
+$destinationFolder = "/goinfre/pwaters/mamp/apache2/htdocs/camagru/" . $folder; // you may need to adjust to your server configuration
 $maxFileSize = 2 * 1024 * 1024;
 
-// Get the posted data
+// Get the posted data, raw, as a string. Cant use normal POST as we ant JSON string.
 $postdata = file_get_contents("php://input");
 
 if (!isset($postdata) || empty($postdata))
     exit(json_encode(["success" => false, "reason" => "Not a post data"]));
 
-// Extract the data
+// Store JSON data in a PHP variable, and then decode it into a PHP object:
 $request = json_decode($postdata);
 
 // Validate
