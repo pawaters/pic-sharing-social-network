@@ -18,15 +18,25 @@ const startMedia = () => {
         // draws in canvas
         context.drawImage(videoPlayer, 0, 0, canvas.width, canvas.height);
 
-        // Convert the imae to a data-URL so it can be sabed
+        // Convert the imae to a data-URL so it can be saved
         let picture = canvasElement.toDataURL();
 
+
           // Save the file by posting it to the server
-            fetch("./api/save_image.php", {
-                method: "post",
-                //converts JS (here data-URL) to JSON
-                body: JSON.stringify({ data: picture })
-            });
+            // fetch("./api/save_image.php", {
+            //     method: "post",
+            //     //converts JS (here data-URL) to JSON
+            //     body: JSON.stringify({ data: picture })
+            // });
+
+        /* ALWAYS DO WITH A TEST FILE
+        1) how to save picture in DB from canvasElement.toDataURL();
+        2) How to get it from there
+        3) apply sticker.
+        4) design the page.
+        When stuck, define step by step.
+        
+        */
 
     });
 };
@@ -41,7 +51,7 @@ captureButton.addEventListener("click", event => {
 
 
     // return a data URL containing a representation of the image. Easier to save.
-    let picture = canvasElement.toDataURL();
+    let picturre = canvasElement.toDataURL();
 });
 
 // 3) Add sticker

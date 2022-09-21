@@ -1,6 +1,7 @@
 <?php
 $folder = "uploads/images/";
-$destinationFolder = "/goinfre/pwaters/mamp/apache2/htdocs/camagru/" . $folder; // you may need to adjust to your server configuration
+$destinationFolder = "/goinfre/pwaters/mamp/apache2/htdocs/camagru/" . $folder;
+$destinationFolder = "/Applications/mampstack-8.1.4-0/apache2/htdocs/camagru/" . $folder; // you may need to adjust to your server configuration
 $maxFileSize = 2 * 1024 * 1024;
 
 // Get the posted data, raw, as a string. Cant use normal POST as we ant JSON string.
