@@ -51,9 +51,40 @@ captureButton.addEventListener("click", event => {
 
 
     // return a data URL containing a representation of the image. Easier to save.
-    let picturre = canvasElement.toDataURL();
+    let picture = canvasElement.toDataURL();
+    imageData = canvas.toDataURL().replace(/^data:image\/png;base64,/, '');
+    var formData = new FormData();
+    let text = "WOOOHOOOTEST";
+    formData.append('img', imageData);
+    formData.append('txt', text);
+    const values = [...formData.entries()];
+    console.log(values);
+
+    fetch("test-video.php",
+        {
+            method: "POST",
+            body: formData,
+        })
+        // (C) RETURN SERVER RESPONSE AS TEXT
+    .then((result) => {
+    if (result.status != 200) { throw new Error("Bad Server Response"); }
+    return result.text();
+    })
+ 
+  // (D) SERVER RESPONSE
+  .then((response) => {
+    console.log(response);
+  })
+ 
+  // (E) HANDLE ERRORS - OPTIONAL
+  .catch((error) => { console.log(error); });
+ 
+  // (F) PREVENT FORM SUBMIT
+  return false;
 });
 
 // 3) Add sticker
 
 window.addEventListener("load", event => startMedia());
+
+//Fetch : https://code-boxx.com/post-form-data-javascript-fetch/

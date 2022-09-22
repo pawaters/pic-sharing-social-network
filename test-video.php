@@ -16,12 +16,16 @@
     </form>
 
     <?php 
+        print_r($_POST);
+        echo $_POST['txt'];
         if(isset($_POST['sticker-btn'])) {
-            $img = $_POST['img'];
-            $new_img = stamp_to_img($img);
+            print_r($_POST);
+            // $new_img = stamp_to_img($img);
         }
     ?>
-    
     <script src="test-script.js"></script>
+    <!-- <script --> 
+        <!-- INCLUDE SCRIPT -->
+        <!-- DO SIMPLE EXAMPLE WITH FORMDATA AND FETCH API -->
 </body>
 </html>
