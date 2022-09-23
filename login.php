@@ -1,4 +1,3 @@
-<!-- To send a loggedin user to home directly -->
 <?php
 
 session_start();
