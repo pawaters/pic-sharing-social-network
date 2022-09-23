@@ -5,7 +5,20 @@
 	{
 		$conn = new PDO($DB_HOST, $DB_USER, $DB_PASSWORD);
 		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "CREATE DATABASE IF NOT EXISTS `users` (
+		$sql = "CREATE DATABASE IF NOT EXISTS php_project";
+		$conn->exec($sql);
+	}
+	catch(PDOException $e)
+	{
+		echo $sql . "<br>" . $e->getMessage();
+	}
+	$conn = null;
+
+	try
+	{
+		$conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$sql = "CREATE TABLE IF NOT EXISTS `users` (
         `id` int(11) NOT NULL AUTO_INCREMENT,
         `username` varchar(50) NOT NULL,
         `password` varchar(50) NOT NULL,
