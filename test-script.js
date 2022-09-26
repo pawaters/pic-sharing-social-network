@@ -51,17 +51,20 @@ captureButton.addEventListener("click", event => {
 
 
     // return a data URL containing a representation of the image. Easier to save.
-    let picture = canvasElement.toDataURL();
-    imageData = canvas.toDataURL().replace(/^data:image\/png;base64,/, '');
+    let picture = canvasElement.toDataURL('image/jpeg');
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', 'test-video.php', true);;
+
+    //what format to use?
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    //
+    xhr.send(response);
 
 
-    // 1) USE XHR to send imageData to POST
-
-    // 2) TAKE POST AND USE THE THE STICKER FUNCTION
 
 });
-
-// 3) Add sticker
 
 window.addEventListener("load", event => startMedia());
 

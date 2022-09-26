@@ -31,7 +31,7 @@
 
         let xhr = new XMLHttpRequest();
 
-        xhr.onload = function () {
+        xhr.onload  = function () {
             if (this.status == 200) {
                 document.getElementById('result').innerHTML = this.response;
             };
