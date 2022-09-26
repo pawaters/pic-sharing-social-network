@@ -60,7 +60,7 @@ captureButton.addEventListener("click", event => {
     const values = [...formData.entries()];
     console.log(values);
 
-    fetch("test-video.php",
+    fetch("send-fetch.php",
         {
             method: "POST",
             body: formData,
