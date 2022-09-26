@@ -53,34 +53,12 @@ captureButton.addEventListener("click", event => {
     // return a data URL containing a representation of the image. Easier to save.
     let picture = canvasElement.toDataURL();
     imageData = canvas.toDataURL().replace(/^data:image\/png;base64,/, '');
-    var formData = new FormData();
-    let text = "WOOOHOOOTEST";
-    formData.append('img', imageData);
-    formData.append('txt', text);
-    const values = [...formData.entries()];
-    console.log(values);
 
-    fetch("send-fetch.php",
-        {
-            method: "POST",
-            body: formData,
-        })
-        // (C) RETURN SERVER RESPONSE AS TEXT
-    .then((result) => {
-    if (result.status != 200) { throw new Error("Bad Server Response"); }
-    return result.text();
-    })
- 
-  // (D) SERVER RESPONSE
-  .then((response) => {
-    console.log(response);
-  })
- 
-  // (E) HANDLE ERRORS - OPTIONAL
-  .catch((error) => { console.log(error); });
- 
-  // (F) PREVENT FORM SUBMIT
-  return false;
+
+    // 1) USE XHR to send imageData to POST
+
+    // 2) TAKE POST AND USE THE THE STICKER FUNCTION
+
 });
 
 // 3) Add sticker

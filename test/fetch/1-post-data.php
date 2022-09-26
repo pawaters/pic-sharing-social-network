@@ -40,5 +40,6 @@
       <input type="email" id="email" value="jon@doe.com" required/>
       <input type="submit" value="Go!"/>
     </form>
+    <?php print_r($_POST);?>
   </body>
 </html>
