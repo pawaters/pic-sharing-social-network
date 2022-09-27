@@ -26,6 +26,9 @@
 		imagedestroy($img);
     }
 
+	//INPUT: GDImage
+	//OUTPUT:  SAME GDimage WITH STICKER
+
 	/* $img = imagecreatefrompng('assets/img/rugbykids.png'); */
 	/* $new_img = stamp_to_img($img); */
 

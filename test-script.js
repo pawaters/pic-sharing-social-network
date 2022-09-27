@@ -49,18 +49,18 @@ captureButton.addEventListener("click", event => {
     // Draw the image on the canvas
     context.drawImage(videoPlayer, 0, 0, canvas.width, canvas.height);
 
-
     // return a data URL containing a representation of the image. Easier to save.
     let picture = canvasElement.toDataURL('image/jpeg');
 
-    let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'test-video.php', true);;
 
-    //what format to use?
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // let xhr = new XMLHttpRequest();
+    // xhr.open('POST', 'test-video.php', true);;
 
-    //
-    xhr.send(response);
+    // //what format to use?
+    // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    // //
+    // xhr.send(response);
 
 
 
