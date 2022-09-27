@@ -27,7 +27,7 @@
         `followers` int(11) DEFAULT 0,
         `following` int(11) DEFAULT 0,
         `posts` int(11) DEFAULT 0,
-		`bio` varchar(50)  NOT NULL,
+		`bio` varchar(50)  DEFAULT 'default bio',
         PRIMARY KEY (`id`)
         )";
 		$conn->exec($sql);

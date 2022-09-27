@@ -31,9 +31,9 @@
                         </div>
                         <form class="login-form" id="signup-form" action="process_signup.php" method="POST">
 
-                        <?php if(isset($_GET['error_message'])) { ?>
-                            <p id="error_message" class="text-center alert-danger"> <?php echo $_GET['error_message']; ?></p>
-                        <?php }  ?>
+                            <?php if(isset($_GET['error_message'])) { ?>
+                                <p id="error_message" class="text-center alert-danger"> <?php echo $_GET['error_message']; ?></p>
+                            <?php }  ?>
 
                             
                             <div class="form-group">
@@ -162,28 +162,28 @@
 
     }
 
-        function verifyForm()
+    function verifyForm()
+    {
+        var password = document.getElementById('password').value;
+        var confirm_password = document.getElementById('confirm_password').value;
+        var error_message = document.getElementById('error_message');
+
+        if(password.length < 6)
         {
-            var password = document.getElementById('password').value;
-            var confirm_password = document.getElementById('confirm_password').value;
-            var error_message = document.getElementById('error_message');
-
-            if(password.length < 6)
-            {
-                error_message.innerHTML = "Password is too short";
-                return false;
-            }
-
-            if(password !== confirm_password)
-            {
-                error_message.innerHTML = "Passwords do not match";
-                return false;
-            }
-            return true;
-
-
+            error_message.innerHTML = "Password is too short";
+            return false;
         }
-    // TD: why that e?
+
+        if(password !== confirm_password)
+        {
+            error_message.innerHTML = "Passwords do not match";
+            return false;
+        }
+        return true;
+
+
+    }
+   
     document.getElementById('dark-btn').addEventListener('click',(e)=>{
         e.preventDefault();
 

@@ -1,5 +1,4 @@
 <?php
-    // //to change when applying PDO everywhere based on https://github.com/Microsmosis/Camagru-42/blob/master/php/comments.php
     // $conn = mysqli_connect("localhost", "root", "rootroot", "php_project")
     //     or die("DB connection failed");
 

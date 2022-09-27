@@ -2,7 +2,7 @@
 
 session_start();
 
-include('connection.php');
+include("connection.php");
 
 if(isset($_POST['signup_btn']))
 {
@@ -16,14 +16,10 @@ if(isset($_POST['signup_btn']))
         header('location: signup.php?error_message=passwords do not match');
         exit;
     }
-
-    $conn = connect_PDO();
-    $stmt = $conn->prepare(
-    "SELECT id 
-    FROM users 
-    WHERE username = ? OR email = ?");
     
-    // $stmt->bind_param("ss", $username, $email);
+    $conn = connect_PDO();
+    $stmt = $conn->prepare( "SELECT id FROM users WHERE username = ? OR email = ?");
+    
     $stmt->bindParam(1, $username, PDO::PARAM_STR);
     $stmt->bindParam(2, $email, PDO::PARAM_STR);
     $stmt->execute();
@@ -36,28 +32,32 @@ if(isset($_POST['signup_btn']))
     }
     else
     {
-        $stmt =  $conn->prepare(
-            "INSERT INTO users (username,email,password) 
-            VALUES (?,?,?)");
-        // $stmt->bind_param("sss", $username, $email, md5($password));
-        $stmt->bindParam(1, $username, PDO::PARAM_STR);
-        $stmt->bindParam(2, $email, PDO::PARAM_STR);
-        $stmt->bindParam(3, md5($password), PDO::PARAM_STR);
+        try 
+        {
+            $stmt =  $conn->prepare(
+                "INSERT INTO users (username, email, password) 
+                VALUES (? ,? ,?)");
+            $stmt->bindParam(1, $username, PDO::PARAM_STR);
+            $stmt->bindParam(2, $email, PDO::PARAM_STR);
+            $stmt->bindParam(3, md5($password), PDO::PARAM_STR);
+            $stmt->execute();
+        } 
+        catch (PDOException $error) {
+            echo $error->getMessage(); 
+            exit;
+        }
         
-        if ($stmt->execute())
+
+        //error is between line 44 and 47
+        try 
         {
             $stmt = $conn->prepare("SELECT id, username, email, image, following, followers, posts, bio
-            FROM users 
-            WHERE username = ?");
-            // $stmt->bind_param("s", $username);
+                                    FROM users 
+                                    WHERE username = ?");
             $stmt->bindParam(1, $username, PDO::PARAM_STR);
             $stmt->execute();
-            
-            // $stmt->bind_result($id, $username, $email, $image, $following, $followers, $posts, $bio);
-            // $stmt->fetch();
             $data = $stmt->fetch(PDO::FETCH_ASSOC);
             
-            //store user info in the session
             $_SESSION['id'] =  $data['id'];
             $_SESSION['username'] =  $data['username'];
             $_SESSION['email'] =  $data['email'];
@@ -72,7 +72,7 @@ if(isset($_POST['signup_btn']))
             header("location: index.php");
             
         }
-        else
+        catch (PDOException $error) 
         {
             header("location: signup.php?error_message=error occurred");
             exit;
