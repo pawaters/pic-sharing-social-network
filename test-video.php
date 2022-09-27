@@ -9,18 +9,15 @@
     <?php include('sticker.php'); ?>
     <video id="player" autoplay>VIDEO </video>
     <canvas id="canvas" ></canvas>
+
     
-    <button id="capture-btn" type="submit" >Capture</button>
     <form method="post">
-        <button id="sticker-btn" name="sticker-btn">Add croissant</button>
+        <input type="hidden" id="webcame-file" value="" name="webcam_file">
+        <button id="capture-btn" type="submit" >Capture</button>
     </form>
 
     <?php 
         print_r($_POST); 
-        // if(isset($_POST['sticker-btn'])) {
-        //     print_r($_POST);
-        //     // $new_img = stamp_to_img($img);
-        // }
     ?>
     <script src="test-script.js"></script>
 
