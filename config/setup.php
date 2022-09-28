@@ -92,6 +92,7 @@
             `date` DATETIME  NOT NULL DEFAULT CURRENT_TIMESTAMP,
             `username` varchar(50)  NOT NULL,
             `profile_image` text NOT NULL,
+			`webcam` text NOT NULL,
             PRIMARY KEY (`id`) 
           )";
 		$conn->exec($sql);
