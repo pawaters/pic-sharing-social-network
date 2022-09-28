@@ -4,6 +4,8 @@ const videoPlayer = document.querySelector("#player");
 const canvasElement = document.querySelector("#canvas");
 const captureButton = document.querySelector("#capture-btn");
 
+//1) Get the stream going on load
+
 const startMedia = () => {
  
     navigator.mediaDevices
@@ -11,16 +13,9 @@ const startMedia = () => {
         .then(stream => {
         videoPlayer.srcObject = stream;
     });
-
-    captureButton.addEventListener("click", event => {
-        //creates the object needed
-        const context = canvasElement.getContext("2d");
-        // draws in canvas
-        context.drawImage(videoPlayer, 0, 0, canvas.width, canvas.height);
-    });
 };
 
-// 2) Capture the video in canvas
+// 2) Capture the video in canvas with default sticker on clicking "Capture"
 
 captureButton.addEventListener("click", event => {
     // returns drawing context on the canvas

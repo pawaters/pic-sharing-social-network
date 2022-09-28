@@ -8,12 +8,14 @@
     <?php include('header_no_login.php'); ?>
     <?php include('sticker.php'); ?>
     <video id="player" autoplay>VIDEO </video>
-    <canvas id="canvas" ></canvas>
 
+    <canvas id="canvas" ></canvas>
     
     <form method="post">
-        <input type="hidden" id="webcame-file" value="" name="webcam_file">
-        <button id="capture-btn" type="submit" >Capture</button>
+        
+        <input type="hidden" id="webcam-file" value="" name="webcam_file">
+        <button id="capture-btn" >Capture</button>
+        
     </form>
 
     <?php 
