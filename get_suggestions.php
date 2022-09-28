@@ -7,18 +7,9 @@ $user_id = $_SESSION['id'];
 $conn = connect_PDO();
 $stmt = $conn->prepare("SELECT other_user_id FROM followings 
                         WHERE user_id = ?");
-// $stmt->bind_param("i", $user_id);
 $stmt->bindParam(1, $user_id, PDO::PARAM_INT);
 $stmt->execute();
 
-// $result = $stmt->get_result();
-// while($row = $result->fetch_array(MYSQLI_NUM))
-// {
-//     foreach($row as $r)
-//     {
-//         $ids[] = $r; //review that in detail to really understand
-//     }
-// }
 while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
     foreach($row as $r){
         $ids[] = $r;
