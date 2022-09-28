@@ -17,7 +17,7 @@ if(isset($_POST['upload_image_btn'])){
     $date = date("Y-m-d H:i:s");
 
     if(strlen($caption) > 200 || strlen($hashtags) > 200){
-        header("location: camera.php?error_message=caption/text is too long");
+        header("location: upload.php?error_message=caption/text is too long");
         exit;
     }
 
@@ -54,11 +54,11 @@ if(isset($_POST['upload_image_btn'])){
         $_SESSION['posts'] = $_SESSION['posts'] + 1;
         
 
-        header("location: camera.php?success_message=Post has been created successfully&image_name=".$image_name);
+        header("location: upload.php?success_message=Post has been created successfully&image_name=".$image_name);
         exit;
 
     }else{
-        header("location: camera.php?error_message=error occured, try again");
+        header("location: upload.php?error_message=error occured, try again");
         exit;
 
     }
@@ -71,7 +71,7 @@ if(isset($_POST['upload_image_btn'])){
 
 }else{
 
-    header("location: camera.php?error_message=error occured, try again");
+    header("location: upload.php?error_message=error occured, try again");
     exit;
 
 
