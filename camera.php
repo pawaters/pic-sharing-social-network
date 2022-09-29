@@ -15,25 +15,25 @@
 				<div style="width:90%;">
 					<form style="width:95%;"  class="camera-form" method="POST" action="create_camera_post.php" enctype="multipart/form-data">
 						<div>
-							<p class="sticker-description">1. Choose a sticker to jazz up your awesome photo!</p>
+							<p class="sticker-description">1. First, Click on one or more stickers (Do it first, or next step wont be available!)</p>
 							<div class="stickers-box">
 								<div class="stickers-container">
-									<img class="sticker" src="assets/stickers/different.png" alt="rugby-sticker" id="sticker1">
-									<img class="sticker" src="assets/stickers/football.png" alt="rugby-sticker" id="sticker2">
-									<img class="sticker" src="assets/stickers/love.png" alt="rugby-sticker" id="sticker3">
-									<img class="sticker" src="assets/stickers/pink.png" alt="rugby-sticker" id="sticker4">
-									<img class="sticker" src="assets/stickers/rugby.png" alt="rugby-sticker" id="sticker5">
-									<img class="sticker" src="assets/stickers/vibes.png" alt="rugby-sticker" id="sticker6">
+									<img style="width:100px;" class="sticker" src="assets/stickers/different.png" alt="rugby-sticker" id="sticker1">
+									<img style="width:100px;" class="sticker" src="assets/stickers/football.png" alt="rugby-sticker" id="sticker2">
+									<img style="width:100px;" class="sticker" src="assets/stickers/love.png" alt="rugby-sticker" id="sticker3">
+									<img style="width:100px;" class="sticker" src="assets/stickers/pink.png" alt="rugby-sticker" id="sticker4">
+									<img style="width:100px" class="sticker" src="assets/stickers/rugby.png" alt="rugby-sticker" id="sticker5">
 								</div>
 							</div>
 						</div>
-						<p style="margin-top: 30px;" class="sticker-description">2. Take an awesome awesome photo!</p>
+						<p style="margin-top: 30px;" class="sticker-description">2. Start your webcam</p>
 						<button class="capture-btn" id="start-camera">Start Camera</button>
 						<div>
 							<video class="is-hidden" id="video" width="700" height="500" autoplay></video>
 						</div>
+						<p style="margin-top: 30px;" class="sticker-description">3. Take your photo</p>
 						<button class="capture-btn" id="click-photo">Capture Photo</button>
-						<p style="margin-top: 30px;" class="sticker-description">The awesome photo you have taken:</p>
+						<p style="margin-top: 30px;" class="sticker-description">4. Check below the current state of your photo with sticker:</p>
 						<div style="position:relative;">
 							<div style="position:absolute; ">
 								<canvas class="is-hidden" width="700" height="500" id="canvas"></canvas>
@@ -48,9 +48,9 @@
 								<input type="hidden" id="sticker3_path" value="" name="sticker3_path">
 								<input type="hidden" id="sticker4_path" value="" name="sticker4_path">
 								<input type="hidden" id="sticker5_path" value="" name="sticker5_path">
-								<input type="hidden" id="sticker6_path" value="" name="sticker6_path">
 							</div>
 						</div>
+						<p style="margin-top: 30px;" class="sticker-description">5. Add a caption and hashtag, then hit "publish"</p>
 						<div class="control">
 							<input type="text" class="my-input input" name="caption" placeholder="Write a caption here" required>
 						</div>
@@ -64,39 +64,35 @@
 				</div>
             </div>
         </div>
+		<div class="thumbnails-box">
+			<p style="margin-top: 30px;" class="sticker-description"> Below you can check your previous creations:</p>
+			<?php
+					
+				require_once('connection.php');
+				
+				$user_id = $_SESSION['id'];
+				$webcam = 1;
 
-    </div>
+				try {
+					$conn = connect_PDO();
+					$stmt = $conn->prepare("SELECT * FROM posts WHERE user_id = ? AND webcam = ? ORDER BY date DESC");
+					$stmt->bindParam(1, $user_id, PDO::PARAM_INT);
+					$stmt->bindParam(2, $webcam, PDO::PARAM_INT);
+					$stmt->execute();
+					$get_posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				} catch (PDOException $error) {
+					echo $error->getMessage(); 
+					exit;
+				}
+				$conn = null;
 
-    <div class="thumbnails-box">
-					<p>🌟 Your previous awesome photos 🌟</p>
-						<?php
-							 
-							require_once('connection.php');
-							
-							$user_id = $_SESSION['id'];
-							$webcam = 1;
-
-							try {
-								$conn = connect_PDO();
-								$stmt = $conn->prepare("SELECT * FROM posts WHERE user_id = ? AND webcam = ? ORDER BY date DESC");
-								$stmt->bindParam(1, $user_id, PDO::PARAM_INT);
-								$stmt->bindParam(2, $webcam, PDO::PARAM_INT);
-								$stmt->execute();
-								$get_posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-							} catch (PDOException $error) {
-								echo $error->getMessage(); 
-								exit;
-							}
-							$conn = null;
-
-							foreach($get_posts as $post){ 
-						?>
-							<img src="<?php echo "assets/img/".$post['image']; ?>" alt="user-post">
-						<?php } ?>
-							
-				</div>
-			</div>
+				foreach($get_posts as $post){ 
+				?>
+					<img src="<?php echo "assets/img/".$post['image']; ?>" alt="user-post">
+				<?php } ?>
 		</div>
+    </div>
+		
 	</div>
 
 	<script>	
@@ -112,7 +108,6 @@
 		let sticker3 = document.getElementById("sticker3_path");
 		let sticker4 = document.getElementById("sticker4_path");
 		let sticker5 = document.getElementById("sticker5_path");
-		let sticker6 = document.getElementById("sticker6_path");
 
 		camera_button.disabled = true;
 		capture_button.disabled = true;
@@ -156,10 +151,6 @@
 				case 'sticker5':
 					stickers_ctx.drawImage(Selectedsticker, 30, 200, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
 					sticker5.value = "assets/stickers/rugby.png"
-					break;
-				case 'sticker6':
-					stickers_ctx.drawImage(Selectedsticker, 300, 200, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
-					sticker6.value = "assets/stickers/vibes.png"
 					break;
 			}
 			let stickersUrl = stickers_canvas.toDataURL();	
