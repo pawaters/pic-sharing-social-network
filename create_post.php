@@ -4,6 +4,7 @@
 session_start();
 
 include("connection.php");
+include("sticker.php");
 
 if(isset($_POST['upload_image_btn'])){
 
@@ -23,7 +24,7 @@ if(isset($_POST['upload_image_btn'])){
 
   
     $image_name = strval(time()) . ".jpeg";
-  
+    stamp_to_img($image);
 
     //create the post
     $conn = connect_PDO();
