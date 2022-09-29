@@ -22,14 +22,13 @@ if(isset($_POST['upload_image_btn'])){
     }
 
   
-    $image_name = strval(time()) . ".jpeg"; //5654564545.jpeg
+    $image_name = strval(time()) . ".jpeg";
   
 
     //create the post
     $conn = connect_PDO();
     $stmt = $conn->prepare("INSERT INTO posts (user_id,likes,image,caption,hashtags,date,username,profile_image)
                             VALUES (?,?,?,?,?,?,?,?)");
-    // $stmt->bind_param("iissssss",$id,$likes,$image_name,$caption,$hashtags,$date,$username,$profile_image);
     $stmt->bindParam(1, $id, PDO::PARAM_INT);
     $stmt->bindParam(2, $likes, PDO::PARAM_INT);
     $stmt->bindParam(3, $image_name, PDO::PARAM_STR);
