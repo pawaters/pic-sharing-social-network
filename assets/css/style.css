@@ -897,22 +897,22 @@ body{
 
 
 
-/* Camera */
+/* Upload */
 
-.camera-container{
+.upload-container{
     max-width: 93.5rem;
     margin: 0 auto;
     padding: 0 2rem;
 }
 
 
-.camera{
+.upload{
     display: flex;
     flex-wrap: wrap;
     padding: 1rem;
 }
 
-.camera-image{
+.upload-image{
     position: relative;
     flex: 1 0 22rem;
     margin: 1rem;
@@ -921,7 +921,7 @@ body{
     text-align: center;
 }
 
-.camera-form{
+.upload-form{
     width: 50%;
     margin: 5px auto;
 }
@@ -1213,4 +1213,31 @@ canvas {
 
 .thumbnails-box p{
 	padding-bottom: 5px;
+}
+
+/*Camera page*/
+
+.camera-container{
+	max-width: 93.5rem;
+	margin: 0 auto;
+	padding: 0 2rem;
+}
+
+.camera{
+	display: flex;
+	flex-wrap: wrap;
+	padding-bottom: 3rem;
+}
+
+.camera-img{
+	position: relative;
+	flex: 1 0 22rem;
+	margin: 1rem;
+/* 	cursor: pointer;
+ */	text-align: center;
+}
+
+.camera-form{
+	width: 80%;
+	margin: 0px 0;
 }

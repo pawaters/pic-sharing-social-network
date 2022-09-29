@@ -15,7 +15,7 @@
                 <form class="camera-form" method="POST" action="create_camera_post.php" enctype="multipart/form-data">
                     <div>
                         <p class="sticker-description">1. Choose a sticker to jazz up your awesome photo!</p>
-                            <div class="stickers-box">
+                            <div class="stickers-box" style="display:flex;">
                                 <div class="stickers-container">
                                     <img class="sticker" src="assets/stickers/different.png" alt="rugby-sticker" id="sticker1">
                                     <img class="sticker" src="assets/stickers/football.png" alt="rugby-sticker" id="sticker2">

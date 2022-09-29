@@ -1,6 +1,6 @@
 <?php require_once('header_no_login.php');?>
     
-<div class="camera-container">
+<div class="upload-container">
 
     <?php if(isset($_GET['success_message'])) { ?>
         <p class="mt-4 text-center alert-success"><?php echo $_GET['success_message']; ?> </p>
@@ -10,17 +10,10 @@
         <p class="mt-4 text-center alert-danger"><?php echo $_GET['error_message']; ?> </p>
     <?php } ?>
         
-    <div class="camera">
-        <div class="camera-image">
+    <div class="upload">
+        <div class="upload-image">
 
-        <?php  if(isset($_GET['image_name'])) { ?>
-                <img style="width: 400px;" src="<?php echo "assets/img/".$_GET['image_name']; ?>">
-            <?php } else { ?>
-                <img style="width: 400px;" src="assets/img/rugby1.jpeg" alt="">
-            <?php } ?>
-
-
-            <form class="camera-form" method="POST" action="create_post.php" enctype="multipart/form-data">
+            <form class="upload-form" method="POST" action="create_post.php" enctype="multipart/form-data">
                 <div class="form-group">
                     <input type="file" name="image" class="form-control" required>
                 </div>
