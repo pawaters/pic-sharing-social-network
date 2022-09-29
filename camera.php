@@ -15,7 +15,7 @@
 				<div style="width:90%;">
 					<form style="width:95%;"  class="camera-form" method="POST" action="create_camera_post.php" enctype="multipart/form-data">
 						<div>
-							<p class="sticker-description">1. First, Click on one or more stickers (Do it first, or next step wont be available!)</p>
+							<p class="sticker-description">1. First, Click on one or more stickers (Do it first, or next button won't be clickable!)</p>
 							<div class="stickers-box">
 								<div class="stickers-container">
 									<img style="width:100px;" class="sticker" src="assets/stickers/different.png" alt="rugby-sticker" id="sticker1">
@@ -28,18 +28,21 @@
 						</div>
 						<p style="margin-top: 30px;" class="sticker-description">2. Start your webcam</p>
 						<button class="capture-btn" id="start-camera">Start Camera</button>
+						<!-- 2. The video stream -->
 						<div>
 							<video class="is-hidden" id="video" width="700" height="500" autoplay></video>
 						</div>
 						<p style="margin-top: 30px;" class="sticker-description">3. Take your photo</p>
 						<button class="capture-btn" id="click-photo">Capture Photo</button>
-						<p style="margin-top: 30px;" class="sticker-description">4. Check below the current state of your photo with sticker:</p>
+						<p style="margin-top: 30px;" class="sticker-description">4. Check below the current state of the image with sticker(s):</p>
+						<!-- Both canvas overlap: webcam canvas and sticker canvas -->
 						<div style="position:relative;">
+							<!-- webcam canvas -->
 							<div style="position:absolute; ">
 								<canvas class="is-hidden" width="700" height="500" id="canvas"></canvas>
 								<input type="hidden" id="webcam-file" value="" name="webcam_file">
 							</div>
-							<!-- <p style="margin-top: 30px;" class="sticker-description">The stickers you have chosen:</p> -->
+							<!-- sticker canvas -->
 							<div style="position:relative; ">
 								<canvas class="is-hidden" width="700" height="500" id="stickers_canvas"></canvas>
 								<input type="hidden" id="sticker-canvas" value="" name="sticker-canvas">
@@ -112,14 +115,17 @@
 		camera_button.disabled = true;
 		capture_button.disabled = true;
 
+		//when clicking on a sticker, activates button, draws sticker on sticker canvas
 		for(let i=0; i<filter.length; i++){
 			filter[i].addEventListener("click", (e) => {
 				camera_button.disabled = false;
 				capture_button.disabled = false;
+				// Gets the id of the element that triggered the event
 				myCanvas(e.target.id);
 			})
 		}
 		
+		//if does not work --> upload option
 		camera_button.addEventListener('click', async function() {
 			let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
 			video.classList.remove("is-hidden");
