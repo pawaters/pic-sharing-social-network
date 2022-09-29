@@ -1127,7 +1127,7 @@ body{
 
 /*Stickers*/
 
-.sticker-description{
+.sticker-description p{
 	font-size: 18px;
 	text-align: center;
 	margin: 10px 0;
@@ -1156,6 +1156,10 @@ body{
 
 .stickers-container img{
 	padding: 5px;
+}
+
+.sticker {
+    
 }
 
 .canvas-container{
