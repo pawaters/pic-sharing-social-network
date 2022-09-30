@@ -95,8 +95,6 @@
 				<?php } ?>
 		</div>
     </div>
-		
-	</div>
 
 	<script>	
 

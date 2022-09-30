@@ -1172,7 +1172,7 @@ body{
 }
 
 .canvas-container img{
-	position:absolute;
+    position:absolute;
 	z-index:1;
 }
 

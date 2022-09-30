@@ -17,7 +17,7 @@ require_once('header.php');
 	<div class="camera">
 		<div class="camera-img" style="display:flex;">
 			<div style="width:90%;">
-				<form style="width:95%;"  class="camera-form" method="POST" action="create_uploaded_post.php" enctype="multipart/form-data">
+				<form class="camera-form" method="POST" action="create_uploaded_post.php" enctype="multipart/form-data">
 					<p class="sticker-description">1. Upload your image</p>
 					<div class="canvas-container">
 						<img id="picture">
@@ -26,10 +26,10 @@ require_once('header.php');
 					</div>
 					<input accept="image/*" type="file" class="my-input input" id="imgInp" name="image" required>
 					<!-- TD: review these classes to the same in "other upload"-->
-					<div class="form-control">
+					<div class="control">
 						<input type="text"  class="my-input input" name="caption" placeholder="Write a caption here" required>
 					</div>
-					<div class="form-control">
+					<div class="control">
 						<input type="text"  class="my-input input" name="caption" placeholder="Write a caption here" required>
 					</div>
 					<div>
@@ -49,34 +49,35 @@ require_once('header.php');
 					</div>
 				</form>
 			</div>
-			<div class="thumbnails-box">
-				<p style="margin-top: 30px;" class="sticker-description"> Below you can check your previous creations:</p>
-				<?php
-						
-					require_once('connection.php');
-					
-					$user_id = $_SESSION['id'];
-					$webcam = 0;
-
-					try {
-						$conn = connect_PDO();
-						$stmt = $conn->prepare("SELECT * FROM posts WHERE user_id = ? AND webcam = ? ORDER BY date DESC");
-						$stmt->bindParam(1, $user_id, PDO::PARAM_INT);
-						$stmt->bindParam(2, $webcam, PDO::PARAM_INT);
-						$stmt->execute();
-						$get_posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-					} catch (PDOException $error) {
-						echo $error->getMessage(); 
-						exit;
-					}
-					$conn = null;
-
-					foreach($get_posts as $post){ 
-				?>
-						<img src="<?php echo "assets/img/".$post['image']; ?>" alt="user-post">
-				<?php } ?>
+		
 		</div>
-		</div>
+	</div>
+	<div class="thumbnails-box">
+		<p style="margin-top: 30px;" class="sticker-description"> Below you can check your previous creations:</p>
+		<?php
+				
+			require_once('connection.php');
+			
+			$user_id = $_SESSION['id'];
+			$webcam = 0;
+
+			try {
+				$conn = connect_PDO();
+				$stmt = $conn->prepare("SELECT * FROM posts WHERE user_id = ? AND webcam = ? ORDER BY date DESC");
+				$stmt->bindParam(1, $user_id, PDO::PARAM_INT);
+				$stmt->bindParam(2, $webcam, PDO::PARAM_INT);
+				$stmt->execute();
+				$get_posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			} catch (PDOException $error) {
+				echo $error->getMessage(); 
+				exit;
+			}
+			$conn = null;
+
+			foreach($get_posts as $post){ 
+		?>
+				<img src="<?php echo "assets/img/".$post['image']; ?>" alt="user-post">
+		<?php } ?>
 	</div>
 </div>
 
