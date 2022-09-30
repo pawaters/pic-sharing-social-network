@@ -15,7 +15,7 @@ if(isset($_POST['login_btn']))
     $conn = connect_PDO();
     $stmt = $conn->prepare("SELECT id, username, email, image, followers, following, posts, bio
                             FROM users
-                            WHERE email = ? AND password = ?");
+                            WHERE email = ? AND password = ? LIMIT 1");
 
     $stmt->bindParam(1, $email, PDO::PARAM_STR);
     $stmt->bindParam(2, $password, PDO::PARAM_STR);
@@ -25,6 +25,11 @@ if(isset($_POST['login_btn']))
 
     if($data) 
     {
+        if ($data['verified'] == 0)
+        {
+            header('location: login.php?error_message=Please verify your email via the link sent to you, then login.');
+            exit;
+        } else {
         //now store values in SESSION
         $_SESSION['id'] =  $data['id'];
         $_SESSION['username'] =  $data['username'];
@@ -34,9 +39,11 @@ if(isset($_POST['login_btn']))
         $_SESSION['following'] =  $data['following'];
         $_SESSION['post'] =  $data['post'];
         $_SESSION['bio'] =  $data['bio'];
+        $_SESSION['verified'] =  $data['verified'];
 
         //take user to homepage
         header('location: index.php');
+        }
     }
     else 
     {
