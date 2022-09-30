@@ -939,6 +939,9 @@ body{
     border-radius: 3px;
 }
 
+.my-input{
+	margin: 0.5rem;
+}
 
 .search-component{
     display: flex;
