@@ -11,19 +11,59 @@
                     <p class="mt-4 text-center alert-danger"><?php echo $_GET['error_message']; ?> </p>
                 <?php } ?>
 
-                <h1>Reset your password</h1>
-                <p>An email will be sent to you with instructions on how to reset your password</p>
-            
-                <form action="reset-request.inc.php" method="post">
-                    <div class="form-group">
-                        <div class="login-input">
-                            <input type="text" name="email" placeholder="Type your email address...">
-                        </div>
-                    </div>
-                    <div class="btn-group">
-                        <button class="login-btn" name="reset-request-submit" type="submit">Receive email for password reset</button>
-                    </div>   
-                </form>
+                <?php
+                    $vkey = $_GET["vkey"]; 
+
+                    if(empty($vkey)) {
+                        header("Location: verify.php?error_message=Error - Could not find email to validate.");
+                        exit();
+                    } else {
+                            ?>
+                            <h1>Reset your password</h1>
+                            <?php 
+                            
+                            require_once 'connection.php';
+
+                            $sql = "SELECT verified, vkey FROM users WHERE verified = 0 and vkey = ? LIMIT 1";
+
+                            try {
+                                $conn = connect_PDO();
+                                $stmt = $conn->prepare($sql);
+                                $stmt->bindParam(1, $vkey, PDO::PARAM_STR);  
+                                $stmt->execute();
+                                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                                if (!$row) {
+                                    header("Location: verify.php?error: Already verified, Invalid SQL or account");
+                                    exit();
+                                }
+                                else {
+                                    $sql = "UPDATE users SET verified = 1 WHERE vkey = ? LIMIT 1";
+                                    if (!$stmt = $conn->prepare($sql)) 
+                                    {
+                                        header("Location: verify.php?error_message=SQL error");
+                                        exit();
+                                    } else {
+                                        $stmt->bindParam(1, $vkey, PDO::PARAM_STR);  
+                                        $stmt->execute();
+                                        header("Location: index.php?success_message=Your email has been verified!");
+                                        exit();
+                                    } 
+                                }
+                            } catch (PDOException $error) {
+                                echo $error->getMessage(); 
+                                exit;
+                            }
+                            $conn = null;
+                            
+                            ?>
+
+                            <?php
+                        }
+                ?>
+
+                <h1>Verify your email</h1>
+                
+                
 
             </div>
         </div>
