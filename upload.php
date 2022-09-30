@@ -74,10 +74,11 @@ require_once('header.php');
 			}
 			$conn = null;
 
-			foreach($get_posts as $post){ 
-		?>
-				<img src="<?php echo "assets/img/".$post['image']; ?>" alt="user-post">
-		<?php } ?>
+			foreach($get_posts as $post){ ?>
+				<div class="post">
+					<img src="<?php echo "assets/img/" . $post['image']; ?>" class="post-img">
+				</div>
+			<?php } ?>
 	</div>
 </div>
 

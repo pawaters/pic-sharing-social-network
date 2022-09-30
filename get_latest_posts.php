@@ -16,11 +16,6 @@ $stmt = $conn->prepare("SELECT COUNT(*) FROM posts");
 $stmt->execute();
 $total_posts = $stmt->fetchColumn();
 
-// OLD mySQLi code _
-// $stmt->bind_result($total_posts);
-// $stmt->store_result();
-// $stmt->fetch();
-
 $total_posts_per_page = 6;
 
 $offset = ($page_no - 1) * $total_posts_per_page;
