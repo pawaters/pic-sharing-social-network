@@ -13,7 +13,7 @@ if(isset($_POST['login_btn']))
     $password = md5($_POST['password']); 
     
     $conn = connect_PDO();
-    $stmt = $conn->prepare("SELECT id, username, email, image, followers, following, posts, bio
+    $stmt = $conn->prepare("SELECT id, username, email, image, followers, following, posts, bio, verified
                             FROM users
                             WHERE email = ? AND password = ? LIMIT 1");
 
@@ -25,7 +25,8 @@ if(isset($_POST['login_btn']))
 
     if($data) 
     {
-        if ($data['verified'] == 0)
+        $verified = $data['verified'];
+        if ($verified == 0)
         {
             header('location: login.php?error_message=Please verify your email via the link sent to you, then login.');
             exit;
