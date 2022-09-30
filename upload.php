@@ -26,10 +26,10 @@ require_once('header.php');
 					</div>
 					<input accept="image/*" type="file" class="my-input input" id="imgInp" name="image" required>
 					<!-- TD: review these classes to the same in "other upload"-->
-					<div class="control">
+					<div>
 						<input type="text"  class="my-input input" name="caption" placeholder="Write a caption here" required>
 					</div>
-					<div class="control">
+					<div>
 						<input type="text"  class="my-input input" name="hashtags" placeholder="add hastags here" required>
 					</div>
 					<div>
@@ -53,7 +53,7 @@ require_once('header.php');
 		
 		</div>
 	</div>
-	<div class="thumbnails-box">
+	<div class="left-col">
 		<p style="margin-top: 30px;" class="sticker-description"> Below you can check your previous creations:</p>
 		<?php
 				
@@ -76,10 +76,13 @@ require_once('header.php');
 			$conn = null;
 
 			foreach($get_posts as $post){ ?>
-				<div class="post">
-					<img src="<?php echo "assets/img/" . $post['image']; ?>" class="post-img">
+				<div class="post">	
+					<div class="post-img">
+						<img src="<?php echo "assets/img/" . $post['image']; ?>" class="post-img">
+					</div>
 				</div>
 			<?php } ?>
+			
 	</div>
 </div>
 
