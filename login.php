@@ -50,7 +50,6 @@ if(isset($_SESSION['id'])) {
                             <p id="success_message" class="text-center alert alert-success"><?php echo $_GET['success_message']; ?> </p>
                         <?php } ?>
 
-                        <!-- //ERROR MESSAGE -->
                         <?php  if(isset($_GET['error_message'])){  ?>
                             <p id="error_message" class="text-center alert alert-danger"> <?php echo $_GET['error_message']; ?> </p>
                         <?php    }?>

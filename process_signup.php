@@ -69,7 +69,7 @@ if(isset($_POST['signup_btn']))
 
 
             //return to homepage
-            header("location: index.php");
+            header("location: index.php?error_message=Signup successful!");
             
         }
         catch (PDOException $error) 

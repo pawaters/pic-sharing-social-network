@@ -34,7 +34,6 @@
                             <?php if(isset($_GET['error_message'])) { ?>
                                 <p id="error_message" class="text-center alert-danger"> <?php echo $_GET['error_message']; ?></p>
                             <?php }  ?>
-
                             
                             <div class="form-group">
                                 <div class="login-input">
