@@ -18,10 +18,10 @@ require_once('header.php');
 		<div class="camera-img" style="display:flex;">
 			<div style="width:90%;">
 				<form class="camera-form" method="POST" action="create_uploaded_post.php" enctype="multipart/form-data">
-					<p class="sticker-description">1. Upload your image</p>
+					<p class="sticker-description" style="margin-top: 30px;">1. SELECT AN IMAGE TO UPLOAD</p>
 					<div class="canvas-container">
 						<img id="picture">
-						<canvas width="700" height="500" id="myCanvas"></canvas>
+						<canvas class="d-none" width="700" height="500" id="myCanvas"></canvas>
 						<input type="hidden" id="upload-file" value="" name="upload_file">
 					</div>
 					<input accept="image/*" type="file" class="my-input input" id="imgInp" name="image" required>
@@ -30,10 +30,10 @@ require_once('header.php');
 						<input type="text"  class="my-input input" name="caption" placeholder="Write a caption here" required>
 					</div>
 					<div class="control">
-						<input type="text"  class="my-input input" name="caption" placeholder="Write a caption here" required>
+						<input type="text"  class="my-input input" name="hashtags" placeholder="add hastags here" required>
 					</div>
 					<div>
-						<p class="sticker-description">1. First, Click on one or more stickers (Do it first, or next button won't be clickable!)</p>
+						<p class="sticker-description" style="margin-top: 30px;">2. BONUS: ADD A STICKER</p>
 						<div class="stickers-box">
 							<div class="stickers-container">
 								<img style="width:100px;" class="sticker" src="assets/stickers/different.png" alt="rugby-sticker" id="sticker1">
@@ -45,6 +45,7 @@ require_once('header.php');
 						</div>	
 					</div>
 					<div>
+						<p class="sticker-description" style="margin-top: 30px;">3. CLICK ON PUBLISH</p>
 						<button type="submit" class="upload-btn" name="upload_img_btn">Publish</button>
 					</div>
 				</form>

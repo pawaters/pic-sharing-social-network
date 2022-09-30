@@ -93,7 +93,7 @@ if(isset($_POST['upload_img_btn'])){
 
 			$_SESSION['posts'] = $_SESSION['posts']+1;
 	
-			header('location: upload.php?ok_message=Post created&image_name='.$image_name);
+			header('location: upload.php?success_message=Post created&image_name='.$image_name);
 			exit;
 		}else{
 			header('location: upload.php?error_message=Error occured.');
