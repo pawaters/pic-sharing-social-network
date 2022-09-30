@@ -13,7 +13,7 @@ if(isset($_POST['login_btn']))
     $password = md5($_POST['password']); 
     
     $conn = connect_PDO();
-    $stmt = $conn->prepare("SELECT id, username, email, image, followers, following, posts, bio, verified
+    $stmt = $conn->prepare("SELECT id, username, email, image, followers, following, posts, bio, verified, createdate
                             FROM users
                             WHERE email = ? AND password = ? LIMIT 1");
 
@@ -26,9 +26,11 @@ if(isset($_POST['login_btn']))
     if($data) 
     {
         $verified = $data['verified'];
+        $createdate = date('d M Y', strtotime($data['createdate']));
+
         if ($verified == 0)
         {
-            header('location: login.php?error_message=Please verify your email via the link sent to you, then login.');
+            header('location: login.php?error_message=Please verify your email via the link sent to you on '.  $createdate . ', then login.');
             exit;
         } else {
         //now store values in SESSION
@@ -43,7 +45,7 @@ if(isset($_POST['login_btn']))
         $_SESSION['verified'] =  $data['verified'];
 
         //take user to homepage
-        header('location: index.php');
+        header('location: index.php?success_message=Welcome back! you are now logged in.');
         }
     }
     else 
