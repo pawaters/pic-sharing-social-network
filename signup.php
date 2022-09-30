@@ -37,22 +37,22 @@
                             
                             <div class="form-group">
                                 <div class="login-input">
-                                    <input type="text" name="email" placeholder="Type your email address...">
+                                    <input type="text" name="email" placeholder="Type your email address..." required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="login-input">
-                                    <input type="text" name="username" placeholder="Type your username...">
+                                    <input type="text" name="username" placeholder="Type your username..." required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="login-input">
-                                    <input type="password" name="password" id="password" placeholder="Type your password...">
+                                    <input type="password" name="password" id="password" placeholder="Type your password..." required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="login-input">
-                                    <input type="password" name="password_confirm" id="confirm_password" placeholder="Confirm your password...">
+                                    <input type="password" name="password_confirm" id="confirm_password" placeholder="Confirm your password..." required>
                                 </div>
                             </div>
                             <div class="btn-group">

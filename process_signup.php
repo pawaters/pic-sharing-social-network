@@ -48,7 +48,24 @@ if(isset($_POST['signup_btn']))
             echo $error->getMessage(); 
             exit;
         }
+        $url = "verify.php?vkey=$vkey";
+        $to = $email;
+        $subject = "Email Verification";
+        $message = '<p>The link to verify your email is below.</br>';
+        $message .= '<p><a href="' . $url .'">' . $url . '</a></p>';
         
+        $headers = "From: Pierre Waters <pierre.alban.waters@gmail.com>\r\n";
+        $headers .= "Reply-To: pierre.alban.waters@gmail.com\r\n";
+        $headers .= "Content-type: text/html\r\n";
+
+        mail($to, $subject, $message, $headers);
+
+        $emailLog = "Singup successful. Email validation link was sent.";
+        $emailLog .= "address:";
+        $emailLog .= $to;
+        $emailLog .= "Message:";
+        $emailLog .= $message;
+
         try 
         {
             $stmt = $conn->prepare("SELECT id, username, email, image, following, followers, posts, bio

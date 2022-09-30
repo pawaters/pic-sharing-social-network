@@ -47,7 +47,7 @@ if(isset($_POST["reset-request-submit"])) {
 
     mail($to, $subject, $message, $headers);
 
-    $emailLog = "Email was sent.";
+    $emailLog = "Password reset request successful. Email was sent.";
     $emailLog .= "address:";
     $emailLog .= $to;
     $emailLog .= "Message:";
