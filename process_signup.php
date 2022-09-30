@@ -36,11 +36,12 @@ if(isset($_POST['signup_btn']))
         try 
         {
             $stmt =  $conn->prepare(
-                "INSERT INTO users (username, email, password) 
-                VALUES (? ,? ,?)");
+                "INSERT INTO users (username, email, password, vkey) 
+                VALUES (? ,? ,? ,?)");
             $stmt->bindParam(1, $username, PDO::PARAM_STR);
             $stmt->bindParam(2, $email, PDO::PARAM_STR);
             $stmt->bindParam(3, md5($password), PDO::PARAM_STR);
+            $stmt->bindParam(4, $vkey, PDO::PARAM_STR);
             $stmt->execute();
         } 
         catch (PDOException $error) {
@@ -48,8 +49,6 @@ if(isset($_POST['signup_btn']))
             exit;
         }
         
-
-        //error is between line 44 and 47
         try 
         {
             $stmt = $conn->prepare("SELECT id, username, email, image, following, followers, posts, bio
