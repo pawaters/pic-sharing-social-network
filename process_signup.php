@@ -10,6 +10,7 @@ if(isset($_POST['signup_btn']))
     $email = $_POST['email'];
     $password = $_POST['password'];
     $password_confirm = $_POST['password_confirm'];
+    $vkey = md5(time().$username);
 
     if ($password != $password_confirm)
     {

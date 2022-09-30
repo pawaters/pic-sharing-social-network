@@ -20,17 +20,17 @@ require_once('header.php');
 				<form class="camera-form" method="POST" action="create_uploaded_post.php" enctype="multipart/form-data">
 					<p class="sticker-description" style="margin-top: 30px;">1. SELECT AN IMAGE TO UPLOAD</p>
 					<div class="canvas-container">
-						<img id="picture">
+						<!-- <img id="picture"> -->
 						<canvas class="d-none" width="700" height="500" id="myCanvas"></canvas>
 						<input type="hidden" id="upload-file" value="" name="upload_file">
 					</div>
 					<input accept="image/*" type="file" class="my-input input" id="imgInp" name="image" required>
 					<!-- TD: review these classes to the same in "other upload"-->
-					<div>
-						<input type="text"  class="my-input input" name="caption" placeholder="Write a caption here" required>
+					<div class="form-group">
+						<input class="form-control" type="text"  class="my-input input" name="caption" placeholder="Write a caption here" required>
 					</div>
-					<div>
-						<input type="text"  class="my-input input" name="hashtags" placeholder="add hastags here" required>
+					<div class="form-group">
+						<input class="form-control" type="text"  class="my-input input" name="hashtags" placeholder="add hastags here" required>
 					</div>
 					<div>
 						<p class="sticker-description" style="margin-top: 30px;">2. BONUS: ADD A STICKER</p>
@@ -88,7 +88,7 @@ require_once('header.php');
 
 <script>
 	imgInp.onchange = evt => {
-		const [file] = ingInp.files;
+		const [file] = imgInp.files;
 		let canvas = document.getElementById("myCanvas");
 		let ctx = canvas.getContext("2d");
 		if (file) {
