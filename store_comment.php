@@ -24,16 +24,17 @@ if(isset($_POST['comment_btn']))
     $stmt->bindParam(4, $profile_image, PDO::PARAM_STR);
     $stmt->bindParam(5, $comment_text, PDO::PARAM_STR);
     $stmt->bindParam(6, $date, PDO::PARAM_STR);
+    $stmt->execute();
 
     // 1) get the user_id of the post owner thanks to the post_ID
   
-    $stmt = $conn->prepare("SELECT * FROM posts WHERE id = ? LIMIT 1");
+    $stmt = $conn->prepare("SELECT user_id FROM posts WHERE id = ? LIMIT 1");
     $stmt->bindParam(1, $post_id, PDO::PARAM_INT);
     $stmt->execute();
     $data1 = $stmt->fetch(PDO::FETCH_ASSOC);
     if($data1) 
     {
-        $post_owner_id = "13";
+        $post_owner_id = $data1['user_id'];
 
         // 2) get the post owner email thanks to id
         $stmt = $conn->prepare("SELECT * FROM users WHERE id = ? LIMIT 1");
@@ -59,14 +60,7 @@ if(isset($_POST['comment_btn']))
 
     mail($to, $subject, $message, $headers);
 
-    if($stmt->execute())
-    {
-        header('location: single_post.php?post_id='.$post_id."&post_owner_id=".$post_owner_id."&success_message=comment submitted successfully & ");
-    }
-    else
-    {
-        header('location: single_post.php?post_id='.$post_id."&error_message=comment submission failed");
-    }
+    header('location: single_post.php?post_id='.$post_id."&post_owner_id=".$post_owner_id."&success_message=comment submitted successfully & ");
     exit;
 
 }
