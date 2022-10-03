@@ -37,11 +37,18 @@ if(isset($_POST['comment_btn']))
         $post_owner_id = $data1['user_id'];
 
         // 2) get the post owner email thanks to id
-        $stmt = $conn->prepare("SELECT email FROM users WHERE id = ? LIMIT 1");
+        $stmt = $conn->prepare("SELECT email, notify FROM users WHERE id = ? LIMIT 1");
         $stmt->bindParam(1, $post_owner_id, PDO::PARAM_INT);
         $stmt->execute();
         $data2 = $stmt->fetch(PDO::FETCH_ASSOC);
         $post_owner_email = $data2['email'];
+        $notify = $data2['notify'];
+        if ($notify == 0)
+        {
+            header('location: single_post.php?post_id='.$post_id."&post_owner_id=".$post_owner_id."&success_message=comment submitted successfully. User was not notified, as defined by user.& ");
+            exit;
+        }
+
     }   else {
         header('location: single_post.php?$post_owner_id='.$post_owner_id."&error_message=could not retrieve the post owner id");
     }
@@ -60,7 +67,7 @@ if(isset($_POST['comment_btn']))
 
     mail($to, $subject, $message, $headers);
 
-    header('location: single_post.php?post_id='.$post_id."&post_owner_id=".$post_owner_id."&success_message=comment submitted successfully & ");
+    header('location: single_post.php?post_id='.$post_id."&post_owner_id=".$post_owner_id."&success_message=comment submitted successfully & user notified as per settings");
     exit;
 
 }
