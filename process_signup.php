@@ -54,8 +54,8 @@ if(isset($_POST['signup_btn']))
         $message = '<p>The link to verify your email is below.</br>';
         $message .= '<p><a href="' . $url .'">' . $url . '</a></p>';
         
-        $headers = "From: Pierre Waters <pierre.alban.waters@gmail.com>\r\n";
-        $headers .= "Reply-To: pierre.alban.waters@gmail.com\r\n";
+        $headers = "From: Pierre Waters <pierrealbanwaters@proton.com>\r\n";
+        $headers .= "Reply-To: pierrealbanwaters@proton.com\r\n";
         $headers .= "Content-type: text/html\r\n";
 
         mail($to, $subject, $message, $headers);
