@@ -12,6 +12,8 @@ if(isset($_POST['comment_btn']))
     $post_id = $_POST['post_id'];
     $comment_text = $_POST['comment_text'];
     $date = date("Y-m-d H:i:s");
+
+    try {
     $conn = connect_PDO();
     $stmt =  $conn->prepare(
         "INSERT INTO comments (post_id, user_id, username, profile_image, comment_text, date)
@@ -25,18 +27,27 @@ if(isset($_POST['comment_btn']))
 
     // 1) get the user_id of the post owner thanks to the post_ID
   
-    $stmt = $conn->prepare("SELECT user_id FROM posts WHERE id = ? LIMIT 1");
+    $stmt = $conn->prepare("SELECT * FROM posts WHERE id = ? LIMIT 1");
     $stmt->bindParam(1, $post_id, PDO::PARAM_INT);
     $stmt->execute();
-    $data = $stmt->fetch(PDO::FETCH_ASSOC);
-    $post_owner_id = $data['user'];
+    $data1 = $stmt->fetch(PDO::FETCH_ASSOC);
+    if($data1) 
+    {
+        $post_owner_id = "13";
 
-    // 2) get the post owner email thanks to id
-    $stmt = $conn->prepare("SELECT email FROM users WHERE id = ? LIMIT 1");
-    $stmt->bindParam(1, $post_owner_id, PDO::PARAM_INT);
-    $stmt->execute();
-    $data = $stmt->fetch(PDO::FETCH_ASSOC);
-    $post_owner_email = $data['email'];
+        // 2) get the post owner email thanks to id
+        $stmt = $conn->prepare("SELECT * FROM users WHERE id = ? LIMIT 1");
+        $stmt->bindParam(1, $post_owner_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $data2 = $stmt->fetch(PDO::FETCH_ASSOC);
+        $post_owner_email = $data2['email'];
+    }   else {
+        header('location: single_post.php?$post_owner_id='.$post_owner_id."&error_message=could not retrieve the post owner id");
+    }
+    } catch (PDOException $error) {     
+        echo $error->getMessage(); 
+        exit;
+        }
 
     $to = $post_owner_email;
     $subject = "Your image has received a comment";
@@ -50,7 +61,7 @@ if(isset($_POST['comment_btn']))
 
     if($stmt->execute())
     {
-        header('location: single_post.php?post_id='.$post_id."&success_message=comment submitted successfully & ");
+        header('location: single_post.php?post_id='.$post_id."&post_owner_id=".$post_owner_id."&success_message=comment submitted successfully & ");
     }
     else
     {
