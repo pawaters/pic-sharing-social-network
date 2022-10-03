@@ -24,9 +24,32 @@ if(isset($_POST['comment_btn']))
     $stmt->bindParam(5, $comment_text, PDO::PARAM_STR);
     $stmt->bindParam(6, $date, PDO::PARAM_STR);
 
+    // 1) get the email of the post owner thanks to user_id
+    $post_owner_id = $_POST['user_id'];
+    $conn = connect_PDO();
+    $stmt = $conn->prepare("SELECT email FROM users WHERE id = ? LIMIT 1");
+    $stmt->bindParam(1, $post_owner_id, PDO::PARAM_INT);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    if (!$row) {
+        header("Location: single_post.php?error: Error occurred while notifying post owner");
+        exit();
+    }
+    else {
+
+        $subject = "Your image has received a comment";
+        $message = "This is a notification to inform one of your posts / images has received a comment.";
+        
+        $headers = "From: Pierre Waters <pierrealbanwaters@proton.com>\r\n";
+        $headers .= "Reply-To: pierrealbanwaters@proton.com\r\n";
+        $headers .= "Content-type: text/html\r\n";
+
+        mail($to, $subject, $message, $headers);
+    }
+
     if($stmt->execute())
     {
-        header('location: single_post.php?post_id='.$post_id."&success_message=comment submitted successfully");
+        header('location: single_post.php?post_id='.$post_id."&success_message=comment submitted successfully & ");
     }
     else
     {

@@ -24,8 +24,7 @@ include('connection.php');
     // }
 
     $conn = connect_PDO();
-     $stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
-    //  $stmt->bind_param("i",$other_user_id);
+    $stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
     $stmt->bindParam(1, $other_user_id, PDO::PARAM_INT);
 
      if($stmt->execute()){
