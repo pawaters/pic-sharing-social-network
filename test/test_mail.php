@@ -1,6 +1,6 @@
 <?php
 
-$to = "pierrealbanwaters@proton.com";
+$to = "pierre.alban.waters@gmail.com";
 $subject = "test subject";
 $message = "test message";
 $headers = "From: Pierre Waters <pierrealbanwaters@proton.com>\r\n";
