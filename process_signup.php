@@ -60,11 +60,11 @@ if(isset($_POST['signup_btn']))
 
         mail($to, $subject, $message, $headers);
 
-        $emailLog = "Singup successful. Email validation link was sent.";
+        $emailLog = "Signup successful. Email validation link was sent.";
         $emailLog .= "address:";
         $emailLog .= $to;
-        $emailLog .= "Message:";
-        $emailLog .= $message;
+        // $emailLog .= "Message:";
+        // $emailLog .= $message;
 
         try 
         {

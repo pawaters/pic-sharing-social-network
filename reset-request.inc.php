@@ -50,8 +50,8 @@ if(isset($_POST["reset-request-submit"])) {
     $emailLog = "Password reset request successful. Email was sent.";
     $emailLog .= "address:";
     $emailLog .= $to;
-    $emailLog .= "Message:";
-    $emailLog .= $message;
+    // $emailLog .= "Message:";
+    // $emailLog .= $message;
     
     header("location: login.php?success_message=". $emailLog ."");
 
