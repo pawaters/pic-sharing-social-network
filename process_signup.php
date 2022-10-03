@@ -86,7 +86,7 @@ if(isset($_POST['signup_btn']))
 
 
             //return to homepage
-            header("location: index.php?error_message=Signup successful!");
+            header("location: index.php?success_message=Signup successful. Email validation link was sent.");
             
         }
         catch (PDOException $error) 
