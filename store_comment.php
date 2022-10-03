@@ -37,7 +37,7 @@ if(isset($_POST['comment_btn']))
         $post_owner_id = $data1['user_id'];
 
         // 2) get the post owner email thanks to id
-        $stmt = $conn->prepare("SELECT * FROM users WHERE id = ? LIMIT 1");
+        $stmt = $conn->prepare("SELECT email FROM users WHERE id = ? LIMIT 1");
         $stmt->bindParam(1, $post_owner_id, PDO::PARAM_INT);
         $stmt->execute();
         $data2 = $stmt->fetch(PDO::FETCH_ASSOC);

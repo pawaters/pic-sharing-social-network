@@ -31,6 +31,7 @@
 		`vkey` VARCHAR(45) NOT NULL AFTER `bio`, 
 		`verified` TINYINT(1) NOT NULL DEFAULT '0',
 		`createdate` TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+		`notify` TINYINT(1) NOT NULL DEFAULT '1',
         PRIMARY KEY (`id`)
         )";
 		$conn->exec($sql);

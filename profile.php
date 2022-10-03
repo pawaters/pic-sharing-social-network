@@ -32,6 +32,7 @@
                                 <span class="close-popup" id="close-popup">&times;</span>
                                 <a href="edit_profile.php">Edit profile</a>
                                 <a href="camera.php">Create post</a>
+                                <a href="stop_notif.php">Stop notifications</a>
                                 <a href="logout.php">Logout</a>
                         </div> 
                     </div>
