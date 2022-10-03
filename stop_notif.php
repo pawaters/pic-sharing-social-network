@@ -6,6 +6,7 @@ require_once 'connection.php';
 $user_id = $_SESSION['id'];
 
 try {
+    $conn = connect_PDO();
     $sql = "UPDATE users SET notify = 0 WHERE id = ? LIMIT 1";
     if (!$stmt = $conn->prepare($sql)) 
     {
