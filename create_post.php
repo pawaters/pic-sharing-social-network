@@ -26,25 +26,25 @@ if(isset($_POST['upload_image_btn'])){
     $image_name = strval(time()) . ".jpeg";
     stamp_to_img($image);
 
-    //create the post
-    $conn = connect_PDO();
-    $stmt = $conn->prepare("INSERT INTO posts (user_id,likes,image,caption,hashtags,date,username,profile_image)
-                            VALUES (?,?,?,?,?,?,?,?)");
-    $stmt->bindParam(1, $id, PDO::PARAM_INT);
-    $stmt->bindParam(2, $likes, PDO::PARAM_INT);
-    $stmt->bindParam(3, $image_name, PDO::PARAM_STR);
-    $stmt->bindParam(4, $caption, PDO::PARAM_STR);
-    $stmt->bindParam(5, $hashtags, PDO::PARAM_STR);
-    $stmt->bindParam(6, $date, PDO::PARAM_STR);
-    $stmt->bindParam(7, $username, PDO::PARAM_STR);
-    $stmt->bindParam(8, $profile_image, PDO::PARAM_STR);
+    try {
+        $conn = connect_PDO();
+        $stmt = $conn->prepare("INSERT INTO posts (user_id,likes,image,caption,hashtags,date,username,profile_image)
+                                VALUES (?,?,?,?,?,?,?,?)");
+        $stmt->bindParam(1, $id, PDO::PARAM_INT);
+        $stmt->bindParam(2, $likes, PDO::PARAM_INT);
+        $stmt->bindParam(3, $image_name, PDO::PARAM_STR);
+        $stmt->bindParam(4, $caption, PDO::PARAM_STR);
+        $stmt->bindParam(5, $hashtags, PDO::PARAM_STR);
+        $stmt->bindParam(6, $date, PDO::PARAM_STR);
+        $stmt->bindParam(7, $username, PDO::PARAM_STR);
+        $stmt->bindParam(8, $profile_image, PDO::PARAM_STR);
 
-    if($stmt->execute()){
+        $stmt->execute();
 
-        
+            
         //store image in folder
         move_uploaded_file($image,"assets/img/".$image_name);
-       
+        
         //increase number of posts
         $stmt= $conn->prepare("UPDATE users SET posts=posts+1 WHERE id = ?");
         // $stmt->bind_param("i",$id);
@@ -57,17 +57,11 @@ if(isset($_POST['upload_image_btn'])){
         header("location: upload.php?success_message=Post has been created successfully&image_name=".$image_name);
         exit;
 
-    }else{
-        header("location: upload.php?error_message=error occured, try again");
-        exit;
-
     }
-
-
+    catch (PDOException $e) {
+        echo $e->getMessage();
+    }
     
-
-
-
 
 }else{
 
@@ -76,7 +70,6 @@ if(isset($_POST['upload_image_btn'])){
 
 
 }
-
 
 
 

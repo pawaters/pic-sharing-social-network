@@ -2,26 +2,28 @@
 
 session_start();
 
-include('connection.php');
-
-//check the user came here the right way, ie: clicked on login btn
-// if ok, take the info of the form (POST var) and save it in PHP vars
+include_once('connection.php');
 
 if(isset($_POST['login_btn'])) 
 {
     $email = $_POST['email'];
     $password = md5($_POST['password']); 
     
-    $conn = connect_PDO();
-    $stmt = $conn->prepare("SELECT id, username, email, image, followers, following, posts, bio, verified, createdate
-                            FROM users
-                            WHERE email = ? AND password = ? LIMIT 1");
+    try {
+        $conn = connect_PDO();
+        $stmt = $conn->prepare("SELECT id, username, email, image, followers, following, posts, bio, verified, createdate
+                                FROM users
+                                WHERE email = ? AND password = ? LIMIT 1");
 
-    $stmt->bindParam(1, $email, PDO::PARAM_STR);
-    $stmt->bindParam(2, $password, PDO::PARAM_STR);
-    $stmt->execute();
+        $stmt->bindParam(1, $email, PDO::PARAM_STR);
+        $stmt->bindParam(2, $password, PDO::PARAM_STR);
+        $stmt->execute();
 
-    $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    catch (PDOException $e) {
+            echo $e->getMessage();
+    }
 
     if($data) 
     {

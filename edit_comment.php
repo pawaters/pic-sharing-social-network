@@ -7,24 +7,30 @@
 <?php
 
 
-		include('connection.php');
+    include('connection.php');
+    
+    try {
         $conn = connect_PDO();
-		if(isset($_GET['comment_id']) && isset($_GET['post_id'])){
+        if(isset($_GET['comment_id']) && isset($_GET['post_id'])){
 
             $post_id = $_GET['post_id'];
-		    $comment_id = $_GET['comment_id'];
-		    $stmt = $conn->prepare("SELECT * FROM comments WHERE id = ?");
-		    // $stmt->bind_param('i',$comment_id); 
+            $comment_id = $_GET['comment_id'];
+            $stmt = $conn->prepare("SELECT * FROM comments WHERE id = ?");
+            // $stmt->bind_param('i',$comment_id); 
             $stmt->bindParam(1, $comment_id, PDO::PARAM_INT);
-		    $stmt->execute();
-		    // $comment_array = $stmt->get_result();
+            $stmt->execute();
+            // $comment_array = $stmt->get_result();
             $comment_array = $stmt->fetchAll();
 
 
-		}else{
-		    header("location: index.php");
-		    exit;
-		}
+        }else{
+            header("location: index.php");
+            exit;
+        }
+    }
+    catch (PDOException $e) {
+            echo $e->getMessage();
+    }
 
 ?>
 

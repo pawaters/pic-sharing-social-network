@@ -31,8 +31,7 @@ if(isset($_POST['update_post_btn'])){
 
 
 
-
-
+    try {
         $conn = connect_PDO();
         $stmt = $conn->prepare("UPDATE posts SET image = ? , caption = ?, hashtags = ? WHERE id = ?");
         // $stmt->bind_param("sssi",$image_name,$caption,$hashtags,$post_id);
@@ -58,7 +57,10 @@ if(isset($_POST['update_post_btn'])){
             exit;
 
         }
-
+    }
+    catch (PDOException $e) {
+            echo $e->getMessage();
+    }
 
     
 

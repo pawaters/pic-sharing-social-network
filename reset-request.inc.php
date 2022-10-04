@@ -10,30 +10,36 @@ if(isset($_POST["reset-request-submit"])) {
     $url = "create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
     $expires = date("U") + 1800;
 
-    require 'connection.php';
+    require_once 'connection.php';
 
     $userEmail = $_POST["email"];
-    $conn = connect_PDO();
-    $sql = "DELETE FROM pwdReset WHERE pwdResetEmail = ?";
-    if (!$stmt = $conn->prepare($sql)) {
-        header("Location: login.php?error_message=SQL error");
-        exit();
-    } else {
-        $stmt->bindParam(1, $userEmail, PDO::PARAM_STR);
-        $stmt->execute();
+    
+    try {
+        $conn = connect_PDO();
+        $sql = "DELETE FROM pwdReset WHERE pwdResetEmail = ?";
+        if (!$stmt = $conn->prepare($sql)) {
+            header("Location: login.php?error_message=SQL error");
+            exit();
+        } else {
+            $stmt->bindParam(1, $userEmail, PDO::PARAM_STR);
+            $stmt->execute();
+        }
+        //WHEN INSERTING, ALWAYS THINK "Is there any sensitive data to hash"
+        $sql = "INSERT INTO pwdReset (pwdResetEmail, pwdResetSelector, pwdResetToken, pwdResetExpires) VALUES (?,?,?,?);" ;
+        if (!$stmt = $conn->prepare($sql)) {
+            header("Location: login.php?error_message=SQL error");
+            exit();
+        } else {
+            $hashedToken = password_hash($token, PASSWORD_DEFAULT);
+            $stmt->bindParam(1, $userEmail, PDO::PARAM_STR);
+            $stmt->bindParam(2, $selector, PDO::PARAM_STR);
+            $stmt->bindParam(3, $hashedToken, PDO::PARAM_STR);
+            $stmt->bindParam(4, $expires, PDO::PARAM_STR);
+            $stmt->execute();
+        }
     }
-    //WHEN INSERTING, ALWAYS THINK "Is there any sensitive data to hash"
-    $sql = "INSERT INTO pwdReset (pwdResetEmail, pwdResetSelector, pwdResetToken, pwdResetExpires) VALUES (?,?,?,?);" ;
-    if (!$stmt = $conn->prepare($sql)) {
-        header("Location: login.php?error_message=SQL error");
-        exit();
-    } else {
-        $hashedToken = password_hash($token, PASSWORD_DEFAULT);
-        $stmt->bindParam(1, $userEmail, PDO::PARAM_STR);
-        $stmt->bindParam(2, $selector, PDO::PARAM_STR);
-        $stmt->bindParam(3, $hashedToken, PDO::PARAM_STR);
-        $stmt->bindParam(4, $expires, PDO::PARAM_STR);
-        $stmt->execute();
+    catch (PDOException $e) {
+            echo $e->getMessage();
     }
 
     $to = $userEmail;
@@ -50,8 +56,6 @@ if(isset($_POST["reset-request-submit"])) {
     $emailLog = "Password reset request successful. Email was sent.";
     $emailLog .= "address:";
     $emailLog .= $to;
-    // $emailLog .= "Message:";
-    // $emailLog .= $message;
     
     header("location: login.php?success_message=". $emailLog ."");
 

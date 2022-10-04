@@ -11,20 +11,30 @@
 
         //ids of posts a user liked
         $user_id = $_SESSION['id'];
-        $stmt = $conn->prepare("SELECT post_id FROM likes WHERE user_id = ?");
-        $stmt->bind_param("i",$user_id);
-        $stmt->execute();
+        
+        try {
+            $conn = connect_PDO();
+            $stmt = $conn->prepare("SELECT post_id FROM likes WHERE user_id = ?");
+            $stmt->bindParam(1, $user_id, PDO::PARAM_INT);
+            $stmt->execute();
 
-        $ids = array();
+            // $ids = array();
 
-        $result = $stmt->get_result();
-        while($row = $result->fetch_array(MYSQLI_NUM)){
+            // $result = $stmt->get_result();
+            // while($row = $result->fetch_array(MYSQLI_NUM)){
+            //         foreach($row as $r){
+            //             $ids[] = $r;
+            //         }
+            // }
+            while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 foreach($row as $r){
                     $ids[] = $r;
                 }
+            }
         }
-
-
+        catch (PDOException $e) {
+                echo $e->getMessage();
+        }
 
         if(empty($ids)){
                $error_message = "You have not liked any post yet";
@@ -41,13 +51,17 @@
                 }
 
 
-
-                $stmt = $conn->prepare("SELECT COUNT(*) as total_posts FROM posts WHERE id in ($ids_of_posts_you_liked)");
-                $stmt->execute();
-                $stmt->bind_result($total_posts);
-                $stmt->store_result();
-                $stmt->fetch();
-
+                try {
+                    $stmt = $conn->prepare("SELECT COUNT(*) as total_posts FROM posts WHERE id in ($ids_of_posts_you_liked)");
+                    $stmt->execute();
+                    // $stmt->bind_result($total_posts);
+                    // $stmt->store_result();
+                    // $stmt->fetch();
+                    $total_posts = $stmt->fetchColumn();
+                }
+                catch (PDOException $e) {
+                        echo $e->getMessage();
+                }
 
                 $total_posts_per_page = 6;
 
@@ -59,8 +73,8 @@
 
                 $stmt = $conn->prepare("SELECT * FROM posts WHERE id in ($ids_of_posts_you_liked) ORDER BY id DESC LIMIT $offset,$total_posts_per_page"); 
                 $stmt->execute();
-                $posts = $stmt->get_result();
-
+                // $posts = $stmt->get_result();
+                $users = $stmt->fetchAll();
 
        }
 

@@ -5,6 +5,8 @@ include('connection.php');
 if(isset($_POST['delete_post_btn'])) 
 {
     $post_id = $_POST['post_id'];
+    
+    try {
     $conn = connect_PDO();
     $stmt = $conn->prepare("DELETE FROM posts WHERE id = ?");
     // $stmt->bind_param("i", $post_id);
@@ -18,6 +20,10 @@ if(isset($_POST['delete_post_btn']))
         header("location: profile.php?error_message=Could not delete post");
     }
     exit;
+    }
+    catch (PDOException $e) {
+            echo $e->getMessage();
+    }
 }
 else
 {

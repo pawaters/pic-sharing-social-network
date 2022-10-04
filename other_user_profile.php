@@ -16,25 +16,22 @@ include('connection.php');
          $_SESSION['other_user_id'] = $other_user_id;
      }
     
-    //  if(isset($_POST['other_user_id'])){
-    //     $other_user_id = $_POST['other_user_id'];
-    //     $_SESSION['other_user_id'] = $other_user_id;
-    // }else{
-    //     $other_user_id = $_SESSION['other_user_id'];
-    // }
+     try {
+        $conn = connect_PDO();
+        $stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
+        $stmt->bindParam(1, $other_user_id, PDO::PARAM_INT);
 
-    $conn = connect_PDO();
-    $stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
-    $stmt->bindParam(1, $other_user_id, PDO::PARAM_INT);
+        if($stmt->execute()){
+            $user_array = $stmt->fetchAll();
 
-     if($stmt->execute()){
-        $user_array = $stmt->fetchAll();
-
-     }else{
-         header("location: index.php");
-         exit;
-     }
-
+        }else{
+            header("location: index.php");
+            exit;
+        }
+    }
+    catch (PDOException $e) {
+            echo $e->getMessage();
+    }
 
   }else{
 

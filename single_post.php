@@ -7,11 +7,17 @@ include('connection.php');
 if(isset($_GET['post_id']))
 {
     $post_id = $_GET['post_id'];
-    $conn = connect_PDO();
-    $stmt = $conn->prepare("SELECT * FROM posts WHERE id = ?"); 
-    $stmt->bindParam(1, $post_id, PDO::PARAM_INT);
-    $stmt->execute();
-    $post_array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    try {
+        $conn = connect_PDO();
+        $stmt = $conn->prepare("SELECT * FROM posts WHERE id = ?"); 
+        $stmt->bindParam(1, $post_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $post_array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    catch (PDOException $e) {
+            echo $e->getMessage();
+    }
 
     // GET & PAGINATE COMMENTS
 
@@ -24,24 +30,34 @@ if(isset($_GET['post_id']))
         $page_no = 1;
     }
     
-    $stmt = $conn->prepare("SELECT COUNT(*) as total_comments 
-                            FROM comments
-                            WHERE post_id = ?");
-    $stmt->bindParam(1, $post_id, PDO::PARAM_INT);
-    $stmt->execute();
+    try {
+        $stmt = $conn->prepare("SELECT COUNT(*) as total_comments 
+                                FROM comments
+                                WHERE post_id = ?");
+        $stmt->bindParam(1, $post_id, PDO::PARAM_INT);
+        $stmt->execute();
 
-    $total_comments = $stmt->fetchColumn();
-    
+        $total_comments = $stmt->fetchColumn();
+    }
+    catch (PDOException $e) {
+            echo $e->getMessage();
+    }
+
     $total_comments_per_page = 6;
     
     $offset = ($page_no - 1) * $total_comments_per_page;
     
     $total_no_of_pages = ceil($total_comments / $total_comments_per_page);
     
-    $stmt = $conn->prepare("SELECT * FROM comments WHERE post_id = $post_id LIMIT $offset, $total_comments_per_page"); 
-    $stmt->execute();
+    try {
+        $stmt = $conn->prepare("SELECT * FROM comments WHERE post_id = $post_id LIMIT $offset, $total_comments_per_page"); 
+        $stmt->execute();
 
-    $comments = $stmt->fetchAll();
+        $comments = $stmt->fetchAll();
+    }
+    catch (PDOException $e) {
+            echo $e->getMessage();
+    }
 }
 else
 {

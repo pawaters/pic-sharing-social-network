@@ -9,6 +9,7 @@ if(isset($_POST['delete_comment_btn'])){
     $comment_id = $_POST['comment_id'];
     $post_id = $_POST['post_id'];
 
+    try {
     $conn = connect_PDO();
     $stmt = $conn->prepare("DELETE FROM comments WHERE id = ?");
     // $stmt->bind_param("i",$comment_id);
@@ -21,7 +22,10 @@ if(isset($_POST['delete_comment_btn'])){
     }
 
     exit;
-    
+    }
+    catch (PDOException $e) {
+            echo $e->getMessage();
+    }
 
 }else{
     header("location: index.php");

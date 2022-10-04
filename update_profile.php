@@ -22,15 +22,21 @@ if(isset($_POST['update_profile_btn'])){
 
     if($username != $_SESSION['username']){
         //make sure that username is unique
-        $conn = connect_PDO();
-        $stmt = $conn->prepare("SELECT username FROM users WHERE username = ?");
+        
+        try {
+            $conn = connect_PDO();
+            $stmt = $conn->prepare("SELECT username FROM users WHERE username = ?");
 
-        // $stmt->bind_param("s",$username);
-        $stmt->bindParam(1, $username, PDO::PARAM_STR);
-        $stmt->execute();
+            // $stmt->bind_param("s",$username);
+            $stmt->bindParam(1, $username, PDO::PARAM_STR);
+            $stmt->execute();
 
-        // $stmt->store_result();
-        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+            // $stmt->store_result();
+            $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+                echo $e->getMessage();
+        }
 
         //there is a user with this username
         if($data){
