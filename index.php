@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php include_once('header.php'); ?>
 
      <!--main: under wrapper, two divs: left-col, right-col -->
     <section class = "main">
