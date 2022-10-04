@@ -42,7 +42,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="login-input">
-                                    <input type="text" name="username" placeholder="Type your username..." required>
+                                    <input type="text" name="username" placeholder="Type your username..." required pattern="^[a-zA-Z0-9]+$" title="Only letters and numbers">
                                 </div>
                             </div>
                             <div class="form-group">
