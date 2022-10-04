@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php include('header_no_login.php'); ?>
 
      <!--main: under wrapper, two divs: left-col, right-col -->
     <section class = "main">
@@ -11,8 +11,6 @@
                 <?php if(isset($_GET['error_message'])){ ?>
                     <p class="text-center alert-danger"><?php echo $_GET['error_message'];?></p>
                 <?php } ?>
-
-                <?php include('get_status_wrapper.php'); ?>
 
                 <?php include('get_latest_posts.php'); ?>
 
@@ -30,23 +28,7 @@
                         <img src="<?php echo "assets/img/" . $post['image']; ?>" class="post-img">
                         <div class="post-content">
                             <div class="reaction-wrapper">
-                                <?php include('check_if_user_liked_this_post.php')?>
-
-                                <?php if ($user_liked_this_post) { ?>
-                                    <form action="unlike_this_post.php" method="POST">
-                                        <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
-                                        <button class="heart" style="color:red;" type="submit" name="heart_btn">
-                                            <i class="icon fas fa-heart"></i>
-                                        </button>
-                                    </form>
-                                <?php } else { ?>
-                                    <form action="like_this_post.php" method="POST">
-                                        <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
-                                        <button class="heart" type="submit" name="heart_btn">
-                                            <i class="icon fas fa-heart"></i>
-                                        </button>
-                                    </form>
-                                <?php } ?>
+                                <i class="icon fas fa-heart"></i>
                                 <i class="icon fas fa-comment"></i>
                             </div>
                             <p class="likes"><?php echo $post['likes'];?> likes</p>
@@ -54,7 +36,7 @@
                             <p class="post-time"><?php echo date("M,Y", strtotime($post['date'])); ?></p>
 
                             <div>
-                            <a class="comment-btn" href="single_post.php?post_id=<?php echo $post['id']; ?>">See all comments</a>
+                            <a class="comment-btn" href="single_post.php?post_id=<?php echo $post['id']; ?>">comments</a>
                             </div>
                         </div>
 
@@ -88,12 +70,6 @@
             </div>
 
             <div class="right-col">
-            
-                <!-- Profile card-->
-                <?php include('profile_card.php'); ?>
-                
-                <!-- Suggestions-->
-                <?php include('suggestion_side_area.php'); ?>
 
                 
             </div>

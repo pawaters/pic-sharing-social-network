@@ -1,6 +1,6 @@
 <?php 
 
-// include('connection.php'); 
+include_once('connection.php'); 
 
 if(isset($_GET['page_no']) && $_GET['page_no'] != "")
 {
@@ -24,7 +24,7 @@ $total_no_of_pages = ceil($total_posts / $total_posts_per_page);
 
 $stmt = $conn->prepare("SELECT * 
                         FROM posts 
-                        ORDER BY id DESC
+                        ORDER BY date DESC
                         LIMIT $offset, $total_posts_per_page"); 
 $stmt->execute();
 // $posts = $stmt->get_result();
