@@ -28,6 +28,9 @@
 						</div>
 						<p style="margin-top: 30px;" class="sticker-description">2. Start your webcam</p>
 						<button class="capture-btn" id="start-camera">Start Camera</button>
+
+						<a href="upload.php">(or follow this link to upload an image instead)</a>
+
 						<!-- 2. The video stream -->
 						<div>
 							<video class="is-hidden" id="video" width="700" height="500" autoplay></video>
