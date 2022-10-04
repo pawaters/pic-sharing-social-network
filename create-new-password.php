@@ -29,10 +29,10 @@
                                 <input type="hidden" name="validator" value="<?php echo $validator ?>">
                                 <div class="form-group">
                                     <div class="login-input">
-                                        <input type="password" name="pwd" placeholder="Enter a new password">
+                                        <input type="password" name="pwd" placeholder="Enter a new password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
                                     </div>
                                     <div class="login-input">
-                                        <input type="password" name="pwd-repeat" placeholder="Repeat new password">
+                                        <input type="password" name="pwd-repeat" placeholder="Repeat new password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
                                     </div>
                                 </div>
                                 <div class="btn-group">    

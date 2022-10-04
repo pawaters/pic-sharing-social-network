@@ -11,7 +11,7 @@ if(isset($_POST['signup_btn']))
     $password = $_POST['password'];
     $password_confirm = $_POST['password_confirm'];
     $vkey = md5(time().$username);
-
+    
     if ($password != $password_confirm)
     {
         header('location: signup.php?error_message=passwords do not match');
