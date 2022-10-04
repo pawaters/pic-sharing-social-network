@@ -11,11 +11,34 @@ if(isset($_POST['signup_btn']))
     $password = $_POST['password'];
     $password_confirm = $_POST['password_confirm'];
     $vkey = md5(time().$username);
-    
+   
+//server-side form validation
+
+	$emp_email=trim($_POST["email"]);
+	$emp_uname=trim($_POST["username"]);
+	$emp_pass=trim($_POST["password"]);
+	$emp_confirm=trim($_POST["password_confirm"]);
+
     if ($password != $password_confirm)
     {
         header('location: signup.php?error_message=passwords do not match');
         exit;
+    }
+    if($emp_email == "") {
+        header("location: signup.php?error_message=Please enter valid email");
+        exit; 
+        } 
+    if(!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $emp_email)){
+        header("location: signup.php?error_message=Please enter valid email");
+        exit; 
+        }
+    if($emp_pass == ""){
+        header("location: signup.php?error_message=Please enter password");
+        exit; 
+    }
+    if($emp_confirm == ""){
+        header("location: signup.php?error_message=Please enter password confirmation");
+        exit; 
     }
     
     $conn = connect_PDO();
