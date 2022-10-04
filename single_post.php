@@ -174,6 +174,7 @@ else
                 <?php include('suggestion_side_area.php'); ?>
 
             </div>
+            <?php include_once('footer.php'); ?>
         </div>
     </section>
 

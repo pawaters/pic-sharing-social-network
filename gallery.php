@@ -69,10 +69,11 @@
 
             </div>
 
-            <div class="right-col">
+            <!-- <div class="right-col">
 
                 
-            </div>
+            </div> -->
+            <?php include_once('footer.php'); ?>
         </div>
     </section>
 

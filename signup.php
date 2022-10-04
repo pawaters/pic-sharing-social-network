@@ -82,19 +82,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer">
-            <div class="links" id="links">
-                <a href="#">About</a>
-                <a href="#">My Linkedin</a>
-                <a href="#">My Github</a>
-                <a href="#">Contact me</a>
-                <a href="#">Terms</a>
-                <a href="#" id="dark-btn">Dark/Light</a>
-            </div>
-            <div class="copyright">
-                @2022 Pierre-Alban Waters, HIVE Helsinki student
-            </div>
-        </div>
+        <?php include_once('footer.php'); ?>
     </div>
     
     <!--script to slide images -->

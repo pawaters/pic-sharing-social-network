@@ -79,6 +79,7 @@ $posts = $stmt->fetchAll();
             </li>
         </ul>
     </nav>
+    <?php include_once('footer.php'); ?>
 </main>
     
 

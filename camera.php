@@ -94,6 +94,7 @@
 					<img src="<?php echo "assets/img/".$post['image']; ?>" alt="user-post">
 				<?php } ?>
 		</div>
+		<?php include_once('footer.php'); ?>
     </div>
 
 	<script>	
