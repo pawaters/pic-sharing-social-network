@@ -54,7 +54,7 @@ require_once('header.php');
 		</div>
 	</div>
 	<div class="left-col">
-		<p style="margin-top: 30px;" class="sticker-description"> Below you can check your previous creations:</p>
+		<p style="margin-top: 30px;" class="sticker-description"> Below you can check your previous creations made with uploaded images:</p>
 		<?php
 				
 			require_once('connection.php');

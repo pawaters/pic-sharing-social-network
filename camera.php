@@ -71,7 +71,7 @@
             </div>
         </div>
 		<div class="thumbnails-box">
-			<p style="margin-top: 30px;" class="sticker-description"> Below you can check your previous creations:</p>
+			<p style="margin-top: 30px;" class="sticker-description"> Below you can check your previous creations made with webcam photos:</p>
 			<?php
 					
 				require_once('connection.php');

@@ -62,7 +62,7 @@
 
                 $stmt = $conn->prepare("SELECT * FROM posts WHERE id in ($ids_of_posts_you_liked) ORDER BY id DESC LIMIT $offset,$total_posts_per_page"); 
                 $stmt->execute();
-                $users = $stmt->fetchAll();
+                $posts = $stmt->fetchAll();
 
        }
 
