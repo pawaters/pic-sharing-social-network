@@ -24,22 +24,22 @@ if(isset($_POST['signup_btn']))
         header('location: signup.php?error_message=passwords do not match');
         exit;
     }
-    // if($emp_email == "") {
-    //     header("location: signup.php?error_message=Please enter valid email");
-    //     exit; 
-    //     } 
-    // // if(!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $emp_email)){
-    // //     header("location: signup.php?error_message=Please enter valid email");
-    // //     exit; 
-    // //     }
-    // if($emp_pass == ""){
-    //     header("location: signup.php?error_message=Please enter password");
-    //     exit; 
-    // }
-    // if($emp_confirm == ""){
-    //     header("location: signup.php?error_message=Please enter password confirmation");
-    //     exit; 
-    // }
+    if($emp_email == "") {
+        header("location: signup.php?error_message=Please enter valid email");
+        exit; 
+        } 
+    if(!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $emp_email)){
+        header("location: signup.php?error_message=Please enter valid email");
+        exit; 
+        }
+    if($emp_pass == ""){
+        header("location: signup.php?error_message=Please enter password");
+        exit; 
+    }
+    if($emp_confirm == ""){
+        header("location: signup.php?error_message=Please enter password confirmation");
+        exit; 
+    }
     try {
         $conn = connect_PDO();
         $stmt = $conn->prepare( "SELECT id FROM users WHERE username = ? OR email = ?");
@@ -100,29 +100,28 @@ if(isset($_POST['signup_btn']))
                                     WHERE username = ?");
             $stmt->bindParam(1, $username, PDO::PARAM_STR);
             $stmt->execute();
-            $data = $stmt->fetch(PDO::FETCH_ASSOC);
-            
-            $_SESSION['id'] =  $data['id'];
-            $_SESSION['username'] =  $data['username'];
-            $_SESSION['email'] =  $data['email'];
-            $_SESSION['image'] =  $data['image'];
-            $_SESSION['followers'] =  $data['followers'];
-            $_SESSION['following'] =  $data['following'];
-            $_SESSION['post'] =  $data['post'];
-            $_SESSION['bio'] =  $data['bio'];
-            $_SESSION['verified'] =  $data['verified'];
-            $_SESSION['notify'] =  $data['notify'];
-
-
-            //return to homepage
-            header("location: index.php?success_message=Signup successful. Email validation link was sent.");
-            
+            $data = $stmt->fetch(PDO::FETCH_ASSOC);              
         }
         catch (PDOException $error) 
         {
-            header("location: signup.php?error_message=error occurred");
+            echo $error->getMessage(); 
             exit;
         }
+        
+        $_SESSION['id'] =  $data['id'];
+        $_SESSION['username'] =  $data['username'];
+        $_SESSION['email'] =  $data['email'];
+        $_SESSION['image'] =  $data['image'];
+        $_SESSION['followers'] =  $data['followers'];
+        $_SESSION['following'] =  $data['following'];
+        $_SESSION['post'] =  $data['post'];
+        $_SESSION['bio'] =  $data['bio'];
+        $_SESSION['verified'] =  $data['verified'];
+        $_SESSION['notify'] =  $data['notify'];
+
+        //return to homepage
+        header("location: index.php?success_message=Signup successful. Email validation link was sent.");
+
     }
 }
 else
