@@ -22,7 +22,7 @@
 									<img style="width:100px;" class="sticker" src="assets/stickers/football.png" alt="rugby-sticker" id="sticker2">
 									<img style="width:100px;" class="sticker" src="assets/stickers/love.png" alt="rugby-sticker" id="sticker3">
 									<img style="width:100px;" class="sticker" src="assets/stickers/pink.png" alt="rugby-sticker" id="sticker4">
-									<img style="width:100px" class="sticker" src="assets/stickers/rugby.png" alt="rugby-sticker" id="sticker5">
+									<img style="width:100px;" class="sticker" src="assets/stickers/rugby.png" alt="rugby-sticker" id="sticker5">
 								</div>
 							</div>
 						</div>
@@ -120,6 +120,7 @@
 		//when clicking on a sticker, activates button, draws sticker on sticker canvas
 		for(let i=0; i<filter.length; i++){
 			filter[i].addEventListener("click", (e) => {
+				event.preventDefault();
 				camera_button.disabled = false;
 				capture_button.disabled = false;
 				// Gets the id of the element that triggered the event
@@ -129,6 +130,7 @@
 		
 		//if does not work --> upload option
 		camera_button.addEventListener('click', async function() {
+			event.preventDefault();
 			let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
 			video.classList.remove("is-hidden");
 			video.srcObject = stream;
@@ -167,6 +169,7 @@
 		}
 
 		capture_button.addEventListener('click', function() {
+			event.preventDefault();
 			let canvas = document.getElementById("canvas");
 			canvas.classList.remove("is-hidden");
 			stickers_canvas.classList.remove("is-hidden");
