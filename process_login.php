@@ -45,6 +45,8 @@ if(isset($_POST['login_btn']))
         $_SESSION['post'] =  $data['post'];
         $_SESSION['bio'] =  $data['bio'];
         $_SESSION['verified'] =  $data['verified'];
+        $_SESSION['notify'] =  $data['notify'];
+
 
         //take user to homepage
         header('location: index.php?success_message=Welcome back! you are now logged in.');

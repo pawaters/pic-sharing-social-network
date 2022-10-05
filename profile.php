@@ -1,5 +1,4 @@
 <?php include("header.php") ?>
-<!--TO DO: how to decide how many levels of containers to hav -->
     <header class="profile-header">
         
         <div class="profile-container">
@@ -32,7 +31,12 @@
                                 <span class="close-popup" id="close-popup">&times;</span>
                                 <a href="edit_profile.php">Edit profile</a>
                                 <a href="camera.php">Create post</a>
-                                <a href="stop_notif.php">Stop notifications forever</a>
+                                <?php if($_SESSION['notify'] == 1) { ?>
+                                    <a href="stop_notif.php">Stop notifications</a>  
+                                <?php } else { ?>
+                                    <a href="start_notif.php">Activate notifications</a>  
+                                <?php } ?>
+                                
                                 <a href="logout.php">Logout</a>
                         </div> 
                     </div>
