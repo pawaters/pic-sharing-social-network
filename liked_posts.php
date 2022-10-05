@@ -18,14 +18,6 @@
             $stmt->bindParam(1, $user_id, PDO::PARAM_INT);
             $stmt->execute();
 
-            // $ids = array();
-
-            // $result = $stmt->get_result();
-            // while($row = $result->fetch_array(MYSQLI_NUM)){
-            //         foreach($row as $r){
-            //             $ids[] = $r;
-            //         }
-            // }
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 foreach($row as $r){
                     $ids[] = $r;
@@ -54,9 +46,6 @@
                 try {
                     $stmt = $conn->prepare("SELECT COUNT(*) as total_posts FROM posts WHERE id in ($ids_of_posts_you_liked)");
                     $stmt->execute();
-                    // $stmt->bind_result($total_posts);
-                    // $stmt->store_result();
-                    // $stmt->fetch();
                     $total_posts = $stmt->fetchColumn();
                 }
                 catch (PDOException $e) {
@@ -73,7 +62,6 @@
 
                 $stmt = $conn->prepare("SELECT * FROM posts WHERE id in ($ids_of_posts_you_liked) ORDER BY id DESC LIMIT $offset,$total_posts_per_page"); 
                 $stmt->execute();
-                // $posts = $stmt->get_result();
                 $users = $stmt->fetchAll();
 
        }
@@ -92,8 +80,8 @@
 
       <?php if(!isset($posts)){ ?>
 
-             <div class="mx-auto mt-5 alert alert-danger"><?php echo $error_message; ?>
-                 <a href="discover.php" style="color:rgb(0,162,255);">Discover great posts now. </a>
+             <div class="mx-auto mt-5 alert alert-danger"><?php echo "No posts liked."; ?>
+                 <a href="index.php" style="color:rgb(0,162,255);">Discover great posts now. </a>
              </div>
 
       <?php }else{ ?>  
