@@ -26,7 +26,7 @@
 								</div>
 							</div>
 						</div>
-						<p style="margin-top: 30px;" class="sticker-description">2. Start your webcam</p>
+						<p class="sticker-description">2. Start your webcam</p>
 						<button class="capture-btn" id="start-camera">Start Camera</button>
 
 						<a href="upload.php">(or follow this link to upload an image instead)</a>
@@ -56,7 +56,7 @@
 								<input type="hidden" id="sticker5_path" value="" name="sticker5_path">
 							</div>
 						</div>
-						<p style="margin-top: 30px;" class="sticker-description">5. Add a caption and hashtag, then hit "publish"</p>
+						<p class="sticker-description">5. Add a caption and hashtag, then hit "publish"</p>
 						<div class="control">
 							<input type="text" class="my-input input" name="caption" placeholder="Write a caption here" required>
 						</div>

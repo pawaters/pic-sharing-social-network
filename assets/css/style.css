@@ -1130,11 +1130,11 @@ body{
 
 /*Stickers*/
 
-.sticker-description p{
+.sticker-description{
 	font-size: 25px;
 	text-align: center;
 	margin: 20px 0;
-	font-size: 14px;
+	font-size: 20px;
 	line-height: 20px;
 	font-weight: bold;
 }
