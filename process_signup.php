@@ -75,6 +75,7 @@ if(isset($_POST['signup_btn']))
             echo $error->getMessage(); 
             exit;
         }
+        
         $url = "verify.php?vkey=$vkey";
         $to = $email;
         $subject = "Email Verification";
