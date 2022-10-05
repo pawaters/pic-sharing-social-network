@@ -80,18 +80,11 @@ if(isset($_SESSION['id'])) {
                             <div>
                                 <p>Forgot your password ? <a href="reset-password.php">Reset your password</a><p>  
                             </div>
-                        </div>
-                        <div class="app-download">
-                            <p >Get the app.</p>
-                            <div class="store-link">
-                                <a href="#">
-                                    <img src="assets/img/store.png" alt="">
-                                </a>
-                                <a href="#">
-                                    <img src="assets/img/gbs.png" alt="">
-                                </a>
+                            <div>
+                                <p>Just want to check public posts ? <a href="gallery.php">Visit the gallery</a><p>  
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

@@ -16,7 +16,7 @@ try {
     $stmt->execute();
     $total_posts = $stmt->fetchColumn();
 
-    $total_posts_per_page = 6;
+    $total_posts_per_page = 5;
 
     $offset = ($page_no - 1) * $total_posts_per_page;
 
