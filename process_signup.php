@@ -24,30 +24,34 @@ if(isset($_POST['signup_btn']))
         header('location: signup.php?error_message=passwords do not match');
         exit;
     }
-    if($emp_email == "") {
-        header("location: signup.php?error_message=Please enter valid email");
-        exit; 
-        } 
-    if(!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $emp_email)){
-        header("location: signup.php?error_message=Please enter valid email");
-        exit; 
-        }
-    if($emp_pass == ""){
-        header("location: signup.php?error_message=Please enter password");
-        exit; 
+    // if($emp_email == "") {
+    //     header("location: signup.php?error_message=Please enter valid email");
+    //     exit; 
+    //     } 
+    // // if(!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $emp_email)){
+    // //     header("location: signup.php?error_message=Please enter valid email");
+    // //     exit; 
+    // //     }
+    // if($emp_pass == ""){
+    //     header("location: signup.php?error_message=Please enter password");
+    //     exit; 
+    // }
+    // if($emp_confirm == ""){
+    //     header("location: signup.php?error_message=Please enter password confirmation");
+    //     exit; 
+    // }
+    try {
+        $conn = connect_PDO();
+        $stmt = $conn->prepare( "SELECT id FROM users WHERE username = ? OR email = ?");
+        
+        $stmt->bindParam(1, $username, PDO::PARAM_STR);
+        $stmt->bindParam(2, $email, PDO::PARAM_STR);
+        $stmt->execute();
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $error) {
+        echo $error->getMessage(); 
+        exit;
     }
-    if($emp_confirm == ""){
-        header("location: signup.php?error_message=Please enter password confirmation");
-        exit; 
-    }
-    
-    $conn = connect_PDO();
-    $stmt = $conn->prepare( "SELECT id FROM users WHERE username = ? OR email = ?");
-    
-    $stmt->bindParam(1, $username, PDO::PARAM_STR);
-    $stmt->bindParam(2, $email, PDO::PARAM_STR);
-    $stmt->execute();
-    $data = $stmt->fetch(PDO::FETCH_ASSOC);
     
     if($data) 
     {
@@ -91,7 +95,7 @@ if(isset($_POST['signup_btn']))
 
         try 
         {
-            $stmt = $conn->prepare("SELECT id, username, email, image, following, followers, posts, bio
+            $stmt = $conn->prepare("SELECT id, username, email, image, following, followers, posts, bio, verified, notify
                                     FROM users 
                                     WHERE username = ?");
             $stmt->bindParam(1, $username, PDO::PARAM_STR);
@@ -106,6 +110,8 @@ if(isset($_POST['signup_btn']))
             $_SESSION['following'] =  $data['following'];
             $_SESSION['post'] =  $data['post'];
             $_SESSION['bio'] =  $data['bio'];
+            $_SESSION['verified'] =  $data['verified'];
+            $_SESSION['notify'] =  $data['notify'];
 
 
             //return to homepage
