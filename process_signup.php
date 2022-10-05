@@ -76,7 +76,7 @@ if(isset($_POST['signup_btn']))
             exit;
         }
         
-        $url = "verify.php?vkey=$vkey";
+        $url = "http://localhost:8080/camagru/verify.php?vkey=$vkey";
         $to = $email;
         $subject = "Email Verification";
         $message = '<p>The link to verify your email is below.</br>';
