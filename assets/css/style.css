@@ -448,6 +448,7 @@ body{
 .slide-container{
     height: 620px;
     flex-basis: 450px;
+    margin-right: 20px;
 }
 
 .slide-content{
@@ -478,6 +479,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-left: 10px;
 }
 
 .box{
@@ -648,7 +650,7 @@ body{
     text-align: center;
 }
 
-@media only screen and (max-width: 850px){
+@media only screen and (max-width: 900px){
     .slide-container{
         display: none;
     }
