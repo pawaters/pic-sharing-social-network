@@ -56,10 +56,10 @@
                         <input type="hidden" name="post_id" value="<?php echo $post['id'];?>">
                    </div>
                    <div class="form-group">
-                       <input type="text" name="caption" class="form-control" placeholder="type caption..." value="<?php echo $post['caption']?>" >
+                       <input type="text" name="caption" class="form-control" placeholder="type caption..." value="<?php echo $post['caption']?>" pattern="^[A-Za-z0-9.!,;(): ]*$" title="Only letters, numbers, spaces and punctuation (max 200)" maxlength="200" >
                    </div>
                    <div class="form-group">
-                       <input type="text" name="hashtags" class="form-control" placeholder="type hashtags..." value="<?php echo $post['hashtags']; ?>" >
+                       <input type="text" name="hashtags" class="form-control" placeholder="type hashtags..." value="<?php echo $post['hashtags']; ?>" pattern="^[A-Za-z0-9.!,;#]*$" title="No spaces. Only letters, numbers, hashes (max 200)" maxlength="200" >
                    </div>
                    <div class="form-group">
                        <button type="submit" style="width: 100%;" name="update_post_btn" class="upload-btn">Update Post</button>
