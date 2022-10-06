@@ -21,14 +21,14 @@
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" class="form-control" name="email" id="email" placeholder="email" required value= <?php echo $_SESSION['email']; ?> >
-                    </div> inp
+                    </div>
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" name="username" id="username" placeholder="username" required value= <?php echo $_SESSION['username']; ?> >
+                        <input type="text" class="form-control" name="username" id="username" placeholder="username" required value= <?php echo $_SESSION['username']; ?> pattern="^[a-zA-Z0-9]+$" title="Only letters and numbers, max length 20" maxlength="20">
                     </div>
                     <div class="mb-3">
                         <label for="bio" class="form-label">Bio</label>
-                        <textarea class="form-control" name="bio" id="bio" placeholder="Bio" cols="30" rows="3"><?php echo $_SESSION['bio']; ?></textarea>
+                        <textarea class="form-control" name="bio" id="bio" placeholder="Bio" cols="30" rows="3" placeholder="Add a comment" pattern="^[A-Za-z0-9.!,;(): ]*$" title="Only letters, numbers, spaces and punctuation (max 200)" maxlength="200"><?php echo $_SESSION['bio']; ?></textarea>
                     </div>
                     <div class="mb-3">
                         <input name="update_profile_btn" type= "submit" id="update_profile_btn" class="update-profile-btn" value="Update">

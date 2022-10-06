@@ -18,7 +18,7 @@
         <div class="nav-wrapper">
             <img src="assets/img/logo.jpg" class="brand-img"/>
             <form class="search-form" action="search_posts.php" method="POST">
-                <input type="text" class="search-box" placeholder="Search" name="search_input"/>
+                <input type="text" class="search-box" placeholder="Search" name="search_input"placeholder="Add a comment" pattern="^[A-Za-z0-9.!,;(): ]*$" title="Only letters, numbers, spaces and punctuation (max 200)" maxlength="200"/>
             </form>
             <div class="nav-items">
                 <a href="index.php" style="color: #000;"><i class="icon fa-solid fa-house-user"></i></a>
