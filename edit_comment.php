@@ -60,7 +60,7 @@
                         <input type="hidden" name="comment_id" value="<?php echo $comment['id'];?>">
                    </div>
                    <div class="form-group">
-                       <input type="text" name="comment_text" class="form-control"  value="<?php echo $comment['comment_text']?>" >
+                       <input type="text" name="comment_text" class="form-control"  value="<?php echo $comment['comment_text']?>" placeholder="Write a comment here" pattern="^[A-Za-z0-9.!,;(): ]*$" title="Only letters, numbers, spaces and punctuation (max 200)" maxlength="200" >
                    </div>
                    
                    <div class="form-group">
