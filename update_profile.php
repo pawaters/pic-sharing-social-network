@@ -19,8 +19,9 @@ if(isset($_POST['update_profile_btn'])){
         $image_name = $_SESSION['image'];
     }
 
+    //make sure that username is unique
     if($username != $_SESSION['username']){
-        //make sure that username is unique
+        
         
         try {
             $conn = connect_PDO();
@@ -34,20 +35,15 @@ if(isset($_POST['update_profile_btn'])){
         catch (PDOException $e) {
                 echo $e->getMessage();
         }
-
-        //there is a user with this username
         if($data){
             header("location: edit_profile.php?error_message=Username was already taken");
             exit;
         }
     
-    }else{
-
-        updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image);  
     }
 
+    //make sure that email is unique
     if($email != $_SESSION['email']){
-        //make sure that email is unique
         
         try {
             $conn = connect_PDO();
@@ -62,21 +58,13 @@ if(isset($_POST['update_profile_btn'])){
                 echo $e->getMessage();
         }
 
-        //there is a user with this username
         if($data){
             header("location: edit_profile.php?error_message=email was already taken");
             exit;
-
-        } else{
-
-            updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image);
-
         }
-    
-    }else{
-
-        updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image);  
     }
+
+    updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image, $email);  
 
 }else{
 
@@ -88,14 +76,14 @@ if(isset($_POST['update_profile_btn'])){
 
 
 
-function updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image){
+function updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image, $email){
     $conn = connect_PDO();
-    $stmt = $conn->prepare("UPDATE users SET username = ?, bio = ? , image = ? WHERE id = ?");
-    // $stmt->bind_param("sssi",$username,$bio,$image_name,$user_id);
+    $stmt = $conn->prepare("UPDATE users SET username = ?, bio = ? , image = ?, email = ? WHERE id = ?");
     $stmt->bindParam(1, $username, PDO::PARAM_STR);
     $stmt->bindParam(2, $bio, PDO::PARAM_STR);
     $stmt->bindParam(3, $image_name, PDO::PARAM_STR);
-    $stmt->bindParam(4, $user_id, PDO::PARAM_INT);
+    $stmt->bindParam(4, $email, PDO::PARAM_STR);
+    $stmt->bindParam(5, $user_id, PDO::PARAM_INT);
 
     if($stmt->execute()){
 
@@ -108,6 +96,7 @@ function updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image){
         $_SESSION['username']=$username;
         $_SESSION['bio']=$bio;
         $_SESSION['image']=$image_name;
+        $_SESSION['email']=$email;
 
 
         updateProfileImageAndUsernameInPostsTable($conn,$username,$image_name,$user_id);
