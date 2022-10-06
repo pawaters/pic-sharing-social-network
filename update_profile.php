@@ -64,6 +64,44 @@ if(isset($_POST['update_profile_btn'])){
         }
     }
 
+    //server-side form validation
+
+	$emp_email=trim($_POST["email"]);
+	$emp_uname=trim($_POST["username"]);
+	$emp_bio=trim($_POST["bio"]);
+
+    if($emp_email == "") {
+        header("location: edit_profile.php?error_message=Please enter valid email");
+        exit; 
+        } 
+    if(!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $emp_email)){
+        header("location: edit_profile?error_message=Please enter valid email");
+        exit; 
+        }
+    if($emp_bio == ""){
+        header("location: edit_profile?error_message=Please enter bio");
+        exit; 
+    }
+    if($emp_uname == ""){
+        header("location: edit_profile?error_message=Please enter password confirmation");
+        exit; 
+    }
+    if(preg_match("/^[<>]=\{\}\/*$/", $emp_email)) 
+    {
+        header("location: edit_profile?error_message=Please enter valid email (no special characters)");
+        exit; 
+    }
+    if(preg_match("/^[<>]=\{\}\/*$/", $emp_bio)) 
+    {
+        header("location: edit_profile?error_message=Please enter valid bio (no special characters)");
+        exit; 
+    }
+    if(preg_match("/^[<>]=\{\}\/*$/", $emp_uname)) 
+    {
+        header("location: edit_profile?error_message=Please enter valid username (no special characters)");
+        exit; 
+    }
+
     updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image, $email);  
 
 }else{
@@ -118,7 +156,7 @@ function updateProfileImageAndUsernameInCommentsTable($conn,$username,$image_nam
 
     $conn = connect_PDO();
     $stmt = $conn->prepare("UPDATE comments SET username = ?, profile_image = ?  WHERE user_id = ?");
-    // $stmt->bind_param("ssi",$username,$image_name,$user_id);
+
     $stmt->bindParam(1, $username, PDO::PARAM_STR);
     $stmt->bindParam(2, $image_name, PDO::PARAM_STR);
     $stmt->bindParam(3, $user_id, PDO::PARAM_INT);
@@ -133,7 +171,7 @@ function updateProfileImageAndUsernameInPostsTable($conn,$username,$image_name,$
 
     $conn = connect_PDO();
     $stmt = $conn->prepare("UPDATE posts SET username = ?, profile_image = ?  WHERE user_id = ?");
-    // $stmt->bind_param("ssi",$username,$image_name,$user_id);
+
     $stmt->bindParam(1, $username, PDO::PARAM_STR);
     $stmt->bindParam(2, $image_name, PDO::PARAM_STR);
     $stmt->bindParam(3, $user_id, PDO::PARAM_INT);

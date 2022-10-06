@@ -29,12 +29,37 @@ if(isset($_POST['update_post_btn'])){
         $image_name = $old_image_name;
     }
 
+    //server-side form validation
 
+	$emp_caption=trim($_POST['caption']);
+	$emp_hash=trim($_POST['hashtags']);
+    
+
+    if($emp_caption == "")
+    {
+        header("location: camera.php?error_message=Please enter a caption");
+        exit; 
+    } 
+	if($emp_hash == "")
+    {
+        header("location: camera.php?error_message=Please enter a hashtag");
+        exit; 
+    } 
+    if(preg_match("/^[<>]=\{\}\/*$/", $emp_caption)) 
+    {
+        header("location: camera.php?error_message=Please enter valid caption (no special characters)");
+        exit; 
+    }
+	if(preg_match("/^[<>]=\{\}\/*$/", $emp_hash)) 
+    {
+        header("location: camera.php?error_message=Please enter valid hashtag (no special characters)");
+        exit; 
+    }
 
     try {
         $conn = connect_PDO();
         $stmt = $conn->prepare("UPDATE posts SET image = ? , caption = ?, hashtags = ? WHERE id = ?");
-        // $stmt->bind_param("sssi",$image_name,$caption,$hashtags,$post_id);
+        
         $stmt->bindParam(1, $image_name, PDO::PARAM_STR);
         $stmt->bindParam(2, $caption, PDO::PARAM_STR);
         $stmt->bindParam(3, $hashtags, PDO::PARAM_STR);

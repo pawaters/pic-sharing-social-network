@@ -24,7 +24,7 @@ if(isset($_POST['comment_btn']))
     } 
     if(preg_match("/^[<>]=\{\}\/*$/", $emp_email)) 
     {
-        header("location: index.php?error_message=Please enter valid comment (no special characters)");
+        header("location: index.php?error_message=Please enter valid email (no special characters)");
         exit; 
     }
     
