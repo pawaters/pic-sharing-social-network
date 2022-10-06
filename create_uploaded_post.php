@@ -66,6 +66,32 @@ if(isset($_POST['upload_img_btn'])){
 		exit;
 	}
 	
+	//server-side form validation
+
+	$emp_caption=trim($_POST['caption']);
+	$emp_hash=trim($_POST['hashtags']);
+
+    if($emp_caption == "")
+    {
+        header("location: upload.php?error_message=Please enter a caption");
+        exit; 
+    } 
+	if($emp_hash == "")
+    {
+        header("location: upload.php?error_message=Please enter a hashtag");
+        exit; 
+    } 
+    if(preg_match("/^[<>]=\{\}\/*$/", $emp_caption)) 
+    {
+        header("location: upload.php?error_message=Please enter valid caption (no special characters)");
+        exit; 
+    }
+	if(preg_match("/^[<>]=\{\}\/*$/", $emp_hash)) 
+    {
+        header("location: upload.php?error_message=Please enter valid hashtag (no special characters)");
+        exit; 
+    }
+
 	// Create post
 	try {
 		$conn = connect_PDO();
