@@ -3,12 +3,13 @@
 
 session_start();
 
-include("connection.php");
+include_once("connection.php");
 
 if(isset($_POST['update_profile_btn'])){
 
     $user_id = $_SESSION['id'];
     $username = $_POST['username'];
+    $email = $_POST['email'];
     $bio = $_POST['bio'];
     $image = $_FILES['image']['tmp_name'];  //file
 
@@ -18,8 +19,6 @@ if(isset($_POST['update_profile_btn'])){
         $image_name = $_SESSION['image'];
     }
 
-
-
     if($username != $_SESSION['username']){
         //make sure that username is unique
         
@@ -27,11 +26,9 @@ if(isset($_POST['update_profile_btn'])){
             $conn = connect_PDO();
             $stmt = $conn->prepare("SELECT username FROM users WHERE username = ?");
 
-            // $stmt->bind_param("s",$username);
             $stmt->bindParam(1, $username, PDO::PARAM_STR);
             $stmt->execute();
 
-            // $stmt->store_result();
             $data = $stmt->fetch(PDO::FETCH_ASSOC);
         }
         catch (PDOException $e) {
@@ -42,43 +39,51 @@ if(isset($_POST['update_profile_btn'])){
         if($data){
             header("location: edit_profile.php?error_message=Username was already taken");
             exit;
+        }
+    
+    }else{
+
+        updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image);  
+    }
+
+    if($email != $_SESSION['email']){
+        //make sure that email is unique
+        
+        try {
+            $conn = connect_PDO();
+            $stmt = $conn->prepare("SELECT email FROM users WHERE email = ?");
+
+            $stmt->bindParam(1, $email, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+                echo $e->getMessage();
+        }
+
+        //there is a user with this username
+        if($data){
+            header("location: edit_profile.php?error_message=email was already taken");
+            exit;
 
         } else{
 
-
-
             updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image);
 
-            
-    
         }
     
-      
-
     }else{
 
-
-    
-
-        updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image);
-         
-
+        updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image);  
     }
-
-   
-
-    
-
 
 }else{
 
     header("location: edit_profile.php?error_message?error occured, try again");
     exit;
 
-
 }
-
-
 
 
 

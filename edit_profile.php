@@ -20,8 +20,8 @@
 
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <p class="form-control"><?php echo $_SESSION['email']; ?></p>
-                    </div>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="email" required value= <?php echo $_SESSION['email']; ?> >
+                    </div> inp
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
                         <input type="text" class="form-control" name="username" id="username" placeholder="username" required value= <?php echo $_SESSION['username']; ?> >
