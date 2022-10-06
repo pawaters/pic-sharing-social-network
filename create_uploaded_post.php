@@ -8,6 +8,12 @@ require_once("connection.php");
 if(isset($_POST['upload_img_btn'])){
 	$id = $_SESSION['id'];
 	$profile_image = $_SESSION['image']; 
+	if($_FILES['image']['size'] == 0) 
+	{
+		// No file was selected for upload
+		header("location: signup.php?error_message=No image was selected for upload");
+    	exit;
+	}
 	$image = $_FILES['image']['tmp_name'];
 	$caption = $_POST['caption'];
 	$hashtags = $_POST['hashtags'];
@@ -23,6 +29,8 @@ if(isset($_POST['upload_img_btn'])){
 
 	$max_height = 500;
 	$max_width = 500;
+
+
 	list($orig_width, $orig_height) = getimagesize($image);
 	if ($orig_width > $max_width || $orig_height > $max_height) {
 		$ratio = $orig_width/$orig_height;

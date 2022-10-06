@@ -122,13 +122,13 @@ if(isset($_POST['signup_btn']))
 
         //return to homepage
         header("location: index.php?success_message=Signup successful. Email validation link was sent.");
-
+        exit;
     }
 }
 else
 {
     header("location: signup.php?error_message=error occurred");
-
+    exit;
 }
 
 ?>
