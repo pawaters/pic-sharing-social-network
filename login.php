@@ -132,31 +132,31 @@ if(isset($_SESSION['id'])) {
        }
     };
  
-    function changeMode()
-    {
-        var body = document.getElementsByTagName('body')[0];
-        var footerLinks = document.getElementById('links').getElementsByTagName('a');
+    // function changeMode()
+    // {
+    //     var body = document.getElementsByTagName('body')[0];
+    //     var footerLinks = document.getElementById('links').getElementsByTagName('a');
 
-        if(body.classList.contains('dark'))
-        {
-            body.classList.remove('dark');
+    //     if(body.classList.contains('dark'))
+    //     {
+    //         body.classList.remove('dark');
 
-            for (let i=0; i < footerLinks.length; i++)
-            {
-                footerLinks[i].classList.remove('dark-mode-link');
-            } 
-        }
-        else 
-        {
-            body.classList.add('dark');
+    //         for (let i=0; i < footerLinks.length; i++)
+    //         {
+    //             footerLinks[i].classList.remove('dark-mode-link');
+    //         } 
+    //     }
+    //     else 
+    //     {
+    //         body.classList.add('dark');
 
-            for (let i = 0; i < footerLinks.length; i++)
-            {
-                footerLinks[i].classList.add('dark-mode-link');   
-            }
-        };
+    //         for (let i = 0; i < footerLinks.length; i++)
+    //         {
+    //             footerLinks[i].classList.add('dark-mode-link');   
+    //         }
+    //     };
 
-    }
+    // }
     
     function verifyForm()
         {
@@ -171,12 +171,11 @@ if(isset($_SESSION['id'])) {
             return true;
         }
    
-    // TD: why that e?
-    document.getElementById('dark-btn').addEventListener('click',(e)=>{
-        e.preventDefault();
+    // document.getElementById('dark-btn').addEventListener('click',(e)=>{
+    //     e.preventDefault();
 
-        changeMode();
-    })
+    //     changeMode();
+    // })
 
     // document.getElementById('login_form').addEventListener('submit', (e)=>{
     //     e.preventDefault();

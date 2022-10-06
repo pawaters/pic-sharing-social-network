@@ -58,10 +58,10 @@
 						</div>
 						<p class="sticker-description">5. Add a caption and hashtag, then hit "publish"</p>
 						<div class="control">
-							<input type="text" class="my-input input" name="caption" placeholder="Write a caption here" required>
+							<input type="text" class="my-input input" name="caption" placeholder="Write a caption here" pattern="^[A-Za-z0-9.!,;(): ]*$" title="Only letters, numbers, spaces and punctuation (max 200)" maxlength="200" required>
 						</div>
 						<div class="control" >
-							<input type="text" class="my-input input" name="hashtags" placeholder="Add hashtags here" required>
+							<input type="text" class="my-input input" name="hashtags" placeholder="Add hashtags here" pattern="^[A-Za-z0-9.!,;#]*$" title="No spaces. Only letters, numbers, hashes (max 200)" maxlength="200" required>
 						</div>
 						<div>
 							<button type="submit" class="upload-btn" name="webcam_img_btn">Publish</button>

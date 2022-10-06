@@ -37,6 +37,32 @@ if(isset($_POST['webcam_img_btn'])){
 
 	imagecopy($destination, $dest, 0, 0, 0, 0, 700, 500);
 
+	//server-side form validation
+
+	$emp_caption=trim($_POST['caption']);
+	$emp_hash=trim($_POST['hashtags']);
+
+    if($emp_caption == "")
+    {
+        header("location: camera.php?error_message=Please enter a caption");
+        exit; 
+    } 
+	if($emp_hash == "")
+    {
+        header("location: camera.php?error_message=Please enter a hashtag");
+        exit; 
+    } 
+    if(preg_match("/^[<>]=\{\}\/*$/", $emp_caption)) 
+    {
+        header("location: camera.php?error_message=Please enter valid caption (no special characters)");
+        exit; 
+    }
+	if(preg_match("/^[<>]=\{\}\/*$/", $emp_hash)) 
+    {
+        header("location: camera.php?error_message=Please enter valid hashtag (no special characters)");
+        exit; 
+    }
+
 	// Create post
 	try {
 		$conn = connect_PDO();
@@ -67,7 +93,7 @@ if(isset($_POST['webcam_img_btn'])){
 	
 			$_SESSION['posts'] = $_SESSION['posts']+1;
 	
-			header('location: camera.php?ok_message=Post created&image_name='.$image_name);
+			header('location: camera.php?success_message=Post created&image_name='.$image_name);
 			exit;
 		}else{
 			header('location: camera.php?error_message=Error occured.');
