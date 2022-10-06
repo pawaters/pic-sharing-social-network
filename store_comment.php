@@ -13,6 +13,21 @@ if(isset($_POST['comment_btn']))
     $comment_text = $_POST['comment_text'];
     $date = date("Y-m-d H:i:s");
 
+    //server-side form validation
+
+	$emp_comment=trim($_POST['comment_text']);
+
+    if($emp_comment == "")
+    {
+        header("location: index.php?error_message=Please enter a comment");
+        exit; 
+    } 
+    if(!preg_match("/^[A-Za-z0-9. ]*$/", $emp_email)) 
+    {
+        header("location: index.php?error_message=Please enter valid comment (only letters, numbers, spaces and comas");
+        exit; 
+    }
+    
     try {
     $conn = connect_PDO();
     $stmt =  $conn->prepare(
