@@ -22,9 +22,9 @@ if(isset($_POST['comment_btn']))
         header("location: index.php?error_message=Please enter a comment");
         exit; 
     } 
-    if(!preg_match("/^[A-Za-z0-9. ]*$/", $emp_email)) 
+    if(preg_match("/^[<>]=\{\}\/*$/", $emp_email)) 
     {
-        header("location: index.php?error_message=Please enter valid comment (only letters, numbers, spaces and comas");
+        header("location: index.php?error_message=Please enter valid comment (no special characters)");
         exit; 
     }
     

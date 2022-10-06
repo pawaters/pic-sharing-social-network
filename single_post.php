@@ -170,7 +170,7 @@ else
                         <img class="icon" src="<?php echo 'assets/img/'.$_SESSION['image'];?>">
                         <form class="comment-wrapper" action="store_comment.php" method="POST">
                             <input type="hidden" name="post_id" value="<?php echo $post['id'];?>">
-                            <input type="text" class="comment-box" name="comment_text" required placeholder="Add a comment" pattern="^[A-Za-z0-9. ]*$" title="Only letters, numbers, spaces and comas (max 200)" maxlength="200"/>
+                            <input type="text" class="comment-box" name="comment_text" required placeholder="Add a comment" pattern="^[A-Za-z0-9.!,;(): ]*$" title="Only letters, numbers, spaces and punctuation (max 200)" maxlength="200"/>
                             <button class="comment-btn" name="comment_btn" type="submit">comment</button>
                         </form>
 
