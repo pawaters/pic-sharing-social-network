@@ -39,7 +39,7 @@
                             
                             <div class="form-group">
                                 <div class="login-input">
-                                    <input type="text" name="email" placeholder="Type your email address..." required>
+                                    <input type="email" name="email" placeholder="Type your email address..." required>
                                 </div>
                             </div>
                             <div class="form-group">
