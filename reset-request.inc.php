@@ -13,6 +13,19 @@ if(isset($_POST["reset-request-submit"])) {
     require_once 'connection.php';
 
     $userEmail = $_POST["email"];
+
+    //server-side form validation
+    $emp_email=trim($_POST["email"]);
+
+    if($emp_email == "") {
+        header("location: reset-password.php?error_message=Please enter email");
+        exit; 
+    } 
+    
+    if(!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $emp_email)){
+        header("location: reset-password?error_message=Please enter valid email");
+        exit; 
+    }
     
     try {
         $conn = connect_PDO();

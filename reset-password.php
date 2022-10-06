@@ -17,7 +17,7 @@
                 <form action="reset-request.inc.php" method="post">
                     <div class="form-group">
                         <div class="login-input">
-                            <input type="text" name="email" placeholder="Type your email address...">
+                            <input type="email" name="email" placeholder="Type your email address...">
                         </div>
                     </div>
                     <div class="btn-group">
