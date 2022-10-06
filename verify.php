@@ -15,7 +15,7 @@
                     $vkey = $_GET["vkey"]; 
 
                     if(empty($vkey)) {
-                        header("Location: verify.php?error_message=Error - Could not find email to validate.");
+                        header("Location: signup.php?error_message=Error - Could not find email to validate.");
                         exit();
                     } else {
                             ?>
@@ -33,14 +33,14 @@
                                 $stmt->execute();
                                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
                                 if (!$row) {
-                                    header("Location: verify.php?error: Already verified, Invalid SQL or account");
+                                    header("Location: signup.php?error: Already verified, Invalid SQL or account");
                                     exit();
                                 }
                                 else {
                                     $sql = "UPDATE users SET verified = 1 WHERE vkey = ? LIMIT 1";
                                     if (!$stmt = $conn->prepare($sql)) 
                                     {
-                                        header("Location: verify.php?error_message=SQL error");
+                                        header("Location: signup.php?error_message=SQL error");
                                         exit();
                                     } else {
                                         $stmt->bindParam(1, $vkey, PDO::PARAM_STR);  
