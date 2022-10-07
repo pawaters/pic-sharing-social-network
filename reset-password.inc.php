@@ -32,7 +32,7 @@ if (isset($_POST["reset-password-submit"])) {
             $stmt->execute();
 
             if (!$row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                header("Location: login.php?error_message=".$dump ."SQL error 2. Selector: ".$selector. ".\br Current datE:" . $currentDate);
+                header("Location: login.php?error_message=SQL error 2. Selector: ".$selector. ".\br Current datE:" . $currentDate);
                 exit();
             }
             else {

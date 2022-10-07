@@ -11,7 +11,7 @@ if(isset($_POST['login_btn']))
     
     try {
         $conn = connect_PDO();
-        $stmt = $conn->prepare("SELECT id, username, email, image, followers, following, posts, bio, verified, createdate
+        $stmt = $conn->prepare("SELECT id, username, email, image, followers, following, posts, bio, verified, createdate, notify
                                 FROM users
                                 WHERE email = ? AND password = ? LIMIT 1");
 

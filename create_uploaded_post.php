@@ -125,7 +125,7 @@ if(isset($_POST['upload_img_btn'])){
 			}
 			$conn = null;
 
-			$_SESSION['posts'] = $_SESSION['posts']+1;
+			$_SESSION['post'] = $_SESSION['post']+1;
 	
 			header('location: upload.php?success_message=Post created&image_name='.$image_name);
 			exit;

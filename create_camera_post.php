@@ -91,7 +91,7 @@ if(isset($_POST['webcam_img_btn'])){
 			}
 			$conn = null;
 	
-			$_SESSION['posts'] = $_SESSION['posts']+1;
+			$_SESSION['post'] = $_SESSION['post']+1;
 	
 			header('location: camera.php?success_message=Post created&image_name='.$image_name);
 			exit;
