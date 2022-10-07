@@ -106,12 +106,7 @@ if(isset($_POST['upload_img_btn'])){
 		$stmt->bindParam(8, $profile_image, PDO::PARAM_STR);
 		$stmt->bindParam(9, $webcam, PDO::PARAM_STR);
 		if($stmt->execute()){
-			// do we stil use this $src?
-            if($src){
-				imagepng($src, "assets/img/".$image_name); //Store image in folder
-			} else {
 				imagepng($destination, "assets/img/".$image_name);
-			}
 			
 			//increase the number of posts and update session with the new number of posts
 			try {
