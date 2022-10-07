@@ -115,7 +115,7 @@ if(isset($_POST['signup_btn']))
         $_SESSION['image'] =  $data['image'];
         $_SESSION['followers'] =  $data['followers'];
         $_SESSION['following'] =  $data['following'];
-        $_SESSION['post'] =  $data['post'];
+        $_SESSION['post'] =  $data['posts'];
         $_SESSION['bio'] =  $data['bio'];
         $_SESSION['verified'] =  $data['verified'];
         $_SESSION['notify'] =  $data['notify'];
