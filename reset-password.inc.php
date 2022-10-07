@@ -17,7 +17,7 @@ if (isset($_POST["reset-password-submit"])) {
 
     $currentDate = date("U");
 
-    require 'connection.php';
+    require_once 'connection.php';
 
     $sql = "SELECT * FROM pwdReset WHERE pwdResetSelector = ? AND pwdResetExpires >= $currentDate";
 

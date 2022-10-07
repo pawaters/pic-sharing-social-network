@@ -33,7 +33,7 @@
                                 $stmt->execute();
                                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
                                 if (!$row) {
-                                    header("Location: signup.php?error: Already verified, Invalid SQL or account");
+                                    header("Location: login.php?error_message: Already verified, Invalid SQL or account");
                                     exit();
                                 }
                                 else {
@@ -45,7 +45,7 @@
                                     } else {
                                         $stmt->bindParam(1, $vkey, PDO::PARAM_STR);  
                                         $stmt->execute();
-                                        header("Location: index.php?success_message=Your email has been verified!");
+                                        header("Location: login.php?success_message=Your email has been verified! Please log in.");
                                         exit();
                                     } 
                                 }

@@ -4,9 +4,13 @@ session_start();
 
 // if not logged in, send to login page
 if(!isset($_SESSION['id'])){
-    header('location: login.php');
+    header('location: login.php?error_message=Please log in');
     exit;
 }
+// if($_SESSION['verified'] == 0){
+//     header('location: login.php?error_message=you need to verify');
+//     exit;
+// }
 
 ?>
 
