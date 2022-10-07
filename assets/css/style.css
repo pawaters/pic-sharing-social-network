@@ -650,7 +650,7 @@ body{
     text-align: center;
 }
 
-@media only screen and (max-width: 900px){
+@media only screen and (max-width: 1000px){
     .slide-container{
         display: none;
     }
