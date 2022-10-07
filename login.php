@@ -98,12 +98,6 @@ if(isset($_SESSION['id'])) {
     <!--script to slide images -->
     <script> 
     
-    //REWRITE THIS WITH A SIMPLER LOOP
-
-    // why we cant just call directly func but have to use arrow to then call 
-    // the reason is that when in a callback, it stays within that specific context,
-    // and changes the value in context of setInterval itself, not the value of the CSS out of it.
-    // to solve this, we can use the arrow function expression.
     setInterval(() => {changeImage();}, 1000);
     
     function changeImage(){
