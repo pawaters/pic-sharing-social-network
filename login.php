@@ -132,19 +132,6 @@ if(isset($_SESSION['id'])) {
            }
        }
     };
-    
-    function verifyForm()
-        {
-            var password = document.getElementById('password').value;
-            var error_message = document.getElementById('error_message');
-
-            if(password.length < 6)
-            {
-                error_message.innerHTML = "Password is too short";
-                return false;
-            }
-            return true;
-        }
 
     </script>
 
