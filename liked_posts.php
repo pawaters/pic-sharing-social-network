@@ -80,7 +80,7 @@
 
       <?php if(!isset($posts)){ ?>
 
-             <div class="mx-auto mt-5 alert alert-danger"><?php echo "No posts liked."; ?>
+             <div class="mx-auto mt-5 alert alert alert-danger"><?php echo "No posts liked."; ?>
                  <a href="index.php" style="color:rgb(0,162,255);">Discover great posts now. </a>
              </div>
 

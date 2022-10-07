@@ -8,7 +8,7 @@
             <h3 class="text-center">Update Profile</h3>
 
                 <?php if(isset($_GET['error_message'])) {?>
-                    <p class="text-center alert-danger"><?php echo $_GET['error_message']; ?></p>
+                    <p class="text-center alert alert-danger"><?php echo $_GET['error_message']; ?></p>
                 <?php } ?>
     <!-- bootstrap for forms: form-label, label, form-control -->
     <!-- always use enctype="multipart/form-data" when using <input type="file"> data -->

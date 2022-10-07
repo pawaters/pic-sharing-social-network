@@ -3,11 +3,11 @@
     <div class="camera-container">
 
         <?php if(isset($_GET['success_message'])) { ?>
-            <p class="mt-4 text-center alert-success"><?php echo $_GET['success_message']; ?> </p>
+            <p class="mt-4 text-center alert alert-success"><?php echo $_GET['success_message']; ?> </p>
         <?php } ?>
 
         <?php if(isset($_GET['error_message'])) { ?>
-            <p class="mt-4 text-center alert-danger"><?php echo $_GET['error_message']; ?> </p>
+            <p class="mt-4 text-center alert alert-danger"><?php echo $_GET['error_message']; ?> </p>
         <?php } ?>
          
         <div class="camera">
