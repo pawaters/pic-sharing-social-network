@@ -28,7 +28,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="bio" class="form-label">Bio</label>
-                        <textarea class="form-control" name="bio" id="bio" placeholder="Bio" cols="30" rows="3" placeholder="Add a comment" pattern="^[A-Za-z0-9.!,;(): ]*$" title="Only letters, numbers, spaces and punctuation (max 200)" maxlength="200"><?php echo $_SESSION['bio']; ?></textarea>
+                        <input type="text" class="form-control" name="bio" id="bio" placeholder="Bio" cols="30" rows="3" placeholder="Add a comment" pattern="^[A-Za-z0-9.!,;(): ]*$" title="Only letters, numbers, spaces and punctuation (max 100)" maxlength="100" value=<?php echo $_SESSION['bio']; ?> >
                     </div>
                     <div class="mb-3">
                         <input name="update_profile_btn" type= "submit" id="update_profile_btn" class="update-profile-btn" value="Update">
