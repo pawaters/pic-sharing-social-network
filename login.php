@@ -59,7 +59,8 @@ if(isset($_SESSION['id'])) {
                         
                             <div class="form-group">
                                 <div class="login-input">
-                                    <input type="email" name="email" placeholder="Type your email address...">
+                                    <!-- <input type="email" name="email" placeholder="Type your email address..."> -->
+                                    <input type="text" name="username" placeholder="Type your username..." required pattern="^[a-zA-Z0-9]+$" title="Only letters and numbers, max length 20" maxlength="20">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -131,32 +132,6 @@ if(isset($_SESSION['id'])) {
            }
        }
     };
- 
-    // function changeMode()
-    // {
-    //     var body = document.getElementsByTagName('body')[0];
-    //     var footerLinks = document.getElementById('links').getElementsByTagName('a');
-
-    //     if(body.classList.contains('dark'))
-    //     {
-    //         body.classList.remove('dark');
-
-    //         for (let i=0; i < footerLinks.length; i++)
-    //         {
-    //             footerLinks[i].classList.remove('dark-mode-link');
-    //         } 
-    //     }
-    //     else 
-    //     {
-    //         body.classList.add('dark');
-
-    //         for (let i = 0; i < footerLinks.length; i++)
-    //         {
-    //             footerLinks[i].classList.add('dark-mode-link');   
-    //         }
-    //     };
-
-    // }
     
     function verifyForm()
         {
@@ -170,18 +145,6 @@ if(isset($_SESSION['id'])) {
             }
             return true;
         }
-   
-    // document.getElementById('dark-btn').addEventListener('click',(e)=>{
-    //     e.preventDefault();
-
-    //     changeMode();
-    // })
-
-    // document.getElementById('login_form').addEventListener('submit', (e)=>{
-    //     e.preventDefault();
-
-    //     verifyForm();
-    // })
 
     </script>
 
