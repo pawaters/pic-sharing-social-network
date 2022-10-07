@@ -40,6 +40,12 @@ if(isset($_POST['signup_btn']))
         header("location: signup.php?error_message=Please enter password confirmation");
         exit; 
     }
+    if(preg_match("/^[<>]=\{\}\/*$/", $emp_uname)) 
+    {
+        header("location: edit_profile?error_message=Please enter valid username (no special characters)");
+        exit; 
+    }
+
     try {
         $conn = connect_PDO();
         $stmt = $conn->prepare( "SELECT id FROM users WHERE username = ? OR email = ?");
