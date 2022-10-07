@@ -6,16 +6,16 @@ include_once('connection.php');
 
 if(isset($_POST['login_btn'])) 
 {
-    $email = $_POST['email'];
+    $username = $_POST['username'];
     $password = md5($_POST['password']); 
     
     try {
         $conn = connect_PDO();
         $stmt = $conn->prepare("SELECT id, username, email, image, followers, following, posts, bio, verified, createdate, notify
                                 FROM users
-                                WHERE email = ? AND password = ? LIMIT 1");
+                                WHERE username = ? AND password = ? LIMIT 1");
 
-        $stmt->bindParam(1, $email, PDO::PARAM_STR);
+        $stmt->bindParam(1, $username, PDO::PARAM_STR);
         $stmt->bindParam(2, $password, PDO::PARAM_STR);
         $stmt->execute();
 
@@ -32,13 +32,13 @@ if(isset($_POST['login_btn']))
 
         if ($verified == 0)
         {
-            header('location: login.php?error_message=Please verify your email via the link sent to you on '.  $createdate . ', then login.');
+            header('location: login.php?error_message=Please verify your username via the link sent to you on '.  $createdate . ', then login.');
             exit;
         } else {
         //now store values in SESSION
         $_SESSION['id'] =  $data['id'];
         $_SESSION['username'] =  $data['username'];
-        $_SESSION['email'] =  $data['email'];
+        $_SESSION['username'] =  $data['username'];
         $_SESSION['image'] =  $data['image'];
         $_SESSION['followers'] =  $data['followers'];
         $_SESSION['following'] =  $data['following'];
@@ -54,7 +54,7 @@ if(isset($_POST['login_btn']))
     }
     else 
     {
-    header('location: login.php?error_message=Email/password incorrect');
+    header('location: login.php?error_message=Username/password incorrect');
     exit;
     } 
 } else {
