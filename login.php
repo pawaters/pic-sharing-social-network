@@ -46,7 +46,7 @@ if(isset($_SESSION['id'])) {
                         <!-- in the front-end part, we have class id and some inputs
                         // now, to feed into our back-end, we need to add a method "POST", and an action 
                         // the php for the action will define what to do with the form data -->
-                        <form class="login-form" id="login-form" method="POST" action="process_login.php">
+                        <form class="login-form" id="login-form" method="POST" action="process_login.php" autocomplete="on">
 
                         <?php if(isset($_GET['success_message'])) { ?>
                             <p id="success_message" class="text-center alert alert-success"><?php echo $_GET['success_message']; ?> </p>
