@@ -1,7 +1,7 @@
 <?php include("header.php"); ?>
     
-	<div class="wrapper">
-		<div class="camera-container">			
+	<div style="width: 90%">
+		<div class="camera-container">	
 			<div class="left-col">
 				<?php if(isset($_GET['success_message'])) { ?>
 					<p class="mt-4 text-center alert alert-success"><?php echo $_GET['success_message']; ?> </p>
@@ -32,7 +32,8 @@
 
 							<!-- 2. The video stream -->
 							<div>
-								<video class="is-hidden" id="video" width="700" height="500" autoplay></video>
+								<!-- <video class="is-hidden" id="video" width="700" height="500" autoplay></video> -->
+								<video class="is-hidden" id="video" autoplay width="100%" video="100%" style="width: 100%; max-height: 100%;"></video>
 							</div>
 							<p style="margin-top: 30px;" class="sticker-description">3. Take your photo</p>
 							<button class="capture-btn" id="click-photo">Capture Photo</button>
