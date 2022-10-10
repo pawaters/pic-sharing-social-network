@@ -97,35 +97,7 @@ if(isset($_POST['signup_btn']))
         $emailLog = "Signup successful. Email validation link was sent.";
         $emailLog .= "address:";
         $emailLog .= $to;
-        // $emailLog .= "Message:";
-        // $emailLog .= $message;
-
-        // try 
-        // {
-        //     $stmt = $conn->prepare("SELECT id, username, email, image, following, followers, posts, bio, verified, notify
-        //                             FROM users 
-        //                             WHERE username = ?");
-        //     $stmt->bindParam(1, $username, PDO::PARAM_STR);
-        //     $stmt->execute();
-        //     $data = $stmt->fetch(PDO::FETCH_ASSOC);              
-        // }
-        // catch (PDOException $error) 
-        // {
-        //     echo $error->getMessage(); 
-        //     exit;
-        // }
-        
-        // $_SESSION['id'] =  $data['id'];
-        // $_SESSION['username'] =  $data['username'];
-        // $_SESSION['email'] =  $data['email'];
-        // $_SESSION['image'] =  $data['image'];
-        // $_SESSION['followers'] =  $data['followers'];
-        // $_SESSION['following'] =  $data['following'];
-        // $_SESSION['post'] =  $data['posts'];
-        // $_SESSION['bio'] =  $data['bio'];
-        // $_SESSION['verified'] =  $data['verified'];
-        // $_SESSION['notify'] =  $data['notify'];
-
+       
         //return to homepage
         header("location: login.php?success_message=Signup successful. Email validation link was sent.");
         exit;
