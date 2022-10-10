@@ -89,30 +89,31 @@ require_once('header.php');
 
 <script>
 	imgInp.onchange = evt => {
-		const [file] = imgInp.files;
-		let canvas = document.getElementById("myCanvas");
-		let ctx = canvas.getContext("2d");
-		if (file) {
-			picture.src = URL.createObjectURL(file);
-			setTimeout(() => {
-				if(picture.width < picture.height) {
-					let maxHeight = 700;
-					let maxWidth = 500;
-					if (picture.width > maxWidth || picture.height > maxHeight) {
-						let ratio = picture.width/picture.height;
-						if(ratio > 1) {
-								picture.width = maxWidth;
-								picture.height = maxHeight/ratio;
-							} else {
-								picture.width = maxWidth*ratio;
-								picture.height = maxHeight;
+			const [file] = imgInp.files;
+			let canvas = document.getElementById("myCanvas");
+			let ctx = canvas.getContext("2d");
+			if (file) {
+				picture.src = URL.createObjectURL(file);
+				setTimeout(() => {
+					if(picture.height < 400)
+						alert("Stickers will not show properly on images of this size. Choose a different image if you wish to add stickers.");
+					if(picture.width < picture.height){
+						let maxHeight = 700;
+						let maxWidth = 500;
+						if (picture.width > maxWidth || picture.height > maxHeight) {
+							let ratio = picture.width/picture.height;
+								if(ratio > 1) {
+										picture.width = maxWidth;
+										picture.height = maxHeight/ratio;
+									} else {
+										picture.width = maxWidth*ratio;
+										picture.height = maxHeight;
+									}
 						}
 					}
-				} 
-			}, 50);
+				}, 50);
+			}
 		}
- 	}
-
 	const filter = document.querySelectorAll(".sticker");
 
 	for(let i=0; i<filter.length; i++){
@@ -127,19 +128,19 @@ require_once('header.php');
 		let Selectedsticker = document.getElementById(sticker);
 		switch (sticker){
 			case 'sticker1':
-				ctx.drawImage(Selectedsticker, 60, 100, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
+				ctx.drawImage(Selectedsticker, 40, 50, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
 				break;
 			case 'sticker2':
-				ctx.drawImage(Selectedsticker, 300, 100, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
+				ctx.drawImage(Selectedsticker, 300, 40, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
 				break;
 			case 'sticker3':
-				ctx.drawImage(Selectedsticker, 250, 200, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
+				ctx.drawImage(Selectedsticker, 150, 150, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
 				break;
 			case 'sticker4':
-				ctx.drawImage(Selectedsticker, 200, 150, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
+				ctx.drawImage(Selectedsticker, 150, 80, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
 				break;
 			case 'sticker5':
-				ctx.drawImage(Selectedsticker, 100, 200, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
+				ctx.drawImage(Selectedsticker, 30, 150, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
 				break;
 		}
 		let canvasUrl = c.toDataURL();
