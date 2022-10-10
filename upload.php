@@ -20,7 +20,7 @@ require_once('header.php');
 				<form class="camera-form" method="POST" action="create_uploaded_post.php" enctype="multipart/form-data">
 					<p class="sticker-description" style="margin-top: 30px;">1. SELECT AN IMAGE TO UPLOAD</p>
 					<div class="canvas-container">
-						<!-- <img id="picture"> -->
+						<img id="picture" style="display: none;">
 						<canvas class="d-none" width="700" height="500" id="myCanvas"></canvas>
 						<input type="hidden" id="upload-file" value="" name="upload_file">
 					</div>
@@ -127,19 +127,19 @@ require_once('header.php');
 		let Selectedsticker = document.getElementById(sticker);
 		switch (sticker){
 			case 'sticker1':
-				ctx.drawImage(Selectedsticker, 30, 40, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
+				ctx.drawImage(Selectedsticker, 60, 100, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
 				break;
 			case 'sticker2':
-				ctx.drawImage(Selectedsticker, 300, 40, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
+				ctx.drawImage(Selectedsticker, 300, 100, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
 				break;
 			case 'sticker3':
-				ctx.drawImage(Selectedsticker, 150, 200, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
+				ctx.drawImage(Selectedsticker, 250, 200, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
 				break;
 			case 'sticker4':
-				ctx.drawImage(Selectedsticker, 150, 80, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
+				ctx.drawImage(Selectedsticker, 200, 150, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
 				break;
 			case 'sticker5':
-				ctx.drawImage(Selectedsticker, 30, 200, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
+				ctx.drawImage(Selectedsticker, 100, 200, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
 				break;
 		}
 		let canvasUrl = c.toDataURL();
