@@ -1,105 +1,104 @@
 <?php include("header.php"); ?>
     
-    <div class="camera-container">
+	<div class="wrapper">
+		<div class="camera-container">			
+			<div class="left-col">
+				<?php if(isset($_GET['success_message'])) { ?>
+					<p class="mt-4 text-center alert alert-success"><?php echo $_GET['success_message']; ?> </p>
+				<?php } ?>
 
-        <?php if(isset($_GET['success_message'])) { ?>
-            <p class="mt-4 text-center alert alert-success"><?php echo $_GET['success_message']; ?> </p>
-        <?php } ?>
-
-        <?php if(isset($_GET['error_message'])) { ?>
-            <p class="mt-4 text-center alert alert-danger"><?php echo $_GET['error_message']; ?> </p>
-        <?php } ?>
-         
-        <div class="camera">
-            <div class="camera-img" style="display:flex;">
-				<div style="width:90%;">
-					<form style="width:95%;"  class="camera-form" method="POST" action="create_camera_post.php" enctype="multipart/form-data">
-						<div>
-							<p class="sticker-description">1. First, Click on one or more stickers (Do it first, or next button won't be clickable!)</p>
-							<div class="stickers-box">
-								<div class="stickers-container">
-									<img style="width:100px;" class="sticker" src="assets/stickers/different.png" alt="rugby-sticker" id="sticker1">
-									<img style="width:100px;" class="sticker" src="assets/stickers/football.png" alt="rugby-sticker" id="sticker2">
-									<img style="width:100px;" class="sticker" src="assets/stickers/love.png" alt="rugby-sticker" id="sticker3">
-									<img style="width:100px;" class="sticker" src="assets/stickers/pink.png" alt="rugby-sticker" id="sticker4">
-									<img style="width:100px;" class="sticker" src="assets/stickers/rugby.png" alt="rugby-sticker" id="sticker5">
+				<?php if(isset($_GET['error_message'])) { ?>
+					<p class="mt-4 text-center alert alert-danger"><?php echo $_GET['error_message']; ?> </p>
+				<?php } ?>
+				<div class="camera-img" style="display:flex;">
+					<div style="width:90%;">
+						<form style="width:95%;"  class="camera-form" method="POST" action="create_camera_post.php" enctype="multipart/form-data">
+							<div>
+								<p class="sticker-description">1. First, Click on one or more stickers</p>
+								<div class="stickers-box">
+									<div class="gallery">
+										<img style="width:100px;" class="sticker" src="assets/stickers/different.png" alt="rugby-sticker" id="sticker1">
+										<img style="width:100px;" class="sticker" src="assets/stickers/football.png" alt="rugby-sticker" id="sticker2">
+										<img style="width:100px;" class="sticker" src="assets/stickers/love.png" alt="rugby-sticker" id="sticker3">
+										<img style="width:100px;" class="sticker" src="assets/stickers/pink.png" alt="rugby-sticker" id="sticker4">
+										<img style="width:100px;" class="sticker" src="assets/stickers/rugby.png" alt="rugby-sticker" id="sticker5">
+									</div>
 								</div>
 							</div>
-						</div>
-						<p class="sticker-description">2. Start your webcam</p>
-						<button class="capture-btn" id="start-camera">Start Camera</button>
+							<p class="sticker-description">2. Start your webcam</p>
+							<button class="capture-btn" id="start-camera">Start Camera</button>
 
-						<a href="upload.php">(or follow this link to upload an image instead)</a>
+							<a href="upload.php">(or follow this link to upload an image instead)</a>
 
-						<!-- 2. The video stream -->
-						<div>
-							<video class="is-hidden" id="video" width="700" height="500" autoplay></video>
-						</div>
-						<p style="margin-top: 30px;" class="sticker-description">3. Take your photo</p>
-						<button class="capture-btn" id="click-photo">Capture Photo</button>
-						<p style="margin-top: 30px;" class="sticker-description">4. Check below the current state of the image with sticker(s):</p>
-						<!-- Both canvas overlap: webcam canvas and sticker canvas -->
-						<div style="position:relative;">
-							<!-- webcam canvas -->
-							<div style="position:absolute; ">
-								<canvas class="is-hidden" width="700" height="500" id="canvas"></canvas>
-								<input type="hidden" id="webcam-file" value="" name="webcam_file">
+							<!-- 2. The video stream -->
+							<div>
+								<video class="is-hidden" id="video" width="700" height="500" autoplay></video>
 							</div>
-							<!-- sticker canvas -->
-							<div style="position:relative; ">
-								<canvas class="is-hidden" width="700" height="500" id="stickers_canvas"></canvas>
-								<input type="hidden" id="sticker-canvas" value="" name="sticker-canvas">
-								<input type="hidden" id="sticker1_path" value="" name="sticker1_path">
-								<input type="hidden" id="sticker2_path" value="" name="sticker2_path">
-								<input type="hidden" id="sticker3_path" value="" name="sticker3_path">
-								<input type="hidden" id="sticker4_path" value="" name="sticker4_path">
-								<input type="hidden" id="sticker5_path" value="" name="sticker5_path">
+							<p style="margin-top: 30px;" class="sticker-description">3. Take your photo</p>
+							<button class="capture-btn" id="click-photo">Capture Photo</button>
+							<p style="margin-top: 30px;" class="sticker-description">4. Check below the current state of the image with sticker(s):</p>
+							<!-- Both canvas overlap: webcam canvas and sticker canvas -->
+							<div style="position:relative;">
+								<!-- webcam canvas -->
+								<div style="position:absolute; ">
+									<canvas class="is-hidden" width="700" height="500" id="canvas"></canvas>
+									<input type="hidden" id="webcam-file" value="" name="webcam_file">
+								</div>
+								<!-- sticker canvas -->
+								<div style="position:relative; ">
+									<canvas class="is-hidden" width="700" height="500" id="stickers_canvas"></canvas>
+									<input type="hidden" id="sticker-canvas" value="" name="sticker-canvas">
+									<input type="hidden" id="sticker1_path" value="" name="sticker1_path">
+									<input type="hidden" id="sticker2_path" value="" name="sticker2_path">
+									<input type="hidden" id="sticker3_path" value="" name="sticker3_path">
+									<input type="hidden" id="sticker4_path" value="" name="sticker4_path">
+									<input type="hidden" id="sticker5_path" value="" name="sticker5_path">
+								</div>
 							</div>
-						</div>
-						<p class="sticker-description">5. Add a caption and hashtag, then hit "publish"</p>
-						<div class="control">
-							<input type="text" class="my-input input" name="caption" placeholder="Write a caption here" pattern="^[A-Za-z0-9.!,;(): ]*$" title="Only letters, numbers, spaces and punctuation (max 200)" maxlength="200" required>
-						</div>
-						<div class="control" >
-							<input type="text" class="my-input input" name="hashtags" placeholder="Add hashtags here" pattern="^[A-Za-z0-9.!,;#]*$" title="No spaces. Only letters, numbers, hashes (max 200)" maxlength="200" required>
-						</div>
-						<div>
-							<button type="submit" class="upload-btn" name="webcam_img_btn">Publish</button>
-						</div>
-					</form>
+							<p class="sticker-description">5. Add a caption and hashtag, then hit "publish"</p>
+							<div class="control">
+								<input type="text" class="my-input input" name="caption" placeholder="Write a caption here" pattern="^[A-Za-z0-9.!,;(): ]*$" title="Only letters, numbers, spaces and punctuation (max 200)" maxlength="200" required>
+							</div>
+							<div class="control" >
+								<input type="text" class="my-input input" name="hashtags" placeholder="Add hashtags here" pattern="^[A-Za-z0-9.!,;#]*$" title="No spaces. Only letters, numbers, hashes (max 200)" maxlength="200" required>
+							</div>
+							<div>
+								<button type="submit" class="upload-btn" name="webcam_img_btn">Publish</button>
+							</div>
+						</form>
+					</div>
 				</div>
-            </div>
-        </div>
-		<div class="left-col">
-			<p style="margin-top: 30px;" class="sticker-description"> Below you can check your previous creations made with webcam photos:</p>
-			<?php
+			</div>
+			<div class="left-col">
+				<p style="margin-top: 30px;" class="sticker-description"> Below you can check your previous creations made with webcam photos:</p>
+				<?php
+						
+					require_once('connection.php');
 					
-				require_once('connection.php');
-				
-				$user_id = $_SESSION['id'];
-				$webcam = 1;
+					$user_id = $_SESSION['id'];
+					$webcam = 1;
 
-				try {
-					$conn = connect_PDO();
-					$stmt = $conn->prepare("SELECT * FROM posts WHERE user_id = ? AND webcam = ? ORDER BY date DESC");
-					$stmt->bindParam(1, $user_id, PDO::PARAM_INT);
-					$stmt->bindParam(2, $webcam, PDO::PARAM_INT);
-					$stmt->execute();
-					$get_posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-				} catch (PDOException $error) {
-					echo $error->getMessage(); 
-					exit;
-				}
-				$conn = null;
+					try {
+						$conn = connect_PDO();
+						$stmt = $conn->prepare("SELECT * FROM posts WHERE user_id = ? AND webcam = ? ORDER BY date DESC");
+						$stmt->bindParam(1, $user_id, PDO::PARAM_INT);
+						$stmt->bindParam(2, $webcam, PDO::PARAM_INT);
+						$stmt->execute();
+						$get_posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+					} catch (PDOException $error) {
+						echo $error->getMessage(); 
+						exit;
+					}
+					$conn = null;
 
-				foreach($get_posts as $post){ 
-				?>
-					<img src="<?php echo "assets/img/".$post['image']; ?>" alt="user-post">
-				<?php } ?>
+					foreach($get_posts as $post){ 
+					?>
+						<img src="<?php echo "assets/img/".$post['image']; ?>" alt="user-post">
+					<?php } ?>
+			</div>
+			<?php include_once('footer.php'); ?>
 		</div>
-		<?php include_once('footer.php'); ?>
-    </div>
-
+	</div>
 	<script>	
 
 		const filter = document.querySelectorAll(".sticker");

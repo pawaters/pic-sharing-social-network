@@ -1142,7 +1142,7 @@ body{
 .stickers-box{
 	display: flex;
 	align-items: center;
-	justify-content: left;
+	justify-content: center;
 	width: 100%;
 	border: 1px solid #F9F5EB;
 	border-radius: 3px;
