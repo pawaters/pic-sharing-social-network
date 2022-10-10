@@ -1,4 +1,4 @@
-<?php include("header.php"); ?>
+<?php require_once("header.php"); ?>
     
 	<div style="width: 90%">
 		<div class="camera-container">	
@@ -10,6 +10,7 @@
 				<?php if(isset($_GET['error_message'])) { ?>
 					<p class="mt-4 text-center alert alert-danger"><?php echo $_GET['error_message']; ?> </p>
 				<?php } ?>
+	
 				<div class="camera-img" style="display:flex;">
 					<div style="width:90%;">
 						<form style="width:95%;"  class="camera-form" method="POST" action="create_camera_post.php" enctype="multipart/form-data">
