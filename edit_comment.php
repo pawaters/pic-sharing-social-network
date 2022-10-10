@@ -1,12 +1,6 @@
-
-
-<?php include("header.php"); ?>
-
-
+<?php include_once("header.php"); ?>
 
 <?php
-
-
     include('connection.php');
     
     try {
@@ -16,12 +10,9 @@
             $post_id = $_GET['post_id'];
             $comment_id = $_GET['comment_id'];
             $stmt = $conn->prepare("SELECT * FROM comments WHERE id = ?");
-            // $stmt->bind_param('i',$comment_id); 
             $stmt->bindParam(1, $comment_id, PDO::PARAM_INT);
             $stmt->execute();
-            // $comment_array = $stmt->get_result();
             $comment_array = $stmt->fetchAll();
-
 
         }else{
             header("location: index.php");
@@ -45,8 +36,6 @@
       <?php if(isset($_GET['error_message'])) { ?>
          <p class="text-center mt-4 alert alert-danger"><?php echo $_GET['error_message']; ?></p>
       <?php } ?> 
-
-
 
       <?php foreach($comment_array as $comment){ ?>
 

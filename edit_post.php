@@ -23,7 +23,6 @@
 
 ?>
 
- 
 
    <div class="camera-container">
      

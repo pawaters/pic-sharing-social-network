@@ -9,7 +9,6 @@ if(isset($_POST['delete_post_btn']))
     try {
     $conn = connect_PDO();
     $stmt = $conn->prepare("DELETE FROM posts WHERE id = ?");
-    // $stmt->bind_param("i", $post_id);
     $stmt->bindParam(1, $post_id, PDO::PARAM_INT);
     if($stmt->execute())
     {

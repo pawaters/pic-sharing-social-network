@@ -4,7 +4,7 @@
 include('connection.php');
 
 
-if(isset($_POST['delete_comment_btn'])){
+if(isset($_POST['delete_comment_btn']) && !empty($_POST['comment_id']) && !empty($_POST['post_id'])){
 
     $comment_id = $_POST['comment_id'];
     $post_id = $_POST['post_id'];
@@ -12,7 +12,6 @@ if(isset($_POST['delete_comment_btn'])){
     try {
     $conn = connect_PDO();
     $stmt = $conn->prepare("DELETE FROM comments WHERE id = ?");
-    // $stmt->bind_param("i",$comment_id);
     $stmt->bindParam(1, $comment_id, PDO::PARAM_INT);
 
     if($stmt->execute()){
@@ -28,7 +27,7 @@ if(isset($_POST['delete_comment_btn'])){
     }
 
 }else{
-    header("location: index.php");
+    header("location: index.php?error_message=error");
     exit;
 }
 
