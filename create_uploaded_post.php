@@ -5,16 +5,11 @@ session_start();
 require_once("connection.php");
 
 // Check if user clicked the publish button
-if(isset($_POST['upload_img_btn'])){
+if(isset($_POST['upload_img_btn']) && !empty($_POST['upload_img_btn'])){
 	$id = $_SESSION['id'];
-	if (!isset($_POST['webcam_file'])){
-		header("location: camera.php?error_message=Please enter a valid image");
-        exit; 
-	}
 	$profile_image = $_SESSION['image']; 
-	if($_FILES['image']['size'] == 0) 
+	if($_FILES['image']['size'] == 0 || $_FILES['image']['tmp_name'] == null) 
 	{
-		// No file was selected for upload
 		header("location: signup.php?error_message=No image was selected for upload");
     	exit;
 	}
@@ -55,25 +50,18 @@ if(isset($_POST['upload_img_btn'])){
 	if($upload_file){
 		list($type, $data_url) = explode(';', $upload_file);
 		list(, $data_url) = explode(',', $data_url); 
-		//$data_url = explode(',', $upload_file);
 		$decoded_url = base64_decode($data_url);
 		$dest = imagecreatefromstring($decoded_url);
-		// $src = imagecreatefromstring(file_get_contents($image));
 		imagecopy($destination, $dest, 0, 0, 25, 30, 700, 500);
 	}
-
-/* 	header('Content-Type: image/png');
-	imagepng($src); */
-
+	//server-side form validation
 	if(strlen($caption) > 200 || strlen($hashtags) > 50){
 		header('location: upload.php?error_message=Caption or hashtags too long.');
 		exit;
 	}
 	
-	//server-side form validation
-
-	$emp_caption=trim($_POST['caption']);
-	$emp_hash=trim($_POST['hashtags']);
+	$emp_caption=trim($caption);
+	$emp_hash=trim($hashtags);
 
     if($emp_caption == "")
     {
