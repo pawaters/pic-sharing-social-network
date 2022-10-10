@@ -9,8 +9,8 @@ if(isset($_POST['update_post_btn'])){
 
     $post_id = $_POST['post_id'];
     $old_image_name = $_POST['old_image_name'];
-    $hashtags = $_POST['hashtags'];
-    $caption = $_POST['caption'];
+	$caption = htmlspecialchars($_POST['caption']);
+	$hashtags = htmlspecialchars($_POST['hashtags']);
     $new_image = $_FILES['new_image']['tmp_name'];  //file
 
 
@@ -45,12 +45,12 @@ if(isset($_POST['update_post_btn'])){
         header("location: camera.php?error_message=Please enter a hashtag");
         exit; 
     } 
-    if(preg_match("/^[<>]=\{\}\/*$/", $emp_caption)) 
+    if(preg_match("/[<>=\{\}\/]/", $emp_caption)) 
     {
         header("location: camera.php?error_message=Please enter valid caption (no special characters)");
         exit; 
     }
-	if(preg_match("/^[<>]=\{\}\/*$/", $emp_hash)) 
+	if(preg_match("/[<>=\{\}\/]/", $emp_hash)) 
     {
         header("location: camera.php?error_message=Please enter valid hashtag (no special characters)");
         exit; 

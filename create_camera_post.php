@@ -8,8 +8,8 @@ require_once("connection.php");
 if(isset($_POST['webcam_img_btn'])){
 	$id = $_SESSION['id'];
 	$profile_image = $_SESSION['image']; 
-	$caption = $_POST['caption'];
-	$hashtags = $_POST['hashtags'];
+	$caption = htmlspecialchars($_POST['caption']);
+	$hashtags = htmlspecialchars($_POST['hashtags']);
 	$likes = 0;
 	$tz = 'Europe/Helsinki';
 	$timestamp = time();
@@ -23,7 +23,12 @@ if(isset($_POST['webcam_img_btn'])){
 	$image_name = strval(time()) . ".jpg";
 
 	// Grab the photo with the stickers
+	if (!isset($_POST['webcam_file'])){
+		header("location: camera.php?error_message=Please enter a valid image");
+        exit; 
+	}
 	$webcam_file = $_POST['webcam_file'];
+	
 	list($type, $data_url) = explode(';', $webcam_file);
 	list(, $data_url) = explode(',', $data_url); 
 	$decoded_url = base64_decode($data_url);
@@ -52,12 +57,12 @@ if(isset($_POST['webcam_img_btn'])){
         header("location: camera.php?error_message=Please enter a hashtag");
         exit; 
     } 
-    if(preg_match("/^[<>]=\{\}\/*$/", $emp_caption)) 
+    if(preg_match("/[<>=\{\}\/]/", $emp_caption)) 
     {
         header("location: camera.php?error_message=Please enter valid caption (no special characters)");
         exit; 
     }
-	if(preg_match("/^[<>]=\{\}\/*$/", $emp_hash)) 
+	if(preg_match("/[<>=\{\}\/]/", $emp_hash)) 
     {
         header("location: camera.php?error_message=Please enter valid hashtag (no special characters)");
         exit; 

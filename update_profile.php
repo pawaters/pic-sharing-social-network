@@ -8,9 +8,9 @@ include_once("connection.php");
 if(isset($_POST['update_profile_btn'])){
 
     $user_id = $_SESSION['id'];
-    $username = $_POST['username'];
+    $username = htmlspecialchars($_POST['username']);
     $email = $_POST['email'];
-    $bio = $_POST['bio'];
+    $bio = htmlspecialchars($_POST['bio']);
     $image = $_FILES['image']['tmp_name'];  //file
 
     if($image != ""){
@@ -86,17 +86,12 @@ if(isset($_POST['update_profile_btn'])){
         header("location: edit_profile?error_message=Please enter password confirmation");
         exit; 
     }
-    if(preg_match("/^[<>]=\{\}\/*$/", $emp_email)) 
-    {
-        header("location: edit_profile?error_message=Please enter valid email (no special characters)");
-        exit; 
-    }
-    if(preg_match("/^[<>]=\{\}\/*$/", $emp_bio)) 
+    if(preg_match("/[<>=\{\}\/]/", $emp_bio)) 
     {
         header("location: edit_profile?error_message=Please enter valid bio (no special characters)");
         exit; 
     }
-    if(preg_match("/^[<>]=\{\}\/*$/", $emp_uname)) 
+    if(preg_match("/[<>=\{\}\/]/", $emp_uname)) 
     {
         header("location: edit_profile?error_message=Please enter valid username (no special characters)");
         exit; 

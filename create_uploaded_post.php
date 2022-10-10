@@ -7,6 +7,10 @@ require_once("connection.php");
 // Check if user clicked the publish button
 if(isset($_POST['upload_img_btn'])){
 	$id = $_SESSION['id'];
+	if (!isset($_POST['webcam_file'])){
+		header("location: camera.php?error_message=Please enter a valid image");
+        exit; 
+	}
 	$profile_image = $_SESSION['image']; 
 	if($_FILES['image']['size'] == 0) 
 	{
@@ -15,8 +19,8 @@ if(isset($_POST['upload_img_btn'])){
     	exit;
 	}
 	$image = $_FILES['image']['tmp_name'];
-	$caption = $_POST['caption'];
-	$hashtags = $_POST['hashtags'];
+	$caption = htmlspecialchars($_POST['caption']);
+	$hashtags = htmlspecialchars($_POST['hashtags']);
 	$likes = 0;
 	$tz = 'Europe/Helsinki';
 	$timestamp = time();
@@ -61,7 +65,7 @@ if(isset($_POST['upload_img_btn'])){
 /* 	header('Content-Type: image/png');
 	imagepng($src); */
 
-	if(strlen($caption) > 300 || strlen($hashtags) > 100){
+	if(strlen($caption) > 200 || strlen($hashtags) > 50){
 		header('location: upload.php?error_message=Caption or hashtags too long.');
 		exit;
 	}
@@ -81,12 +85,12 @@ if(isset($_POST['upload_img_btn'])){
         header("location: upload.php?error_message=Please enter a hashtag");
         exit; 
     } 
-    if(preg_match("/^[<>]=\{\}\/*$/", $emp_caption)) 
+    if(preg_match("/[<>=\{\}\/]/", $emp_caption)) 
     {
         header("location: upload.php?error_message=Please enter valid caption (no special characters)");
         exit; 
     }
-	if(preg_match("/^[<>]=\{\}\/*$/", $emp_hash)) 
+	if(preg_match("/[<>=\{\}\/]/", $emp_hash)) 
     {
         header("location: upload.php?error_message=Please enter valid hashtag (no special characters)");
         exit; 
