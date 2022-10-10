@@ -128,19 +128,19 @@ require_once('header.php');
 		let Selectedsticker = document.getElementById(sticker);
 		switch (sticker){
 			case 'sticker1':
-				ctx.drawImage(Selectedsticker, 40, 50, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
+				ctx.drawImage(Selectedsticker, c.width / 6 * 1 , c.height / 6 * 1, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
 				break;
 			case 'sticker2':
-				ctx.drawImage(Selectedsticker, 300, 40, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
+				ctx.drawImage(Selectedsticker, c.width / 6 * 2 , c.height / 6 * 1, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
 				break;
 			case 'sticker3':
-				ctx.drawImage(Selectedsticker, 150, 150, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
+				ctx.drawImage(Selectedsticker, c.width / 6 * 3 , c.height / 6 * 1, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
 				break;
 			case 'sticker4':
-				ctx.drawImage(Selectedsticker, 150, 80, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
+				ctx.drawImage(Selectedsticker, c.width / 6 * 1 , c.height / 6 * 2, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
 				break;
 			case 'sticker5':
-				ctx.drawImage(Selectedsticker, 30, 150, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
+				ctx.drawImage(Selectedsticker, c.width / 6 * 2 , c.height / 6 * 2, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
 				break;
 		}
 		let canvasUrl = c.toDataURL();
