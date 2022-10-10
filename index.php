@@ -80,7 +80,7 @@
                         
                         <li class="page-item <?php if($total_no_of_pages<3){echo 'disabled';}?>">
                             
-                            <a class="page-link" href="?page_no=1">3</a>
+                            <a class="page-link" href="?page_no=3">3</a>
                         
                         </li>
                         

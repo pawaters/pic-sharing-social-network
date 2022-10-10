@@ -77,7 +77,7 @@ require_once('header.php');
 
 			foreach($get_posts as $post){ ?>
 				<div class="post">	
-					<div class="post-img">
+					<div>
 						<img src="<?php echo "assets/img/" . $post['image']; ?>" class="post-img">
 					</div>
 				</div>
