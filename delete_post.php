@@ -4,7 +4,11 @@ include('connection.php');
 
 if(isset($_POST['delete_post_btn'])) 
 {
-    $post_id = $_POST['post_id'];
+    $post_id = htmlspecialchars($_POST['post_id']);
+    if (is_numeric(trim($post_id)) == false){
+        header("location: index.php?error_message=error - post_id is not a number.");
+        exit;
+    }
     
     try {
     $conn = connect_PDO();
