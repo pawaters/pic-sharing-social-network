@@ -42,7 +42,7 @@ if(isset($_POST['signup_btn']))
     }
     if(preg_match("/[<>=\{\}\/]/", $emp_uname)) 
     {
-        header("location: edit_profile?error_message=Please enter valid username (no special characters)");
+        header("location: edit_profile.php?error_message=Please enter valid username (no special characters)");
         exit; 
     }
 

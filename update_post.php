@@ -7,8 +7,8 @@ include("connection.php");
 if(isset($_POST['update_post_btn'])){
 
 
-    $post_id = $_POST['post_id'];
-    $old_image_name = $_POST['old_image_name'];
+    $post_id = htmlspecialchars($_POST['post_id']);
+    $old_image_name = htmlspecialchars($_POST['old_image_name']);
 	$caption = htmlspecialchars($_POST['caption']);
 	$hashtags = htmlspecialchars($_POST['hashtags']);
     $new_image = $_FILES['new_image']['tmp_name'];  //file
@@ -19,7 +19,10 @@ if(isset($_POST['update_post_btn'])){
         exit;
 
     }
-
+    if (is_numeric(trim($post_id)) == false){
+        header("location: index.php?error_message=error - post_id is not a number.");
+        exit;
+    }
 
 
 

@@ -12,20 +12,26 @@
 
     if(isset($_POST['search_input'])){
 
-            $search_input = $_POST['search_input'];
+        $search_input = $_POST['search_input'];
+        if(preg_match("/[<>=\{\}\/]/", $search_input)) 
+        {
+            header("location: index.php?error_message=search term should not include any special characters");
+            exit; 
+        }
+        $search_input = htmlspecialchars($search_input);
 
-            try {
-                $conn = connect_PDO();
-                $stmt = $conn->prepare("SELECT * FROM users WHERE username like ? LIMIT 20");
+        try {
+            $conn = connect_PDO();
+            $stmt = $conn->prepare("SELECT * FROM users WHERE username like ? LIMIT 20");
+        
+            $stmt->bindParam(1, $search_input, PDO::PARAM_STR);
+            $stmt->execute();
             
-                $stmt->bindParam(1, $search_input, PDO::PARAM_STR);
-                $stmt->execute();
-                
-                $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            catch (PDOException $e) {
-                    echo $e->getMessage();
-            }
+            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+                echo $e->getMessage();
+        }
 
 
     }else{

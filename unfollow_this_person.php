@@ -6,7 +6,11 @@ include('connection.php');
 
 if(isset($_POST['unfollow_btn'])){
     $user_id = $_SESSION['id'];
-    $other_user_id = $_POST['other_user_id'];
+    $other_user_id = htmlspecialchars($_POST['other_user_id']);
+    if (is_numeric(trim($other_user_id)) == false){
+        header("location: index.php?error_message=error - other_user_id is not a number.");
+        exit;
+    }
 
     try {
         $conn = connect_PDO();

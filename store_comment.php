@@ -9,7 +9,7 @@ if(isset($_POST['comment_btn']))
     $user_id = $_SESSION['id'];
     $profile_image = $_SESSION['image'];
     $username = $_SESSION['username'];
-    $post_id = $_POST['post_id'];
+    $post_id = htmlspecialchars($_POST['post_id']);
     $comment_text = $_POST['comment_text'];
     $date = date("Y-m-d H:i:s");
 
@@ -26,6 +26,10 @@ if(isset($_POST['comment_btn']))
     {
         header("location: index.php?error_message=Please enter valid comment (no special characters)");
         exit; 
+    }
+    if (is_numeric(trim($post_id)) == false){
+        header("location: index.php?error_message=error - post_id is not a number.");
+        exit;
     }
     
     try {

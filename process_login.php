@@ -6,9 +6,17 @@ include_once('connection.php');
 
 if(isset($_POST['login_btn'])) 
 {
-    $username = $_POST['username'];
+    
     $password = md5($_POST['password']); 
     
+    $emp_uname=trim($_POST["username"]);
+    if(preg_match("/[<>=\{\}\/]/", $emp_uname)) 
+    {
+        header("location: edit_profile?error_message=Please enter valid username (no special characters)");
+        exit; 
+    }
+    $username = htmlspecialchars($_POST['username']);
+
     try {
         $conn = connect_PDO();
         $stmt = $conn->prepare("SELECT id, username, email, image, followers, following, posts, bio, verified, createdate, notify

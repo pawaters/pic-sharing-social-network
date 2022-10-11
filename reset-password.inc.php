@@ -2,7 +2,7 @@
 
 if (isset($_POST["reset-password-submit"])) {
     
-    $selector = $_POST['selector'];
+    $selector = htmlspecialchars($_POST['selector']);
     $validator = $_POST['validator'];
     $password = $_POST['pwd'];
     $passwordRepeat = $_POST['pwd-repeat'];
@@ -14,7 +14,10 @@ if (isset($_POST["reset-password-submit"])) {
         header("Location: login.php?error_message=Password and repeat do not match. Start again.");
         exit();
     }
-
+    if(empty($selector) || empty($validator) ) {
+        header("Location: login.php?error_message=Selector or validator empty. Start again.");
+        exit();
+    }
     $currentDate = date("U");
 
     require_once 'connection.php';
