@@ -5,7 +5,7 @@ session_start();
 require_once("connection.php");
 
 // Check if user clicked the publish button
-if(isset($_POST['webcam_img_btn']) && !empty($_POST['webcam_img_btn'])){
+if(isset($_POST['webcam_img_btn'])){
 	$id = $_SESSION['id'];
 	$profile_image = $_SESSION['image']; 
 	$caption = htmlspecialchars($_POST['caption']);
@@ -24,7 +24,7 @@ if(isset($_POST['webcam_img_btn']) && !empty($_POST['webcam_img_btn'])){
 
 	// Grab the photo with the stickers
 	if (!isset($_POST['webcam_file']) || empty($_POST['webcam_file'])){
-		header("location: camera.php?error_message=Please enter a valid image");
+		header("location: camera.php?error_message=Please enter a valid image (webcam file is empty)");
         exit; 
 	}
 
@@ -36,7 +36,7 @@ if(isset($_POST['webcam_img_btn']) && !empty($_POST['webcam_img_btn'])){
 	$destination = imagecreatefromstring($decoded_url);
 
 	if (!isset($_POST['sticker-canvas']) || empty($_POST['sticker-canvas'])){
-		header("location: camera.php?error_message=error with stickers");
+		header("location: camera.php?error_message=error - stickers not set ");
         exit; 
 	}
 	$stickers_canvas = $_POST['sticker-canvas'];
