@@ -28,9 +28,9 @@ if(isset($_POST['signup_btn']))
         header("location: signup.php?error_message=Please enter valid email");
         exit; 
         } 
-    if(!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $emp_email)){
-        header("location: signup.php?error_message=Please enter valid email");
-        exit; 
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        header('location: signup.php?error_message=Invalid email format.');
+        exit;
         }
     if($emp_pass == ""){
         header("location: signup.php?error_message=Please enter password");
