@@ -74,12 +74,13 @@ if(isset($_POST['signup_btn']))
     {
         try 
         {
+            $password = md5($password);
             $stmt =  $conn->prepare(
                 "INSERT INTO users (username, email, password, vkey) 
                 VALUES (? ,? ,? ,?)");
             $stmt->bindParam(1, $username, PDO::PARAM_STR);
             $stmt->bindParam(2, $email, PDO::PARAM_STR);
-            $stmt->bindParam(3, md5($password), PDO::PARAM_STR);
+            $stmt->bindParam(3, $password, PDO::PARAM_STR);
             $stmt->bindParam(4, $vkey, PDO::PARAM_STR);
             $stmt->execute();
         } 
