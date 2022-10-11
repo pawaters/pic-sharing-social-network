@@ -5,7 +5,7 @@ session_start();
 require_once("connection.php");
 
 // Check if user clicked the publish button
-if(isset($_POST['upload_img_btn']) && !empty($_POST['upload_img_btn'])){
+if(isset($_POST['upload_img_btn'])){
 	$id = $_SESSION['id'];
 	$profile_image = $_SESSION['image']; 
 	if($_FILES['image']['size'] == 0 || $_FILES['image']['tmp_name'] == null) 
@@ -13,7 +13,23 @@ if(isset($_POST['upload_img_btn']) && !empty($_POST['upload_img_btn'])){
 		header("location: signup.php?error_message=No image was selected for upload");
     	exit;
 	}
+	$valid_file_size = 3*1024*1024;
+	$file_size = $_FILES['image']['size'];
 	$image = $_FILES['image']['tmp_name'];
+
+	$file_type = $_FILES['image']['type'];
+	if($file_type != 'image/png' && $file_type != 'image/jpeg')
+    {
+        header('location: upload.php?error_message=File must be png or jpeg.');
+		exit;
+    }
+
+	if($file_size > $valid_file_size)
+	{
+		header('location: upload.php?error_message=File size must not be more that 3Mb.');
+		exit;
+	}
+
 	$caption = htmlspecialchars($_POST['caption']);
 	$hashtags = htmlspecialchars($_POST['hashtags']);
 	$likes = 0;
@@ -117,7 +133,7 @@ if(isset($_POST['upload_img_btn']) && !empty($_POST['upload_img_btn'])){
 			header('location: upload.php?success_message=Post created&image_name='.$image_name);
 			exit;
 		}else{
-			header('location: upload.php?error_message=Error occured.');
+			header('location: upload.php?error_message=Error.');
 			exit;
 		}
 	} catch (PDOException $error) {

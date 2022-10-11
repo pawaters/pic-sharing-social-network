@@ -27,6 +27,7 @@ if(isset($_POST['webcam_img_btn']) && !empty($_POST['webcam_img_btn'])){
 		header("location: camera.php?error_message=Please enter a valid image");
         exit; 
 	}
+
 	$webcam_file = $_POST['webcam_file'];
 	
 	list($type, $data_url) = explode(';', $webcam_file);
