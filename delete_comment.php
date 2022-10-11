@@ -6,8 +6,16 @@ include('connection.php');
 
 if(isset($_POST['delete_comment_btn']) && !empty($_POST['comment_id']) && !empty($_POST['post_id'])){
 
-    $comment_id = $_POST['comment_id'];
-    $post_id = $_POST['post_id'];
+    $comment_id = htmlspecialchars($_POST['comment_id']);
+    $post_id = htmlspecialchars($_POST['post_id']);
+    if (is_numeric(trim($comment_id)) == false){
+        header("location: index.php?error_message=error - comment_id is not a number.");
+        exit;
+    }
+    if (is_numeric(trim($post_id)) == false){
+        header("location: index.php?error_message=error - post_id is not a number.");
+        exit;
+    }
 
     try {
     $conn = connect_PDO();
