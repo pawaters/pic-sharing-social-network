@@ -33,7 +33,7 @@
                                 $stmt->execute();
                                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
                                 if (!$row) {
-                                    header("Location: login.php?error_message: Already verified, Invalid SQL or account");
+                                    header("Location: login.php?error_message= Already verified, Invalid SQL or account");
                                     exit();
                                 }
                                 else {
