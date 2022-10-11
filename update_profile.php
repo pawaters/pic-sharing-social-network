@@ -97,8 +97,9 @@ if(isset($_POST['update_profile_btn'])){
         exit; 
     }
     
-    if(strlen($emp_uname) > 20){
-        header("location: index.php?error_message?username is too long");
+
+    if(strlen($username) > 20){
+        header("location: index.php?error_message?error: username is too long or has special characters.");
         exit;
 
     }

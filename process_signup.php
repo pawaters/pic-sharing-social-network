@@ -46,6 +46,12 @@ if(isset($_POST['signup_btn']))
         exit; 
     }
 
+    if(strlen($username) > 20){
+        header("location: index.php?error_message?error: username is too long or has special characters.");
+        exit;
+
+    }
+
     try {
         $conn = connect_PDO();
         $stmt = $conn->prepare( "SELECT id FROM users WHERE username = ? OR email = ?");

@@ -9,13 +9,19 @@ if(isset($_POST['login_btn']))
     
     $password = md5($_POST['password']); 
     
-    $emp_uname=trim($_POST["username"]);
-    if(preg_match("/[<>=\{\}\/]/", $emp_uname)) 
+    $username = htmlspecialchars($_POST['username']);
+    if(preg_match("/[<>=\{\}\/]/", $username)) 
     {
         header("location: edit_profile.php?error_message=Please enter valid username (no special characters)");
         exit; 
     }
-    $username = htmlspecialchars($_POST['username']);
+    
+
+    if(strlen($username) > 20){
+        header("location: index.php?error_message?error: username is too long or has special characters.");
+        exit;
+
+    }
 
     try {
         $conn = connect_PDO();
