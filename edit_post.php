@@ -17,7 +17,7 @@
                     echo $e->getMessage();
             }
 		}else{
-		    header("location: index.php");
+		    header("location: index.php?error_message=Error while accessing db.");
 		    exit;
 		}
 
