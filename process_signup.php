@@ -10,7 +10,7 @@ if(isset($_POST['signup_btn']))
     $email = $_POST['email'];
     $password = $_POST['password'];
     $password_confirm = $_POST['password_confirm'];
-    $vkey = md5(time().$username);
+    $vkey = password_hash(time().$username, PASSWORD_DEFAULT);
    
 //server-side form validation
 
@@ -74,7 +74,7 @@ if(isset($_POST['signup_btn']))
     {
         try 
         {
-            $password = md5($password);
+            $password = password_hash($password, PASSWORD_DEFAULT);
             $stmt =  $conn->prepare(
                 "INSERT INTO users (username, email, password, vkey) 
                 VALUES (? ,? ,? ,?)");

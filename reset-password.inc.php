@@ -66,8 +66,8 @@ if (isset($_POST["reset-password-submit"])) {
                             if (!$stmt = $conn->prepare($sql)) {
                                 header("Location: login.php?error_message=SQL error");
                                 exit();
-                            } else {
-                                $newPwdHash = md5($password); 
+                            } else { 
+                                $newPwdHash = password_hash($password, PASSWORD_DEFAULT);
                                 $stmt->bindParam(1, $newPwdHash, PDO::PARAM_STR);
                                 $stmt->bindParam(2, $tokenEmail, PDO::PARAM_STR);
                                 $stmt->execute();

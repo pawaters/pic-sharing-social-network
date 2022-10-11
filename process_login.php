@@ -6,8 +6,7 @@ include_once('connection.php');
 
 if(isset($_POST['login_btn'])) 
 {
-    
-    $password = md5($_POST['password']); 
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     
     $username = htmlspecialchars($_POST['username']);
     if(preg_match("/[<>=\{\}\/]/", $username)) 
