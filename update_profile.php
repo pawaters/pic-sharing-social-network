@@ -75,25 +75,25 @@ if(isset($_POST['update_profile_btn'])){
         exit; 
         } 
     if(!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $emp_email)){
-        header("location: edit_profile?error_message=Please enter valid email");
+        header("location: edit_profile.php?error_message=Please enter valid email");
         exit; 
         }
     if($emp_bio == ""){
-        header("location: edit_profile?error_message=Please enter bio");
+        header("location: edit_profile.php?error_message=Please enter bio");
         exit; 
     }
     if($emp_uname == ""){
-        header("location: edit_profile?error_message=Please enter password confirmation");
+        header("location: edit_profile.php?error_message=Please enter password confirmation");
         exit; 
     }
     if(preg_match("/[<>=\{\}\/]/", $emp_bio)) 
     {
-        header("location: edit_profile?error_message=Please enter valid bio (no special characters)");
+        header("location: edit_profile.php?error_message=Please enter valid bio (no special characters)");
         exit; 
     }
     if(preg_match("/[<>=\{\}\/]/", $emp_uname)) 
     {
-        header("location: edit_profile?error_message=Please enter valid username (no special characters)");
+        header("location: edit_profile.php?error_message=Please enter valid username (no special characters)");
         exit; 
     }
     $conn = connect_PDO();

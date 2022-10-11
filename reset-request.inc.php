@@ -23,7 +23,7 @@ if(isset($_POST["reset-request-submit"])) {
     } 
     
     if(!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $emp_email)){
-        header("location: reset-password?error_message=Please enter valid email");
+        header("location: reset-password.php?error_message=Please enter valid email");
         exit; 
     }
     

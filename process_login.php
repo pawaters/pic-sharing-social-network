@@ -12,7 +12,7 @@ if(isset($_POST['login_btn']))
     $emp_uname=trim($_POST["username"]);
     if(preg_match("/[<>=\{\}\/]/", $emp_uname)) 
     {
-        header("location: edit_profile?error_message=Please enter valid username (no special characters)");
+        header("location: edit_profile.php?error_message=Please enter valid username (no special characters)");
         exit; 
     }
     $username = htmlspecialchars($_POST['username']);
