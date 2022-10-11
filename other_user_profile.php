@@ -16,6 +16,11 @@ include('connection.php');
          $_SESSION['other_user_id'] = $other_user_id;
      }
     
+     if (is_numeric(trim($other_user_id)) == false){
+        header("location: index.php?error_message=error - other_user_id is not a number.");
+        exit;
+    }
+
      try {
         $conn = connect_PDO();
         $stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");

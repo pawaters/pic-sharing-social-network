@@ -8,7 +8,11 @@ if(isset($_POST['follow_btn'])){
     try {
         $conn = connect_PDO();
         $user_id = $_SESSION['id'];
-        $other_user_id = $_POST['other_user_id'];
+        $other_user_id = htmlspecialchars($_POST['other_user_id']);
+        if (is_numeric(trim($other_user_id)) == false){
+            header("location: index.php?error_message=error - other_user_id is not a number.");
+            exit;
+        }
 
         $stmt = $conn->prepare("INSERT INTO followings (user_id, other_user_id)
                                 VALUES (?,?)");
