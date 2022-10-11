@@ -96,6 +96,14 @@ if(isset($_POST['update_profile_btn'])){
         header("location: edit_profile.php?error_message=Please enter valid username (no special characters)");
         exit; 
     }
+    
+    if(strlen($emp_uname) > 20){
+        header("location: index.php?error_message?username is too long");
+        exit;
+
+    }
+    
+    
     $conn = connect_PDO();
     updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image, $email);  
 

@@ -20,14 +20,14 @@
 		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = "CREATE TABLE IF NOT EXISTS `users` (
         `id` int(11) NOT NULL AUTO_INCREMENT,
-        `username` varchar(50) NOT NULL,
+        `username` varchar(500) NOT NULL,
         `password` varchar(50) NOT NULL,
         `email` varchar(50)  NOT NULL,
         `image` text DEFAULT '1.jpeg',
         `followers` int(11) DEFAULT 0,
         `following` int(11) DEFAULT 0,
         `posts` int(11) DEFAULT 0,
-		`bio` varchar(50)  DEFAULT 'default bio',
+		`bio` varchar(1000)  DEFAULT 'default bio',
 		`vkey` VARCHAR(45) NOT NULL, 
 		`verified` TINYINT(1) NOT NULL DEFAULT '0',
 		`createdate` TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
