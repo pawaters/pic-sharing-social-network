@@ -1,6 +1,6 @@
 <?php 
-require('header.php'); 
 require_once("config/setup.php");
+require('header.php'); 
 ?>
 
      <!--main: under wrapper, two divs: left-col, right-col -->
