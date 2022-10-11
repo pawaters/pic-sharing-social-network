@@ -15,7 +15,7 @@ if(isset($_POST['update_post_btn'])){
 
 
     if(strlen($caption) > 200 || strlen($hashtags) > 200){
-        header("location: profile.php?error_message?caption/hashtags too long");
+        header("location: index.php?error_message?caption/hashtags too long");
         exit;
 
     }
@@ -40,22 +40,22 @@ if(isset($_POST['update_post_btn'])){
 
     if($emp_caption == "")
     {
-        header("location: camera.php?error_message=Please enter a caption");
+        header("location: index.php?error_message=Please enter a caption");
         exit; 
     } 
 	if($emp_hash == "")
     {
-        header("location: camera.php?error_message=Please enter a hashtag");
+        header("location: index.php?error_message=Please enter a hashtag");
         exit; 
     } 
     if(preg_match("/[<>=\{\}\/]/", $emp_caption)) 
     {
-        header("location: camera.php?error_message=Please enter valid caption (no special characters)");
+        header("location: index.php?error_message=Please enter valid caption (no special characters)");
         exit; 
     }
 	if(preg_match("/[<>=\{\}\/]/", $emp_hash)) 
     {
-        header("location: camera.php?error_message=Please enter valid hashtag (no special characters)");
+        header("location: index.php?error_message=Please enter valid hashtag (no special characters)");
         exit; 
     }
 
