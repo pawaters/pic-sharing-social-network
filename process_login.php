@@ -6,7 +6,7 @@ include_once('connection.php');
 
 if(isset($_POST['login_btn'])) 
 {
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $password = $_POST['password'];
     
     $username = htmlspecialchars($_POST['username']);
     if(preg_match("/[<>=\{\}\/]/", $username)) 
@@ -22,6 +22,17 @@ if(isset($_POST['login_btn']))
 
     }
 
+    if(strlen($password) < 8){
+		header('location: signup.php?error_message=Password is shorter than 8 characters');
+		exit;
+	}
+
+	if(strlen($password) > 20){
+		header('location: signup.php?error_message=Password too long, maximum 20 characters allowed.');
+		exit;
+	}
+
+    $password = password_hash($password, PASSWORD_DEFAULT);
     try {
         $conn = connect_PDO();
         $stmt = $conn->prepare("SELECT id, username, email, image, followers, following, posts, bio, verified, createdate, notify

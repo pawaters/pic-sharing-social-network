@@ -11,6 +11,7 @@ if(isset($_POST['signup_btn']))
     $password = $_POST['password'];
     $password_confirm = $_POST['password_confirm'];
     $vkey = password_hash(time().$username, PASSWORD_DEFAULT);
+    $hash_pass = password_hash($password, PASSWORD_DEFAULT);
    
 //server-side form validation
 
@@ -74,13 +75,12 @@ if(isset($_POST['signup_btn']))
     {
         try 
         {
-            $password = password_hash($password, PASSWORD_DEFAULT);
             $stmt =  $conn->prepare(
                 "INSERT INTO users (username, email, password, vkey) 
                 VALUES (? ,? ,? ,?)");
             $stmt->bindParam(1, $username, PDO::PARAM_STR);
             $stmt->bindParam(2, $email, PDO::PARAM_STR);
-            $stmt->bindParam(3, $password, PDO::PARAM_STR);
+            $stmt->bindParam(3, $hash_pass, PDO::PARAM_STR);
             $stmt->bindParam(4, $vkey, PDO::PARAM_STR);
             $stmt->execute();
         } 
