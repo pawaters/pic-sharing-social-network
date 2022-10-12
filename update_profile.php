@@ -1,9 +1,9 @@
 <?php
 
-
 session_start();
 
 include_once("connection.php");
+   
 
 if(isset($_POST['update_profile_btn'])){
 
@@ -12,11 +12,55 @@ if(isset($_POST['update_profile_btn'])){
     $email = $_POST['email'];
     $bio = htmlspecialchars($_POST['bio']);
     $image = $_FILES['image']['tmp_name'];  
+    $password = $_POST['password'];
+    $uppercase = preg_match('@[A-Z]@', $password);
+    $lowercase = preg_match('@[a-z]@', $password);
+    $number    = preg_match('@[0-9]@', $password);  
+
+	$emp_email=trim($_POST["email"]);
+	$emp_uname=trim($_POST["username"]);
+	$emp_bio=trim($_POST["bio"]);
 
     if($image != ""){
        $image_name = $username . ".jpeg"; 
     }else{
         $image_name = $_SESSION['image'];
+    }
+
+    
+
+    if($emp_email == "") {
+        header("location: edit_profile.php?error_message=Please enter non-empty valid email");
+        exit; 
+        } 
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        header('location: edit_profile.php?error_message=Please enter valid email');
+        exit;
+        }
+    if($emp_bio == ""){
+        header("location: edit_profile.php?error_message=Please enter bio");
+        exit; 
+    }
+    if($emp_uname == ""){
+        header("location: edit_profile.php?error_message=Please enter password confirmation");
+        exit; 
+    }
+    if(preg_match("/'[<>=\{\}\/]/", $emp_bio)) 
+    {
+        header("location: edit_profile.php?error_message=Please enter valid bio (no special characters)");
+        exit; 
+    }
+    if(preg_match("/'[<>=\{\}\/]/", $emp_uname)) 
+    {
+        header("location: edit_profile.php?error_message=Please enter valid username (no special characters)");
+        exit; 
+    }
+    
+
+    if(strlen($username) > 20){
+        header("location: index.php?error_message?error: username is too long or has special characters.");
+        exit;
+
     }
 
     if($username != $_SESSION['username']){
@@ -62,46 +106,51 @@ if(isset($_POST['update_profile_btn'])){
         }
     }
 
-    //server-side form validation
-
-	$emp_email=trim($_POST["email"]);
-	$emp_uname=trim($_POST["username"]);
-	$emp_bio=trim($_POST["bio"]);
-
-    if($emp_email == "") {
-        header("location: edit_profile.php?error_message=Please enter non-empty valid email");
-        exit; 
-        } 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header('location: edit_profile.php?error_message=Please enter valid email');
-        exit;
+    if ($password)
+    {
+        if(strlen($password) < 8){
+            header('location: edit_profile.php?error_message=Password is shorter than 8 characters');
+            exit;
         }
-    if($emp_bio == ""){
-        header("location: edit_profile.php?error_message=Please enter bio");
-        exit; 
-    }
-    if($emp_uname == ""){
-        header("location: edit_profile.php?error_message=Please enter password confirmation");
-        exit; 
-    }
-    if(preg_match("/[<>=\{\}\/]/", $emp_bio)) 
-    {
-        header("location: edit_profile.php?error_message=Please enter valid bio (no special characters)");
-        exit; 
-    }
-    if(preg_match("/[<>=\{\}\/]/", $emp_uname)) 
-    {
-        header("location: edit_profile.php?error_message=Please enter valid username (no special characters)");
-        exit; 
-    }
     
+        if(strlen($password) > 20){
+            header('location: edit_profile.php?error_message=Password too long, maximum 20 characters allowed.');
+            exit;
+        }
+        if(!$uppercase || !$lowercase || !$number) {
+            header('location: edit_profile.php?error_message=Password complexity not good enough: you should include at least one upper case letter, one lowercase and one number.');
+            exit;
+        }
+        $emp_pass=trim($_POST["password"]);
+        if($emp_pass == ""){
+            header("location: edit_profile.php?error_message=Please enter password");
+            exit; 
+        }
+        $hash_pass = password_hash($password, PASSWORD_DEFAULT);
 
-    if(strlen($username) > 20){
-        header("location: index.php?error_message?error: username is too long or has special characters.");
-        exit;
-
-    }
-    
+        try 
+        {
+            $conn = connect_PDO();
+            $user_id =  $_SESSION['id'];
+            $stmt = $conn->prepare( "SELECT id FROM users WHERE id = ?");
+            
+            $stmt->bindParam(1, $user_id, PDO::PARAM_STR);
+            $stmt->execute();
+            $data = $stmt->fetch(PDO::FETCH_ASSOC);
+// TEST THAT SHIT MAN
+            if($data) {
+                $stmt =  $conn->prepare(
+                    "INSERT INTO users (password) 
+                    VALUES (?)");
+                $stmt->bindParam(1, $hash_pass, PDO::PARAM_STR);
+                $stmt->execute();
+            }
+        } 
+        catch (PDOException $error) {
+            echo $error->getMessage(); 
+            exit;
+        }
+    } 
     
     $conn = connect_PDO();
     updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image, $email);  
