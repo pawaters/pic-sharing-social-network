@@ -1,6 +1,5 @@
 <?php 
 
-//connect to a submit button 
 if(isset($_POST["reset-request-submit"])) {
 
     // 1 token for auth, 1 token to look in the db, to prevent timing attacks (RESEARCH)
@@ -22,32 +21,44 @@ if(isset($_POST["reset-request-submit"])) {
         exit; 
     } 
     
-    if(!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $emp_email)){
-        header("location: reset-password.php?error_message=Please enter valid email");
-        exit; 
+    if (!filter_var($userEmail, FILTER_VALIDATE_EMAIL)) {
+        header('location: reset-password.php?error_message=Invalid email format.');
+        exit;
     }
     
     try {
         $conn = connect_PDO();
-        $sql = "DELETE FROM pwdReset WHERE pwdResetEmail = ?";
-        if (!$stmt = $conn->prepare($sql)) {
-            header("Location: login.php?error_message=SQL error");
-            exit();
+
+        $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt->bindParam(1, $userEmail, PDO::PARAM_STR);
+        $stmt->execute();
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($data) {
+
+            $sql = "DELETE FROM pwdReset WHERE pwdResetEmail = ?";
+            if (!$stmt = $conn->prepare($sql)) {
+                header("Location: login.php?error_message=SQL error");
+                exit();
+            } else {
+                $stmt->bindParam(1, $userEmail, PDO::PARAM_STR);
+                $stmt->execute();
+            }
+            $sql = "INSERT INTO pwdReset (pwdResetEmail, pwdResetSelector, pwdResetToken, pwdResetExpires) VALUES (?,?,?,?);" ;
+            if (!$stmt = $conn->prepare($sql)) {
+                header("Location: login.php?error_message=SQL error");
+                exit();
+            } else {
+                $hashedToken = password_hash($token, PASSWORD_DEFAULT);
+                $stmt->bindParam(1, $userEmail, PDO::PARAM_STR);
+                $stmt->bindParam(2, $selector, PDO::PARAM_STR);
+                $stmt->bindParam(3, $hashedToken, PDO::PARAM_STR);
+                $stmt->bindParam(4, $expires, PDO::PARAM_STR);
+                $stmt->execute();
+            }
         } else {
-            $stmt->bindParam(1, $userEmail, PDO::PARAM_STR);
-            $stmt->execute();
-        }
-        $sql = "INSERT INTO pwdReset (pwdResetEmail, pwdResetSelector, pwdResetToken, pwdResetExpires) VALUES (?,?,?,?);" ;
-        if (!$stmt = $conn->prepare($sql)) {
-            header("Location: login.php?error_message=SQL error");
-            exit();
-        } else {
-            $hashedToken = password_hash($token, PASSWORD_DEFAULT);
-            $stmt->bindParam(1, $userEmail, PDO::PARAM_STR);
-            $stmt->bindParam(2, $selector, PDO::PARAM_STR);
-            $stmt->bindParam(3, $hashedToken, PDO::PARAM_STR);
-            $stmt->bindParam(4, $expires, PDO::PARAM_STR);
-            $stmt->execute();
+            header("location: reset-password.php?error_message=No such email in our database");
+            exit;
         }
     }
     catch (PDOException $e) {
@@ -65,8 +76,7 @@ if(isset($_POST["reset-request-submit"])) {
 
     mail($to, $subject, $message, $headers);
 
-    $emailLog = "Password reset request successful. Email was sent.";
-    $emailLog .= "address:";
+    $emailLog = "Password reset request received. Email was sent to : ";
     $emailLog .= $to;
     
     header("location: login.php?success_message=". $emailLog ."");

@@ -35,7 +35,7 @@ if (isset($_POST["reset-password-submit"])) {
             $stmt->execute();
 
             if (!$row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                header("Location: login.php?error_message=SQL error 2. Selector: ".$selector. ".\br Current datE:" . $currentDate);
+                header("Location: login.php?error_message=SQL error 2. Selector: ".$selector. ".\br Current datE:" . $currentDate. ".Most likely your selector token is not in our database.");
                 exit();
             }
             else {
@@ -43,7 +43,7 @@ if (isset($_POST["reset-password-submit"])) {
                 $tokenCheck = password_verify($tokenBin, $row["pwdResetToken"]);
 
                 if ($tokenCheck === false) {
-                    header("Location: login.php?error_message=Tokens do not match");
+                    header("Location: login.php?error_message=Validator Tokens do not match");
                     exit();
                 } else if ($tokenCheck === true) {
 
