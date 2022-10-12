@@ -65,7 +65,7 @@
 								<input type="text" class="my-input input" name="hashtags" placeholder="Add hashtags here" pattern="^[A-Za-z0-9.!,;#]*$" title="No spaces. Only letters, numbers, hashes (max 200)" maxlength="200" required>
 							</div>
 							<div>
-								<button type="submit" class="upload-btn" name="webcam_img_btn">Publish</button>
+								<button type="submit" class="upload-btn" name="webcam_img_btn" id="publish">Publish</button>
 							</div>
 						</form>
 					</div>
@@ -107,6 +107,7 @@
 		let camera_button = document.querySelector("#start-camera");
 		let video = document.querySelector("#video");
 		let capture_button = document.querySelector("#click-photo");
+		let publish_button = document.querySelector("#publish");
 		let canvas = document.querySelector("#canvas");
 
 		let sticker1 = document.getElementById("sticker1_path");
@@ -117,6 +118,7 @@
 
 		camera_button.disabled = true;
 		capture_button.disabled = true;
+		publish_button.disabled = true;
 
 		//when clicking on a sticker, activates button, draws sticker on sticker canvas
 		for(let i=0; i<filter.length; i++){
@@ -124,6 +126,7 @@
 				event.preventDefault();
 				camera_button.disabled = false;
 				capture_button.disabled = false;
+				publish_button.disabled = false;
 				// Gets the id of the element that triggered the event
 				myCanvas(e.target.id);
 			})
