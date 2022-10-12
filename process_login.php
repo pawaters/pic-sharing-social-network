@@ -73,7 +73,7 @@ if(isset($_POST['login_btn']) && !empty($_POST['username']) && !empty($_POST['pa
         //now store values in SESSION
         $_SESSION['id'] =  $data['id'];
         $_SESSION['username'] =  $data['username'];
-        $_SESSION['username'] =  $data['username'];
+        $_SESSION['email'] =  $data['email'];
         $_SESSION['image'] =  $data['image'];
         $_SESSION['followers'] =  $data['followers'];
         $_SESSION['following'] =  $data['following'];
