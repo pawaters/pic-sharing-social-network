@@ -22,14 +22,14 @@ if(isset($_POST['delete_post_btn']))
         echo $error->getMessage(); 
         exit;
     }
-    unlink("../assets/img/".$img_path);
+    unlink("assets/img/".$img_path);
 
     try {
     $stmt = $conn->prepare("DELETE FROM posts WHERE id = ?");
     $stmt->bindParam(1, $post_id, PDO::PARAM_INT);
     if($stmt->execute())
     {
-        header("location: profile.php?success_message=Post deleted in our db. Delete the image on your computer also if you do not want to keep it.");
+        header("location: profile.php?success_message=Post deleted in our db. img_path:".$img_path.".");
     }
     else
     {
