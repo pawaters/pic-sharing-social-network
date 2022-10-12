@@ -29,7 +29,7 @@ if(isset($_POST['delete_post_btn']))
     $stmt->bindParam(1, $post_id, PDO::PARAM_INT);
     if($stmt->execute())
     {
-        header("location: profile.php?success_message=Post deleted in our db. img_path:".$img_path.".");
+        header("location: profile.php?success_message=Post deleted. Image:".$img_path.".");
     }
     else
     {
