@@ -12,6 +12,19 @@ if(isset($_POST['delete_post_btn']))
     
     try {
     $conn = connect_PDO();
+    //GET THE PATH TO DELETE THE FILE
+    $stmt = $conn->prepare("SELECT * FROM posts WHERE id = ?");
+    $stmt->bindParam(1, $post_id, PDO::PARAM_INT);
+    $stmt->execute();
+    $img_info = $stmt->fetch();
+    $img_path = $img_info['image'];
+    } catch (PDOException $error) {
+        echo $error->getMessage(); 
+        exit;
+    }
+    unlink("../assets/img/".$img_path);
+
+    try {
     $stmt = $conn->prepare("DELETE FROM posts WHERE id = ?");
     $stmt->bindParam(1, $post_id, PDO::PARAM_INT);
     if($stmt->execute())
