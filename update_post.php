@@ -27,7 +27,7 @@ if(isset($_POST['update_post_btn'])){
 
 
     if($new_image != ""){
-        $image_name = strval(time()) . ".jpeg"; //5654564545.jpeg
+        $image_name = strval(time()) . ".jpeg";
     }else{
         $image_name = $old_image_name;
     }
@@ -71,7 +71,6 @@ if(isset($_POST['update_post_btn'])){
         if($stmt->execute()){
 
             if($new_image != ""){
-                 //store image in folder
                 move_uploaded_file($new_image,"assets/img/".$image_name);
             }
 

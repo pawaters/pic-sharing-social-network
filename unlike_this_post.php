@@ -21,8 +21,6 @@ if(isset($_POST['heart_btn'])){
         $stmt->bindParam(1, $user_id, PDO::PARAM_INT);
         $stmt->bindParam(2, $post_id, PDO::PARAM_INT);
 
-
-        //decrease number of likes of this post
         $stmt1 = $conn->prepare("UPDATE posts SET likes=likes-1 WHERE id = ?");
         
         $stmt1->bindParam(1, $post_id, PDO::PARAM_INT);

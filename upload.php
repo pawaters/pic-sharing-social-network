@@ -20,7 +20,7 @@
 							<input type="hidden" id="upload-file" value="" name="upload_file">
 						</div>
 						<input accept="image/*" type="file" class="my-input input" id="imgInp" name="image" required>
-						<!-- TD: review these classes to the same in "other upload"-->
+
 						<div class="form-group">
 							<input class="form-control" type="text"  class="my-input input" name="caption" placeholder="Write a caption here" required>
 						</div>

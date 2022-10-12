@@ -11,15 +11,14 @@ if(isset($_POST['update_profile_btn'])){
     $username = htmlspecialchars($_POST['username']);
     $email = $_POST['email'];
     $bio = htmlspecialchars($_POST['bio']);
-    $image = $_FILES['image']['tmp_name'];  //file
+    $image = $_FILES['image']['tmp_name'];  
 
     if($image != ""){
-       $image_name = $username . ".jpeg"; //5.jpeg
+       $image_name = $username . ".jpeg"; 
     }else{
         $image_name = $_SESSION['image'];
     }
 
-    //make sure that username is unique
     if($username != $_SESSION['username']){
         
         
@@ -42,7 +41,6 @@ if(isset($_POST['update_profile_btn'])){
     
     }
 
-    //make sure that email is unique
     if($email != $_SESSION['email']){
         
         try {
@@ -130,11 +128,9 @@ function updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image, $em
     if($stmt->execute()){
 
         if($image != ""){
-             //store image in folder
             move_uploaded_file($image,"assets/img/".$image_name);
         }
 
-        //update session
         $_SESSION['username']=$username;
         $_SESSION['bio']=$bio;
         $_SESSION['image']=$image_name;

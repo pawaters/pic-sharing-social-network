@@ -40,7 +40,6 @@ if(isset($_POST['unfollow_btn'])){
             echo $e->getMessage();
     }
 
-    //update session
     $_SESSION['following'] = $_SESSION['following']-1; 
 
     header("location:profile.php?success_message=New Unfollow Successful");
