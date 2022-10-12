@@ -4,7 +4,7 @@ session_start();
 
 include_once('connection.php');
 
-if(isset($_POST['login_btn'])) 
+if(isset($_POST['login_btn']) && !empty($_POST['username']) && !empty($_POST['password'])) 
 {
     $password = $_POST['password'];
     
@@ -32,24 +32,35 @@ if(isset($_POST['login_btn']))
 		exit;
 	}
 
-    $password = password_hash($password, PASSWORD_DEFAULT);
+    try {
+		$conn = connect_PDO();
+		$stmt = $conn->prepare("SELECT password FROM users WHERE username = ?");
+		$stmt->bindParam(1, $username, PDO::PARAM_STR);
+		$stmt->execute();
+		$password_hash = $stmt->fetchColumn();
+	} catch (PDOException $error) {
+		echo $error->getMessage(); 
+		exit;
+	}
+
     try {
         $conn = connect_PDO();
         $stmt = $conn->prepare("SELECT id, username, email, image, followers, following, posts, bio, verified, createdate, notify
                                 FROM users
-                                WHERE username = ? AND password = ? LIMIT 1");
+                                WHERE username = ? LIMIT 1");
 
         $stmt->bindParam(1, $username, PDO::PARAM_STR);
-        $stmt->bindParam(2, $password, PDO::PARAM_STR);
         $stmt->execute();
 
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $checked_password = password_verify($password, $password_hash);
     }
     catch (PDOException $e) {
             echo $e->getMessage();
     }
 
-    if($data) 
+    if($data && $checked_password) 
     {
         $verified = $data['verified'];
         $createdate = date('d M Y', strtotime($data['createdate']));
