@@ -137,7 +137,7 @@ if(isset($_POST['update_profile_btn'])){
             $stmt->bindParam(1, $user_id, PDO::PARAM_STR);
             $stmt->execute();
             $data = $stmt->fetch(PDO::FETCH_ASSOC);
-// TEST THAT SHIT MAN
+
             if($data) {
                 $stmt =  $conn->prepare(
                     "INSERT INTO users (password) 
@@ -166,51 +166,60 @@ if(isset($_POST['update_profile_btn'])){
 
 
 function updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image, $email){
-    $conn = connect_PDO();
-    $stmt = $conn->prepare("UPDATE users SET username = ?, bio = ? , image = ?, email = ? WHERE id = ?");
-    $stmt->bindParam(1, $username, PDO::PARAM_STR);
-    $stmt->bindParam(2, $bio, PDO::PARAM_STR);
-    $stmt->bindParam(3, $image_name, PDO::PARAM_STR);
-    $stmt->bindParam(4, $email, PDO::PARAM_STR);
-    $stmt->bindParam(5, $user_id, PDO::PARAM_INT);
+    try {
+        $conn = connect_PDO();
+        $stmt = $conn->prepare("UPDATE users SET username = ?, bio = ? , image = ?, email = ? WHERE id = ?");
+        $stmt->bindParam(1, $username, PDO::PARAM_STR);
+        $stmt->bindParam(2, $bio, PDO::PARAM_STR);
+        $stmt->bindParam(3, $image_name, PDO::PARAM_STR);
+        $stmt->bindParam(4, $email, PDO::PARAM_STR);
+        $stmt->bindParam(5, $user_id, PDO::PARAM_INT);
 
-    if($stmt->execute()){
+        if($stmt->execute()){
 
-        if($image != ""){
-            move_uploaded_file($image,"assets/img/".$image_name);
+            if($image != ""){
+                move_uploaded_file($image,"assets/img/".$image_name);
+            }
+
+            $_SESSION['username']=$username;
+            $_SESSION['bio']=$bio;
+            $_SESSION['image']=$image_name;
+            $_SESSION['email']=$email;
+
+
+            updateProfileImageAndUsernameInPostsTable($conn,$username,$image_name,$user_id);
+
+            updateProfileImageAndUsernameInCommentsTable($conn,$username,$image_name,$user_id);
+
+            header("location: profile.php?success_message?Profile has been updated successfully");
+            exit;
+
+        }else{
+            header("location: edit_profile.php?error_message?error occured, try again");
+            exit;
         }
-
-        $_SESSION['username']=$username;
-        $_SESSION['bio']=$bio;
-        $_SESSION['image']=$image_name;
-        $_SESSION['email']=$email;
-
-
-        updateProfileImageAndUsernameInPostsTable($conn,$username,$image_name,$user_id);
-
-        updateProfileImageAndUsernameInCommentsTable($conn,$username,$image_name,$user_id);
-
-        header("location: profile.php?success_message?Profile has been updated successfully");
+    } 
+    catch (PDOException $error) {
+        echo $error->getMessage(); 
         exit;
-
-    }else{
-        header("location: edit_profile.php?error_message?error occured, try again");
-        exit;
-
     }
 }
 
 function updateProfileImageAndUsernameInCommentsTable($conn,$username,$image_name,$user_id){
 
+    try {
+        $conn = connect_PDO();
+        $stmt = $conn->prepare("UPDATE comments SET username = ?, profile_image = ?  WHERE user_id = ?");
 
-    $conn = connect_PDO();
-    $stmt = $conn->prepare("UPDATE comments SET username = ?, profile_image = ?  WHERE user_id = ?");
-
-    $stmt->bindParam(1, $username, PDO::PARAM_STR);
-    $stmt->bindParam(2, $image_name, PDO::PARAM_STR);
-    $stmt->bindParam(3, $user_id, PDO::PARAM_INT);
-    $stmt->execute();
-
+        $stmt->bindParam(1, $username, PDO::PARAM_STR);
+        $stmt->bindParam(2, $image_name, PDO::PARAM_STR);
+        $stmt->bindParam(3, $user_id, PDO::PARAM_INT);
+        $stmt->execute();
+    } 
+    catch (PDOException $error) {
+        echo $error->getMessage(); 
+        exit;
+    }
     
 
 }
@@ -218,14 +227,19 @@ function updateProfileImageAndUsernameInCommentsTable($conn,$username,$image_nam
 
 function updateProfileImageAndUsernameInPostsTable($conn,$username,$image_name,$user_id){
 
-    $conn = connect_PDO();
-    $stmt = $conn->prepare("UPDATE posts SET username = ?, profile_image = ?  WHERE user_id = ?");
+    try {
+        $conn = connect_PDO();
+        $stmt = $conn->prepare("UPDATE posts SET username = ?, profile_image = ?  WHERE user_id = ?");
 
-    $stmt->bindParam(1, $username, PDO::PARAM_STR);
-    $stmt->bindParam(2, $image_name, PDO::PARAM_STR);
-    $stmt->bindParam(3, $user_id, PDO::PARAM_INT);
-    $stmt->execute();
-
+        $stmt->bindParam(1, $username, PDO::PARAM_STR);
+        $stmt->bindParam(2, $image_name, PDO::PARAM_STR);
+        $stmt->bindParam(3, $user_id, PDO::PARAM_INT);
+        $stmt->execute();
+    } 
+    catch (PDOException $error) {
+        echo $error->getMessage(); 
+        exit;
+    }
 
 }
 
