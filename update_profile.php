@@ -160,14 +160,12 @@ if(isset($_POST['update_profile_btn'])){
     header("location: edit_profile.php?error_message?error occured, try again");
     exit;
 
-}
-
-
-
+}  
 
 function updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image, $email){
     try {
         $conn = connect_PDO();
+        
         $stmt = $conn->prepare("UPDATE users SET username = ?, bio = ? , image = ?, email = ? WHERE id = ?");
         $stmt->bindParam(1, $username, PDO::PARAM_STR);
         $stmt->bindParam(2, $bio, PDO::PARAM_STR);
@@ -208,6 +206,7 @@ function updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image, $em
 function updateProfileImageAndUsernameInCommentsTable($conn,$username,$image_name,$user_id){
 
     try {
+        // CHECK FIRST THAT THERE ARE COMMENT OF THIS USER
         $conn = connect_PDO();
         $stmt = $conn->prepare("UPDATE comments SET username = ?, profile_image = ?  WHERE user_id = ?");
 
@@ -220,14 +219,13 @@ function updateProfileImageAndUsernameInCommentsTable($conn,$username,$image_nam
         echo $error->getMessage(); 
         exit;
     }
-    
-
 }
 
 
 function updateProfileImageAndUsernameInPostsTable($conn,$username,$image_name,$user_id){
 
     try {
+         // CHECK FIRST THAT THERE ARE POSTS OF THIS USER
         $conn = connect_PDO();
         $stmt = $conn->prepare("UPDATE posts SET username = ?, profile_image = ?  WHERE user_id = ?");
 
@@ -240,12 +238,6 @@ function updateProfileImageAndUsernameInPostsTable($conn,$username,$image_name,$
         echo $error->getMessage(); 
         exit;
     }
-
 }
-
-
-
-
-
 
 ?>
