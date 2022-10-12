@@ -37,7 +37,6 @@ if(isset($_POST["reset-request-submit"])) {
             $stmt->bindParam(1, $userEmail, PDO::PARAM_STR);
             $stmt->execute();
         }
-        //WHEN INSERTING, ALWAYS THINK "Is there any sensitive data to hash"
         $sql = "INSERT INTO pwdReset (pwdResetEmail, pwdResetSelector, pwdResetToken, pwdResetExpires) VALUES (?,?,?,?);" ;
         if (!$stmt = $conn->prepare($sql)) {
             header("Location: login.php?error_message=SQL error");
