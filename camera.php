@@ -129,7 +129,6 @@
 			})
 		}
 		
-		//if does not work --> upload option
 		camera_button.addEventListener('click', async function() {
 			event.preventDefault();
 			let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });

@@ -45,7 +45,6 @@ if(isset($_POST['comment_btn']))
     $stmt->bindParam(6, $date, PDO::PARAM_STR);
     $stmt->execute();
 
-    // 1) get the user_id of the post owner thanks to the post_ID
   
     $stmt = $conn->prepare("SELECT user_id FROM posts WHERE id = ? LIMIT 1");
     $stmt->bindParam(1, $post_id, PDO::PARAM_INT);
@@ -54,8 +53,6 @@ if(isset($_POST['comment_btn']))
     if($data1) 
     {
         $post_owner_id = $data1['user_id'];
-
-        // 2) get the post owner email thanks to id
         $stmt = $conn->prepare("SELECT email, notify FROM users WHERE id = ? LIMIT 1");
         $stmt->bindParam(1, $post_owner_id, PDO::PARAM_INT);
         $stmt->execute();

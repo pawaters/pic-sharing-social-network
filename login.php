@@ -43,18 +43,15 @@ if(isset($_SESSION['id'])) {
                         <div class="logo">
                             <img src="assets/img/logo.jpg" class="logo-img">
                         </div>
-                        <!-- in the front-end part, we have class id and some inputs
-                        // now, to feed into our back-end, we need to add a method "POST", and an action 
-                        // the php for the action will define what to do with the form data -->
                         <form class="login-form" id="login-form" method="POST" action="process_login.php" autocomplete="on">
 
-                        <?php if(isset($_GET['success_message'])) { ?>
-                            <p id="success_message" class="text-center alert alert-success"><?php echo $_GET['success_message']; ?> </p>
-                        <?php } ?>
+                            <?php if(isset($_GET['success_message'])) { ?>
+                                <p id="success_message" class="text-center alert alert-success"><?php echo $_GET['success_message']; ?> </p>
+                            <?php } ?>
 
-                        <?php  if(isset($_GET['error_message'])){  ?>
-                            <p id="error_message" class="text-center alert alert-danger"> <?php echo $_GET['error_message']; ?> </p>
-                        <?php    }?>
+                            <?php  if(isset($_GET['error_message'])){  ?>
+                                <p id="error_message" class="text-center alert alert-danger"> <?php echo $_GET['error_message']; ?> </p>
+                            <?php    }?>
                         
                         
                             <div class="form-group">

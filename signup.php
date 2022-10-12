@@ -87,15 +87,8 @@
         <?php include_once('footer.php'); ?>
     </div>
     
-    <!--script to slide images -->
     <script> 
     
-    //REWRITE THIS WITH A SIMPLER LOOP
-
-    // why we cant just call directly func but have to use arrow to then call 
-    // the reason is that when in a callback, it stays within that specific context,
-    // and changes the value in context of setInterval itself, not the value of the CSS out of it.
-    // to solve this, we can use the arrow function expression.
     setInterval(() => {changeImage();}, 1000);
     
     function changeImage(){
@@ -124,70 +117,6 @@
            }
        }
     };
- 
-    // function changeMode()
-    // {
-    //     var body = document.getElementsByTagName('body')[0];
-    //     var footerLinks = document.getElementById('links').getElementsByTagName('a');
-
-    //     if(body.classList.contains('dark'))
-    //     {
-    //         body.classList.remove('dark');
-
-    //         for (let i=0; i < footerLinks.length; i++)
-    //         {
-    //             footerLinks[i].classList.remove('dark-mode-link');
-    //         } 
-    //     }
-    //     else 
-    //     {
-    //         body.classList.add('dark');
-
-    //         for (let i = 0; i < footerLinks.length; i++)
-    //         {
-    //             footerLinks[i].classList.add('dark-mode-link');   
-    //         }
-    //     };
-
-    // }
-
-    // // function verifyForm()
-    // // {
-    // //     var password = document.getElementById('password').value;
-    // //     var confirm_password = document.getElementById('confirm_password').value;
-    // //     var error_message = document.getElementById('error_message');
-
-    // //     if(password.length < 6)
-    // //     {
-    // //         error_message.innerHTML = "Password is too short";
-    // //         return false;
-    // //     }
-
-    // //     if(password !== confirm_password)
-    // //     {
-    // //         error_message.innerHTML = "Passwords do not match";
-    // //         return false;
-    // //     }
-    // //     return true;
-
-
-    // // }
-   
-    // // document.getElementById('dark-btn').addEventListener('click',(e)=>{
-    // //     e.preventDefault();
-
-    // //     changeMode();
-    // // })  
-
-    // //NO NEED TO CHECK WITH JS, WE DO WITH PHP IN SIGNUP_PROCESS
-
-    // // document.getElementById('signup_form').addEventListener('submit', (e)=>
-    // //     {
-    // //         e.preventDefault();
-
-    // //         verifyForm();
-    // //     }
-    // // )
 
     </script>
 

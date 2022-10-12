@@ -35,7 +35,6 @@ if(isset($_POST['update_comment_btn'])){
         try {
             $conn = connect_PDO();
             $stmt = $conn->prepare("UPDATE comments SET comment_text = ?  WHERE id = ?");
-            // $stmt->bind_param("si",$comment_text,$comment_id);
             $stmt->bindParam(1, $comment_text, PDO::PARAM_STR);
             $stmt->bindParam(2, $comment_id, PDO::PARAM_INT);
 

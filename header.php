@@ -2,7 +2,6 @@
 
 session_start();
 
-// if not logged in, send to login page
 if(!isset($_SESSION['id'])){
     header('location: login.php?error_message=Please log in');
     exit;
@@ -22,8 +21,6 @@ if(!isset($_SESSION['id'])){
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <!--2 main divs: navbar and main 
-    each main div includes a wrapper CHANGE -->
     <nav class="navbar"> 
         <div class="nav-wrapper">
             <img src="assets/img/logo.jpg" class="brand-img"/>

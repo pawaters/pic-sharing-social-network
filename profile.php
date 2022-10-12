@@ -111,13 +111,10 @@
     </main>
     
     <script>
-        // STEPS WHEN ADDING JS FUNCTIONALITY TO FRONT
-        // 1) store in JS var each element I needed thanks "document.getElementById"
         var popupWindow = document.getElementById('popup');
         var optionsBtn = document.getElementById('options_btn');
         var closeWindow = document.getElementById('close-popup');
 
-        // 2) add event Listener
         optionsBtn.addEventListener("click",(e)=>{
             e.preventDefault();
             popupWindow.style.display = "block";
