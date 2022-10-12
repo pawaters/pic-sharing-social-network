@@ -9,7 +9,7 @@ if(isset($_POST['login_btn']) && !empty($_POST['username']) && !empty($_POST['pa
     $password = $_POST['password'];
     
     $username = htmlspecialchars($_POST['username']);
-    if(preg_match("/[<>=\{\}\/]/", $username)) 
+    if(preg_match("/[<>=\{\}'\/]/", $username)) 
     {
         header("location: edit_profile.php?error_message=Please enter valid username (no special characters)");
         exit; 

@@ -44,7 +44,7 @@ if(isset($_POST['signup_btn']))
         header("location: signup.php?error_message=Please enter password confirmation");
         exit; 
     }
-    if(preg_match("/[<>=\{\}\/]/", $emp_uname)) 
+    if(preg_match("/[<>=\{\}'\/]/", $emp_uname)) 
     {
         header("location: signup.php?error_message=Please enter valid username (no special characters)");
         exit; 

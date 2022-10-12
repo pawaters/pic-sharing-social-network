@@ -21,7 +21,7 @@ if(isset($_POST['update_comment_btn'])){
         header("location: index.php?error_message=Please enter a comment");
         exit; 
     } 
-    if(preg_match("/[<>=\{\}\/]/", $emp_comment)) 
+    if(preg_match("/[<>=\{\}'\/]/", $emp_comment)) 
     {
         header("location: index.php?error_message=Please enter valid comment (no special characters)");
         exit; 

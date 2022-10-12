@@ -87,12 +87,12 @@ if(isset($_POST['upload_img_btn'])){
         header("location: upload.php?error_message=Please enter a hashtag");
         exit; 
     } 
-    if(preg_match("/[<>=\{\}\/]/", $emp_caption)) 
+    if(preg_match("/[<>=\{\}'\/]/", $emp_caption)) 
     {
         header("location: upload.php?error_message=Please enter valid caption (no special characters)");
         exit; 
     }
-	if(preg_match("/[<>=\{\}\/]/", $emp_hash)) 
+	if(preg_match("/[<>=\{\}'\/]/", $emp_hash)) 
     {
         header("location: upload.php?error_message=Please enter valid hashtag (no special characters)");
         exit; 

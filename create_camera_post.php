@@ -62,12 +62,12 @@ if(isset($_POST['webcam_img_btn'])){
         header("location: camera.php?error_message=Please enter a hashtag");
         exit; 
     } 
-    if(preg_match("/[<>=\{\}\/]/", $emp_caption)) 
+    if(preg_match("/[<>=\{\}'\/]/", $emp_caption)) 
     {
         header("location: camera.php?error_message=Please enter valid caption (no special characters)");
         exit; 
     }
-	if(preg_match("/[<>=\{\}\/]/", $emp_hash)) 
+	if(preg_match("/[<>=\{\}'\/]/", $emp_hash)) 
     {
         header("location: camera.php?error_message=Please enter valid hashtag (no special characters)");
         exit; 

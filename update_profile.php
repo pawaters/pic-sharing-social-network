@@ -45,12 +45,12 @@ if(isset($_POST['update_profile_btn'])){
         header("location: edit_profile.php?error_message=Please enter password confirmation");
         exit; 
     }
-    if(preg_match("/'[<>=\{\}\/]/", $emp_bio)) 
+    if(preg_match("/[<>=\{\}'\/]/", $emp_bio)) 
     {
         header("location: edit_profile.php?error_message=Please enter valid bio (no special characters)");
         exit; 
     }
-    if(preg_match("/'[<>=\{\}\/]/", $emp_uname)) 
+    if(preg_match("/[<>=\{\}'\/]/", $emp_uname)) 
     {
         header("location: edit_profile.php?error_message=Please enter valid username (no special characters)");
         exit; 
@@ -139,10 +139,9 @@ if(isset($_POST['update_profile_btn'])){
             $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if($data) {
-                $stmt =  $conn->prepare(
-                    "INSERT INTO users (password) 
-                    VALUES (?)");
+                $stmt = $conn->prepare("UPDATE users SET password = ?  WHERE id = ?");
                 $stmt->bindParam(1, $hash_pass, PDO::PARAM_STR);
+                $stmt->bindParam(2, $user_id, PDO::PARAM_INT);
                 $stmt->execute();
             }
         } 
@@ -206,14 +205,21 @@ function updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image, $em
 function updateProfileImageAndUsernameInCommentsTable($conn,$username,$image_name,$user_id){
 
     try {
-        // CHECK FIRST THAT THERE ARE COMMENT OF THIS USER
         $conn = connect_PDO();
-        $stmt = $conn->prepare("UPDATE comments SET username = ?, profile_image = ?  WHERE user_id = ?");
-
+        $stmt = $conn->prepare( "SELECT id FROM comments WHERE username = ?");
+        
         $stmt->bindParam(1, $username, PDO::PARAM_STR);
-        $stmt->bindParam(2, $image_name, PDO::PARAM_STR);
-        $stmt->bindParam(3, $user_id, PDO::PARAM_INT);
         $stmt->execute();
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+        if ($data) {
+            $stmt = $conn->prepare("UPDATE comments SET username = ?, profile_image = ?  WHERE user_id = ?");
+            $stmt->bindParam(1, $username, PDO::PARAM_STR);
+            $stmt->bindParam(2, $image_name, PDO::PARAM_STR);
+            $stmt->bindParam(3, $user_id, PDO::PARAM_INT);
+            $stmt->execute();
+        }
     } 
     catch (PDOException $error) {
         echo $error->getMessage(); 
@@ -224,19 +230,20 @@ function updateProfileImageAndUsernameInCommentsTable($conn,$username,$image_nam
 
 function updateProfileImageAndUsernameInPostsTable($conn,$username,$image_name,$user_id){
 
-    try {
-         // CHECK FIRST THAT THERE ARE POSTS OF THIS USER
-        $conn = connect_PDO();
-        $stmt = $conn->prepare("UPDATE posts SET username = ?, profile_image = ?  WHERE user_id = ?");
+    if ($_SESSION['post'] > 0) {
+        try {
+            $conn = connect_PDO();
+            $stmt = $conn->prepare("UPDATE posts SET username = ?, profile_image = ?  WHERE user_id = ?");
 
-        $stmt->bindParam(1, $username, PDO::PARAM_STR);
-        $stmt->bindParam(2, $image_name, PDO::PARAM_STR);
-        $stmt->bindParam(3, $user_id, PDO::PARAM_INT);
-        $stmt->execute();
-    } 
-    catch (PDOException $error) {
-        echo $error->getMessage(); 
-        exit;
+            $stmt->bindParam(1, $username, PDO::PARAM_STR);
+            $stmt->bindParam(2, $image_name, PDO::PARAM_STR);
+            $stmt->bindParam(3, $user_id, PDO::PARAM_INT);
+            $stmt->execute();
+        } 
+        catch (PDOException $error) {
+            echo $error->getMessage(); 
+            exit;
+        }
     }
 }
 
