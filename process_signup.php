@@ -53,6 +53,16 @@ if(isset($_POST['signup_btn']))
 
     }
 
+    if(strlen($password) < 8){
+		header('location: signup.php?error_message=Password is shorter than 8 characters');
+		exit;
+	}
+
+	if(strlen($password) > 20){
+		header('location: signup.php?error_message=Password too long, maximum 20 characters allowed.');
+		exit;
+	}
+
     try {
         $conn = connect_PDO();
         $stmt = $conn->prepare( "SELECT id FROM users WHERE username = ? OR email = ?");

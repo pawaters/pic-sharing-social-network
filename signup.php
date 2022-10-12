@@ -46,12 +46,12 @@
                             </div>
                             <div class="form-group">
                                 <div class="login-input">
-                                    <input type="password" name="password" id="password" placeholder="Type your password..." required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                                    <input type="password" name="password" id="password" placeholder="Type your password..." required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" minlength="8" maxlength="20" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="login-input">
-                                    <input type="password" name="password_confirm" id="confirm_password" placeholder="Confirm your password..." required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                                    <input type="password" name="password_confirm" id="confirm_password" placeholder="Confirm your password..." required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" minlength="8" maxlength="20" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
                                 </div>
                             </div>
                             <div class="btn-group">
