@@ -11,24 +11,30 @@ if(isset($_POST['login_btn']) && !empty($_POST['username']) && !empty($_POST['pa
     $username = htmlspecialchars($_POST['username']);
     if(preg_match("/[<>=\{\}'\/]/", $username)) 
     {
-        header("location: edit_profile.php?error_message=Please enter valid username (no special characters)");
+        header("location: login.php?error_message=Please enter valid username (no special characters)");
+        exit; 
+    }
+
+    if(preg_match("/[<>=\{\}'\/]/", $password)) 
+    {
+        header("location: login.php?error_message=Please enter valid password (no special characters)");
         exit; 
     }
     
 
     if(strlen($username) > 20){
-        header("location: index.php?error_message?error: username is too long or has special characters.");
+        header("location: login.php?error_message?error: username is too long or has special characters.");
         exit;
 
     }
 
     if(strlen($password) < 8){
-		header('location: signup.php?error_message=Password is shorter than 8 characters');
+		header('location: login.php?error_message=Password is shorter than 8 characters');
 		exit;
 	}
 
 	if(strlen($password) > 20){
-		header('location: signup.php?error_message=Password too long, maximum 20 characters allowed.');
+		header('location: login.php?error_message=Password too long, maximum 20 characters allowed.');
 		exit;
 	}
 
