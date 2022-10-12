@@ -19,6 +19,9 @@ if(isset($_POST['signup_btn']))
 	$emp_uname=trim($_POST["username"]);
 	$emp_pass=trim($_POST["password"]);
 	$emp_confirm=trim($_POST["password_confirm"]);
+    $uppercase = preg_match('@[A-Z]@', $password);
+    $lowercase = preg_match('@[a-z]@', $password);
+    $number    = preg_match('@[0-9]@', $password);  
 
     if ($password != $password_confirm)
     {
@@ -62,6 +65,10 @@ if(isset($_POST['signup_btn']))
 		header('location: signup.php?error_message=Password too long, maximum 20 characters allowed.');
 		exit;
 	}
+    if(!$uppercase || !$lowercase || !$number) {
+        header('location: signup.php?error_message=Password complexity not good enough: you should include at least one upper case letter, one lowercase and one number.');
+		exit;
+    }
 
     try {
         $conn = connect_PDO();
