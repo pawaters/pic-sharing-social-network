@@ -16,12 +16,6 @@ if(isset($_POST['upload_img_btn'])){
 	$file_size = $_FILES['image']['size'];
 	$image = $_FILES['image']['tmp_name'];
 
-	$file_type = $_FILES['image']['type'];
-	if($file_type != 'image/png' && $file_type != 'image/jpeg')
-    {
-        header('location: upload.php?error_message=File must be png or jpeg.');
-		exit;
-    }
 	$ext = pathinfo($image, PATHINFO_EXTENSION);
 	if($ext != "png" && $ext != "jpeg") 
 	{
