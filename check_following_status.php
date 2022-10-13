@@ -2,6 +2,11 @@
 
 $user_id = $_SESSION['id'];
 
+if(!isset($_SESSION['id'])){
+    header('location: login.php?error_message=Please log in');
+    exit;
+}
+
 try { 
     $conn = connect_PDO();
     $stmt = $conn->prepare("SELECT * FROM followings WHERE user_id = ? AND other_user_id = ?");
