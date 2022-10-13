@@ -26,14 +26,13 @@
 									</div>
 								</div>
 							</div>
-							<p class="sticker-description">2. Start your webcam</p>
+							<p class="sticker-description">2. Start your webcam (you have to give permission or the image will be black)</p>
 							<button class="capture-btn" id="start-camera">Start Camera</button>
 
 							<a href="upload.php">(or follow this link to upload an image instead)</a>
 
 							<!-- 2. The video stream -->
 							<div>
-								<!-- <video class="is-hidden" id="video" width="700" height="500" autoplay></video> -->
 								<video class="is-hidden" id="video" autoplay width="100%" video="100%" style="width: 100%; max-height: 100%;"></video>
 							</div>
 							<p style="margin-top: 30px;" class="sticker-description">3. Take your photo</p>
@@ -118,7 +117,7 @@
 
 		camera_button.disabled = true;
 		capture_button.disabled = true;
-		publish_button.disabled = true;
+		publish_button.disabled = true;		
 
 		//when clicking on a sticker, activates button, draws sticker on sticker canvas
 		for(let i=0; i<filter.length; i++){
