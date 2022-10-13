@@ -9,7 +9,7 @@ if(isset($_POST['upload_img_btn'])){
 	$profile_image = $_SESSION['image']; 
 	if($_FILES['image']['size'] == 0 || $_FILES['image']['tmp_name'] == null) 
 	{
-		header("location: signup.php?error_message=No image was selected for upload");
+		header("location: upload.php?error_message=No image was selected for upload");
     	exit;
 	}
 	$valid_file_size = 3*1024*1024;

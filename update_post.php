@@ -36,7 +36,12 @@ if(isset($_POST['update_post_btn'])){
 
 	$emp_caption=trim($_POST['caption']);
 	$emp_hash=trim($_POST['hashtags']);
-    
+    $ext = pathinfo($new_image, PATHINFO_EXTENSION);
+	if($ext != "png" && $ext != "jpeg") 
+	{
+        header('location: index.php?error_message=File must be png or jpeg.');
+		exit;
+    }
 
     if($emp_caption == "")
     {
@@ -76,11 +81,11 @@ if(isset($_POST['update_post_btn'])){
 
     
 
-            header("location: profile.php?success_message?Post has been updated successfully");
+            header("location: index.php?success_message?Post has been updated successfully");
             exit;
 
         }else{
-            header("location: profile.php?error_message?error occured, try again");
+            header("location: index.php?error_message?error occured, try again");
             exit;
 
         }
@@ -96,7 +101,7 @@ if(isset($_POST['update_post_btn'])){
 
 }else{
 
-    header("location: profile.php?error_message?error occured, try again");
+    header("location: index.php?error_message?error occured, try again");
     exit;
 
 

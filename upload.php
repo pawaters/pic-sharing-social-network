@@ -92,7 +92,9 @@
 				picture.src = URL.createObjectURL(file);
 				setTimeout(() => {
 					if(picture.height < 400)
+					{
 						alert("Stickers will not show properly on images of this size or type. Choose a different image.");
+					}
 					if(picture.width < picture.height){
 						let maxHeight = 700;
 						let maxWidth = 500;
