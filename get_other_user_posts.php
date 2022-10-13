@@ -1,5 +1,8 @@
 <?php
 
+include_once ("header.php");
+include_once ("connection.php");
+
 if(isset($_GET['page_no']) && $_GET['page_no'] != "")
 {
     $page_no = $_GET['page_no'];
