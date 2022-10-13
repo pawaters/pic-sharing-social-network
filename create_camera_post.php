@@ -3,6 +3,10 @@
 session_start();
 
 require_once("connection.php");
+if(!isset($_SESSION['id'])){
+    header('location: login.php?error_message=Please log in');
+    exit;
+}
 
 // Check if user clicked the publish button
 if(isset($_POST['webcam_img_btn'])){

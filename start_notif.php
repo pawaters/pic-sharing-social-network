@@ -3,8 +3,6 @@
 session_start();
 require_once 'connection.php';
 
-$user_id = $_SESSION['id'];
-
 try {
     $conn = connect_PDO();
     $sql = "UPDATE users SET notify = 1 WHERE id = ? LIMIT 1";

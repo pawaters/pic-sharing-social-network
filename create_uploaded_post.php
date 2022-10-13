@@ -3,6 +3,10 @@
 session_start();
 
 require_once("connection.php");
+if(!isset($_SESSION['id'])){
+    header('location: login.php?error_message=Please log in');
+    exit;
+}
 
 if(isset($_POST['upload_img_btn'])){
 	$id = $_SESSION['id'];

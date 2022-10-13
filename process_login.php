@@ -2,6 +2,11 @@
 
 session_start();
 
+if(!isset($_SESSION['id'])){
+    header('location: login.php?error_message=Please log in');
+    exit;
+}
+
 include_once('connection.php');
 
 if(isset($_POST['login_btn']) && !empty($_POST['username']) && !empty($_POST['password'])) 
