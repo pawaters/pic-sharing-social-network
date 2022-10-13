@@ -17,15 +17,6 @@ if(isset($_POST['update_profile_btn'])){
     $lowercase = preg_match('@[a-z]@', $password);
     $number    = preg_match('@[0-9]@', $password);  
 
-    $valid_file_size = 3*1024*1024;
-	$file_size = $_FILES['image']['size'];
-    $file_type = $_FILES['image']['type'];
-	if($file_type != 'image/png' && $file_type != 'image/jpeg')
-    {
-        header('location: upload.php?error_message=File must be png or jpeg.');
-		exit;
-    }
-
 	$emp_email=trim($_POST["email"]);
 	$emp_uname=trim($_POST["username"]);
 	$emp_bio=trim($_POST["bio"]);
@@ -41,11 +32,6 @@ if(isset($_POST['update_profile_btn'])){
         header('location: edit_profile.php?error_message=File must be png or jpeg.');
 		exit;
     }
-    if($file_size > $valid_file_size)
-	{
-		header('location: upload.php?error_message=File size must not be more that 3Mb.');
-		exit;
-	}
     
 
     if($emp_email == "") {

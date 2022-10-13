@@ -2,11 +2,6 @@
 
 include_once('connection.php'); 
 
-if(!isset($_SESSION['id'])){
-    header('location: login.php?error_message=Please log in');
-    exit;
-}
-
 if(isset($_GET['page_no']) && $_GET['page_no'] != "")
 {
     $page_no = $_GET['page_no'];

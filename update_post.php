@@ -24,14 +24,6 @@ if(isset($_POST['update_post_btn'])){
         exit;
     }
 
-    $valid_file_size = 3*1024*1024;
-	$file_size = $_FILES['new_image']['size'];
-    $file_type = $_FILES['new_image']['type'];
-	if($file_type != 'image/png' && $file_type != 'image/jpeg')
-    {
-        header('location: upload.php?error_message=File must be png or jpeg.');
-		exit;
-    }
 
 
     if($new_image != ""){
