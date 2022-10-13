@@ -2,6 +2,11 @@
 
 require_once("connection.php");
 
+if(!isset($_SESSION['id'])){
+    header('location: login.php?error_message=Please log in');
+    exit;
+}
+
 $user_id = $_SESSION['id'];
 
 try {
