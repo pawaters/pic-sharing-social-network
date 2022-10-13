@@ -15,6 +15,7 @@ try {
     } else {
         $stmt->bindParam(1, $user_id, PDO::PARAM_STR);  
         $stmt->execute();
+        $_SESSION['notify'] = 0;
         header("Location: index.php?success_message=You will no longer be notified!");
         exit();
     } 
