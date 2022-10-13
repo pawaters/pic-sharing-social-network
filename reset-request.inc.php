@@ -1,5 +1,9 @@
 <?php 
 
+    session_start();
+    session_unset();
+    session_destroy();
+
 if(isset($_POST["reset-request-submit"])) {
 
     // 1 token for auth, 1 token to look in the db, to prevent timing attacks (RESEARCH)
@@ -38,7 +42,7 @@ if(isset($_POST["reset-request-submit"])) {
 
             $sql = "DELETE FROM pwdReset WHERE pwdResetEmail = ?";
             if (!$stmt = $conn->prepare($sql)) {
-                header("Location: login.php?error_message=SQL error");
+                header("Location: reset-password.php?error_message=SQL error");
                 exit();
             } else {
                 $stmt->bindParam(1, $userEmail, PDO::PARAM_STR);
@@ -46,7 +50,7 @@ if(isset($_POST["reset-request-submit"])) {
             }
             $sql = "INSERT INTO pwdReset (pwdResetEmail, pwdResetSelector, pwdResetToken, pwdResetExpires) VALUES (?,?,?,?);" ;
             if (!$stmt = $conn->prepare($sql)) {
-                header("Location: login.php?error_message=SQL error");
+                header("Location: reset-password.php?error_message=SQL error");
                 exit();
             } else {
                 $hashedToken = password_hash($token, PASSWORD_DEFAULT);
@@ -58,7 +62,7 @@ if(isset($_POST["reset-request-submit"])) {
             }
         } else {
             header("location: reset-password.php?error_message=No such email in our database");
-            exit;
+            exit();
         }
     }
     catch (PDOException $e) {
@@ -80,7 +84,9 @@ if(isset($_POST["reset-request-submit"])) {
     $emailLog .= $to;
     
     header("location: login.php?success_message=". $emailLog ."");
+    exit();
 
 } else {
-    header("Location: index.php?error_message=Error ocurred");
+    header("Location: reset-password.php?error_message=Error ocurred");
+    exit();
 }

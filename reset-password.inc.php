@@ -1,5 +1,8 @@
 <?php
 
+// session_unset();
+// session_destroy();
+
 if (isset($_POST["reset-password-submit"])) {
     
     $selector = htmlspecialchars($_POST['selector']);
@@ -81,6 +84,7 @@ if (isset($_POST["reset-password-submit"])) {
                                     $stmt->bindParam(1, $tokenEmail, PDO::PARAM_STR);
                                     $stmt->execute();
                                     header("Location: login.php?success_message=Password Updated Successfully");
+                                    exit();
                                 }
 
 
@@ -97,4 +101,5 @@ if (isset($_POST["reset-password-submit"])) {
 
 } else {
     header("Location: login.php?error_message=Cannot access.");
+    exit();
 }
