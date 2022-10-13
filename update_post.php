@@ -8,10 +8,10 @@ if(isset($_POST['update_post_btn'])){
 
 
     $post_id = htmlspecialchars($_POST['post_id']);
-    $old_image_name = htmlspecialchars($_POST['old_image_name']);
-	$caption = htmlspecialchars($_POST['caption']);
-	$hashtags = htmlspecialchars($_POST['hashtags']);
-    $new_image = $_FILES['new_image']['tmp_name'];  //file
+    $old_image_name = $_POST['old_image_name'];
+	$caption = $_POST['caption'];
+	$hashtags = $_POST['hashtags'];
+    $new_image = $_FILES['new_image']['tmp_name'];
 
 
     if(strlen($caption) > 200 || strlen($hashtags) > 200){
@@ -61,6 +61,11 @@ if(isset($_POST['update_post_btn'])){
 	if(preg_match("/[<>=\{\}'\/]/", $emp_hash)) 
     {
         header("location: index.php?error_message=Please enter valid hashtag (no special characters)");
+        exit; 
+    }
+    if(preg_match("/[<>=\{\}'\/]/", $old_image_name)) 
+    {
+        header("location: index.php?error_message=Please enter valid old image name (no special characters)");
         exit; 
     }
 

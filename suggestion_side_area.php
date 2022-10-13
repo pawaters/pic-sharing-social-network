@@ -22,6 +22,7 @@
             <button class="follow-btn" name="follow_btn" type="submit">follow</button>
         </form>
     </div>
+
 <?php } ?>
 
 <?php } ?>

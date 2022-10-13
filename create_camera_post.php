@@ -8,8 +8,8 @@ require_once("connection.php");
 if(isset($_POST['webcam_img_btn'])){
 	$id = $_SESSION['id'];
 	$profile_image = $_SESSION['image']; 
-	$caption = htmlspecialchars($_POST['caption']);
-	$hashtags = htmlspecialchars($_POST['hashtags']);
+	$caption = $_POST['caption'];
+	$hashtags = $_POST['hashtags'];
 	$likes = 0;
 	$tz = 'Europe/Helsinki';
 	$timestamp = time();
@@ -19,10 +19,8 @@ if(isset($_POST['webcam_img_btn'])){
 	$username = $_SESSION['username'];
 	$webcam = true;
 
-	// Create a unique image name by using strval function that converts the timestamp into a string
 	$image_name = strval(time()) . ".jpg";
 
-	// Grab the photo with the stickers
 	if (!isset($_POST['webcam_file']) || empty($_POST['webcam_file'])){
 		header("location: camera.php?error_message=Please enter a valid image (webcam file is empty)");
         exit; 

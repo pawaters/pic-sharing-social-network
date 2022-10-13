@@ -8,9 +8,9 @@ include_once("connection.php");
 if(isset($_POST['update_profile_btn'])){
 
     $user_id = $_SESSION['id'];
-    $username = htmlspecialchars($_POST['username']);
+    $username = $_POST['username'];
     $email = $_POST['email'];
-    $bio = htmlspecialchars($_POST['bio']);
+    $bio = $_POST['bio'];
     $image = $_FILES['image']['tmp_name'];  
     $password = $_POST['password'];
     $uppercase = preg_match('@[A-Z]@', $password);

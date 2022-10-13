@@ -34,8 +34,8 @@ if(isset($_POST['upload_img_btn'])){
 		exit;
 	}
 
-	$caption = htmlspecialchars($_POST['caption']);
-	$hashtags = htmlspecialchars($_POST['hashtags']);
+	$caption = $_POST['caption'];
+	$hashtags = $_POST['hashtags'];
 	$likes = 0;
 	$tz = 'Europe/Helsinki';
 	$timestamp = time();

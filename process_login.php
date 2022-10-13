@@ -8,7 +8,7 @@ if(isset($_POST['login_btn']) && !empty($_POST['username']) && !empty($_POST['pa
 {
     $password = $_POST['password'];
     
-    $username = htmlspecialchars($_POST['username']);
+    $username = $_POST['username'];
     if(preg_match("/[<>=\{\}'\/]/", $username)) 
     {
         header("location: login.php?error_message=Please enter valid username (no special characters)");
