@@ -26,7 +26,12 @@ if(isset($_POST['update_profile_btn'])){
     }else{
         $image_name = $_SESSION['image'];
     }
-
+    $ext = pathinfo($image, PATHINFO_EXTENSION);
+	if($ext != "png" && $ext != "jpeg") 
+	{
+        header('location: edit_profile.php?error_message=File must be png or jpeg.');
+		exit;
+    }
     
 
     if($emp_email == "") {

@@ -22,7 +22,12 @@ if(isset($_POST['upload_img_btn'])){
         header('location: upload.php?error_message=File must be png or jpeg.');
 		exit;
     }
-
+	$ext = pathinfo($image, PATHINFO_EXTENSION);
+	if($ext != "png" && $ext != "jpeg") 
+	{
+        header('location: upload.php?error_message=File must be png or jpeg.');
+		exit;
+    }
 	if($file_size > $valid_file_size)
 	{
 		header('location: upload.php?error_message=File size must not be more that 3Mb.');
