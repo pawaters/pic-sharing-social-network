@@ -4,11 +4,6 @@ session_start();
 
 include("connection.php");
 
-if(!isset($_SESSION['id'])){
-    header('location: login.php?error_message=Please log in');
-    exit;
-}
-
 if(isset($_POST['signup_btn']))
 {
     $username = htmlspecialchars($_POST['username']);
