@@ -32,10 +32,10 @@ if(isset($_POST['update_post_btn'])){
 		exit;
 	}
 
-    $ext = pathinfo($new_image, PATHINFO_EXTENSION);
-	if($ext != "png" && $ext != "jpeg") 
+    $ext = exif_imagetype($new_image);
+	if($ext != 2 && $ext != 3) //2 is JPEG and 3 is PNG
 	{
-        header('location: upload.php?error_message=File must be png or jpeg.');
+        header('location: index.php?error_message=File must be png or jpeg.');
 		exit;
     }
 
