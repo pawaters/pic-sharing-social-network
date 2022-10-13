@@ -6,7 +6,7 @@
 
 if(isset($_POST["reset-request-submit"])) {
 
-    // 1 token for auth, 1 token to look in the db, to prevent timing attacks (RESEARCH)
+    // 1 token for auth, 1 token to look in the db, to prevent timing attacks
     $selector = bin2hex(random_bytes(8));
     $token = random_bytes(32);
 
