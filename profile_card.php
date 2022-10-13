@@ -1,3 +1,9 @@
+<?php if(!isset($_SESSION['image']) || !isset($_SESSION['username']) || !isset($_SESSION['bio'])) {
+        header('location: login.php?error_message=Please log in');
+        exit;
+    }
+?>
+
 <div class="profile-card">
     <div class="profile-pic">
         <img src="<?php echo 'assets/img/'.$_SESSION['image'];?>">
