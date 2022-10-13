@@ -33,19 +33,13 @@ if(isset($_POST['update_profile_btn'])){
 		exit;
     }
     
+    $file_size = $_FILES['image']['size'];
     $valid_file_size = 3*1024*1024;
     if($file_size > $valid_file_size)
 	{
 		header('location: upload.php?error_message=File size must not be more that 3Mb.');
 		exit;
 	}
-	$file_size = $_FILES['image']['size'];
-    $file_type = $_FILES['image']['type'];
-	if($file_type != 'image/png' && $file_type != 'image/jpeg')
-    {
-        header('location: upload.php?error_message=File must be png or jpeg.');
-		exit;
-    }
 
 
     if($emp_email == "") {
@@ -77,7 +71,7 @@ if(isset($_POST['update_profile_btn'])){
     
 
     if(strlen($username) > 20){
-        header("location: index.php?error_message?error: username is too long or has special characters.");
+        header("location: edit_profile.php?error_message?error: username is too long or has special characters.");
         exit;
 
     }

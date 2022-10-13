@@ -28,14 +28,14 @@ if(isset($_POST['update_post_btn'])){
     $valid_file_size = 3*1024*1024;
     if($file_size > $valid_file_size)
 	{
-		header('location: upload.php?error_message=File size must not be more that 3Mb.');
+		header('location: index.php?error_message=File size must not be more that 3Mb.');
 		exit;
 	}
 	
     $file_type = $_FILES['new_image']['type'];
 	if($file_type != 'image/png' && $file_type != 'image/jpeg')
     {
-        header('location: upload.php?error_message=File must be png or jpeg.');
+        header('location: index.php?error_message=File must be png or jpeg.');
 		exit;
     }
 
@@ -50,12 +50,7 @@ if(isset($_POST['update_post_btn'])){
 
 	$emp_caption=trim($_POST['caption']);
 	$emp_hash=trim($_POST['hashtags']);
-    $ext = pathinfo($new_image, PATHINFO_EXTENSION);
-	if($ext != "png" && $ext != "jpeg") 
-	{
-        header('location: index.php?error_message=File must be png or jpeg.');
-		exit;
-    }
+
 
     if($emp_caption == "")
     {
