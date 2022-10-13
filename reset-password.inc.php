@@ -30,7 +30,7 @@ if (isset($_POST["reset-password-submit"])) {
     try {
         $conn = connect_PDO();
         if (!$stmt = $conn->prepare($sql)) {
-            header("Location: login.php?error_message=SQL error 1");
+            header("Location: login.php?error_message=SQL error.");
             exit();
         } else {
 
@@ -38,7 +38,7 @@ if (isset($_POST["reset-password-submit"])) {
             $stmt->execute();
 
             if (!$row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                header("Location: login.php?error_message=SQL error 2. Selector: ".$selector. ".\br Current datE:" . $currentDate. ".Most likely your selector token is not in our database.");
+                header("Location: login.php?error_message=No such selector token in our database. Did you touch the URL? ;)");
                 exit();
             }
             else {
@@ -46,7 +46,7 @@ if (isset($_POST["reset-password-submit"])) {
                 $tokenCheck = password_verify($tokenBin, $row["pwdResetToken"]);
 
                 if ($tokenCheck === false) {
-                    header("Location: login.php?error_message=Validator Tokens do not match");
+                    header("Location: login.php?error_message=Validator Tokens do not match. Did you touch the URL? ;)");
                     exit();
                 } else if ($tokenCheck === true) {
 
@@ -60,7 +60,7 @@ if (isset($_POST["reset-password-submit"])) {
                         $stmt->bindParam(1, $tokenEmail, PDO::PARAM_STR);
                         $stmt->execute();
                         if (!$row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                            header("Location: login.php?error_message=SQL error");
+                            header("Location: login.php?error_message=No such email in db");
                             exit();
                         }
                         else {
