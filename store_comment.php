@@ -17,6 +17,11 @@ if(isset($_POST['comment_btn']))
 
 	$emp_comment=trim($_POST['comment_text']);
 
+	if(strlen($comment_text) > 100){
+		header('location: login.php?error_message=comment too long, maximum 100 characters allowed.');
+		exit;
+	}
+
     if($emp_comment == "")
     {
         header("location: index.php?error_message=Please enter a comment");
@@ -31,6 +36,10 @@ if(isset($_POST['comment_btn']))
         header("location: index.php?error_message=error - post_id is not a number.");
         exit;
     }
+    if($post_id > 100){
+		header('location: index.php?error_message= max post_id is 100');
+		exit;
+	}
     
     try {
     $conn = connect_PDO();

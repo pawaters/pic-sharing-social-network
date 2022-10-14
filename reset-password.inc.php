@@ -1,17 +1,19 @@
 <?php
 
-// session_unset();
-// session_destroy();
-
 if (isset($_POST["reset-password-submit"])) {
     
-    $selector = htmlspecialchars($_POST['selector']);
+    $selector = ($_POST['selector']);
     $validator = $_POST['validator'];
     $password = $_POST['pwd'];
     $passwordRepeat = $_POST['pwd-repeat'];
     $uppercase = preg_match('@[A-Z]@', $password);
     $lowercase = preg_match('@[a-z]@', $password);
     $number    = preg_match('@[0-9]@', $password);  
+
+    if (ctype_xdigit($selector) == false || ctype_xdigit($validator) == false){   
+        header("Location: login.php?error_message=Tokens are not of the right format. Start again.");
+        exit();
+    }
 
     if(empty($password) || empty($passwordRepeat) ) {
         header("Location: login.php?error_message=Password or password repeat fields empty. Start again.");

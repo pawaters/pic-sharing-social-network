@@ -31,8 +31,8 @@ if(isset($_POST['update_comment_btn'])){
         exit; 
     }
 
-    if(strlen($comment_text) > 200){
-        header("location: single_post.php?post_id=".$post_id."&error_message?comment is too long");
+    if(strlen($comment_text) > 100){
+        header("location: single_post.php?post_id=".$post_id."&error_message?comment is too long (100 max)");
         exit;
 
     }
