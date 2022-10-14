@@ -50,7 +50,7 @@ require('header.php');
                                         </button>
                                     </form>
                                 <?php } ?>
-                                <i class="icon fas fa-comment"></i>
+                                    <a style="color: black" href="single_post.php?post_id=<?php echo $post['id']; ?>"><i class="icon fas fa-comment"></i></a>
                             </div>
                             <p class="likes"><?php echo $post['likes'];?> likes</p>
                             <p class="description"><span><?php echo $post['caption']; ?></span><span><?php echo $post['hashtags']; ?></p>
