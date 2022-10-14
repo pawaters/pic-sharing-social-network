@@ -28,7 +28,7 @@ if(isset($_POST['upload_img_btn'])){
 		header('location: upload.php?error_message=File size must not be more that 3Mb.');
 		exit;
 	}
-	$min_file_size = 3*400*400;
+	$min_file_size = 300*300;
 	if($file_size < $min_file_size)
 	{
 		header('location: upload.php?error_message=File size must not be too small.');

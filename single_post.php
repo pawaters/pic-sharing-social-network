@@ -193,28 +193,32 @@ else
         </div>
     </section>
 
+
     <script>
         var popupWindow = document.getElementById('popup');
         var optionsBtn = document.getElementById('options_btn');
         var closeWindow = document.getElementById('close-popup');
+       
+        if(optionsBtn !== null) { // check this out once
+            optionsBtn.addEventListener("click",(e)=>{
+                e.preventDefault();
+                popupWindow.style.display = "block";
+            })
 
-        optionsBtn.addEventListener("click",(e)=>{
-            e.preventDefault();
-            popupWindow.style.display = "block";
-        })
-
-        closeWindow.addEventListener("click",(e)=>{
-            e.preventDefault();
-            popupWindow.style.display = "none";
-        })
-
-        window.addEventListener("click",(e)=>{
-            if(e.target == popupWindow)
-            {
+            closeWindow.addEventListener("click",(e)=>{
+                e.preventDefault();
                 popupWindow.style.display = "none";
-            }
-        })
+            })
 
+            window.addEventListener("click",(e)=>{
+                if(e.target == popupWindow)
+                {
+                    popupWindow.style.display = "none";
+                }
+            })
+       }
+
+        
 
     </script>
 

@@ -36,7 +36,7 @@ if(isset($_POST['update_post_btn'])){
 		exit;
 	}
 
-    $min_file_size = 3*100*100;
+    $min_file_size = 300*300;
 	if($file_size < $min_file_size)
 	{
 		header('location: index.php?error_message=File size must not be too small.');
