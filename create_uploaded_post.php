@@ -52,6 +52,11 @@ if(isset($_POST['upload_img_btn'])){
 
 
 	list($orig_width, $orig_height) = getimagesize($image);
+	if ($orig_height < 400 || $orig_width < 400) {
+		header('location: upload.php?error_message=Post not created. File height and width should be sufficient to give space for stickers to appear. Choose a file with at least 400 width and 400 height.');
+		exit;
+	}
+
 	if ($orig_width > $max_width || $orig_height > $max_height) {
 		$ratio = $orig_width/$orig_height;
 		if($ratio > 1) {
