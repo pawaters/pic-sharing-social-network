@@ -4,7 +4,7 @@
 		<div class="camera-container">	
 			<div class="left-col">
 				<?php if(isset($_GET['success_message'])) { ?>
-					<p class="mt-4 text-center alert alert-success"><?php echo $_GET['success_message']; ?> </p>
+					<p class="mt-4 text-center alert alert-success"><?php echo htmlspecialchars($_GET['success_message']); ?> </p>
 				<?php } ?>
 
 				<?php if(isset($_GET['error_message'])) { ?>
