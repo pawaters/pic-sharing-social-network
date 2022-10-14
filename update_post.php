@@ -14,7 +14,7 @@ if(isset($_POST['update_post_btn'])){
     $new_image = $_FILES['new_image']['tmp_name'];
 
 
-    if(strlen($caption) > 200 || strlen($hashtags) > 200){
+    if(strlen($caption) > 100 || strlen($hashtags) > 50){
         header("location: index.php?error_message?caption/hashtags too long");
         exit;
 

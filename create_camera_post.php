@@ -113,7 +113,7 @@ if(isset($_POST['webcam_img_btn'])){
 	}
 	$conn = null;
 
-	if(strlen($caption) > 300 || strlen($hashtags) > 100){
+	if(strlen($caption) > 100 || strlen($hashtags) > 50){
 		header('location: camera.php?error_message=Caption or hashtags too long.');
 		exit;
 	}

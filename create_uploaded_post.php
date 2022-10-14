@@ -68,7 +68,7 @@ if(isset($_POST['upload_img_btn'])){
 		imagecopy($destination, $dest, 0, 0, 25, 30, 700, 500);
 	}
 	//server-side form validation
-	if(strlen($caption) > 200 || strlen($hashtags) > 50){
+	if(strlen($caption) > 100 || strlen($hashtags) > 50){
 		header('location: upload.php?error_message=Caption or hashtags too long.');
 		exit;
 	}

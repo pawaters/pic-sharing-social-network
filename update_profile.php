@@ -54,6 +54,11 @@ if(isset($_POST['update_profile_btn'])){
         header("location: edit_profile.php?error_message=Please enter bio");
         exit; 
     }
+    if(($bio) > 100){
+        header("location: index.php?error_message?bio too long");
+        exit;
+
+    }
     if($emp_uname == ""){
         header("location: edit_profile.php?error_message=Please enter password confirmation");
         exit; 
