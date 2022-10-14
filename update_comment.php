@@ -14,6 +14,10 @@ if(isset($_POST['update_comment_btn'])){
         header("location: index.php?error_message=error - post_id is not a number.");
         exit;
     }
+    if($comment_id > 1000 || $post_id > 100){
+		header('location: index.php?error_message= max post_id is 100, max comment_id is 1000.');
+		exit;
+	}
     $comment_text = $_POST['comment_text'];
     $emp_comment =trim($_POST['comment_text']);
     if($emp_comment == "")
