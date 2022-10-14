@@ -6,7 +6,7 @@ include("connection.php");
 
 if(isset($_POST['signup_btn']))
 {
-    $username = htmlspecialchars($_POST['username']);
+    $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $password_confirm = $_POST['password_confirm'];
@@ -28,6 +28,10 @@ if(isset($_POST['signup_btn']))
         header('location: signup.php?error_message=passwords do not match');
         exit;
     }
+    if($emp_uname == "") {
+        header("location: signup.php?error_message=Please enter valid username");
+        exit; 
+        } 
     if($emp_email == "") {
         header("location: signup.php?error_message=Please enter valid email");
         exit; 
@@ -47,6 +51,11 @@ if(isset($_POST['signup_btn']))
     if(preg_match("/[<>=\{\}'\/]/", $emp_uname)) 
     {
         header("location: signup.php?error_message=Please enter valid username (no special characters)");
+        exit; 
+    }
+    if(preg_match("/[<>=\{\}'\/]/", $emp_pass)) 
+    {
+        header("location: signup.php?error_message=Please enter valid password (no special characters)");
         exit; 
     }
 
