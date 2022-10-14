@@ -9,6 +9,10 @@ if(isset($_POST['delete_post_btn']))
         header("location: index.php?error_message=error - post_id is not a number.");
         exit;
     }
+    if($post_id > 100){
+		header('location: index.php?error_message= max post_id is 100');
+		exit;
+	}
     
     try {
     $conn = connect_PDO();

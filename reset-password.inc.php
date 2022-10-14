@@ -9,6 +9,9 @@ if (isset($_POST["reset-password-submit"])) {
     $validator = $_POST['validator'];
     $password = $_POST['pwd'];
     $passwordRepeat = $_POST['pwd-repeat'];
+    $uppercase = preg_match('@[A-Z]@', $password);
+    $lowercase = preg_match('@[a-z]@', $password);
+    $number    = preg_match('@[0-9]@', $password);  
 
     if(empty($password) || empty($passwordRepeat) ) {
         header("Location: login.php?error_message=Password or password repeat fields empty. Start again.");
@@ -21,6 +24,21 @@ if (isset($_POST["reset-password-submit"])) {
         header("Location: login.php?error_message=Selector or validator empty. Start again.");
         exit();
     }
+    if(strlen($password) < 8){
+		header('location: login.php?error_message=Password is shorter than 8 characters');
+		exit;
+	}
+
+	if(strlen($password) > 20){
+		header('location: login.php?error_message=Password too long, maximum 20 characters allowed.');
+		exit;
+	}
+    if(!$uppercase || !$lowercase || !$number) {
+        header('location: login.php?error_message=Password complexity not good enough: you should include at least one upper case letter, one lowercase and one number.');
+		exit;
+    }
+
+
     $currentDate = date("U");
 
     require_once 'connection.php';

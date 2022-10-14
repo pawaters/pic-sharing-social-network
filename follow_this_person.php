@@ -13,6 +13,10 @@ if(isset($_POST['follow_btn'])){
             header("location: index.php?error_message=error - other_user_id is not a number.");
             exit;
         }
+        if($other_user_id > 1000){
+            header('location: index.php?error_message= max user_id is 1000.');
+            exit;
+        }
 
         $stmt = $conn->prepare("INSERT INTO followings (user_id, other_user_id)
                                 VALUES (?,?)");

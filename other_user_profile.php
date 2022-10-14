@@ -20,6 +20,11 @@ include('connection.php');
         header("location: index.php?error_message=error - other_user_id is not a number.");
         exit;
     }
+    if($other_user_id > 1000){
+        header('location: index.php?error_message= max user_id is 1000.');
+        exit;
+    }
+
 
      try {
         $conn = connect_PDO();
