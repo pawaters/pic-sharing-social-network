@@ -16,6 +16,10 @@ if(isset($_POST['delete_comment_btn']) && !empty($_POST['comment_id']) && !empty
         header("location: index.php?error_message=error - post_id is not a number.");
         exit;
     }
+    if($comment_id > 1000 || $post_id > 100){
+		header('location: camera.php?error_message= max post_id is 100, max comment_id is 1000.');
+		exit;
+	}
 
     try {
     $conn = connect_PDO();

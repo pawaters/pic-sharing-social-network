@@ -70,7 +70,11 @@ if(isset($_POST['webcam_img_btn'])){
         header("location: camera.php?error_message=Please enter valid hashtag (no special characters)");
         exit; 
     }
-
+	if(strlen($caption) > 100 || strlen($hashtags) > 50){
+		header('location: camera.php?error_message=Caption or hashtags too long.');
+		exit;
+	}
+	
 	// Create post
 	try {
 		$conn = connect_PDO();
@@ -113,10 +117,7 @@ if(isset($_POST['webcam_img_btn'])){
 	}
 	$conn = null;
 
-	if(strlen($caption) > 100 || strlen($hashtags) > 50){
-		header('location: camera.php?error_message=Caption or hashtags too long.');
-		exit;
-	}
+
 	
 }else{
 	header('location: camera.php?error_message=Error occured.');
