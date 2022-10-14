@@ -26,7 +26,7 @@
                 <div class="form-container">
                     <div class="form-content box">
                         <div class="logo">
-                            <img src="assets/img/logo.jpg" class="logo-img">
+                            <img src="assets/img/logo.png" class="logo-img">
                         </div>
                         <form class="login-form" id="signup-form" action="process_signup.php" method="POST" autocomplete="on">
 

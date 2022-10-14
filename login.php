@@ -41,7 +41,7 @@ if(isset($_SESSION['id'])) {
                 <div class="form-container">
                     <div class="form-content box">
                         <div class="logo">
-                            <img src="assets/img/logo.jpg" class="logo-img">
+                            <img src="assets/img/logo.png" class="logo-img">
                         </div>
                         <form class="login-form" id="login-form" method="POST" action="process_login.php" autocomplete="on">
 
