@@ -7,7 +7,7 @@
             <h3 class="text-center">Update Profile</h3>
 
                 <?php if(isset($_GET['error_message'])) {?>
-                    <p class="text-center alert alert-danger"><?php echo $_GET['error_message']; ?></p>
+                    <p class="text-center alert alert-danger"><?php echo htmlspecialchars($_GET['error_message']); ?></p>
                 <?php } ?>
 
                 <form action="update_profile.php" method="POST" enctype="multipart/form-data">

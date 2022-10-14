@@ -46,11 +46,11 @@ if(isset($_SESSION['id'])) {
                         <form class="login-form" id="login-form" method="POST" action="process_login.php" autocomplete="on">
 
                             <?php if(isset($_GET['success_message'])) { ?>
-                                <p id="success_message" class="text-center alert alert-success"><?php echo $_GET['success_message']; ?> </p>
+                                <p id="success_message" class="text-center alert alert-success"><?php echo htmlspecialchars($_GET['success_message']); ?> </p>
                             <?php } ?>
 
                             <?php  if(isset($_GET['error_message'])){  ?>
-                                <p id="error_message" class="text-center alert alert-danger"> <?php echo $_GET['error_message']; ?> </p>
+                                <p id="error_message" class="text-center alert alert-danger"> <?php echo htmlspecialchars($_GET['error_message']); ?> </p>
                             <?php    }?>
                         
                         

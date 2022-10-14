@@ -9,10 +9,10 @@ require('header.php');
             <div class="left-col">
 
                 <?php if(isset($_GET['success_message'])) {?>
-                    <p class="text-center alert alert alert-success"><?php echo $_GET['success_message']; ?></p>
+                    <p class="text-center alert alert alert-success"><?php echo htmlspecialchars($_GET['success_message']); ?></p>
                 <?php } ?>
                 <?php if(isset($_GET['error_message'])){ ?>
-                    <p class="text-center alert alert alert-danger"><?php echo $_GET['error_message'];?></p>
+                    <p class="text-center alert alert alert-danger"><?php echo htmlspecialchars($_GET['error_message']);?></p>
                 <?php } ?>
 
                 <?php include('get_status_wrapper.php'); ?>

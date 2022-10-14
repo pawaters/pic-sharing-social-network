@@ -31,7 +31,7 @@
                         <form class="login-form" id="signup-form" action="process_signup.php" method="POST" autocomplete="on">
 
                             <?php if(isset($_GET['error_message'])) { ?>
-                                <p id="error_message" class="text-center alert alert-danger"> <?php echo $_GET['error_message']; ?></p>
+                                <p id="error_message" class="text-center alert alert-danger"> <?php echo htmlspecialchars($_GET['error_message']); ?></p>
                             <?php }  ?>
                             
                             <div class="form-group">

@@ -8,7 +8,7 @@
 				<?php } ?>
 
 				<?php if(isset($_GET['error_message'])) { ?>
-					<p class="mt-4 text-center alert alert-danger"><?php echo $_GET['error_message']; ?> </p>
+					<p class="mt-4 text-center alert alert-danger"><?php echo htmlspecialchars($_GET['error_message']); ?> </p>
 				<?php } ?>
 	
 				<div class="camera-img" style="display:flex;">

@@ -27,11 +27,11 @@
    <div class="camera-container">
      
       <?php if(isset($_GET['success_message'])) { ?>
-         <p class="text-center mt-4 alert alert-success"><?php echo $_GET['success_message']; ?></p>
+         <p class="text-center mt-4 alert alert-success"><?php echo htmlspecialchars($_GET['success_message']); ?></p>
       <?php } ?>  
 
       <?php if(isset($_GET['error_message'])) { ?>
-         <p class="text-center mt-4 alert alert-danger"><?php echo $_GET['error_message']; ?></p>
+         <p class="text-center mt-4 alert alert-danger"><?php echo htmlspecialchars($_GET['error_message']); ?></p>
       <?php } ?> 
 
 
