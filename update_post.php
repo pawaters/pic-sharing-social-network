@@ -80,7 +80,10 @@ if(isset($_POST['update_post_btn'])){
         header("location: index.php?error_message=Please enter valid old image name (no special characters)");
         exit; 
     }
-
+	if(strlen($caption) > 100 || strlen($hashtags) > 50){
+		header('location: upload.php?error_message=Caption or hashtags too long.');
+		exit;
+	}
     
 
     try {
