@@ -37,12 +37,19 @@ if(isset($_POST['update_profile_btn'])){
            exit;
        }
    
+       list($orig_width, $orig_height) = getimagesize($image);
+	    if ($orig_height < 400 || $orig_width < 400) {
+            header('location: edit_profile.php?error_message=Post not created. File height and width should be sufficient to give space for stickers to appear. Choose a file with at least 400 width and 400 height.');
+            exit;
+	    }
+
        $min_file_size = 300*300;
        if($file_size < $min_file_size)
        {
            header('location: edit_profile.php?error_message=File size must not be too small.');
            exit;
        }
+       
     }else{
         $image_name = $_SESSION['image'];
     }
