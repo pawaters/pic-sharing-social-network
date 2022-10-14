@@ -33,7 +33,7 @@ if (empty($ids)){
 $following_ids = join(",", $ids);
 
 try {
-    $stmt = $conn->prepare("SELECT * FROM users WHERE id not in ($following_ids) ORDER BY RAND() LIMIT 4");
+    $stmt = $conn->prepare("SELECT * FROM users WHERE id not in ($following_ids) AND verified = 1 ORDER BY RAND() LIMIT 4");
 
     $stmt->execute();
     $suggestions = $stmt->fetchAll();
