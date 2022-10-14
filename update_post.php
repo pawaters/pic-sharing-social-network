@@ -15,7 +15,7 @@ if(isset($_POST['update_post_btn'])){
 
 
     if(strlen($caption) > 100 || strlen($hashtags) > 50){
-        header("location: index.php?error_message?caption/hashtags too long");
+        header("location: index.php?error_message=caption/hashtags too long");
         exit;
 
     }
@@ -110,11 +110,11 @@ if(isset($_POST['update_post_btn'])){
 
     
 
-            header("location: index.php?success_message?Post has been updated successfully");
+            header("location: index.php?success_message=Post has been updated successfully");
             exit;
 
         }else{
-            header("location: index.php?error_message?error occured, try again");
+            header("location: index.php?error_message=error occured, try again");
             exit;
 
         }
@@ -130,7 +130,7 @@ if(isset($_POST['update_post_btn'])){
 
 }else{
 
-    header("location: index.php?error_message?error occured, try again");
+    header("location: index.php?error_message=error occured, try again");
     exit;
 
 

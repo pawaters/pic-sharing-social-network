@@ -32,7 +32,7 @@ if(isset($_POST['update_comment_btn'])){
     }
 
     if(strlen($comment_text) > 100){
-        header("location: single_post.php?post_id=".$post_id."&error_message?comment is too long (100 max)");
+        header("location: single_post.php?post_id=".$post_id."&error_message=comment is too long (100 max)");
         exit;
 
     }
@@ -45,11 +45,11 @@ if(isset($_POST['update_comment_btn'])){
             if($stmt->execute()){
 
             
-                header("location: single_post.php?post_id=".$post_id."&success_message?Post has been updated successfully");
+                header("location: single_post.php?post_id=".$post_id."&success_message=Post has been updated successfully");
                 exit;
 
             }else{
-                header("location: single_post.php?post_id=".$post_id."&error_message?error occured, try again");
+                header("location: single_post.php?post_id=".$post_id."&error_message=error occured, try again");
                 exit;
 
             }

@@ -60,7 +60,7 @@ if(isset($_POST['signup_btn']))
     }
 
     if(strlen($username) > 20){
-        header("location: signup.php?error_message?error: username is too long or has special characters.");
+        header("location: signup.php?error_message=error: username is too long or has special characters.");
         exit;
 
     }

@@ -23,7 +23,7 @@ if(isset($_POST['login_btn']) && !empty($_POST['username']) && !empty($_POST['pa
     
 
     if(strlen($username) > 20){
-        header("location: login.php?error_message?error: username is too long or has special characters.");
+        header("location: login.php?error_message=error: username is too long or has special characters.");
         exit;
 
     }

@@ -23,30 +23,31 @@ if(isset($_POST['update_profile_btn'])){
 
     if($image != ""){
        $image_name = $username . ".jpeg"; 
+       $ext = exif_imagetype($image);
+       if($ext != 2 && $ext != 3) //2 is JPEG and 3 is PNG
+       {
+           header('location: edit_profile.php?error_message=File must be png or jpeg.');
+           exit;
+       }
+       $file_size = $_FILES['image']['size'];
+       $valid_file_size = 3*1024*1024;
+       if($file_size > $valid_file_size)
+       {
+           header('location: edit_profile.php?error_message=File size must not be more that 3Mb.');
+           exit;
+       }
+   
+       $min_file_size = 3*100*100;
+       if($file_size < $min_file_size)
+       {
+           header('location: edit_profile.php?error_message=File size must not be too small.');
+           exit;
+       }
     }else{
         $image_name = $_SESSION['image'];
     }
     
-    $ext = exif_imagetype($image);
-	if($ext != 2 && $ext != 3) //2 is JPEG and 3 is PNG
-	{
-        header('location: edit_profile.php?error_message=File must be png or jpeg.');
-		exit;
-    }
-    $file_size = $_FILES['image']['size'];
-    $valid_file_size = 3*1024*1024;
-    if($file_size > $valid_file_size)
-	{
-		header('location: edit_profile.php?error_message=File size must not be more that 3Mb.');
-		exit;
-	}
-
-    $min_file_size = 3*100*100;
-	if($file_size < $min_file_size)
-	{
-		header('location: edit_profile.php?error_message=File size must not be too small.');
-		exit;
-	}
+    
 
     if($emp_email == "") {
         header("location: edit_profile.php?error_message=Please enter non-empty valid email");
@@ -60,10 +61,9 @@ if(isset($_POST['update_profile_btn'])){
         header("location: edit_profile.php?error_message=Please enter bio");
         exit; 
     }
-    if(($bio) > 100){
-        header("location: edit_profile?error_message?bio too long");
+    if((strlen($bio)) > 100){
+        header("location: edit_profile.php?error_message=bio too long");
         exit;
-
     }
     if($emp_uname == ""){
         header("location: edit_profile.php?error_message=Please enter password confirmation");
@@ -82,7 +82,7 @@ if(isset($_POST['update_profile_btn'])){
     
 
     if(strlen($username) > 20){
-        header("location: edit_profile.php?error_message?error: username is too long or has special characters.");
+        header("location: edit_profile.php?error_message=error: username is too long or has special characters.");
         exit;
 
     }
@@ -180,7 +180,7 @@ if(isset($_POST['update_profile_btn'])){
 
 }else{
 
-    header("location: edit_profile.php?error_message?error occured, try again");
+    header("location: edit_profile.php?error_message=error occured, try again");
     exit;
 
 }  
@@ -212,11 +212,11 @@ function updateUserProfile($conn,$username,$bio,$image_name,$user_id,$image, $em
 
             updateProfileImageAndUsernameInCommentsTable($conn,$username,$image_name,$user_id);
 
-            header("location: profile.php?success_message?Profile has been updated successfully");
+            header("location: profile.php?success_message=Profile has been updated successfully");
             exit;
 
         }else{
-            header("location: edit_profile.php?error_message?error occured, try again");
+            header("location: edit_profile.php?error_message=error occured, try again");
             exit;
         }
     } 
