@@ -36,6 +36,13 @@ if(isset($_POST['update_post_btn'])){
 		exit;
 	}
 
+    $min_file_size = 3*100*100;
+	if($file_size < $min_file_size)
+	{
+		header('location: index.php?error_message=File size must not be too small.');
+		exit;
+	}
+
     $ext = exif_imagetype($new_image);
 	if($ext != 2 && $ext != 3) //2 is JPEG and 3 is PNG
 	{

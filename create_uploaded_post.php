@@ -12,7 +12,8 @@ if(isset($_POST['upload_img_btn'])){
 		header("location: upload.php?error_message=No image was selected for upload");
     	exit;
 	}
-	$valid_file_size = 3*1024*1024;
+	$max_file_size = 3*1024*1024;
+
 	$file_size = $_FILES['image']['size'];
 	$image = $_FILES['image']['tmp_name'];
 
@@ -22,9 +23,15 @@ if(isset($_POST['upload_img_btn'])){
         header('location: upload.php?error_message=File must be png or jpeg.');
 		exit;
     }
-	if($file_size > $valid_file_size)
+	if($file_size > $max_file_size)
 	{
 		header('location: upload.php?error_message=File size must not be more that 3Mb.');
+		exit;
+	}
+	$min_file_size = 3*100*100;
+	if($file_size < $min_file_size)
+	{
+		header('location: upload.php?error_message=File size must not be too small.');
 		exit;
 	}
 

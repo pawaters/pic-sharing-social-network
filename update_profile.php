@@ -30,17 +30,23 @@ if(isset($_POST['update_profile_btn'])){
     $ext = exif_imagetype($image);
 	if($ext != 2 && $ext != 3) //2 is JPEG and 3 is PNG
 	{
-        header('location: edit_profile?error_message=File must be png or jpeg.');
+        header('location: edit_profile.php?error_message=File must be png or jpeg.');
 		exit;
     }
     $file_size = $_FILES['image']['size'];
     $valid_file_size = 3*1024*1024;
     if($file_size > $valid_file_size)
 	{
-		header('location: edit_profile?error_message=File size must not be more that 3Mb.');
+		header('location: edit_profile.php?error_message=File size must not be more that 3Mb.');
 		exit;
 	}
 
+    $min_file_size = 3*100*100;
+	if($file_size < $min_file_size)
+	{
+		header('location: edit_profile.php?error_message=File size must not be too small.');
+		exit;
+	}
 
     if($emp_email == "") {
         header("location: edit_profile.php?error_message=Please enter non-empty valid email");
@@ -55,7 +61,7 @@ if(isset($_POST['update_profile_btn'])){
         exit; 
     }
     if(($bio) > 100){
-        header("location: index.php?error_message?bio too long");
+        header("location: edit_profile?error_message?bio too long");
         exit;
 
     }
