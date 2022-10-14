@@ -94,7 +94,6 @@
 					if(picture.height < 400)
 					{
 						alert("Stickers will not show properly on images of this size. Choose a different image.");
-						window.location.reload();
 					}
 					if(picture.width < picture.height){
 						let maxHeight = 700;
