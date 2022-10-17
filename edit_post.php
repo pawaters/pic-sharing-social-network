@@ -52,7 +52,8 @@
                   <div class="form-group">
                        <input type="file" name="new_image" class="form-control" >
                         <input type="hidden" name="old_image_name" value="<?php echo $post['image']?>">
-                        <input type="hidden" name="post_id" value="<?php echo $post['id'];?>">
+                        <input type="hidden" name="post_id" value="<?php echo $post['id'];?>" required type="number">
+                        <input type="hidden" name="user_id" value="<?php echo $post['user_id'];?>" required type="number">
                    </div>
                    <div class="form-group">
                        <input type="text" name="caption" class="form-control" placeholder="type caption..." value="<?php echo $post['caption']?>" pattern="^[A-Za-z0-9.!,;(): ]*$" title="Only letters, numbers, spaces and punctuation (max 200)" maxlength="200" >
