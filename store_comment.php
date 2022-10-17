@@ -9,7 +9,7 @@ if(isset($_POST['comment_btn']))
     $user_id = $_SESSION['id'];
     $profile_image = $_SESSION['image'];
     $username = $_SESSION['username'];
-    $post_id = htmlspecialchars($_POST['post_id']);
+    $post_id = $_POST['post_id'];
     $comment_text = $_POST['comment_text'];
     $date = date("Y-m-d H:i:s");
 
@@ -18,7 +18,7 @@ if(isset($_POST['comment_btn']))
 	$emp_comment=trim($_POST['comment_text']);
 
 	if(strlen($comment_text) > 100){
-		header('location: login.php?error_message=comment too long, maximum 100 characters allowed.');
+		header('location: index.php?error_message=comment too long, maximum 100 characters allowed.');
 		exit;
 	}
 
