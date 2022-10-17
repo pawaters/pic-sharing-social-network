@@ -27,6 +27,7 @@ if(isset($_POST['delete_comment_btn']) && !empty($_POST['comment_id']) && !empty
     if ($session_id != $post_user_id)
     {
         header("location: index.php?error_message=error - user id from session(". $post_user_id .") and from session (".$session_id.")do not coincide.");
+        exit;
     }
 
     //check in db if there is a comment with the same user id from session
