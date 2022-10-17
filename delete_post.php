@@ -47,7 +47,7 @@ if(isset($_POST['delete_post_btn']))
 
 if ($post_from_db['id'] != $post_id)
 {
-    header("location: index.php?error_message=error - id from post(". $post_id .") and from db (".$post_from_db['id']."session id =".$session_id);
+    header("location: index.php?error_message=error - id from post(". $post_id .") and from db do not coincide");
     exit;
 }
    
