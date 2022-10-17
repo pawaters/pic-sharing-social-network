@@ -13,7 +13,7 @@
 	
 				<div class="camera-img" style="display:flex;">
 					<div style="width:90%;">
-						<form style="width:95%;"  class="camera-form" method="POST" action="create_camera_post.php" enctype="multipart/form-data">
+						<form style="width:95%;"  class="camera-form" method="POST" action="create_camera_post.php" enctype="multipart/form-data" autocomplete="off">
 							<div>
 								<p class="sticker-description">1. First, Click on one or more stickers</p>
 								<div class="stickers-box">

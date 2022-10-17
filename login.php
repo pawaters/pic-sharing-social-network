@@ -43,7 +43,7 @@ if(isset($_SESSION['id'])) {
                         <div class="logo">
                             <img src="assets/img/logo.png" class="logo-img">
                         </div>
-                        <form class="login-form" id="login-form" method="POST" action="process_login.php" autocomplete="on">
+                        <form class="login-form" id="login-form" method="POST" action="process_login.php" autocomplete="off">
 
                             <?php if(isset($_GET['success_message'])) { ?>
                                 <p id="success_message" class="text-center alert alert-success"><?php echo htmlspecialchars($_GET['success_message']); ?> </p>

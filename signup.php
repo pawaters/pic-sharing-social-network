@@ -28,7 +28,7 @@
                         <div class="logo">
                             <img src="assets/img/logo.png" class="logo-img">
                         </div>
-                        <form class="login-form" id="signup-form" action="process_signup.php" method="POST" autocomplete="on">
+                        <form class="login-form" id="signup-form" action="process_signup.php" method="POST" autocomplete="off">
 
                             <?php if(isset($_GET['error_message'])) { ?>
                                 <p id="error_message" class="text-center alert alert-danger"> <?php echo htmlspecialchars($_GET['error_message']); ?></p>
