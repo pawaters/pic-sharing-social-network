@@ -138,7 +138,6 @@ else
                             <div class="popup" id="popup_comment<?php echo $comment['id'];?>">
                                 <div class="popup-window">
                                         <span onclick="document.getElementById('popup_comment<?php echo $comment['id'];?>.style.display = 'none'')" class="close-popup" id="close-popup<?php echo $comment['id'];?>" style="font-size= 30px;" >&times;</span>
-                                        <a href="edit_comment.php?comment_id=<?php echo $comment['id'];?>&post_id=<?php echo $post['id'];?>">Edit comment</a>
                                         <form action="delete_comment.php" method="POST" >
                                             <input type="hidden" name="user_id" value="<?php echo $comment['user_id'];?>" required type="number">
                                             <input type="hidden" name="comment_id" value="<?php echo $comment['id']; ?>" required type="number">
