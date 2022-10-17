@@ -137,7 +137,7 @@ else
                             <!-- Popup that appears when click on Options button to edit/delete comment-->
                             <div class="popup" id="popup_comment<?php echo $comment['id'];?>">
                                 <div class="popup-window">
-                                        <span onclick="document.getElementById('popup_comment<?php echo $comment['id'];?>.style.display = 'none'')" class="close-popup" id="close-popup<?php echo $comment['id'];?>" style="font-size= 30px;" >&times;</span>
+                                        <span onclick="document.getElementById('popup_comment<?php echo $comment['id'];?>').style.display = 'none'" class="close-popup" id="close-popup<?php echo $comment['id'];?>" style="font-size= 30px;" >&times;</span>
                                         <form action="delete_comment.php" method="POST" >
                                             <input type="hidden" name="user_id" value="<?php echo $comment['user_id'];?>" required type="number">
                                             <input type="hidden" name="comment_id" value="<?php echo $comment['id']; ?>" required type="number">
