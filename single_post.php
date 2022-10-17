@@ -101,7 +101,8 @@ else
                         <div class="popup-window">
                                 <span class="close-popup" id="close-popup">&times;</span>
                                 <form action="delete_post.php" method="POST" >
-                                    <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
+                                    <input type="hidden" name="user_id" value="<?php echo $post['user_id'];?>" required type="number">
+                                    <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>" required type="number">
                                     <input class="delete-post-btn" type="submit" name="delete_post_btn" value="Delete post">
                                 </form>
                         </div>
