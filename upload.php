@@ -91,15 +91,15 @@
 			if (file) {
 				picture.src = URL.createObjectURL(file);
 				setTimeout(() => {
-					if(picture.height < 400)
+					let ratio = picture.width/picture.height;
+					if(picture.height < 400 || picture.width < 400 || ratio > 3 || ratio < 0.3 )
 					{
-						alert("Stickers will not show properly on images of this size. Choose a different image.");
+						alert("Stickers will not show properly on images either very small, very wide or very talll. Choose a different image.");
 					}
 					if(picture.width < picture.height){
 						let maxHeight = 700;
 						let maxWidth = 500;
 						if (picture.width > maxWidth || picture.height > maxHeight) {
-							let ratio = picture.width/picture.height;
 								if(ratio > 1) {
 										picture.width = maxWidth;
 										picture.height = maxHeight/ratio;
