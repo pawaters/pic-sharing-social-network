@@ -26,7 +26,7 @@ if(isset($_POST['delete_comment_btn']) && !empty($_POST['comment_id']) && !empty
 	$session_id = $_SESSION['id'];
     if ($session_id != $post_user_id)
     {
-        header("location: index.php?error_message=error - user id from session(". $post_user_id .") and from session (".$session_id.")do not coincide.");
+        header("location: index.php?error_message=error - user id from post(". $post_user_id .") and from session (".$session_id.")do not coincide.");
         exit;
     }
 
@@ -49,7 +49,7 @@ if(isset($_POST['delete_comment_btn']) && !empty($_POST['comment_id']) && !empty
         exit;
     }
 
-
+    //delete comment
     try {
         $conn = connect_PDO();
         $stmt = $conn->prepare("DELETE FROM comments WHERE id = ?");
