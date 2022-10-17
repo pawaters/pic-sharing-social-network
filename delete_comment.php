@@ -1,6 +1,6 @@
 <?php
 
-
+session_start();
 include('connection.php');
 
 
@@ -21,11 +21,18 @@ if(isset($_POST['delete_comment_btn']) && !empty($_POST['comment_id']) && !empty
 		exit;
 	}
 
-    $user_id = $_POST['user_id'];
+    //check user id from POST is the same as SESSION ID
+    $post_user_id = $_POST['user_id'];
 	$session_id = $_SESSION['id'];
+    if ($session_id != $post_user_id)
+    {
+        header("location: index.php?error_message=error - user id from session(". $post_user_id .") and from session (".$session_id.")do not coincide.");
+    }
+
+    //check in db if there is a comment with the same user id from session
     try{
 		$conn = connect_PDO();
-		$stmt = $conn->prepare("SELECT * FROM comments WHERE user_id = ? AND id = ?");
+		$stmt = $conn->prepare("SELECT id FROM comments WHERE user_id = ? AND id = ?");
 		$stmt->bindParam(1, $session_id, PDO::PARAM_INT);
 		$stmt->bindParam(2, $comment_id, PDO::PARAM_INT);
 		$stmt->execute();
@@ -35,27 +42,31 @@ if(isset($_POST['delete_comment_btn']) && !empty($_POST['comment_id']) && !empty
 		exit;
 	}
 
-	if (isset($_POST['delete_comment_btn']) && $comment_id == $comment_from_db['id'] && $_SESSION['id'] == $user_id){
-        try {
-            $conn = connect_PDO();
-            $stmt = $conn->prepare("DELETE FROM comments WHERE id = ?");
-            $stmt->bindParam(1, $comment_id, PDO::PARAM_INT);
+    if ($comment_from_db['id'] != $comment_id)
+    {
+        header("location: index.php?error_message=error - comment id from post(". $comment_id .") and from db (".$comment_from_db['id']."session id =".$session_id);
+        exit;
+    }
 
-            if($stmt->execute()){
-                header("location: single_post.php?post_id=".$post_id."&success_message=Comment deleted successfully");
-            }else{
-                header("location: single_post.php?post_id=".$post_id."&error_message=Could not delete comment");
-            }
 
+    try {
+        $conn = connect_PDO();
+        $stmt = $conn->prepare("DELETE FROM comments WHERE id = ?");
+        $stmt->bindParam(1, $comment_id, PDO::PARAM_INT);
+
+        if($stmt->execute()){
+            header("location: single_post.php?post_id=".$post_id."&success_message=Comment deleted successfully");
             exit;
-            }
-            catch (PDOException $e) {
-                    echo $e->getMessage();
-            }
-    } else {
-		header('location: index.php?error_message=You are going way too far in the tests for the evaluation!! ;)');
-		exit;
-	}
+        }else{
+            header("location: single_post.php?post_id=".$post_id."&error_message=Could not delete comment");
+            exit;
+        }
+
+    }
+    catch (PDOException $e) {
+            echo $e->getMessage();
+            exit;
+    }
 
 }else{
     header("location: index.php?error_message=error");
