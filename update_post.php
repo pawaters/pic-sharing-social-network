@@ -38,7 +38,7 @@ if(isset($_POST['update_post_btn'])){
 
     list($orig_width, $orig_height) = getimagesize($new_image);
 	if ($orig_height < 400 || $orig_width < 400) {
-		header('location: index.php?error_message=Post not created. File height and width should be sufficient to give space for stickers to appear. Choose a file with at least 400 width and 400 height.');
+		header('location: index.php?error_message=Post not created. File height and width should be sufficient. Choose a file with at least 400 width and 400 height.');
 		exit;
 	}
 
