@@ -100,7 +100,6 @@ else
                     <div class="popup" id="popup">
                         <div class="popup-window">
                                 <span class="close-popup" id="close-popup">&times;</span>
-                                <a href="edit_post.php?post_id=<?php echo $post['id'];?>">Edit post</a>
                                 <form action="delete_post.php" method="POST" >
                                     <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
                                     <input class="delete-post-btn" type="submit" name="delete_post_btn" value="Delete post">
@@ -134,7 +133,7 @@ else
                                 </button>   
                             <?php } ?>
 
-                            <!-- Popup that appears when click on Options button to edit/delete comment-->
+                            <!-- Popup that appears when click on Options button to delete comment-->
                             <div class="popup" id="popup_comment<?php echo $comment['id'];?>">
                                 <div class="popup-window">
                                         <span onclick="document.getElementById('popup_comment<?php echo $comment['id'];?>').style.display = 'none'" class="close-popup" id="close-popup<?php echo $comment['id'];?>" style="font-size= 30px;" >&times;</span>
