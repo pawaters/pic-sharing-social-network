@@ -73,7 +73,7 @@ if(isset($_POST['update_profile_btn'])){
         exit;
     }
     if($emp_uname == ""){
-        header("location: edit_profile.php?error_message=Please enter password confirmation");
+        header("location: edit_profile.php?error_message=Please enter username");
         exit; 
     }
     if(preg_match("/[<>=\{\}'\/]/", $emp_bio)) 
