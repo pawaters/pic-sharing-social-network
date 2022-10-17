@@ -6,8 +6,8 @@ include('connection.php');
 
 if(isset($_POST['delete_comment_btn']) && !empty($_POST['comment_id']) && !empty($_POST['post_id'])){
 
-    $comment_id = htmlspecialchars($_POST['comment_id']);
-    $post_id = htmlspecialchars($_POST['post_id']);
+    $comment_id = $_POST['comment_id'];
+    $post_id = $_POST['post_id'];
     if (is_numeric(trim($comment_id)) == false){
         header("location: index.php?error_message=error - comment_id is not a number.");
         exit;
@@ -21,21 +21,38 @@ if(isset($_POST['delete_comment_btn']) && !empty($_POST['comment_id']) && !empty
 		exit;
 	}
 
-    try {
-    $conn = connect_PDO();
-    $stmt = $conn->prepare("DELETE FROM comments WHERE id = ?");
-    $stmt->bindParam(1, $comment_id, PDO::PARAM_INT);
+	$user_id = $_POST['user_id'];
+	$session_id = $_SESSION['id'];
 
-    if($stmt->execute()){
-        header("location: single_post.php?post_id=".$post_id."&success_message=Comment deleted successfully");
-    }else{
-        header("location: single_post.php?post_id=".$post_id."&error_message=Could not delete comment");
-    }
+	try{
+        $conn = connect_PDO();
+		$stmt = $conn->prepare("SELECT * FROM comments WHERE user_id = ? AND id = ?");
+		$stmt->bindParam(1, $session_id, PDO::PARAM_INT);
+		$stmt->bindParam(2, $comment_id, PDO::PARAM_INT);
+		$stmt->execute();
+		$comment_from_db = $stmt->fetch(PDO::FETCH_ASSOC);
+	} catch (PDOException $error) {
+		echo $error->getMessage(); 
+		exit;
+	}
+    
+    if (isset($_POST['delete_comment_btn']) && $comment_id == $comment_from_db['id'] && $_SESSION['id'] == $user_id){
+        try {
+            $conn = connect_PDO();
+            $stmt = $conn->prepare("DELETE FROM comments WHERE id = ?");
+            $stmt->bindParam(1, $comment_id, PDO::PARAM_INT);
 
-    exit;
-    }
-    catch (PDOException $e) {
-            echo $e->getMessage();
+            if($stmt->execute()){
+                header("location: single_post.php?post_id=".$post_id."&success_message=Comment deleted successfully");
+            }else{
+                header("location: single_post.php?post_id=".$post_id."&error_message=Could not delete comment");
+            }
+
+            exit;
+        }
+        catch (PDOException $e) {
+                echo $e->getMessage();
+        }
     }
 
 }else{
