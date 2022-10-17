@@ -43,7 +43,7 @@
 								<!-- webcam canvas -->
 								<div style="position:absolute; ">
 									<canvas class="is-hidden" width="700" height="500" id="canvas"></canvas>
-									<input type="hidden" id="webcam-file" value="" name="webcam_file">
+									<input type="hidden" id="webcam-file" value="" name="webcam_file" >
 								</div>
 								<!-- sticker canvas -->
 								<div style="position:relative; ">

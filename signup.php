@@ -36,22 +36,22 @@
                             
                             <div class="form-group">
                                 <div class="login-input">
-                                    <input type="email" name="email" placeholder="Type your email address..." required>
+                                    <input type="email" name="email" placeholder="Type your email address..." autocomplete="off" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="login-input">
-                                    <input type="text" name="username" placeholder="Type your username..." required pattern="^[a-zA-Z0-9]+$" title="Only letters and numbers, max length 20" maxlength="20">
+                                    <input type="text" name="username" placeholder="Type your username..." autocomplete="off" required pattern="^[a-zA-Z0-9]+$" title="Only letters and numbers, max length 20" maxlength="20">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="login-input">
-                                    <input type="password" name="password" id="password" placeholder="Type your password..." required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" minlength="8" maxlength="20" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                                    <input type="password" name="password" id="password" placeholder="Type your password..." autocomplete="off" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" minlength="8" maxlength="20" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="login-input">
-                                    <input type="password" name="password_confirm" id="confirm_password" placeholder="Confirm your password..." required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" minlength="8" maxlength="20" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                                    <input type="password" name="password_confirm" id="confirm_password" placeholder="Confirm your password..." autocomplete="off" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" minlength="8" maxlength="20" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
                                 </div>
                             </div>
                             <div class="btn-group">
