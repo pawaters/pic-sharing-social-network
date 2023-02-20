@@ -5,7 +5,7 @@
 	{
 		$conn = new PDO($DB_HOST, $DB_USER, $DB_PASSWORD);
 		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "CREATE DATABASE IF NOT EXISTS php_project";
+		$sql = "CREATE DATABASE IF NOT EXISTS heroku_7d09d8625973b2e";
 		$conn->exec($sql);
 	}
 	catch(PDOException $e)
