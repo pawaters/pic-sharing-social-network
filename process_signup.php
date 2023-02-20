@@ -115,7 +115,7 @@ if(isset($_POST['signup_btn']))
             exit;
         }
         
-        $url = "http://localhost:8080/camagru/verify.php?vkey=$vkey";
+        $url = "https://pic-sharing-app.herokuapp.com/verify.php?vkey=$vkey";
         $to = $email;
         $subject = "Email Verification";
         $message = '<p>The link to verify your email is below.</br>';

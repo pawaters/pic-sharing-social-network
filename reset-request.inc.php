@@ -10,7 +10,7 @@ if(isset($_POST["reset-request-submit"])) {
     $selector = bin2hex(random_bytes(8));
     $token = random_bytes(32);
 
-    $url = "http://localhost:8080/camagru/create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
+    $url = "https://pic-sharing-app.herokuapp.com/create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
     $expires = date("U") + 1800;
 
     require_once 'connection.php';
