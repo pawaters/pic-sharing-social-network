@@ -8,6 +8,6 @@
         <!-- <a href="#" id="dark-btn">Dark/Light</a> -->
     </div>
     <div class="copyright">
-        @2022 Pierre-Alban Waters, HIVE Helsinki student
+        @2022 Pierre-Alban Waters, HIVE Helsinki student - Project for learning only, non-commercial purposes
     </div>
 </div>
