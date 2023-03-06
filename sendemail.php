@@ -1,10 +1,16 @@
 <?php
     require 'vendor/autoload.php';
+    require __DIR__ . '/vendor/autoload.php';
+
+    use Dotenv\Dotenv;
+
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->safeLoad();
 
     class SendEmail{
 
         public static function SendMail($to, $subject, $content){
-            $key = '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';
+            $key = getenv('SENDGRID_API_KEY');
 
             $email = new \SendGrid\Mail\Mail();
             $email->setFrom("pwaters@student.hive.fi", "Pierre Waters");
