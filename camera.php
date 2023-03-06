@@ -32,16 +32,6 @@
 									<canvas class="is-hidden" width="700" height="500" id="canvas"></canvas>
 									<input type="hidden" id="webcam-file" value="" name="webcam_file" >
 								</div>
-								<!-- sticker canvas -->
-								<div style="position:relative; ">
-									<canvas class="is-hidden" width="700" height="500" id="stickers_canvas"></canvas>
-									<input type="hidden" id="sticker-canvas" value="" name="sticker-canvas">
-									<input type="hidden" id="sticker1_path" value="" name="sticker1_path">
-									<input type="hidden" id="sticker2_path" value="" name="sticker2_path">
-									<input type="hidden" id="sticker3_path" value="" name="sticker3_path">
-									<input type="hidden" id="sticker4_path" value="" name="sticker4_path">
-									<input type="hidden" id="sticker5_path" value="" name="sticker5_path">
-								</div>
 							</div>
 							<p class="sticker-description">Add a caption and hashtag, then hit "publish"</p>
 							<div class="control">
@@ -102,60 +92,16 @@
 		let sticker4 = document.getElementById("sticker4_path");
 		let sticker5 = document.getElementById("sticker5_path");
 
-		camera_button.disabled = true;
-		capture_button.disabled = true;
-		publish_button.disabled = true;		
+		camera_button.disabled = false;
+		capture_button.disabled = false;
+		publish_button.disabled = false;		
 
-		//when clicking on a sticker, activates button, draws sticker on sticker canvas
-		for(let i=0; i<filter.length; i++){
-			filter[i].addEventListener("click", (e) => {
-				event.preventDefault();
-				camera_button.disabled = false;
-				capture_button.disabled = false;
-				publish_button.disabled = false;
-				// Gets the id of the element that triggered the event
-				myCanvas(e.target.id);
-			})
-		}
-		
 		camera_button.addEventListener('click', async function() {
 			event.preventDefault();
 			let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
 			video.classList.remove("is-hidden");
 			video.srcObject = stream;
 		});
-		
-		function myCanvas(sticker) {
-			let stickers_canvas = document.getElementById("stickers_canvas");
-			let stickers_ctx = stickers_canvas.getContext("2d");
-			let Selectedsticker = document.getElementById(sticker);
-
-			switch (sticker){
-				case 'sticker1':
-					stickers_ctx.drawImage(Selectedsticker, 30, 40, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
-					sticker1.value = "assets/stickers/different.png"
-					break;
-				case 'sticker2':
-					stickers_ctx.drawImage(Selectedsticker, 300, 40, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
-					sticker2.value = "assets/stickers/football.png"
-					break;
-				case 'sticker3':
-					stickers_ctx.drawImage(Selectedsticker, 150, 220, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
-					sticker3.value = "assets/stickers/love.png"
-					break;
-				case 'sticker4':
-					stickers_ctx.drawImage(Selectedsticker, 170, 80, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
-					sticker4.value = "assets/stickers/pink.png"
-					break;
-				case 'sticker5':
-					stickers_ctx.drawImage(Selectedsticker, 30, 200, Selectedsticker.width * 0.8, Selectedsticker.height * 0.8);
-					sticker5.value = "assets/stickers/rugby.png"
-					break;
-			}
-			let stickersUrl = stickers_canvas.toDataURL();	
-			let finalStickers = document.getElementById("sticker-canvas");
-			finalStickers.value = stickersUrl;		
-		}
 
 		capture_button.addEventListener('click', function() {
 			event.preventDefault();
