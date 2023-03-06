@@ -13,7 +13,7 @@
 			<div class="camera-img" style="display:flex;">
 				<div style="width:90%;">
 					<form  style="width:95%;"  class="camera-form" method="POST" action="create_uploaded_post.php" enctype="multipart/form-data">
-						<p class="sticker-description" style="margin-top: 30px;">1. SELECT AN IMAGE TO UPLOAD</p>
+						<p class="sticker-description" style="margin-top: 30px;">SELECT AN IMAGE TO UPLOAD</p>
 						<div class="canvas-container">
 							<img id="picture" style="display: none;">
 							<canvas class="d-none" width="700" height="500" id="myCanvas"></canvas>
@@ -28,7 +28,6 @@
 							<input class="form-control" type="text"  class="my-input input" name="hashtags" placeholder="add hastags here" required>
 						</div>
 						<div>
-							<p class="sticker-description" style="margin-top: 30px;">2. CLICK ON PUBLISH</p>
 							<button type="submit" class="upload-btn" name="upload_img_btn">Publish</button>
 						</div>
 					</form>
