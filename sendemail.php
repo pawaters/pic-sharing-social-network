@@ -1,8 +1,8 @@
 <?php
     require 'vendor/autoload.php';
-    require __DIR__ . '/vendor/autoload.php';
 
     use Dotenv\Dotenv;
+    use SendGrid\Mail\Mail;
 
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
     $dotenv->safeLoad();
@@ -12,7 +12,7 @@
         public static function SendMail($to, $subject, $content){
             $key = getenv('SENDGRID_API_KEY');
 
-            $email = new \SendGrid\Mail\Mail();
+            $email = new Mail();
             $email->setFrom("pwaters@student.hive.fi", "Pierre Waters");
             $email->setSubject($subject);
             $email->addTo($to);
@@ -22,11 +22,12 @@
 
             try{
                 $response = $sendgrid->send($email);
-
+                print $response->statusCode() . "\n";
+                print_r($response->headers());
+                print $response->body() . "\n";
             }catch(Exception $e){
                 echo 'Email Exception Caught: ' . $e->getMessage() ."\n";
                 return false;
-
             }
         }
     }
