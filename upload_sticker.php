@@ -28,7 +28,19 @@
 							<input class="form-control" type="text"  class="my-input input" name="hashtags" placeholder="add hastags here" required>
 						</div>
 						<div>
-							<p class="sticker-description" style="margin-top: 30px;">2. CLICK ON PUBLISH</p>
+							<p class="sticker-description" style="margin-top: 30px;">2. BONUS: ADD A STICKER</p>
+							<div class="stickers-box">
+								<div class="gallery">
+									<img style="width:100px;" class="sticker" src="assets/stickers/different.png" alt="rugby-sticker" id="sticker1">
+									<img style="width:100px;" class="sticker" src="assets/stickers/football.png" alt="rugby-sticker" id="sticker2">
+									<img style="width:100px;" class="sticker" src="assets/stickers/love.png" alt="rugby-sticker" id="sticker3">
+									<img style="width:100px;" class="sticker" src="assets/stickers/pink.png" alt="rugby-sticker" id="sticker4">
+									<img style="width:100px" class="sticker" src="assets/stickers/rugby.png" alt="rugby-sticker" id="sticker5">
+								</div>
+							</div>	
+						</div>
+						<div>
+							<p class="sticker-description" style="margin-top: 30px;">3. CLICK ON PUBLISH</p>
 							<button type="submit" class="upload-btn" name="upload_img_btn">Publish</button>
 						</div>
 					</form>
