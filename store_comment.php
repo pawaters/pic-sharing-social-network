@@ -86,11 +86,12 @@ if(isset($_POST['comment_btn']))
     $subject = "Your image has received a comment";
     $message = "This is a notification to inform one of your posts / images has received a comment.";
     
-    $headers = "From: Pierre Waters <pierrealbanwaters@proton.com>\r\n";
-    $headers .= "Reply-To: pierrealbanwaters@proton.com\r\n";
-    $headers .= "Content-type: text/html\r\n";
+    // $headers = "From: Pierre Waters <pierrealbanwaters@proton.com>\r\n";
+    // $headers .= "Reply-To: pierrealbanwaters@proton.com\r\n";
+    // $headers .= "Content-type: text/html\r\n";
 
-    mail($to, $subject, $message, $headers);
+    // mail($to, $subject, $message, $headers);
+    SendEmail::SendMail($to, $subject, $message);
 
     header('location: single_post.php?post_id='.$post_id."&post_owner_id=".$post_owner_id."&success_message=comment submitted successfully & user notified as per settings");
     exit;

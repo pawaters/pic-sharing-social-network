@@ -74,11 +74,14 @@ if(isset($_POST["reset-request-submit"])) {
     $message = '<p>The link to reset your password is below.</br>';
     $message .= '<p><a href="' . $url .'">' . $url . '</a></p>';
 
-    $headers = "From: Pierre Waters <pierrealbanwaters@proton.com>\r\n";
-    $headers .= "Reply-To: pierrealbanwaters@proton.com\r\n";
-    $headers .= "Content-type: text/html\r\n";
+    // $headers = "From: Pierre Waters <pierrealbanwaters@proton.com>\r\n";
+    // $headers .= "Reply-To: pierrealbanwaters@proton.com\r\n";
+    // $headers .= "Content-type: text/html\r\n";
 
-    mail($to, $subject, $message, $headers);
+    // mail($to, $subject, $message, $headers);
+
+    //Switched to sendgrid when deployed on heroku 
+    SendEmail::SendMail($to, $subject, $message);
 
     $emailLog = "Password reset request received. Email was sent to : ";
     $emailLog .= $to;
