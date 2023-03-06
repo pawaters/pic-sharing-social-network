@@ -2,6 +2,7 @@
     "require": {
         "sendgrid/sendgrid": "^8.0",
         "vlucas/phpdotenv": "^5.5",
-        "ext-exif":"*"
+        "ext-exif":"*",
+        "ext-gd":"*"
     }
 }
