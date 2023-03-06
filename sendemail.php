@@ -1,11 +1,5 @@
 <?php
     require 'vendor/autoload.php';
-    require __DIR__ . '/vendor/autoload.php';
-
-    use Dotenv\Dotenv;
-
-    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-    $dotenv->safeLoad();
 
     class SendEmail{
 
