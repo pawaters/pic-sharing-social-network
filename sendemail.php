@@ -10,7 +10,7 @@
     class SendEmail{
 
         public static function SendMail($to, $subject, $content){
-            $key = $_ENV('SENDGRID_API_KEY');
+            $key = getenv('SENDGRID_API_KEY');
 
             $email = new \SendGrid\Mail\Mail();
             $email->setFrom("pwaters@student.hive.fi", "Pierre Waters");
