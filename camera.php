@@ -14,19 +14,6 @@
 				<div class="camera-img" style="display:flex;">
 					<div style="width:90%;">
 						<form style="width:95%;"  class="camera-form" method="POST" action="create_camera_post.php" enctype="multipart/form-data" autocomplete="off">
-							<div>
-								<p class="sticker-description">1. First, Click on one or more stickers</p>
-								<div class="stickers-box">
-									<div class="gallery">
-										<img style="width:100px;" class="sticker" src="assets/stickers/different.png" alt="rugby-sticker" id="sticker1">
-										<img style="width:100px;" class="sticker" src="assets/stickers/football.png" alt="rugby-sticker" id="sticker2">
-										<img style="width:100px;" class="sticker" src="assets/stickers/love.png" alt="rugby-sticker" id="sticker3">
-										<img style="width:100px;" class="sticker" src="assets/stickers/pink.png" alt="rugby-sticker" id="sticker4">
-										<img style="width:100px;" class="sticker" src="assets/stickers/rugby.png" alt="rugby-sticker" id="sticker5">
-									</div>
-								</div>
-							</div>
-							<p class="sticker-description">2. Start your webcam (you have to give permission or the image will be black)</p>
 							<button class="capture-btn" id="start-camera">Start Camera</button>
 
 							<a href="upload.php">(or follow this link to upload an image instead)</a>
@@ -35,9 +22,9 @@
 							<div>
 								<video class="is-hidden" id="video" autoplay width="100%" video="100%" style="width: 100%; max-height: 100%;"></video>
 							</div>
-							<p style="margin-top: 30px;" class="sticker-description">3. Take your photo</p>
+							<p style="margin-top: 30px;" class="sticker-description"> Take your photo</p>
 							<button class="capture-btn" id="click-photo">Capture Photo</button>
-							<p style="margin-top: 30px;" class="sticker-description">4. Check below the current state of the image with sticker(s):</p>
+							<p style="margin-top: 30px;" class="sticker-description">Check below the current state of the image with sticker(s):</p>
 							<!-- Both canvas overlap: webcam canvas and sticker canvas -->
 							<div style="position:relative;">
 								<!-- webcam canvas -->
@@ -56,7 +43,7 @@
 									<input type="hidden" id="sticker5_path" value="" name="sticker5_path">
 								</div>
 							</div>
-							<p class="sticker-description">5. Add a caption and hashtag, then hit "publish"</p>
+							<p class="sticker-description">Add a caption and hashtag, then hit "publish"</p>
 							<div class="control">
 								<input type="text" class="my-input input" name="caption" placeholder="Write a caption here" pattern="^[A-Za-z0-9.!,;(): ]*$" title="Only letters, numbers, spaces and punctuation (max 200)" maxlength="200" required>
 							</div>
