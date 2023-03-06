@@ -4,6 +4,8 @@
     session_unset();
     session_destroy();
 
+    require 'sendemail.php';
+
 if(isset($_POST["reset-request-submit"])) {
 
     // 1 token for auth, 1 token to look in the db, to prevent timing attacks
@@ -93,3 +95,5 @@ if(isset($_POST["reset-request-submit"])) {
     header("Location: reset-password.php?error_message=Error ocurred");
     exit();
 }
+
+?>

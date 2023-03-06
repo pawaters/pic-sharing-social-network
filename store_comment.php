@@ -3,6 +3,7 @@
 session_start();
 
 include('connection.php'); 
+require 'sendemail.php';
 
 if(isset($_POST['comment_btn'])) 
 {
