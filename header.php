@@ -29,7 +29,7 @@ if(!isset($_SESSION['id'])){
             </form>
             <div class="nav-items">
                 <a href="index.php" style="color: #000;"><i class="icon fa-solid fa-house-user"></i></a>
-                <a href="camera.php" style="color: #000;"><i class="icon fas fa-camera"></i></a>
+                <!-- <a href="camera.php" style="color: #000;"><i class="icon fas fa-camera"></i></a> -->
                 <a href="upload.php" style="color: #000;"><i class="icon fas fa-upload"></i></a>
                 <a href="liked_posts.php" style="color: #000;"><i class="icon fas fa-heart"></i></a>
                 <div class="icon user-profile">
