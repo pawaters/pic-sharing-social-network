@@ -1,6 +1,6 @@
 # Pic Sharing social network
 
-Coded in PHP without any external library, except Bootstrap for CSS.
+Instagram clone, coded in PHP, HTML, CSS without any external library, except Bootstrap for CSS.
 For non-commercial purposes only.
 
 ## Live here: https://pic-sharing-app.herokuapp.com/
