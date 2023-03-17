@@ -5,11 +5,9 @@ For non-commercial purposes only.
 
 ## Live here: https://pic-sharing-app.herokuapp.com/
 
-
-# Stack: PHP, HTML, CSS, mySQL. 
-
-# Design-pattern: Responsive Single-page application.
-# UI: inspired from instagram.
+Stack: PHP, HTML, CSS, mySQL. 
+Design-pattern: Responsive Single-page application.
+UI: inspired from instagram.
 
 ## User features:
 - sign up with minimum level of complexity
