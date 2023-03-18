@@ -4,6 +4,11 @@ Instagram clone, coded in PHP, HTML, CSS without any external library, except Bo
 For non-commercial purposes only.
 
 ## Live here: https://pic-sharing-app.herokuapp.com/
+I recommend to connect with an already existing user:
+- username: PierreA1
+- password: Matcha1!
+
+You can also go to signup and create your own, with your own profile picture, bio, shared images.
 
 Stack: PHP, HTML, CSS, mySQL. 
 Design-pattern: Responsive Single-page application.
