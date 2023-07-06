@@ -23,6 +23,7 @@ UI: inspired from instagram.
 - image list must be paginated, with at least 5 elements per page
 
 ## own local installation indications
+Project was deployed with heroku initially. heroku had to be deactivated to not rack up costs.
 
 Prerequisites:
 
@@ -63,9 +64,3 @@ Create your local database: Before you can run the setup.php script, you need to
 Run the setup script: The setup.php script creates the necessary tables in the database. You should be able to run this script by navigating to it in your web browser (e.g., http://localhost/pic-sharing-social-network/setup.php). If there are any errors, they will be printed on the page.
 
 Test the installation: Finally, test the project by opening your web browser and navigating to http://localhost/pic-sharing-social-network (or whatever URL corresponds to the local server configuration you're using). You should see the home page of your application.
-
-Project was made with heroku initially, and heroku had to be deactivated to not rack up costs.
-Local setup would use composer.json for dependencies, and redefi
-I recommend to connect with an already existing user:
-- username: PierreA1
-- password: Matcha1!
