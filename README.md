@@ -3,7 +3,8 @@
 Instagram clone, coded in PHP, HTML, CSS without any external library, except Bootstrap for CSS.
 For non-commercial purposes only.
 
-Once project is set up.
+The setup was made for heroku and needs adaptating database.php to your configuration. 
+The heroku deployment has been deactivated to not rack up costs.
 I recommend to connect with an already existing user:
 - username: PierreA1
 - password: Matcha1!
